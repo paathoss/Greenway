@@ -1,15 +1,14 @@
-#featurecardPanel{
-    background-color: red!important;
-}
 
 body{
     padding: 0px;
     margin: 0px;
 }
 
-iframe{
-    margin-top: -100px;
-    width: 100vw;
-    height: 120vh;
+h1{
+    text-align: center;
 }
 
+#map{
+    height: 90vh;
+    width: 100vw;
+}
