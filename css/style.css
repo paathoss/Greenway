@@ -1,17 +1,230 @@
-#featurecardPanel{
-    background-color: red!important;
+body {
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
 }
 
-body{
-    padding: 0px;
-    margin: 0px;
-}
-.nav-link{
-    font-weight: bolder;
-}
-iframe{
-    width: 100%; 
-    height: 500px; 
-    border: 3px solid #555;
+body #homePage, body #estacionesPage, body #guiaPage, body #aboutPage, body #contactPage {
+  width: 100%;
+  height: 100%;
 }
 
+body .contDiv {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: scroll;
+
+}
+
+nav {
+  position: fixed;
+  top: 0;
+}
+
+nav .navbar-brand {
+  width: 30px;
+}
+
+nav .nav-link {
+  font-weight: bolder;
+}
+
+#homePage .map_estaciones {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#homePage iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#homePage .cardHome {
+  background-color: white;
+  width: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+}
+
+#homePage .cardHome .btn {
+  background-color: #11ae11;
+  color: white;
+  z-index: 3;
+}
+
+#estacionesPage .estacionesTitle {
+  color: #11ae11;
+  margin: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#estacionesPage .card {
+  width: 90%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+}
+
+#estacionesPage .card .btn {
+  background-color: #11ae11;
+  color: white;
+}
+
+#guiaPage .userPerfil {
+  width: 120px;
+  height: 120px;
+  margin-top: 35px;
+  border-radius: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#guiaPage .ecoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#guiaPage .ecoins .ecoinsText {
+  font-size: 200%;
+  font-weight: 500;
+}
+
+#guiaPage .ecoins .ecoinIco {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#guiaPage .guiaCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: whitesmoke;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#guiaPage .guiaCont h3 {
+  font-size: x-large;
+  color: #11ae11;
+}
+
+#guiaPage .guiaCont ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: left;
+}
+
+#aboutPage .aboutLogo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#aboutPage .aboutCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: whitesmoke;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#aboutPage .aboutCont h3 {
+  font-size: x-large;
+  color: #11ae11;
+}
+
+#aboutPage .aboutCont .aboutMarcas {
+  width: 100%;
+}
+
+#aboutPage .aboutCont .aboutMarcas .marcas {
+  width: 100%;
+  height: 100%;
+}
+
+#contactPage h2 {
+  font-size: 200%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #11ae11;
+}
+
+#contactPage .contactForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contactPage .contactForm input {
+  width: 90%;
+  height: 30px;
+}
+
+#contactPage .contactForm label {
+  text-align: start;
+  color: gray;
+}
+/*# sourceMappingURL=style.css.map */
