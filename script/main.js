@@ -1,11 +1,13 @@
 var app = new Vue({
 	el: '#app',
 	data: {
-		paradas: [],
+		estaciones: {
+			paradas: [],
+			paradasActivas: [],
+			paradasActivasInfo: []
+		}
 	}
 });
-
-app.paradas = "Estaciones";
 
 function initMap() {
 	const myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
@@ -16,27 +18,30 @@ function initMap() {
 
 	const Estaciones = [
 		[
-			"Primer Estación (Plaza Moreno)",
+			"Primer Estación",
 			-34.922302402883496,
-			-57.95493732361004
+			-57.95493732361004,
+			"Información basica de la parada 1"
 		],
 		[
-			"Segunda Estación (Estadio Atenas)",
+			"Segunda Estación",
 			-34.925389445729145,
-			-57.94945585469184
+			-57.94945585469184,
+			"Información basica de la parada 2"
 		],
 		[
-			"Tercera Estación (Plaza San Martin)",
+			"Tercera Estación",
 			-34.93175604944046,
-			-57.96808955054438
+			-57.96808955054438,
+			"Información basica de la parada 3"
 		],
 		[
-			"Cuarta Estación (Plaza Saavedra)",
+			"Cuarta Estación",
 			-34.932282008849725,
-			-57.94182764344423
+			-57.94182764344423,
+			"Información basica de la parada 4"
 		]
 	]
-
 
 	for (let i = 0; i < Estaciones.length; i++) {
 		const Estacion = Estaciones[i];
@@ -44,17 +49,57 @@ function initMap() {
 		var puntos = new google.maps.Marker({
 			title: Estacion[0],
 			position: { lat: Estacion[1], lng: Estacion[2] },
+			info: Estacion[3] ,
 			map,
 		})
-		/* puntos.setMap(map); */
-		puntos.addListener("click", show);
 
+		const puntosTitle = puntos.title;
+		const puntosInfo = puntos.info;
+
+		puntos.addListener("click", show);
 		function show() {
+			/* map.addListener("click", shownt); */
+			
+			if (shownt.eventListener==="click") {
+				/* map.addListener("click", shownt); */
+				console.log("si")
+			}else if(/* map.addListener("click", shownt */ shownt.Listener===""){
+				/* map.addListener("", shownt) */console.log("no")
+			}
 			var toggle = document.getElementById('sidebar').classList.toggle('active');
+			/* var blur = document.getElementById("map");
+	
+				if (toggle = 'active') {
+					document.getElementById('map').classList.add('blureado');
+					document.getElementById('map').style.zIndex = 100;
+				  }
+				  if (blur.style.display === "block") {
+					blur.style.display = "none";
+				  } else {
+					blur.style.display = "block";
+				  } */
+			  
+
+			var paradaActiva = [];
+			var paradaActivaInfo = [];
+
+			for (let u = 0; u < Estaciones.length; u++) {
+				if (Estaciones[u][0] === puntosTitle) {
+					paradaActiva.push(puntosTitle)
+					paradaActivaInfo.push(puntosInfo)
+				}
+			}
+			console.log(paradaActiva)
+			app.estaciones.paradasActivas = paradaActiva;
+			app.estaciones.paradasActivasInfo = paradaActivaInfo;
 		};
 	}
+	app.estaciones.paradas = Estaciones;
 
-
+	
+	function shownt() {
+		document.getElementById('sidebar').classList.toggle('active');
+	}
 	// function showNewRect() {
 	// 	const contentString =
 	// 	  "<b>Rectangle moved.</b><br>" +

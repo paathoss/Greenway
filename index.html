@@ -43,25 +43,33 @@
         </div>
     </nav>
 
-    
-<div id="app">
-    <div class="seasons">
-        <div id="sidebar">
-            <div class="toggle-btn" onclick="show()">
-                <span></span>
-                <span></span>
-                <span></span>
+
+    <div id="app">
+
+        <div class="a"></div>
+        <div class="seasons">
+            <div id="sidebar">
+                <div class="toggle-btn" onclick="show()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div id="apostrofe">
+                <ul id="v-for-object">
+                    <li  v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                      {{ value }}
+                      
+                    </li>
+                    <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                        {{ estaciones.paradasActivasInfo[0] }}</li>
+                  </ul>
+                </div>
             </div>
-            <ul v-for="pruebas in prueba">
-                <li>{{ pruebas.uno }} </li>
-            </ul>
+
+            <h1>Seasons</h1>
+            <div id="map"></div>
         </div>
-
-
-        <h1>Seasons</h1>
-        <div id="map"></div>
     </div>
-</div>
 
 
 
