@@ -1,10 +1,28 @@
+var punto = document.getElementsByClassName('.gm-style img')
+
+/* if (punto) {
+	console.log("patata")
+} */
+
+var cargarPagina = (id) => {
+	document.getElementById("homePage").style.display = "none"
+	document.getElementById("estacionesPage").style.display = "none"
+	document.getElementById("guiaPage").style.display = "none"
+	document.getElementById("aboutPage").style.display = "none"
+	document.getElementById("contactPage").style.display = "none"
+	document.getElementById(id).style.display = "block"
+}
+cargarPagina("contactPage")
+
+
 var app = new Vue({
 	el: '#app',
 	data: {
 		estaciones: {
 			paradas: [],
 			paradasActivas: [],
-			paradasActivasInfo: []
+			paradasActivasInfo: [],
+			coordenadas: []
 		}
 	}
 });
@@ -14,7 +32,10 @@ function initMap() {
 	const map = new google.maps.Map(document.getElementById("map"), {
 		zoom: 14,
 		center: myLatLng,
+		disableDefaultUI: true,
+		streetViewControl: true,
 	});
+
 
 	const Estaciones = [
 		[
@@ -46,10 +67,12 @@ function initMap() {
 	for (let i = 0; i < Estaciones.length; i++) {
 		const Estacion = Estaciones[i];
 
+		app.estaciones.coordenadas = { lat: Estacion[1], lng: Estacion[2] };
+
 		var puntos = new google.maps.Marker({
 			title: Estacion[0],
 			position: { lat: Estacion[1], lng: Estacion[2] },
-			info: Estacion[3] ,
+			info: Estacion[3],
 			map,
 		})
 
@@ -57,28 +80,19 @@ function initMap() {
 		const puntosInfo = puntos.info;
 
 		puntos.addListener("click", show);
+
 		function show() {
-			/* map.addListener("click", shownt); */
-			
-			if (shownt.eventListener==="click") {
-				/* map.addListener("click", shownt); */
-				console.log("si")
-			}else if(/* map.addListener("click", shownt */ shownt.Listener===""){
-				/* map.addListener("", shownt) */console.log("no")
-			}
-			var toggle = document.getElementById('sidebar').classList.toggle('active');
-			/* var blur = document.getElementById("map");
-	
-				if (toggle = 'active') {
-					document.getElementById('map').classList.add('blureado');
-					document.getElementById('map').style.zIndex = 100;
-				  }
-				  if (blur.style.display === "block") {
-					blur.style.display = "none";
-				  } else {
-					blur.style.display = "block";
-				  } */
-			  
+			puntos.addListener("click", () => {
+				map.setZoom(15);
+				map.setCenter(puntos.getPosition());
+			});
+
+			document.getElementById('sidebar').classList.toggle('active');
+			var blur = document.getElementById("blur");
+
+			blur.style.display = 'block';
+			blur.classList.add('blureado');
+			blur.style.zIndex = 1200;
 
 			var paradaActiva = [];
 			var paradaActivaInfo = [];
@@ -89,67 +103,48 @@ function initMap() {
 					paradaActivaInfo.push(puntosInfo)
 				}
 			}
-			console.log(paradaActiva)
+			/* console.log(paradaActiva) */
 			app.estaciones.paradasActivas = paradaActiva;
 			app.estaciones.paradasActivasInfo = paradaActivaInfo;
 		};
 	}
 	app.estaciones.paradas = Estaciones;
-
-	
-	function shownt() {
-		document.getElementById('sidebar').classList.toggle('active');
-	}
-	// function showNewRect() {
-	// 	const contentString =
-	// 	  "<b>Rectangle moved.</b><br>" +
-	// 	  "New north-east corner: " +
-	// 	  ne.lat() +
-	// 	  ", " +
-	// 	  ne.lng() +
-	// 	  "<br>" +
-	// 	  "New south-west corner: " +
-	// 	  sw.lat() +
-	// 	  ", " +
-	// 	  sw.lng();
-
-	// 	// Set the info window's content and position.
-	// 	infoWindow.setContent(contentString);
-	// 	infoWindow.setPosition(ne);
-	// 	infoWindow.open(map);
-	//   }
-	/* class USGSOverlay extends google.maps.OverlayView {
-		bounds;
-		image;
-		div;
-		constructor(bounds, image) {
-		  super();
-		  this.bounds = bounds;
-		  this.image = image;
-		}} */
-
-	/* onAdd() ;{
-		this.div = document.createElement("div");
-		this.div.style.borderStyle = "none";
-		this.div.style.borderWidth = "0px";
-		this.div.style.position = "absolute";
-	  
-		// Create the img element and attach it to the div.
-		const img = document.createElement("img");
-	  
-		img.src = this.image;
-		img.style.width = "100%";
-		img.style.height = "100%";
-		img.style.position = "absolute";
-		img.style.backgroundColor = "red";
-		this.div.appendChild(img);
-	  
-		// Add the element to the "overlayLayer" pane.
-		const panes = this.getPanes();
-	  
-		panes.overlayLayer.appendChild(this.div);
-	  }  */
-
-
-
 }
+
+function shownt() {
+	var toggle = document.getElementById('sidebar')
+	var blur = document.getElementById("blur");
+
+	toggle.classList.toggle('active');
+	blur.style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* function initMap() {
+	const myLatlng = { lat: -25.363, lng: 131.044 };
+	const map = new google.maps.Map(document.getElementById("map"), {
+	  zoom: 4,
+	  center: myLatlng,
+	});
+	const marker = new google.maps.Marker({
+	  position: myLatlng,
+	  map,
+	  title: "Click to zoom",
+	});
+  
+	
+  } */

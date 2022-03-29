@@ -1,28 +1,214 @@
-
-body{
-    padding: 0px;
-    margin: 0px;
+body {
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
 }
 
-h1{
-    text-align: center;
+body #homePage, body #estacionesPage, body #guiaPage, body #aboutPage, body #contactPage {
+  width: 100%;
+  height: 100%;
 }
 
-#map{
-    height: 90vh;
-    width: 100vw;
+body .contDiv {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
+nav .navbar-brand {
+  width: 30px;
+}
 
+nav .nav-link {
+  font-weight: bolder;
+}
 
+#homePage .map_estaciones {
+  width: 100%;
+  height: 100%;
+}
+
+#homePage iframe {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #555;
+}
+
+#estacionesPage .estacionesTitle {
+  color: #11ae11;
+  margin: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#estacionesPage .card {
+  width: 90%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+}
+
+#estacionesPage .card .btn {
+  background-color: #11ae11;
+  color: white;
+}
+
+#guiaPage .userPerfil {
+  width: 120px;
+  height: 120px;
+  margin-top: 35px;
+  border-radius: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#guiaPage .ecoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#guiaPage .ecoins .ecoinsText {
+  font-size: 200%;
+  font-weight: 500;
+}
+
+#guiaPage .ecoins .ecoinIco {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#guiaPage .guiaCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: whitesmoke;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#guiaPage .guiaCont h3 {
+  font-size: x-large;
+  color: #11ae11;
+}
+
+#guiaPage .guiaCont ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: left;
+}
+
+#aboutPage .aboutLogo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#aboutPage .aboutCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: whitesmoke;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#aboutPage .aboutCont h3 {
+  font-size: x-large;
+  color: #11ae11;
+}
+
+#aboutPage .aboutCont .aboutMarcas {
+  width: 100%;
+}
+
+#aboutPage .aboutCont .aboutMarcas .marcas {
+  width: 100%;
+  height: 100%;
+}
+
+#contactPage h2 {
+  font-size: 200%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #11ae11;
+}
+
+#contactPage .contactForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contactPage .contactForm input {
+  width: 90%;
+  height: 30px;
+}
+
+#contactPage .contactForm label {
+  text-align: start;
+  color: gray;
+}
+/*# sourceMappingURL=style.css.map */
 
 
 
 #sidebar ul{
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  height: 20vh;
+  padding: 0px;
 }
 
 #sidebar li {
@@ -31,49 +217,32 @@ h1{
   color: white;
 }
 
-#sidebar .toggle-btn {
-  position: absolute;
-  top: 30px;
-  left: 800px;
-  margin-top: 12%;
-}
-
-.toggle-btn span {
-  width: 55px;
-  height: 10px;
-  background: #000;
-  border: 2px solid white;
-  
-  display: block;
-  margin-top: 4px;
-}
-
-
 #sidebar { 
   background:rgb(31, 31, 31);
   position: fixed;
-  width: 200px;
-  height: 100vh;
-  top: 0;
-  left: -200px;
+  width: 100vw;
+  height: 30vh;
+  bottom: -30vh;
 
   transition: .4s;
   z-index: 100; 
 }
 
-
 #sidebar.active {
+  bottom: 0;
+} 
+
+.blureado{
+  position: fixed;
+  width: 100vw;
+  height: 70vh;
+  background: rgb(0, 0, 0);
   left: 0;
+  top: 0;
+  transition: .4s;
+  opacity: 0.2;
 }
 
-/* .blureado{
-  position: fixed;
-  width: 100%;
-  height: 120%;
-  background: black;
-  left: 0px;
-  transition: .4s;
-  margin-top: -10%;
-
-  opacity: 0.8;
-} */
+#comoLlegar{
+  text-align: center;
+}
