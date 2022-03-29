@@ -10,13 +10,65 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Genbrug (logo)</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Seasons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ">Recycling guide </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button type="button" class="btn btn-success">LOGIN</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-    <h1>Estaciones de Reciclaje :)</h1>
-    <div id="map"></div>
+    
+<div id="app">
+    <div class="seasons">
+        <div id="sidebar">
+            <div class="toggle-btn" onclick="show()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul v-for="pruebas in prueba">
+                <li>{{ pruebas.uno }} </li>
+            </ul>
+        </div>
 
+
+        <h1>Seasons</h1>
+        <div id="map"></div>
+    </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./script/main.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
 </body>
 
 </html>

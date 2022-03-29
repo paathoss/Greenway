@@ -2,6 +2,7 @@
 body{
     padding: 0px;
     margin: 0px;
+    background-color: bisque;
 }
 
 h1{
@@ -12,3 +13,56 @@ h1{
     height: 90vh;
     width: 100vw;
 }
+
+
+
+
+
+
+#sidebar ul{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  #sidebar li {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+  }
+  
+  #sidebar .toggle-btn {
+    position: absolute;
+    top: 30px;
+    left: 800px;
+    margin-top: 12%;
+  }
+  
+  .toggle-btn span {
+    width: 55px;
+    height: 10px;
+    background: #000;
+    border: 2px solid white;
+    
+    display: block;
+    margin-top: 4px;
+  }
+  
+  
+  #sidebar { 
+    background:rgb(31, 31, 31);
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    top: 0;
+    left: -200px;
+  
+    transition: .4s;
+    z-index: 100; 
+  }
+  
+  
+  #sidebar.active {
+    left: 0;
+  }
