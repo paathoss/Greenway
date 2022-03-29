@@ -1,5 +1,6 @@
 // var punto = document.getElementsByClassName('.gm-style img')
 
+
 // if (punto) {
 //     console.log("patata")
 // }
@@ -35,3 +36,4 @@ var cargarPagina = (id) => {
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+
