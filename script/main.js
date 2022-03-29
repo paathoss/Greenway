@@ -28,8 +28,8 @@ var app = new Vue({
 });
 
 function initMap() {
-	const myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
-	const map = new google.maps.Map(document.getElementById("map"), {
+	var myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
+	var map = new google.maps.Map(document.getElementById("map"), {
 		zoom: 14,
 		center: myLatLng,
 		disableDefaultUI: true,
@@ -39,25 +39,25 @@ function initMap() {
 
 	const Estaciones = [
 		[
-			"Primer Estación",
+			"Plaza Moreno",
 			-34.922302402883496,
 			-57.95493732361004,
 			"Información basica de la parada 1"
 		],
 		[
-			"Segunda Estación",
+			"Estado Atenea",
 			-34.925389445729145,
 			-57.94945585469184,
 			"Información basica de la parada 2"
 		],
 		[
-			"Tercera Estación",
+			"Parque San Martín",
 			-34.93175604944046,
 			-57.96808955054438,
 			"Información basica de la parada 3"
 		],
 		[
-			"Cuarta Estación",
+			"Parque Saavedra",
 			-34.932282008849725,
 			-57.94182764344423,
 			"Información basica de la parada 4"
@@ -67,7 +67,7 @@ function initMap() {
 	for (let i = 0; i < Estaciones.length; i++) {
 		const Estacion = Estaciones[i];
 
-		app.estaciones.coordenadas = { lat: Estacion[1], lng: Estacion[2] };
+	/* 	app.estaciones.coordenadas = { lat: Estacion[1], lng: Estacion[2] }; */
 
 		var puntos = new google.maps.Marker({
 			title: Estacion[0],
@@ -75,17 +75,20 @@ function initMap() {
 			info: Estacion[3],
 			map,
 		})
-
 		const puntosTitle = puntos.title;
 		const puntosInfo = puntos.info;
+		const puntosPosition = puntos.position;
+
+		puntos.addListener("click", () => {
+			map.setZoom(15);
+			map.setCenter(puntosPosition);
+			map.panTo(puntosPosition)
+		});
 
 		puntos.addListener("click", show);
 
 		function show() {
-			puntos.addListener("click", () => {
-				map.setZoom(15);
-				map.setCenter(puntos.getPosition());
-			});
+			/* console.log(puntosPosition) */
 
 			document.getElementById('sidebar').classList.toggle('active');
 			var blur = document.getElementById("blur");

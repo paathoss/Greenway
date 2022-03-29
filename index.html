@@ -56,27 +56,30 @@
       <div class="a"></div>
       <div class="seasons">
         <div class="blureado" id="blur" onclick="shownt()"></div>
-          <div id="sidebar">
-                  <span></span>
-                  <span></span>
-                  <span></span>           
-              <div id="comoLlegar">
-                
-              <ul id="v-for-object">
-                  <li  v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
-                   <h1> {{ value }} </h1>
-                    
-                  </li>
-                  <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
-                      {{ estaciones.paradasActivasInfo[0] }}</li>
-                </ul>
-              </div>
+        <div id="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <div id="comoLlegar">
+
+            <ul id="v-for-object">
+              <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                <h1> {{ value }} </h1>
+              </li>
+              <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                {{ estaciones.paradasActivasInfo[0] }}</li>
+              <br>
+              <li>(dirección)</li><br><br>
+              <li>Cómo llegar <br> (camino optimo para llegar a la estacion)</li><br>
+              <li></li>
+            </ul>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
 
     <div id="map" class="map_estaciones">
-      
+
     </div>
 
     <div class="estacionInfo">
@@ -291,7 +294,7 @@
     crossorigin="anonymous"></script>
   <script src="./script/main.js"></script>
   <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap" ></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
 </body>
 
 </html>
