@@ -19,10 +19,13 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: scroll;
     }
 }
 
 nav{
+    position: fixed;
+    top: 0;
     & .navbar-brand{
         width: 30px;
     }
@@ -37,12 +40,31 @@ nav{
     & .map_estaciones{
         width: 100%;
         height: 100%;
+        position: absolute;
+        z-index: 0;
     }
 
     & iframe{
         width: 100%; 
         height: 100%; 
         border: 3px solid #555;
+        
+    }
+
+    & .cardHome{
+        background-color: white;
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 1rem;
+        z-index: 2;
+        position: fixed;
+        bottom: 0;
+
+        & .btn{
+            background-color: $green;
+            color: white;
+            z-index: 3;
+        }
     }
 }
 
