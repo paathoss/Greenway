@@ -11,6 +11,8 @@ var cargarPagina = (id) => {
     document.getElementById("guiaPage").style.display = "none"
     document.getElementById("aboutPage").style.display = "none"
     document.getElementById("contactPage").style.display = "none"
+    document.getElementById("premiosPage").style.display = "none"
+    
     document.getElementById(id).style.display = "block"
   }
   cargarPagina("homePage")
@@ -36,4 +38,57 @@ var cargarPagina = (id) => {
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+
+
+
+
+
+// ---------<Meeeliiiii>-------
+var premio =
+    [
+        {
+            "id": "HOLA1",
+            "cantEcoins": "1500",
+            "img": "https://i.pinimg.com/originals/29/5d/3c/295d3ce2abc369825a509cbca5ce3693.jpg",
+            "descripcion": "REMERA XXL",
+            "": ""
+        },
+        {
+            "id": "HOLA",
+            "cantEcoins": "2500",
+            "img": "https://i.pinimg.com/originals/29/5d/3c/295d3ce2abc369825a509cbca5ce3693.jpg",
+            "descripcion": "REMERA XXL",
+            "": ""
+        },
+        {
+            "id": "HOLA2",
+            "cantEcoins": "850",
+            "img": "https://i.pinimg.com/originals/29/5d/3c/295d3ce2abc369825a509cbca5ce3693.jpg",
+            "descripcion": "REMERA XXL",
+            "": ""
+        },
+        {
+            "id": "HOLA3",
+            "cantEcoins": "520",
+            "img": "https://i.pinimg.com/originals/29/5d/3c/295d3ce2abc369825a509cbca5ce3693.jpg",
+            "descripcion": "REMERA XXL",
+            "": ""
+        },
+        {
+            "id": "HOLA4",
+            "cantEcoins": "896",
+            "img": "https://i.pinimg.com/originals/29/5d/3c/295d3ce2abc369825a509cbca5ce3693.jpg",
+            "descripcion": "REMERA XXL",
+            "": ""
+        }
+    ]
+
+    app = new Vue({
+        el: "#winner",
+        data: { premio: [] }
+    })
+    app.premio = premio
+
+  //  ------------- </Meeeliiiii>---------
+
 
