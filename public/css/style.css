@@ -228,20 +228,3 @@ nav .nav-link {
   color: gray;
 }
 /*# sourceMappingURL=style.css.map */
-#winner{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin: 10px;
-}
-#winner div{
-  padding: 10px;
-  margin: 10px;}
-
- #winner img{
-
--webkit-transform: rotateY(180deg);
--webkit-transform-style: preserve-3d;
-transform: rotateY(180deg);
-transform-style: preserve-3d;}
- }
