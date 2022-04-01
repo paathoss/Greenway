@@ -63,6 +63,7 @@
           <div id="comoLlegar">
 
             <ul id="v-for-object">
+              <li id="parada"></li>
               <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
                 <h1> {{ value }} </h1>
               </li>
@@ -81,6 +82,8 @@
     <div id="map" class="map_estaciones">
 
     </div>
+
+    <div id="ubicacion" onclick="currentPosition()"> <h4>Ubiacion actual</h4> </div>
 
     <div class="estacionInfo">
 

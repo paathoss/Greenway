@@ -206,6 +206,12 @@ nav .nav-link {
 
 
 
+
+
+
+
+/* //////////////nav y detalles de pato/////////////// */
+
 #sidebar ul{
   height: 20vh;
   padding: 0px;
@@ -245,4 +251,12 @@ nav .nav-link {
 
 #comoLlegar{
   text-align: center;
+}
+
+
+#ubicacion{
+  position: absolute;
+  margin-bottom: -55%;
+  bottom: 0;
+  right: 0;
 }

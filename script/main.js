@@ -1,8 +1,5 @@
 var punto = document.getElementsByClassName('.gm-style img')
-
-/* if (punto) {
-	console.log("patata")
-} */
+var ubicacion = document.getElementById('ubicacion')
 
 var cargarPagina = (id) => {
 	document.getElementById("homePage").style.display = "none"
@@ -23,9 +20,16 @@ var app = new Vue({
 			paradasActivas: [],
 			paradasActivasInfo: [],
 			coordenadas: []
-		}
+		},
+		map: {
+			mapita: [],
+			puntos: []
+		},
+		ubicacionActual: [],
 	}
 });
+
+
 
 function initMap() {
 	var myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
@@ -36,6 +40,7 @@ function initMap() {
 		streetViewControl: true,
 	});
 
+	app.map.mapita = map;
 
 	const Estaciones = [
 		[
@@ -67,14 +72,22 @@ function initMap() {
 	for (let i = 0; i < Estaciones.length; i++) {
 		const Estacion = Estaciones[i];
 
-	/* 	app.estaciones.coordenadas = { lat: Estacion[1], lng: Estacion[2] }; */
-
 		var puntos = new google.maps.Marker({
 			title: Estacion[0],
 			position: { lat: Estacion[1], lng: Estacion[2] },
 			info: Estacion[3],
 			map,
 		})
+
+	var puntos2 = new google.maps.Marker({
+			title: 'title',
+			position: { lat: 123, lng: 321 },
+			info: 'info',
+			map,
+		})
+
+		app.map.puntos = puntos2;
+
 		const puntosTitle = puntos.title;
 		const puntosInfo = puntos.info;
 		const puntosPosition = puntos.position;
@@ -84,12 +97,11 @@ function initMap() {
 			map.setCenter(puntosPosition);
 			map.panTo(puntosPosition)
 		});
+		console.log(puntos)
 
 		puntos.addListener("click", show);
 
 		function show() {
-			/* console.log(puntosPosition) */
-
 			document.getElementById('sidebar').classList.toggle('active');
 			var blur = document.getElementById("blur");
 
@@ -106,13 +118,42 @@ function initMap() {
 					paradaActivaInfo.push(puntosInfo)
 				}
 			}
-			/* console.log(paradaActiva) */
 			app.estaciones.paradasActivas = paradaActiva;
 			app.estaciones.paradasActivasInfo = paradaActivaInfo;
 		};
 	}
 	app.estaciones.paradas = Estaciones;
 }
+
+function currentPosition() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+		console.log("Geolocation is not supported by this browser.")
+	}
+}
+
+
+
+function showPosition(position) {
+	var ubicacionActual = [];
+	var mapaActual = app.map.mapita;
+	var puntoActual = app.map.puntos
+
+	for (let q = 0; q < 1; q++) {
+		ubicacionActual.push({ lat: position.coords.latitude, lng: position.coords.longitude })
+	}
+	app.ubicacionActual = ubicacionActual;
+
+	mapaActual.setCenter(app.ubicacionActual[0])
+	mapaActual.setZoom(17)
+	puntoActual.setPosition({ lat: app.ubicacionActual[0].lat, lng: app.ubicacionActual[0].lng })
+	puntoActual.setTitle("apa")
+
+
+	document.getElementById('comoLlegar').innerHTML = '';
+}
+
 
 function shownt() {
 	var toggle = document.getElementById('sidebar')
@@ -121,33 +162,3 @@ function shownt() {
 	toggle.classList.toggle('active');
 	blur.style.display = "none";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* function initMap() {
-	const myLatlng = { lat: -25.363, lng: 131.044 };
-	const map = new google.maps.Map(document.getElementById("map"), {
-	  zoom: 4,
-	  center: myLatlng,
-	});
-	const marker = new google.maps.Marker({
-	  position: myLatlng,
-	  map,
-	  title: "Click to zoom",
-	});
-  
-	
-  } */
