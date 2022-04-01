@@ -249,10 +249,13 @@ nav .nav-link {
   opacity: 0.2;
 }
 
-#comoLlegar{
+#infoParadas{
   text-align: center;
 }
 
+#comoLlegar{
+  text-align: center;
+}
 
 #ubicacion{
   position: absolute;
@@ -260,3 +263,4 @@ nav .nav-link {
   bottom: 0;
   right: 0;
 }
+

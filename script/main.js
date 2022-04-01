@@ -40,6 +40,7 @@ function initMap() {
 		streetViewControl: true,
 	});
 
+	
 	app.map.mapita = map;
 
 	const Estaciones = [
@@ -79,7 +80,7 @@ function initMap() {
 			map,
 		})
 
-	var puntos2 = new google.maps.Marker({
+		var puntos2 = new google.maps.Marker({
 			title: 'title',
 			position: { lat: 123, lng: 321 },
 			info: 'info',
@@ -97,7 +98,7 @@ function initMap() {
 			map.setCenter(puntosPosition);
 			map.panTo(puntosPosition)
 		});
-		console.log(puntos)
+		/*console.log(puntos)*/
 
 		puntos.addListener("click", show);
 
@@ -136,6 +137,13 @@ function currentPosition() {
 
 
 function showPosition(position) {
+	document.getElementById('sidebar').classList.toggle('active');
+	var blur = document.getElementById("blur");
+
+	blur.style.display = 'block';
+	blur.classList.add('blureado');
+	blur.style.zIndex = 1200;
+
 	var ubicacionActual = [];
 	var mapaActual = app.map.mapita;
 	var puntoActual = app.map.puntos
@@ -150,8 +158,8 @@ function showPosition(position) {
 	puntoActual.setPosition({ lat: app.ubicacionActual[0].lat, lng: app.ubicacionActual[0].lng })
 	puntoActual.setTitle("apa")
 
-
-	document.getElementById('comoLlegar').innerHTML = '';
+	/* document.getElementById('infoParadas').style.display = 'none'
+	document.getElementById('comoLlegar').style.display = 'block' */
 }
 
 
@@ -162,3 +170,48 @@ function shownt() {
 	toggle.classList.toggle('active');
 	blur.style.display = "none";
 }
+
+
+
+
+
+
+
+
+
+
+
+// function initMap() {
+// 	const directionsService = new google.maps.DirectionsService();
+// 	const directionsRenderer = new google.maps.DirectionsRenderer();
+// 	const map = new google.maps.Map(document.getElementById("map"), {
+// 	  zoom: 7,
+// 	  center: { lat: 41.85, lng: -87.65 },
+// 	});
+  
+// 	directionsRenderer.setMap(map);
+  
+// 	const onChangeHandler = function () {
+// 	  calculateAndDisplayRoute(directionsService, directionsRenderer);
+// 	};
+  
+// 	document.getElementById("start").addEventListener("change", onChangeHandler);
+// 	document.getElementById("end").addEventListener("change", onChangeHandler);
+//   }
+  
+//   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+// 	directionsService
+// 	  .route({
+// 		origin: {
+// 		  query: document.getElementById("start").value,
+// 		},
+// 		destination: {
+// 		  query: document.getElementById("end").value,
+// 		},
+// 		travelMode: google.maps.TravelMode.DRIVING,
+// 	  })
+// 	  .then((response) => {
+// 		directionsRenderer.setDirections(response);
+// 	  })
+// 	  .catch((e) => window.alert("Directions request failed due to " + status));
+//   }
