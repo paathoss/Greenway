@@ -1,0 +1,292 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../img/bg-portrait.png);
+  background-size: cover;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+body #homePage,
+body #estacionesPage,
+body #guiaPage,
+body #aboutPage,
+body #premiosPage,
+body #contactPage {
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+  overflow: hidden;
+}
+
+body .contDiv {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: scroll;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  z-index: 36;
+  width: 100%;
+}
+
+nav .navbar-brand {
+  width: 30px;
+}
+
+nav .nav-link {
+  font-weight: bold;
+}
+
+#homePage {
+  position: relative;
+}
+
+#homePage .map_estaciones {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#homePage iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#homePage .cardHome {
+  width: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  color: whitesmoke;
+  background-color: #004B23;
+}
+
+#homePage .cardHome .btn {
+  background-color: #008000;
+  color: white;
+}
+
+#homePage #app {
+  position: absolute;
+  list-style: none;
+  z-index: 1;
+  background-color: #006400;
+  width: 100%;
+  max-height: 200px;
+  bottom: 0;
+}
+
+#estacionesPage .estacionesTitle {
+  color: whitesmoke;
+  margin: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#estacionesPage .card {
+  width: 90%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  background-color: #004B23;
+}
+
+#estacionesPage .card .btn {
+  background-color: #008000;
+  color: white;
+}
+
+#guiaPage .userPerfil {
+  width: 120px;
+  height: 120px;
+  margin-top: 35px;
+  border-radius: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#guiaPage .ecoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#guiaPage .ecoins .ecoinsText {
+  font-size: 200%;
+  font-weight: 500;
+}
+
+#guiaPage .ecoins .ecoinIco {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#guiaPage .guiaCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #333d3433;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#guiaPage .guiaCont h3 {
+  font-size: x-large;
+  color: #38B000;
+}
+
+#guiaPage .guiaCont ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: left;
+}
+
+#aboutPage .aboutLogo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#aboutPage .aboutCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #333d3433;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#aboutPage .aboutCont h3 {
+  font-size: x-large;
+  color: #38B000;
+}
+
+#aboutPage .aboutCont .aboutMarcas {
+  width: 100%;
+}
+
+#aboutPage .aboutCont .aboutMarcas .marcas {
+  width: 100%;
+  height: 100%;
+}
+
+#contactPage h2 {
+  font-size: 200%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #38B000;
+}
+
+#contactPage .contactForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contactPage .contactForm input {
+  width: 90%;
+  height: 30px;
+  border-radius: 20px;
+}
+
+#contactPage .contactForm label {
+  text-align: start;
+  color: gray;
+}
+
+@media screen and (orientation: landscape) {
+  body #contactPage {
+    background-image: url(../img/fondo-contact-01.jpg);
+    background-position-x: left;
+    background-size: 160%;
+    -webkit-backdrop-filter: blur(30%);
+            backdrop-filter: blur(30%);
+  }
+  body #contactPage .contDiv {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    border-radius: 0px 50px 50px 0px;
+    background-image: url(../img/bg-portrait.png);
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+
+.dark-mode body #homePage,
+.dark-mode body #estacionesPage,
+.dark-mode body #guiaPage,
+.dark-mode body #aboutPage,
+.dark-mode body #contactPage {
+  width: 100%;
+  height: 100%;
+  background-color: #020317;
+}
+/*# sourceMappingURL=style.css.map */
