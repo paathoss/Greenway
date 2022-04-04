@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,48 +10,66 @@
   <link rel="stylesheet" href="./css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <title>Genbrug</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
 
     <div class="container-fluid">
 
       <img class="navbar-brand" src="./img/genbrug_ico.png" alt="genbrug__logo">
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        style="filter: invert(100%);">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#" onclick="cargarPagina('homePage')">Home</a>
+            <a class="nav-link text-white" aria-current="page" href="#" onclick="cargarPagina('homePage')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="cargarPagina('estacionesPage')">Estaciones</a>
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('premiosPage')">Recompensas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onclick="cargarPagina('guiaPage')">Recycling guide </a>
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('estacionesPage')">Estaciones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="cargarPagina('aboutPage')">About us</a>
+            <a class="nav-link text-white" onclick="cargarPagina('guiaPage')">Recycling guide </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="cargarPagina('contactPage')">Contact</a>
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('aboutPage')">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('contactPage')">Contact</a>
+          </li>
+          <li class="nav-item logged-out list-group-item-primary" style="display: none;">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">Login</a>
+          </li>
+          <li class="nav-item logged-out list-group-item-primary" style="display: none;">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Register</a>
+          </li>
+          <li class="nav-item logged-in list-group-item-primary" style="display: none;">
+            <a class="nav-link" href="#" id="logOut">LogOut</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <button type="button" class="btn btn-success">Log In</button>
-        </form>
+        </form> -->
+        <!-- <img src="./img/darkmode_ico.svg" id="bdark" alt="darkmode_ico" class="ico2" width="30"> -->
       </div>
     </div>
   </nav>
 
   <div id="homePage">
+    <!-- <div class="ecoins">
+      <p class="ecoinsText">2220</p>
+      <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="30">
+    </div> -->
     <div id="app">
 
       <div class="a"></div>
@@ -60,24 +79,22 @@
           <span></span>
           <span></span>
           <span></span>
-            <div id="sidebar"></div>
-      
-            <ul id="v-for-object">
-              
-              <li id="comoLlegar">papanata </li>
+          <div id="comoLlegar">
 
-              <div id="infoParadas">
-                <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
-                  <h1> {{ value }} </h1>
-                </li>
-                <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
-                  {{ estaciones.paradasActivasInfo[0] }}</li>
-                <br>
-                <li>(dirección)</li><br><br>
-                <li>Cómo llegar <br> (camino optimo para llegar a la estacion)</li><br>
-              </div>
+            <ul id="v-for-object"
+              style="width: 100%; list-style: none; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0.1rem; line-height: 1em; text-align: center; padding-left: 0;">
+              <li id="parada"></li>
+              <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                <h1> {{ value }} </h1>
+              </li>
+              <li v-for="value in estaciones.paradasActivas" v-if="value.paradas === value.paradasActivas">
+                {{ estaciones.paradasActivasInfo[0] }}</li>
+              <br>
+              <li>(Dirección 0000)</li><br><br>
+              <li>Cómo llegar <br> (camino optimo para llegar a la estacion)</li><br>
+              <li></li>
             </ul>
-          
+          </div>
         </div>
       </div>
     </div>
@@ -87,7 +104,6 @@
     </div>
 
     <div id="ubicacion" onclick="currentPosition()">
-      <h4>Ubiacion actual</h4>
     </div>
 
     <div class="estacionInfo">
@@ -101,29 +117,38 @@
       <h2 class="estacionesTitle">Estaciones de Reciclaje</h2>
 
       <div class="card">
-        <h5 class="card-header">Estacion Olivos</h5>
+        <h5 class="card-header">Estacion Plaza Moreno</h5>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn">Go somewhere</a>
+          <a href="#" class="btn" onclick="cargarPagina('homePage')">A reciclar!</a>
         </div>
       </div>
 
       <div class="card">
-        <h5 class="card-header">Estacion Olivos</h5>
+        <h5 class="card-header">Estacion Estado Atenea</h5>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn">Go somewhere</a>
+          <a href="#" class="btn" onclick="cargarPagina('homePage')">A reciclar!</a>
         </div>
       </div>
 
       <div class="card">
-        <h5 class="card-header">Estacion Olivos</h5>
+        <h5 class="card-header">Estacion Parque San Martín</h5>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn">Go somewhere</a>
+          <a href="#" class="btn" onclick="cargarPagina('homePage')">A reciclar!</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h5 class="card-header">Estacion Parque Saavedra</h5>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn" onclick="cargarPagina('homePage')">A reciclar!</a>
         </div>
       </div>
 
@@ -135,11 +160,15 @@
     <div class="contDiv">
 
       <div class="userPerfil">
-        <img src="./img/coin_ico.png" alt="cointest" width="120">
+        <img src="./img/usernotfound_ico.png" alt="cointest" width="130" style="border-radius: 100%;">
+      </div>
+
+      <div class="userName" style="margin-top: 1em;">
+        <p>User Name</p>
       </div>
 
       <div class="ecoins">
-        <p class="ecoinsText">2220 ecoins</p>
+        <p class="ecoinsText">2220</p>
         <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
       </div>
 
@@ -291,7 +320,43 @@
 
     </div>
 
+
   </div>
+
+  <div id="premiosPage">
+
+    <div class="contDiv">
+      <div class="ecoins" style="display: flex; justify-content: center;position: absolute;width: 100%; z-index: 3000; background-color: #212529;">
+        <p class="ecoinsText" style="font-size: x-large;">2220</p>
+        <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40" height="40">
+      </div>
+
+      <div id="winner" style="width: 100%; height: 100%;">
+        <div v-for="element in premio" :key="element.id" style="display: flex; flex-wrap: wrap;">
+          <div class="card" style="color: whitesmoke; background-color: rgb(0, 94, 0); text-align: center;">
+            <img v-bind:src="element.img" class="card-img-left" alt="element.descripcion">
+            <div class="card-body">
+              <h5 id="logo" class="card-title"> <img src="./img/coin_ico.png" alt="cointest"
+                  width="30">{{element.cantEcoins}}</h5>
+              <p class="card-text">{{element.descripcion}}</p>
+              <a href="#" class="btn btn-warning">CANJEAR</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-database-compat.js"></script>
+  <script src="/__/firebase/init.js?useEmulator=true"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -304,62 +369,6 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
 
-
-  </body>
+</body>
 
 </html>
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Directions Service</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" href="./css/style.css">
-   
-  </head>
-  <body>
-    <div id="floating-panel">
-      <b>Start: </b>
-      <select id="start">
-        <option value="chicago, il">Chicago</option>
-        <option value="st louis, mo">St Louis</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
-      </select>
-      <b>End: </b>
-      <select id="end">
-        <option value="chicago, il">Chicago</option>
-        <option value="st louis, mo">St Louis</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
-      </select>
-    </div>
-    <div id="map"></div>
-    <script src="./script/main.js"></script>
-    
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&callback=initMap&v=weekly"
-      async
-    ></script>
-  </body>
-</html> -->

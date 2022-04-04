@@ -1,101 +1,189 @@
-$green:#11ae11;
+//$green:#11ae11;
+$green-1: #CCFF33;
+$green-2: #9EF01A;
+$green-3: #70E000;
+$green-4: #38B000;
+$green-5: #008000;
+$green-6: #007200;
+$green-7: #006400;
+$green-8: #004B23;
+$white: whitesmoke;
+$grayTit: rgb(78, 78, 78);
 $shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-body{
+body {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    background-image: url(../img/bg-portrait.png);
+    background-size: cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    position: relative;
 
-    & #homePage, #estacionesPage, #guiaPage, #aboutPage, #contactPage{
+    & #homePage,
+    #estacionesPage,
+    #guiaPage,
+    #aboutPage,
+    #premiosPage,
+    #contactPage {
         width: 100%;
         height: 100%;
+        color: $white;
+        overflow: hidden;
     }
 
-    & .contDiv{
+    & .contDiv {
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: scroll;
     }
 }
 
-nav{
-    & .navbar-brand{
+& .navbar {
+    position: static;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    z-index: 36;
+    width: 100%;
+
+    & .navbar-brand {
         width: 30px;
     }
 
-    & .nav-link{
-        font-weight: bolder;
+    & .nav-link {
+        font-weight: bold;
     }
 }
 
-#homePage{
-    //antiguo .seasons
-    & .map_estaciones{
+#homePage {
+    position: relative;
+
+    & .map_estaciones {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+    }
+
+    & iframe {
         width: 100%;
         height: 100%;
     }
 
-    & iframe{
-        width: 100%; 
-        height: 100%; 
-        border: 3px solid #555;
+    & .cardHome {
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        z-index: 2;
+        position: fixed;
+        bottom: 0;
+        color: $white;
+        background-color: $green-8;
+
+        & .btn {
+            background-color: $green-5;
+            color: white;
+        }
     }
+
+    & .ecoinsHome{
+        width: 100%;
+        position: absolute;
+        background-color: #004B23;
+        color: rgb(235, 205, 37);
+        top: 0;
+        display: flex;
+        justify-content: end;
+    }
+
+    & #app {
+        position: absolute;
+        list-style: none;
+        z-index: 1;
+        background-color: $green-7;
+        width: 100%;
+        max-height: 200px;
+        bottom: 0;
+    }
+
 }
 
-#estacionesPage{
-    & .estacionesTitle{
-        color: $green;
+.bottommap {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.1rem;
+    line-height: 1em;
+    text-align: center;
+    padding-left: 0;
+}
+
+#estacionesPage {
+    & .estacionesTitle {
+        color: $white;
         margin: 1rem;
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
     }
 
-    & .card{
+    & .card {
         width: 90%;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         margin-bottom: 1rem;
+        color: $white;
+        background-color: $green-8;
 
-        & .btn{
-            background-color: $green;
+        & .btn {
+            background-color: $green-5;
             color: white;
         }
     }
 }
 
-#guiaPage{
-    & .userPerfil{
+#guiaPage {
+    & .userPerfil {
         width: 120px;
         height: 120px;
         margin-top: 35px;
-        border-radius: 100%;
-        // background-image: url(../img/coin_ico.png);
-        // background-size: contain;
-        // object-fit: cover;
-        // border: 3px solid black;
         box-shadow: $shadow1;
+        margin-bottom: 1em;
     }
 
-    & .ecoins{
+    & .userName{
+        font-size: large;
+        font-weight: 500;
+        // margin-top: 1rem;
+    }
+
+    & .ecoins {
         display: flex;
         justify-content: center;
         align-items: center;
 
-        & .ecoinsText{
+        & .ecoinsText {
             font-size: 200%;
             font-weight: 500;
         }
 
-        & .ecoinIco{
-            margin-left: 1rem;margin-bottom: 0.5rem;
+        & .ecoinIco {
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
         }
     }
 
-    & .guiaCont{
+    & .guiaCont {
 
         display: flex;
         flex-direction: column;
@@ -103,53 +191,53 @@ nav{
         text-align: center;
         border-radius: 20px;
         box-shadow: $shadow1;
-        background-color: whitesmoke;
+        background-color: #333d3433;
         margin-top: 1rem;
         margin-bottom: 1rem;
         padding: 1rem;
 
-        & h3{
+        & h3 {
             font-size: x-large;
-            color: $green;
+            color: $green-4;
         }
 
-        & ul{
+        & ul {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             text-align: left;
         }
-         
+
     }
 }
 
-#aboutPage{
-    & .aboutLogo{
+#aboutPage {
+    & .aboutLogo {
         margin-top: 30px;
         margin-bottom: 30px;
     }
 
-    & .aboutCont{
+    & .aboutCont {
         display: flex;
         flex-direction: column;
         width: 90%;
         text-align: center;
         border-radius: 20px;
         box-shadow: $shadow1;
-        background-color: whitesmoke;
+        background-color: #333d3433;
         margin-top: 1rem;
         margin-bottom: 1rem;
         padding: 1rem;
 
-        & h3{
+        & h3 {
             font-size: x-large;
-            color: $green;
+            color: $green-4;
         }
-         
-        & .aboutMarcas{
+
+        & .aboutMarcas {
             width: 100%;
 
-            & .marcas{
+            & .marcas {
                 width: 100%;
                 height: 100%;
             }
@@ -157,29 +245,112 @@ nav{
     }
 }
 
-#contactPage{
-    & h2{
+#premiosPage{
+    color: $grayTit;
+    position: relative;
+
+    & .ecoins {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .ecoinsText {
+            font-size: 200%;
+            font-weight: 500;
+        }
+
+        & .ecoinIco {
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    & #winner{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+#contactPage {
+    & h2 {
         font-size: 200%;
         margin-top: 2rem;
         margin-bottom: 2rem;
-        color: $green;
+        color: $green-4;
     }
 
-    & .contactForm{
+    & .contactForm {
 
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        & input{
+        & input {
             width: 90%;
             height: 30px;
+            border-radius: 20px;
         }
 
-        & label{
+        & label {
             text-align: start;
             color: gray;
         }
     }
 }
+
+///////////////////////////////////////////////////////////////////////////
+@media screen and (orientation: landscape) {
+    body {
+
+        // & #homePage{}
+
+        // & #estacionesPage{}
+
+        // & #guiaPage{}
+
+        // & #aboutPage{}
+
+        & #contactPage {
+            background-image: url(../img/fondo-contact-01.jpg);
+            // background-size: cover;
+            background-position-x: left;
+            background-size: 160%;
+            backdrop-filter: blur(30%);
+
+            & .contDiv {
+                width: 50%;
+                display: flex;
+                justify-content: start;
+                border-radius: 0px 50px 50px 0px;
+
+                background-image: url(../img/bg-portrait.png);
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        }
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+.dark-mode {
+    & body {
+
+        & #homePage,
+        #estacionesPage,
+        #guiaPage,
+        #aboutPage,
+        #contactPage {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(2, 3, 23);
+        }
+    }
+}
+
+///v3
+// #estacionesPage{
+//     & .estacionesTitle{
+//         color: $white;
+//     }
