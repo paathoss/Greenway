@@ -200,7 +200,7 @@ function shownt() {
 }
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-	var dondeEstoy = "Cabildo 2333, B1853AIK Villa Vatteone, Provincia de Buenos Aires";
+	var dondeEstoy = "32FF+W8 La Plata, Provincia de Buenos Aires";
 
 	directionsService
 		.route({
