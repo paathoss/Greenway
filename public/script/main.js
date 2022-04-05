@@ -46,12 +46,10 @@ const loggedInLinks = document.querySelectorAll('.logged-in')
 
 const loginCheck = user => {
     if (user){
-        console.log("funca1")
         loggedInLinks.forEach(link => link.style.display = 'block')
         loggedOutLinks.forEach(link => link.style.display = 'none')
     }
     else{
-      console.log("funca2")
         loggedInLinks.forEach(link => link.style.display = 'none')
         loggedOutLinks.forEach(link => link.style.display = 'block')
     }
@@ -66,18 +64,16 @@ signUpForm.addEventListener('submit', (e) => {
     const email = document.querySelector('#signUp-email').value
     const password = document.querySelector('#signUp-password').value
 
-    console.log(email,password)
 
     auth
         .createUserWithEmailAndPassword(email, password)
         .then(userCredentential => {
-
+            
             //Clear the form
             signUpForm.reset() 
 
             //close the modal
             $('#signUpModal').modal('hide')
-            console.log('sign up')
         })
 })
 
@@ -99,7 +95,6 @@ signInForm.addEventListener('submit', e => {
 
             //close the modal
             $('#signUpModal').modal('hide')
-            console.log('sign in')
         })
 })
 
@@ -121,7 +116,11 @@ googleBtn.addEventListener('click', e => {
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
-
+            return fs.collection('users').doc(result.user.uid).set({
+                eCoins: 0,
+                userName: result.user.displayName
+            });
+            
             //Clear the form
             signUpForm.reset()
 
@@ -138,8 +137,11 @@ facebookBtn.addEventListener('click', e => {
     const provider = new firebase.auth.FacebookAuthProvider()
     auth.signInWithPopup(provider)
         .then(result => {
-            console.log(result)
             console.log('facebook sign in')
+            return fs.collection('users').doc(result.user.uid).set({
+                eCoins: 0,
+                userName: result.user.displayName
+            });
         })
         .catch(err => {
             console.log(err)
