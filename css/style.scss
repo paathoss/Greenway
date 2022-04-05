@@ -24,6 +24,7 @@ body {
     position: relative;
 
     & #homePage,
+    #mapPage,
     #estacionesPage,
     #guiaPage,
     #aboutPage,
@@ -64,7 +65,11 @@ nav {
     }
 }
 
-#homePage {
+#homePage{
+    
+}
+
+#mapPage {
     position: relative;
 
     & .map_estaciones {

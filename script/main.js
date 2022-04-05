@@ -219,23 +219,9 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var cargarPagina = (id) => {
     document.getElementById("homePage").style.display = "none"
+    document.getElementById("mapPage").style.display = "none"
     document.getElementById("estacionesPage").style.display = "none"
     document.getElementById("guiaPage").style.display = "none"
     document.getElementById("aboutPage").style.display = "none"
