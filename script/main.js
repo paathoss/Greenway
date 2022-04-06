@@ -220,8 +220,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
 
 var cargarPagina = (id) => {
+    document.getElementById("menuPage").style.display = "none"
     document.getElementById("homePage").style.display = "none"
-    document.getElementById("mapPage").style.display = "none"
     document.getElementById("estacionesPage").style.display = "none"
     document.getElementById("guiaPage").style.display = "none"
     document.getElementById("aboutPage").style.display = "none"
@@ -230,7 +230,7 @@ var cargarPagina = (id) => {
 
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("homePage")
+cargarPagina("menuPage")
 
 /////Premios
 var premio =

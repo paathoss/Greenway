@@ -24,7 +24,7 @@ body {
     position: relative;
 
     & #homePage,
-    #mapPage,
+    #menuPage,
     #estacionesPage,
     #guiaPage,
     #aboutPage,
@@ -46,9 +46,9 @@ body {
     }
 }
 
-& .navbar {
-    position: static;
-}
+// & .navbar {
+//     position: static;
+// }
 
 nav {
     position: absolute;
@@ -65,11 +65,24 @@ nav {
     }
 }
 
-#homePage{
+#menuPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+
+    & .contDiv{
+        width: 90%;
+        height: 90%;
+        background-image: url(../img/corcho_bg.jpg);
+        background-size: contain;
+        color: $white;
+    }
     
 }
 
-#mapPage {
+#homePage {
     position: relative;
 
     & .map_estaciones {
