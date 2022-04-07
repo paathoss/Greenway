@@ -1,16 +1,18 @@
 var punto = document.getElementsByClassName('.gm-style img')
 var ubicacion = document.getElementById('ubicacion')
 
-// var cargarPagina = (id) => {
-// 	document.getElementById("homePage").style.display = "none"
-// 	document.getElementById("estacionesPage").style.display = "none"
-// 	document.getElementById("guiaPage").style.display = "none"
-// 	document.getElementById("aboutPage").style.display = "none"
-// 	document.getElementById("contactPage").style.display = "none"
-// 	document.getElementById(id).style.display = "block"
-// }
-// cargarPagina("homePage")
+var cargarPagina = (id) => {
+    document.getElementById("menuPage").style.display = "none"
+    document.getElementById("homePage").style.display = "none"
+    document.getElementById("estacionesPage").style.display = "none"
+    document.getElementById("guiaPage").style.display = "none"
+    document.getElementById("aboutPage").style.display = "none"
+    document.getElementById("contactPage").style.display = "none"
+    document.getElementById("premiosPage").style.display = "none"
 
+    document.getElementById(id).style.display = "contents"
+}
+cargarPagina("aboutPage")
 
 var app = new Vue({
 	el: '#app',
@@ -219,22 +221,21 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 }
 
 
-var cargarPagina = (id) => {
-    document.getElementById("menuPage").style.display = "none"
-    document.getElementById("homePage").style.display = "none"
-    document.getElementById("estacionesPage").style.display = "none"
-    document.getElementById("guiaPage").style.display = "none"
-    document.getElementById("aboutPage").style.display = "none"
-    document.getElementById("contactPage").style.display = "none"
-    document.getElementById("premiosPage").style.display = "none"
-
-    document.getElementById(id).style.display = "contents"
-}
-cargarPagina("menuPage")
-
 /////Premios
 var premio =
     [
+        {
+            "cantEcoins": "700",
+            "img": "https://th.bing.com/th/id/R.e1b1020b67b2eab8a8c9a27dfceed30d?rik=6MGRdPgiExahww&pid=ImgRaw&r=0",
+            "descripcion": "Agua Villavicencio Sport 750ml",
+            "": ""
+        },
+        {
+            "cantEcoins": "900",
+            "img": "https://www.elite.cl/assets/uploads/images/5f946-cl-banner-panuelos-faciales-desktop.png",
+            "descripcion": "Panuelitos Elite x6",
+            "": ""
+        },
         {
             "cantEcoins": "3500",
             "img": "https://http2.mlstatic.com/D_NQ_NP_716341-MLA49195073584_022022-O.webp",
@@ -325,7 +326,6 @@ premioCoins = new Vue({
     data: { premio: [] }
 })
 premioCoins.premio = premio
-/////Premios
 
 /////Mapa
 // var punto = document.getElementsByClassName('.gm-style img')
@@ -579,6 +579,7 @@ logOut.addEventListener('click', e => {
 //Google Login
 
 const googleBtn = document.querySelector('#googleLogin-btn')
+
 googleBtn.addEventListener('click', e => {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)
@@ -596,6 +597,7 @@ googleBtn.addEventListener('click', e => {
 //Facebook Login
 
 const facebookBtn = document.querySelector('#facebookLogin-btn')
+
 facebookBtn.addEventListener('click', e => {
     e.preventDefault()
     const provider = new firebase.auth.FacebookAuthProvider()
@@ -609,36 +611,7 @@ facebookBtn.addEventListener('click', e => {
         })
 })
 
-
-//Posts
-
-/* const postList = document.querySelector('.posts')
-const setUpPosts = data => {
-    if (data.length) {
-        let html = ''
-        data.forEach(doc => {
-            const post = doc.data()
-            console.log(post)
-            const li = `
-            <li class="list-group-item list-group-item-action">
-                <h5>${post.title}</h5>
-                <p>${post.description}</p>
-            </li>
-            `
-            html += li
-        });
-        postList.innerHTML = html
-    }
-    else {
-        postList.innerHTML = `
-        <div class="container"><p class="text-center">Logeate para ver las publicaciones</p></div>
-        `
-    }
-} */
-
-//Events
 //list for auth state changes
-
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log('auth: sign in')
@@ -654,4 +627,3 @@ auth.onAuthStateChanged(user => {
         /* setUpPosts([]) */
     }
 })
-/////Login

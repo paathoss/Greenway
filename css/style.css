@@ -4,7 +4,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   background-image: url(../img/bg-portrait.png);
   background-size: cover;
   background-attachment: fixed;
@@ -46,6 +46,8 @@ nav {
   top: 0;
   z-index: 36;
   width: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 nav .navbar-brand {
@@ -54,6 +56,11 @@ nav .navbar-brand {
 
 nav .nav-link {
   font-weight: bold;
+}
+
+nav #loginNav {
+  background-color: #007200;
+  color: whitesmoke;
 }
 
 #menuPage {
@@ -68,11 +75,78 @@ nav .nav-link {
 }
 
 #menuPage .contDiv {
+  background-color: #212529;
+}
+
+#menuPage #carouselExampleControls {
+  position: relative;
+}
+
+#menuPage .carouselMenu {
   width: 90%;
-  height: 90%;
-  background-image: url(../img/corcho_bg.jpg);
-  background-size: contain;
+  min-height: 200px;
+  border-radius: 30px;
+  background-color: #212529;
+  margin-top: 1em;
+}
+
+#menuPage .carousel-inner {
+  border-radius: 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#menuPage .contDiv {
+  background-color: #212529;
+}
+
+#menuPage .carouselTitle {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #212529;
+  padding: 0em 0em 0em 0.5em;
+}
+
+#menuPage .carouselTitle p {
+  font-size: x-large;
   color: whitesmoke;
+}
+
+#menuPage .ecoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#menuPage .ecoins .ecoinsText {
+  font-size: 200%;
+  font-weight: 500;
+}
+
+#menuPage .ecoins .ecoinIco {
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#menuPage .userPerfil {
+  width: 120px;
+  height: 120px;
+  margin-top: 35px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1em;
+}
+
+#menuPage .userName {
+  font-size: large;
+  font-weight: 500;
 }
 
 #homePage {
@@ -129,28 +203,6 @@ nav .nav-link {
   width: 100%;
   max-height: 200px;
   bottom: 0;
-}
-
-.bottommap {
-  width: 100%;
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0.1rem;
-  line-height: 1em;
-  text-align: center;
-  padding-left: 0;
 }
 
 #estacionesPage .estacionesTitle {
@@ -224,7 +276,7 @@ nav .nav-link {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #333d3433;
+  background-color: #212529;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -266,7 +318,7 @@ nav .nav-link {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #333d3433;
+  background-color: #212529;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -295,12 +347,46 @@ nav .nav-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  width: 100%;
+  z-index: 3000;
+  background-color: #212529;
+  padding: 0em 1em 0em 1em;
+  position: fixed;
+}
+
+#premiosPage .ecoins .premionav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0.5em;
+}
+
+#premiosPage .ecoins .premionav p {
+  margin-bottom: 0;
+}
+
+#premiosPage .ecoins .premioFilt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#premiosPage .ecoins .premioFilt select {
+  background-color: #212529;
+  color: whitesmoke;
+  border: none;
+  padding: 5px;
+  font-size: 140%;
+  font-weight: 400;
 }
 
 #premiosPage .ecoins .ecoinsText {
@@ -310,7 +396,6 @@ nav .nav-link {
 
 #premiosPage .ecoins .ecoinIco {
   margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 #premiosPage #winner {
@@ -321,11 +406,38 @@ nav .nav-link {
       flex-wrap: wrap;
 }
 
+#premiosPage #winner .btn {
+  background-color: #006400;
+  color: whitesmoke;
+}
+
+#contactPage {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #contactPage h2 {
   font-size: 200%;
   margin-top: 2rem;
   margin-bottom: 2rem;
   color: #38B000;
+}
+
+#contactPage label {
+  margin-top: 1em;
+  margin-bottom: -1em;
+}
+
+#contactPage .contDiv {
+  width: 90%;
+  height: 90%;
+  background-color: #212529;
+  border-radius: 30px;
 }
 
 #contactPage .contactForm {
@@ -340,17 +452,230 @@ nav .nav-link {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 120%;
 }
 
 #contactPage .contactForm input {
   width: 90%;
-  height: 30px;
+  height: 40px;
   border-radius: 20px;
+  background-color: whitesmoke;
 }
 
 #contactPage .contactForm label {
   text-align: start;
+  color: whitesmoke;
+}
+
+#contactPage .msjContact {
+  width: 90%;
+  height: 150px;
+  border-radius: 30px;
+  background-color: whitesmoke;
+}
+
+#contactPage .btnContact {
+  border: none;
+  border-radius: 30px;
+  background-color: #004B23;
+  color: whitesmoke;
+  padding: 1em;
+  margin: 1em;
+}
+
+#contactPage .fieldsetC {
+  background-color: #212529;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: large;
+}
+
+#contactPage .fieldsetC p {
+  margin-top: 1em;
+}
+
+#contactPage .tipoUser {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 1em;
+}
+
+#page-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #212529;
+  z-index: 11000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#page-splash #usernameNYSL {
+  width: 250px;
+  /* text-align: start; */
+}
+
+#page-splash #page-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #63af4ac0;
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#page-splash #passwordNYSL {
+  width: 250px;
+}
+
+#page-splash #sign-in-button-MAIL {
+  background-color: #212529;
+  color: whitesmoke;
+  width: 250px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 0px 5px 0px;
+}
+
+#page-splash #sign-in-button {
+  margin-left: 10px;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+#page-splash #sign-in-button-FB {
+  margin-left: 10px;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+#page-splash .popUpSplash {
+  z-index: 11000;
+  width: 80%;
+  height: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+}
+
+#page-splash .popUpSig {
+  z-index: 11000;
+  width: 80%;
+  height: 70%;
+  background-color: whitesmoke;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#page-splash .logInAlt {
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+#page-splash .separador {
+  font-size: xx-large;
   color: gray;
+  height: 48px;
+  margin-top: 9px;
+}
+
+#page-splash .h2Sign {
+  color: #141414;
+}
+
+#page-splash .notSign {
+  color: #4e4e4e;
+  text-decoration: none;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1em;
+}
+
+#page-splash .regist label {
+  color: gray;
+  font-size: medium;
+}
+
+#page-splash .regist input {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #149e14;
+  margin-bottom: 1em;
 }
 
 @media screen and (orientation: landscape) {
@@ -376,11 +701,11 @@ nav .nav-link {
   }
 }
 
-.dark-mode body #homePage,
-.dark-mode body #estacionesPage,
-.dark-mode body #guiaPage,
-.dark-mode body #aboutPage,
-.dark-mode body #contactPage {
+.light-mode body #homePage,
+.light-mode body #estacionesPage,
+.light-mode body #guiaPage,
+.light-mode body #aboutPage,
+.light-mode body #contactPage {
   width: 100%;
   height: 100%;
   background-color: #020317;
