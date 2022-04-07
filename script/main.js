@@ -12,7 +12,15 @@ var cargarPagina = (id) => {
 
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("aboutPage")
+cargarPagina("menuPage")
+
+
+//////////Loader
+var preloader = document.getElementById("page-splash")
+setTimeout(function() {
+    preloader.style.display = "none"
+}, 1000);
+////////////////
 
 var app = new Vue({
 	el: '#app',
@@ -327,303 +335,139 @@ premioCoins = new Vue({
 })
 premioCoins.premio = premio
 
-/////Mapa
-// var punto = document.getElementsByClassName('.gm-style img')
-// var ubicacion = document.getElementById('ubicacion')
-// const Estaciones = [
-//     [
-//         "Plaza Moreno",
-//         -34.922302402883496,
-//         -57.95493732361004,
-//         "Información basica de la parada 1"
-//     ],
-//     [
-//         "Estado Atenea",
-//         -34.925389445729145,
-//         -57.94945585469184,
-//         "Información basica de la parada 2"
-//     ],
-//     [
-//         "Parque San Martín",
-//         -34.93175604944046,
-//         -57.96808955054438,
-//         "Información basica de la parada 3"
-//     ],
-//     [
-//         "Parque Saavedra",
-//         -34.932282008849725,
-//         -57.94182764344423,
-//         "Información basica de la parada 4"
-//     ]
-// ]
 
-// var app = new Vue({
-//     el: '#app',
-//     data: {
-//         estaciones: {
-//             paradas: [],
-//             paradasActivas: [],
-//             paradasActivasInfo: [],
-//             coordenadas: []
-//         },
-//         map: {
-//             mapita: [],
-//             puntos: []
-//         },
-//         ubicacionActual: [],
+
+// /////Login
+// const auth = firebase.auth()
+// const fs = firebase.firestore()
+
+// //Links
+// const loggedOutLinks = document.querySelectorAll('.logged-out')
+// const loggedInLinks = document.querySelectorAll('.logged-in')
+
+// const loginCheck = user => {
+//     if (user){
+//         console.log("funca1")
+//         loggedInLinks.forEach(link => link.style.display = 'block')
+//         loggedOutLinks.forEach(link => link.style.display = 'none')
 //     }
-// });
+//     else{
+//       console.log("funca2")
+//         loggedInLinks.forEach(link => link.style.display = 'none')
+//         loggedOutLinks.forEach(link => link.style.display = 'block')
+//     }
+// }
+// //SignUp
 
-// function initMap() {
-//     var myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
-//     var map = new google.maps.Map(document.getElementById("map"), {
-//         zoom: 14,
-//         center: myLatLng,
-//         disableDefaultUI: true,
-//         streetViewControl: true,
-//     });
+// const signUpForm = document.querySelector('#signUp-form')
 
-//     app.map.mapita = map;
+// signUpForm.addEventListener('submit', (e) => {
+//     e.preventDefault()
 
-//     // const Estaciones = [
-//     //     [
-//     //         "Plaza Moreno",
-//     //         -34.922302402883496,
-//     //         -57.95493732361004,
-//     //         "Información basica de la parada 1"
-//     //     ],
-//     //     [
-//     //         "Estado Atenea",
-//     //         -34.925389445729145,
-//     //         -57.94945585469184,
-//     //         "Información basica de la parada 2"
-//     //     ],
-//     //     [
-//     //         "Parque San Martín",
-//     //         -34.93175604944046,
-//     //         -57.96808955054438,
-//     //         "Información basica de la parada 3"
-//     //     ],
-//     //     [
-//     //         "Parque Saavedra",
-//     //         -34.932282008849725,
-//     //         -57.94182764344423,
-//     //         "Información basica de la parada 4"
-//     //     ]
-//     // ]
+//     const email = document.querySelector('#signUp-email').value
+//     const password = document.querySelector('#signUp-password').value
 
-//     for (let i = 0; i < Estaciones.length; i++) {
-//         const Estacion = Estaciones[i];
+//     console.log(email,password)
 
-//         var puntos = new google.maps.Marker({
-//             title: Estacion[0],
-//             position: { lat: Estacion[1], lng: Estacion[2] },
-//             info: Estacion[3],
-//             map,
+//     auth
+//         .createUserWithEmailAndPassword(email, password)
+//         .then(userCredentential => {
+
+//             //Clear the form
+//             signUpForm.reset() 
+
+//             //close the modal
+//             $('#signUpModal').modal('hide')
+//             console.log('sign up')
 //         })
+// })
 
-//         var puntos2 = new google.maps.Marker({
-//             title: 'title',
-//             position: { lat: 123, lng: 321 },
-//             info: 'info',
-//             map,
+// //SignIn
+
+// const signInForm = document.querySelector('#login-form')
+
+// signInForm.addEventListener('submit', e => {
+//     e.preventDefault()
+//     const email = document.querySelector('#login-email').value
+//     const password = document.querySelector('#login-password').value
+//     console.log(email,password)
+//     auth
+//         .signInWithEmailAndPassword(email, password)
+//         .then(userCredentential => {
+
+//             //Clear the form
+//             signUpForm.reset()
+
+//             //close the modal
+//             $('#signUpModal').modal('hide')
+//             console.log('sign in')
 //         })
+// })
 
-//         app.map.puntos = puntos2;
+// //LogOut
 
-//         const puntosTitle = puntos.title;
-//         const puntosInfo = puntos.info;
-//         const puntosPosition = puntos.position;
+// const logOut = document.querySelector('#logOut')
 
-//         puntos.addListener("click", () => {
-//             map.setZoom(15);
-//             map.setCenter(puntosPosition);
-//             map.panTo(puntosPosition)
-//         });
-//         console.log(puntos)
+// logOut.addEventListener('click', e => {
+//     e.preventDefault()
+//     auth.signOut().then(() => {
+//         console.log('sign out')
+//     })
+// })
+// //Google Login
 
-//         puntos.addListener("click", show);
+// const googleBtn = document.querySelector('#googleLogin-btn')
 
-//         function show() {
-//             document.getElementById('sidebar').classList.toggle('active');
-//             var blur = document.getElementById("blur");
+// googleBtn.addEventListener('click', e => {
+//     const provider = new firebase.auth.GoogleAuthProvider()
+//     auth.signInWithPopup(provider)
+//         .then(result => {
+//             console.log("google sig in")
 
-//             blur.style.display = 'block';
-//             blur.classList.add('blureado');
-//             blur.style.zIndex = 1200;
+//             //Clear the form
+//             signUpForm.reset()
 
-//             var paradaActiva = [];
-//             var paradaActivaInfo = [];
+//             //close the modal
+//             $('#signUpModal').modal('hide')
+//         })
+// })
 
-//             for (let u = 0; u < Estaciones.length; u++) {
-//                 if (Estaciones[u][0] === puntosTitle) {
-//                     paradaActiva.push(puntosTitle)
-//                     paradaActivaInfo.push(puntosInfo)
-//                 }
-//             }
-//             app.estaciones.paradasActivas = paradaActiva;
-//             app.estaciones.paradasActivasInfo = paradaActivaInfo;
-//         };
+// //Facebook Login
 
-//         var ulstyle = document.getElementById('v-for-object')
-//         ulstyle.classList.add('bottommap');
+// const facebookBtn = document.querySelector('#facebookLogin-btn')
+
+// facebookBtn.addEventListener('click', e => {
+//     e.preventDefault()
+//     const provider = new firebase.auth.FacebookAuthProvider()
+//     auth.signInWithPopup(provider)
+//         .then(result => {
+//             console.log(result)
+//             console.log('facebook sign in')
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         })
+// })
+
+// //list for auth state changes
+// auth.onAuthStateChanged(user => {
+//     if (user) {
+//         console.log('auth: sign in')
+//         fs.collection('posts')
+//             .get()
+//             .then((snapshot) => {
+//               loginCheck(user)
+//                 /* setUpPosts(snapshot.docs) */
+//             }) 
 //     }
-//     app.estaciones.paradas = Estaciones;
-// }
-
-// function currentPosition() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-//     } else {
-//         console.log("Geolocation is not supported by this browser.")
+//     else {
+//       loginCheck(user)
+//         /* setUpPosts([]) */
 //     }
-// }
+// })
 
-// function showPosition(position) {
-//     var ubicacionActual = [];
-//     var mapaActual = app.map.mapita;
-//     var puntoActual = app.map.puntos
-
-//     for (let q = 0; q < 1; q++) {
-//         ubicacionActual.push({ lat: position.coords.latitude, lng: position.coords.longitude })
-//     }
-//     app.ubicacionActual = ubicacionActual;
-
-//     mapaActual.setCenter(app.ubicacionActual[0])
-//     mapaActual.setZoom(17)
-//     puntoActual.setPosition({ lat: app.ubicacionActual[0].lat, lng: app.ubicacionActual[0].lng })
-//     puntoActual.setTitle("apa")
+//////LoadingPage
 
 
-//     document.getElementById('comoLlegar').innerHTML = '';
-// }
-/////Mapa
 
-/////Login
-const auth = firebase.auth()
-const fs = firebase.firestore()
 
-//Links
-const loggedOutLinks = document.querySelectorAll('.logged-out')
-const loggedInLinks = document.querySelectorAll('.logged-in')
-
-const loginCheck = user => {
-    if (user){
-        console.log("funca1")
-        loggedInLinks.forEach(link => link.style.display = 'block')
-        loggedOutLinks.forEach(link => link.style.display = 'none')
-    }
-    else{
-      console.log("funca2")
-        loggedInLinks.forEach(link => link.style.display = 'none')
-        loggedOutLinks.forEach(link => link.style.display = 'block')
-    }
-}
-//SignUp
-
-const signUpForm = document.querySelector('#signUp-form')
-
-signUpForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    const email = document.querySelector('#signUp-email').value
-    const password = document.querySelector('#signUp-password').value
-
-    console.log(email,password)
-
-    auth
-        .createUserWithEmailAndPassword(email, password)
-        .then(userCredentential => {
-
-            //Clear the form
-            signUpForm.reset() 
-
-            //close the modal
-            $('#signUpModal').modal('hide')
-            console.log('sign up')
-        })
-})
-
-//SignIn
-
-const signInForm = document.querySelector('#login-form')
-
-signInForm.addEventListener('submit', e => {
-    e.preventDefault()
-    const email = document.querySelector('#login-email').value
-    const password = document.querySelector('#login-password').value
-    console.log(email,password)
-    auth
-        .signInWithEmailAndPassword(email, password)
-        .then(userCredentential => {
-
-            //Clear the form
-            signUpForm.reset()
-
-            //close the modal
-            $('#signUpModal').modal('hide')
-            console.log('sign in')
-        })
-})
-
-//LogOut
-
-const logOut = document.querySelector('#logOut')
-
-logOut.addEventListener('click', e => {
-    e.preventDefault()
-    auth.signOut().then(() => {
-        console.log('sign out')
-    })
-})
-//Google Login
-
-const googleBtn = document.querySelector('#googleLogin-btn')
-
-googleBtn.addEventListener('click', e => {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    auth.signInWithPopup(provider)
-        .then(result => {
-            console.log("google sig in")
-
-            //Clear the form
-            signUpForm.reset()
-
-            //close the modal
-            $('#signUpModal').modal('hide')
-        })
-})
-
-//Facebook Login
-
-const facebookBtn = document.querySelector('#facebookLogin-btn')
-
-facebookBtn.addEventListener('click', e => {
-    e.preventDefault()
-    const provider = new firebase.auth.FacebookAuthProvider()
-    auth.signInWithPopup(provider)
-        .then(result => {
-            console.log(result)
-            console.log('facebook sign in')
-        })
-        .catch(err => {
-            console.log(err)
-        })
-})
-
-//list for auth state changes
-auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log('auth: sign in')
-        fs.collection('posts')
-            .get()
-            .then((snapshot) => {
-              loginCheck(user)
-                /* setUpPosts(snapshot.docs) */
-            }) 
-    }
-    else {
-      loginCheck(user)
-        /* setUpPosts([]) */
-    }
-})
