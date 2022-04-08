@@ -77,7 +77,7 @@ var chargeDataFirebase = (result) =>{
             console.log(doc.data())
             nombreUsuario = doc.data().userName;
             eCoinsUsuario = doc.data().eCoins;
-            userPhoto = doc.data().auth.currentUser.photoURL;
+            userPhoto = auth.currentUser.photoURL;
         }
         else{
             if(result.user.displayName == null){
