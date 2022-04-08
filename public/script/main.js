@@ -36,9 +36,17 @@ var cargarPagina = (id) => {
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+// Set the configuration for your app
+// TODO: Replace with your app's config object
+
+  
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+  
+  
 
 const auth = firebase.auth()
 const fs = firebase.firestore()
+const storage = firebase.storage()
 
 //Links
 const loggedOutLinks = document.querySelectorAll('.logged-out')
@@ -54,6 +62,35 @@ const loginCheck = user => {
         loggedOutLinks.forEach(link => link.style.display = 'block')
     }
 }
+var nombreUsuario = null;
+var eCoinsUsuario = null;
+var userPhoto = null;
+
+//cargarDatosAFirebase
+var chargeDataFirebase = (result) =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        if (doc.exists) {
+            console.log(doc.data())
+            nombreUsuario = doc.data().userName;
+            eCoinsUsuario = doc.data().eCoins;
+            userPhoto = doc.data().auth.currentUser.photoURL;
+        }
+        else{
+            if(result.user.displayName == null){
+                result.user.displayName = `${fName} + ' ' + ${lName}`
+            }
+            return fs.collection('users').doc(result.user.uid).set({
+                eCoins: 0,
+                userName: result.user.displayName
+            });   
+        }
+    })
+}
+
 //SignUp
 
 const signUpForm = document.querySelector('#signUp-form')
@@ -63,12 +100,29 @@ signUpForm.addEventListener('submit', (e) => {
 
     const email = document.querySelector('#signUp-email').value
     const password = document.querySelector('#signUp-password').value
-
-
+    const fName = document.querySelector('#signUp-first-name').value
+    const lName = document.querySelector('#signUp-last-name').value
     auth
         .createUserWithEmailAndPassword(email, password)
         .then(userCredentential => {
-            
+            var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        if (doc.exists) {
+            console.log(doc.data())
+            nombreUsuario = doc.data().userName;
+            eCoinsUsuario = doc.data().eCoins;
+        }
+        else{
+            nombrenombre = `${fName} ${lName}`
+            return fs.collection('users').doc(userCredentential.user.uid).set({
+                eCoins: 0,
+                userName: nombrenombre
+            });   
+        }
+    })
             //Clear the form
             signUpForm.reset() 
 
@@ -89,9 +143,26 @@ signInForm.addEventListener('submit', e => {
     auth
         .signInWithEmailAndPassword(email, password)
         .then(userCredentential => {
+            var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
 
+    docu.get().then((doc) => {
+        if (doc.exists) {
+            console.log(doc.data())
+            nombreUsuario = doc.data().userName;
+            eCoinsUsuario = doc.data().eCoins;
+        }
+        else{
+            nombrenombre = `${fName} ${lName}`
+            return fs.collection('users').doc(userCredentential.user.uid).set({
+                eCoins: 0,
+                userName: nombrenombre
+            });   
+        }
+    })
             //Clear the form
-            signUpForm.reset()
+            signUpForm.reset() 
 
             //close the modal
             $('#signUpModal').modal('hide')
@@ -109,24 +180,20 @@ logOut.addEventListener('click', e => {
     })
 })
 //Google Login
-
 const googleBtn = document.querySelector('#googleLogin-btn')
 googleBtn.addEventListener('click', e => {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
-            return fs.collection('users').doc(result.user.uid).set({
-                eCoins: 0,
-                userName: result.user.displayName
-            });
-            
-            //Clear the form
-            signUpForm.reset()
-
-            //close the modal
-            $('#signUpModal').modal('hide')
+            chargeDataFirebase(result);
         })
+        //Clear the form
+        signUpForm.reset()
+
+        //close the modal
+        $('#signUpModal').modal('hide')
+        
 })
 
 //Facebook Login
@@ -138,10 +205,8 @@ facebookBtn.addEventListener('click', e => {
     auth.signInWithPopup(provider)
         .then(result => {
             console.log('facebook sign in')
-            return fs.collection('users').doc(result.user.uid).set({
-                eCoins: 0,
-                userName: result.user.displayName
-            });
+            
+            chargeDataFirebase(result);
         })
         .catch(err => {
             console.log(err)
@@ -190,6 +255,8 @@ auth.onAuthStateChanged(user => {
     }
     else {
       loginCheck(user)
-        /* setUpPosts([]) */
+      nombreUsuario = null;
+      eCoinsUsuario = null;
+      userPhoto = null;
     }
 })
