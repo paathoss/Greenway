@@ -2,7 +2,7 @@ body {
   padding: 0px;
   margin: 0px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
   background-image: url(../img/bg-portrait.png);
@@ -32,11 +32,11 @@ body .contDiv {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   overflow: scroll;
 }
 
@@ -74,7 +74,7 @@ nav .nav-link {
 #homePage .cardHome {
   width: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 2;
   position: fixed;
   bottom: 0;
@@ -108,7 +108,7 @@ nav .nav-link {
 #estacionesPage .card {
   width: 90%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 1rem;
   color: whitesmoke;
   background-color: #004B23;
@@ -125,7 +125,7 @@ nav .nav-link {
   margin-top: 35px;
   border-radius: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #guiaPage .ecoins {
@@ -133,11 +133,11 @@ nav .nav-link {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 #guiaPage .ecoins .ecoinsText {
@@ -156,13 +156,13 @@ nav .nav-link {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 90%;
   text-align: center;
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #333d3433;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -180,10 +180,10 @@ nav .nav-link {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   text-align: left;
 }
 
@@ -198,13 +198,13 @@ nav .nav-link {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 90%;
   text-align: center;
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #333d3433;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -239,11 +239,11 @@ nav .nav-link {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 #contactPage .contactForm input {
@@ -263,16 +263,17 @@ nav .nav-link {
     background-position-x: left;
     background-size: 160%;
     -webkit-backdrop-filter: blur(30%);
-            backdrop-filter: blur(30%);
+    backdrop-filter: blur(30%);
   }
+
   body #contactPage .contDiv {
     width: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    -ms-flex-pack: start;
+    justify-content: start;
     border-radius: 0px 50px 50px 0px;
     background-image: url(../img/bg-portrait.png);
     background-size: cover;
@@ -289,4 +290,14 @@ nav .nav-link {
   height: 100%;
   background-color: #020317;
 }
+
 /*# sourceMappingURL=style.css.map */
+/* 
+#sidebar{
+  display: none;
+} */
+
+#ubicacion{
+  bottom: 0;
+  text-align: center;
+}
