@@ -81,6 +81,8 @@ nav #loginNav {
 #menuPage #carouselExampleControls {
   position: relative;
   height: 100%;
+  background-color: whitesmoke;
+  border-radius: 30px;
 }
 
 #menuPage .carouselMenu {

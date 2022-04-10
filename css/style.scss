@@ -81,6 +81,8 @@ nav {
     #carouselExampleControls {
         position: relative;
         height: 100%;
+        background-color: $white;
+        border-radius: 30px;
     }
 
     & .carouselMenu {
@@ -595,6 +597,138 @@ nav {
 
 }
 
+#page-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $darkmode;
+    z-index: 11000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & #usernameNYSL {
+        width: 250px;
+        /* text-align: start; */
+    }
+
+    #page-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #63af4ac0;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #passwordNYSL {
+        width: 250px;
+    }
+
+    #sign-in-button-MAIL {
+        background-color: $darkmode;
+        color: $white;
+        width: 250px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 30px;
+        padding: 5px 0px 5px 0px;
+    }
+
+    #sign-in-button {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    #sign-in-button-FB {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .popUpSplash {
+        z-index: 11000;
+        width: 80%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .popUpSig {
+        z-index: 11000;
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: $shadow1;
+    }
+
+    .logInAlt {
+        width: 250px;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    .separador {
+        font-size: xx-large;
+        color: gray;
+        height: 48px;
+        margin-top: 9px;
+    }
+
+    .h2Sign {
+        color: rgb(20, 20, 20);
+    }
+
+    .notSign {
+        color: $grayTit;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        margin-top: 1em;
+    }
+
+    .regist {
+        & label {
+            color: gray;
+            font-size: medium;
+        }
+
+        & input {
+            border-radius: 0;
+            box-shadow: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgb(20, 158, 20);
+            margin-bottom: 1em;
+        }
+    }
+
+}
 
 ///////////////////////////////////////////////////////////////////////////
 @media screen and (orientation: landscape) {
