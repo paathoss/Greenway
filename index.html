@@ -188,6 +188,25 @@
       </div>
 
     </div>
+    <div class="contHome">
+      <div class="cant-ecoins text-center"> 
+      <video src="./img/Post de Instagram Podcast Beige Neutro .mp4" alt="" width=320 autoplay muted loop> </video>
+      </div>
+      <div class="premios">
+        <h1>PODES CANJEAR CUALQUIERA DE ESTOS PREMIOS SOLO GANANDO ECOINS. </h1>
+         <div id="winner">
+        <div  v-for="element in premio" :key="element.id" >
+        <div class="card" style="width: 10rem;" >
+          <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
+          <div class="card-body">
+          <h5 class="card-title">  <img src="./coin_ico.png" alt="" width="20px"> {{element.cantEcoins}} <h5>
+          </div>
+        </div>
+      </div>
+      </div> </div>
+      <div class="estaciones"> hola </div>
+      <div class="mapa"> <iframe src="https://www.google.com/maps/d/embed?mid=1mUNjFUC392s_rBYWYHWVK6ovo_16osj_&ehbc=2E312F"></iframe></div>
+    </div>
   </div>
 
   <div id="homePage">
@@ -442,9 +461,9 @@
 
 
       </div>
-
-      <div id="winner" style="width: 100%; height: 100%;">
-        <div v-for="element in premio" :key="element.id" style="width: 100%;">
+      <div class="containerwin">
+      <div id="winner">
+        <div v-for="element in premio" :key="element.id">
           <div class="card" style="color: whitesmoke; background-color: #212529; text-align: center;">
             <img v-bind:src="element.img" class="card-img-left" alt="element.descripcion">
             <div class="card-body">
@@ -455,7 +474,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+    </div>
     </div>
 
 
