@@ -1,0 +1,781 @@
+$green-1: #CCFF33;
+$green-2: #9EF01A;
+$green-3: #70E000;
+$green-4: #38B000;
+$green-5: #008000;
+$green-6: #007200;
+$green-7: #006400;
+$green-8: #004B23;
+$white: whitesmoke;
+$grayTit: rgb(78, 78, 78);
+$shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+$darkmode: #212529;
+
+body {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/bg-portrait.png);
+    background-size: cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    position: relative;
+
+    & #homePage,
+    #menuPage,
+    #estacionesPage,
+    #guiaPage,
+    #aboutPage,
+    #premiosPage,
+    #contactPage {
+        width: 100%;
+        height: 100%;
+        color: $white;
+        overflow: hidden;
+    }
+
+    & .contDiv {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: scroll;
+    }
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    z-index: 36;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+    & .navbar-brand {
+        width: 30px;
+    }
+
+    & .nav-link {
+        font-weight: bold;
+    }
+
+    & #loginNav{
+        background-color: #007200;
+        color: $white;
+    }
+}
+
+#menuPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+
+    & .contDiv {
+        background-color: $darkmode;
+    }
+
+    #carouselExampleControls {
+        position: relative;
+        height: 100%;
+        background-color: $white;
+        border-radius: 30px;
+    }
+
+    & .carouselMenu {
+        width: 90%;
+        max-height: 200px;
+        border-radius: 30px;
+        background-color: $darkmode;
+        margin-top: 1em;
+
+    }
+
+    & .carousel-inner {
+        border-radius: 30px;
+        box-shadow: $shadow1;
+        height: 100%;
+    }
+
+    & .contDiv {
+        background-color: $darkmode;
+    }
+
+    & .imgCarousel{
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        
+    }
+
+    & .carouselTitle {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background-color: $darkmode;
+        padding: 0em 0em 0em 0.5em;
+
+        & p {
+            font-size: x-large;
+            color: $white;
+        }
+    }
+
+    & .ecoins {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .ecoinsText {
+            font-size: 200%;
+            font-weight: 500;
+        }
+
+        & .ecoinIco {
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    & .userPerfil {
+        width: 120px;
+        height: 120px;
+        margin-top: 35px;
+        box-shadow: $shadow1;
+        margin-bottom: 1em;
+    }
+
+    & .userName {
+        font-size: large;
+        font-weight: 500;
+        // margin-top: 1rem;
+    }
+}
+
+#homePage {
+    position: relative;
+
+    & .map_estaciones {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 0;
+    }
+
+    & iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    & .cardHome {
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        z-index: 2;
+        position: fixed;
+        bottom: 0;
+        color: $white;
+        background-color: $green-8;
+
+        & .btn {
+            background-color: $green-5;
+            color: white;
+        }
+    }
+
+    & .ecoinsHome {
+        width: 100%;
+        position: absolute;
+        background-color: #004B23;
+        color: rgb(235, 205, 37);
+        top: 0;
+        display: flex;
+        justify-content: end;
+    }
+
+    & #app {
+        position: absolute;
+        list-style: none;
+        z-index: 1;
+        background-color: $green-7;
+        width: 100%;
+        max-height: 200px;
+        bottom: 0;
+    }
+
+}
+
+#estacionesPage {
+    & .estacionesTitle {
+        color: $white;
+        margin: 1rem;
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    & .card {
+        width: 90%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 1rem;
+        color: $white;
+        background-color: $green-8;
+
+        & .btn {
+            background-color: $green-5;
+            color: white;
+        }
+    }
+}
+
+#guiaPage {
+    & .userPerfil {
+        width: 120px;
+        height: 120px;
+        margin-top: 35px;
+        box-shadow: $shadow1;
+        margin-bottom: 1em;
+    }
+
+    & .userName {
+        font-size: large;
+        font-weight: 500;
+        // margin-top: 1rem;
+    }
+
+    & .ecoins {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .ecoinsText {
+            font-size: 200%;
+            font-weight: 500;
+        }
+
+        & .ecoinIco {
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    & .guiaCont {
+
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: $shadow1;
+        background-color: $darkmode;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+
+        & h3 {
+            font-size: x-large;
+            color: $green-4;
+        }
+
+        & ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: left;
+        }
+
+    }
+}
+
+#aboutPage {
+    & .aboutLogo {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    & .aboutCont {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: $shadow1;
+        background-color: $darkmode;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+
+        & h3 {
+            font-size: x-large;
+            color: $green-4;
+        }
+
+        & .aboutMarcas {
+            width: 100%;
+
+            & .marcas {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+#premiosPage {
+    color: $grayTit;
+    position: relative;
+
+    & .ecoins {
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        width: 100%;
+        z-index: 3000;
+        background-color: #212529;
+        padding: 0em 1em 0em 1em;
+        position: fixed;
+
+        & .premionav {
+            display: flex;
+            justify-content: center;
+            margin: 0.5em;
+
+            & p {
+                margin-bottom: 0;
+            }
+        }
+
+        & .premioFilt {
+            display: flex;
+            align-items: center;
+
+            & select {
+                background-color: $darkmode;
+                color: $white;
+                border: none;
+                padding: 5px;
+                font-size: 140%;
+                font-weight: 400;
+            }
+        }
+
+
+        & .ecoinsText {
+            font-size: 200%;
+            font-weight: 500;
+        }
+
+        & .ecoinIco {
+            margin-left: 0.5rem;
+        }
+    }
+
+    & #winner {
+        display: flex;
+        flex-wrap: wrap;
+
+        & .btn {
+            background-color: $green-7;
+            color: whitesmoke;
+        }
+    }
+}
+
+#contactPage {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    & h2 {
+        font-size: 200%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: $green-4;
+    }
+
+    & label{
+        margin-top: 1em;
+        margin-bottom: -1em;
+    }
+
+    & .contDiv{
+        width: 90%;
+        height: 90%;
+        background-color: $darkmode;
+        border-radius: 30px;
+    }
+
+    & .contactForm {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 120%;
+
+        & input {
+            width: 90%;
+            height: 40px;
+            border-radius: 20px;
+            background-color: $white;
+        }
+
+        & label {
+            text-align: start;
+            color: $white;
+        }
+    }
+
+    & .msjContact {
+        width: 90%;
+        height: 150px;
+        border-radius: 30px;
+        background-color: $white;
+
+    }
+
+    & .btnContact {
+        border: none;
+        border-radius: 30px;
+        background-color: $green-8;
+        color: $white;
+        padding: 1em;
+        margin: 1em;
+    }
+
+    & .fieldsetC {
+        background-color: $darkmode;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: large;
+
+        & p{
+            margin-top: 1em;
+        }
+    }
+
+    & .tipoUser {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1em;
+    }
+}
+
+#page-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $darkmode;
+    z-index: 11000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & #usernameNYSL {
+        width: 250px;
+        /* text-align: start; */
+    }
+
+    #page-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #63af4ac0;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #passwordNYSL {
+        width: 250px;
+    }
+
+    #sign-in-button-MAIL {
+        background-color: $darkmode;
+        color: $white;
+        width: 250px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 30px;
+        padding: 5px 0px 5px 0px;
+    }
+
+    #sign-in-button {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    #sign-in-button-FB {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .popUpSplash {
+        z-index: 11000;
+        width: 80%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .popUpSig {
+        z-index: 11000;
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: $shadow1;
+    }
+
+    .logInAlt {
+        width: 250px;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    .separador {
+        font-size: xx-large;
+        color: gray;
+        height: 48px;
+        margin-top: 9px;
+    }
+
+    .h2Sign {
+        color: rgb(20, 20, 20);
+    }
+
+    .notSign {
+        color: $grayTit;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        margin-top: 1em;
+    }
+
+    .regist {
+        & label {
+            color: gray;
+            font-size: medium;
+        }
+
+        & input {
+            border-radius: 0;
+            box-shadow: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgb(20, 158, 20);
+            margin-bottom: 1em;
+        }
+    }
+
+}
+
+#page-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $darkmode;
+    z-index: 11000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & #usernameNYSL {
+        width: 250px;
+        /* text-align: start; */
+    }
+
+    #page-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #63af4ac0;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #passwordNYSL {
+        width: 250px;
+    }
+
+    #sign-in-button-MAIL {
+        background-color: $darkmode;
+        color: $white;
+        width: 250px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 30px;
+        padding: 5px 0px 5px 0px;
+    }
+
+    #sign-in-button {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    #sign-in-button-FB {
+        margin-left: 10px;
+        color: inherit;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .popUpSplash {
+        z-index: 11000;
+        width: 80%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .popUpSig {
+        z-index: 11000;
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: $shadow1;
+    }
+
+    .logInAlt {
+        width: 250px;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    .separador {
+        font-size: xx-large;
+        color: gray;
+        height: 48px;
+        margin-top: 9px;
+    }
+
+    .h2Sign {
+        color: rgb(20, 20, 20);
+    }
+
+    .notSign {
+        color: $grayTit;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        margin-top: 1em;
+    }
+
+    .regist {
+        & label {
+            color: gray;
+            font-size: medium;
+        }
+
+        & input {
+            border-radius: 0;
+            box-shadow: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgb(20, 158, 20);
+            margin-bottom: 1em;
+        }
+    }
+
+}
+
+///////////////////////////////////////////////////////////////////////////
+@media screen and (orientation: landscape) {
+    body {
+
+        // & #homePage{}
+
+        // & #estacionesPage{}
+
+        // & #guiaPage{}
+
+        // & #aboutPage{}
+
+        & #contactPage {
+            background-image: url(../img/fondo-contact-01.jpg);
+            // background-size: cover;
+            background-position-x: left;
+            background-size: 160%;
+            backdrop-filter: blur(30%);
+
+            & .contDiv {
+                width: 50%;
+                display: flex;
+                justify-content: start;
+                border-radius: 0px 50px 50px 0px;
+
+                background-image: url(../img/bg-portrait.png);
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        }
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+.light-mode {
+    & body {
+
+        & #homePage,
+        #estacionesPage,
+        #guiaPage,
+        #aboutPage,
+        #contactPage {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(2, 3, 23);
+        }
+    }
+}
