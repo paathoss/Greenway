@@ -62,10 +62,24 @@ const loginCheck = user => {
         loggedOutLinks.forEach(link => link.style.display = 'block')
     }
 }
+const provider = new firebase.auth.GoogleAuthProvider()
+
 var nombreUsuario = null;
 var eCoinsUsuario = null;
 var userPhoto = null;
 
+
+var cargarVariables = () =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        nombreUsuario = doc.data().userName;
+        eCoinsUsuario = doc.data().eCoins;
+        userPhoto = auth.currentUser.photoURL;
+    })
+}
 //cargarDatosAFirebase
 var chargeDataFirebase = (result) =>{
     var myUserId = auth.currentUser.uid;
@@ -181,7 +195,7 @@ logOut.addEventListener('click', e => {
 //Google Login
 const googleBtn = document.querySelector('#googleLogin-btn')
 googleBtn.addEventListener('click', e => {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
@@ -250,7 +264,9 @@ auth.onAuthStateChanged(user => {
             .then((snapshot) => {
               loginCheck(user)
                 /* setUpPosts(snapshot.docs) */
-            }) 
+            })
+        cargarVariables()
+        
     }
     else {
       loginCheck(user)
@@ -259,3 +275,12 @@ auth.onAuthStateChanged(user => {
       userPhoto = null;
     }
 })
+
+var actualizarECoins = () =>{
+    fs.collection('users').doc(auth.currentUser.uid).set({
+        eCoins: eCoinsUsuario+5
+    }, { merge: true });
+    cargarVariables()
+    console.log(eCoinsUsuario, nombreUsuario, userPhoto)
+}
+//Para probar la funcion, vaya a inspeccionar la pagina >> console >> y escriba el comando para la funcion "actualizarECoins();", el cambio se ve en firebase
