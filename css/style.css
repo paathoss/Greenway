@@ -689,6 +689,175 @@ nav #loginNav {
   margin-bottom: 1em;
 }
 
+#page-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #212529;
+  z-index: 11000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#page-popup #usernameNYSL {
+  width: 250px;
+  /* text-align: start; */
+}
+
+#page-popup #page-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #63af4ac0;
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#page-popup #passwordNYSL {
+  width: 250px;
+}
+
+#page-popup #sign-in-button-MAIL {
+  background-color: #212529;
+  color: whitesmoke;
+  width: 250px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 0px 5px 0px;
+}
+
+#page-popup #sign-in-button {
+  margin-left: 10px;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+#page-popup #sign-in-button-FB {
+  margin-left: 10px;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+#page-popup .popUpSplash {
+  z-index: 11000;
+  width: 80%;
+  height: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+}
+
+#page-popup .popUpSig {
+  z-index: 11000;
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#page-popup .logInAlt {
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+#page-popup .separador {
+  font-size: xx-large;
+  color: gray;
+  height: 48px;
+  margin-top: 9px;
+}
+
+#page-popup .h2Sign {
+  color: #141414;
+}
+
+#page-popup .notSign {
+  color: #4e4e4e;
+  text-decoration: none;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1em;
+}
+
+#page-popup .regist label {
+  color: gray;
+  font-size: medium;
+}
+
+#page-popup .regist input {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #149e14;
+  margin-bottom: 1em;
+}
+
 @media screen and (orientation: landscape) {
   body #contactPage {
     background-image: url(../img/fondo-contact-01.jpg);
