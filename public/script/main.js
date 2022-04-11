@@ -67,7 +67,7 @@ const provider = new firebase.auth.GoogleAuthProvider()
 var nombreUsuario = null;
 var eCoinsUsuario = null;
 var userPhoto = null;
-
+var userEmail = null;
 
 var cargarVariables = () =>{
     var myUserId = auth.currentUser.uid;
@@ -78,6 +78,7 @@ var cargarVariables = () =>{
         nombreUsuario = doc.data().userName;
         eCoinsUsuario = doc.data().eCoins;
         userPhoto = auth.currentUser.photoURL;
+        userEmail = auth.currentUser.email;
     })
 }
 //cargarDatosAFirebase
@@ -92,6 +93,7 @@ var chargeDataFirebase = (result) =>{
             nombreUsuario = doc.data().userName;
             eCoinsUsuario = doc.data().eCoins;
             userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
         }
         else{
             if(result.user.displayName == null){
@@ -99,7 +101,8 @@ var chargeDataFirebase = (result) =>{
             }
             return fs.collection('users').doc(result.user.uid).set({
                 eCoins: 0,
-                userName: result.user.displayName
+                userName: result.user.displayName,
+                userMail: auth.currentUser.email
             });   
         }
     })
@@ -195,7 +198,7 @@ logOut.addEventListener('click', e => {
 //Google Login
 const googleBtn = document.querySelector('#googleLogin-btn')
 googleBtn.addEventListener('click', e => {
-    
+    e.preventDefault()
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
