@@ -140,27 +140,26 @@ signInForm.addEventListener('submit', e => {
     const email = document.querySelector('#login-email').value
     const password = document.querySelector('#login-password').value
     console.log(email,password)
-    auth
-        .signInWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then(userCredentential => {
             var myUserId = auth.currentUser.uid;
-    var docu = fs.collection('users').doc(myUserId)
-    console.log(`Id del usuario: ${myUserId}`)
+            var docu = fs.collection('users').doc(myUserId)
+            console.log(`Id del usuario: ${myUserId}`)
 
-    docu.get().then((doc) => {
-        if (doc.exists) {
-            console.log(doc.data())
-            nombreUsuario = doc.data().userName;
-            eCoinsUsuario = doc.data().eCoins;
-        }
-        else{
-            nombrenombre = `${fName} ${lName}`
-            return fs.collection('users').doc(userCredentential.user.uid).set({
-                eCoins: 0,
-                userName: nombrenombre
-            });   
-        }
-    })
+            docu.get().then((doc) => {
+                if (doc.exists) {
+                    console.log(doc.data())
+                    nombreUsuario = doc.data().userName;
+                    eCoinsUsuario = doc.data().eCoins;
+                }
+                else{
+                    nombrenombre = `${fName} ${lName}`
+                    return fs.collection('users').doc(userCredentential.user.uid).set({
+                        eCoins: 0,
+                        userName: nombrenombre
+                    });   
+                }
+            })
             //Clear the form
             signUpForm.reset() 
 
