@@ -883,6 +883,14 @@ nav #btnRegist {
   padding: 1.5em;
 }
 
+.btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
 @media screen and (orientation: landscape) {
   body #contactPage {
     background-image: url(../img/fondo-contact-01.jpg);
