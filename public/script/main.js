@@ -435,7 +435,6 @@ signInForm.addEventListener('submit', e => {
 })
 
 //LogOut
-
 const logOut = document.querySelector('#logOut')
 
 logOut.addEventListener('click', e => {
@@ -444,8 +443,10 @@ logOut.addEventListener('click', e => {
         console.log('sign out')
     })
 })
-//Google Login
 
+
+//Google Login
+// const provider = new firebase.auth.GoogleAuthProvider()
 const googleBtn = document.querySelector('#googleLogin-btn')
 googleBtn.addEventListener('click', e => {
     const provider = new firebase.auth.GoogleAuthProvider()
@@ -463,7 +464,6 @@ googleBtn.addEventListener('click', e => {
 })
 
 //Facebook Login
-
 const facebookBtn = document.querySelector('#facebookLogin-btn')
 facebookBtn.addEventListener('click', e => {
     e.preventDefault()
@@ -478,7 +478,52 @@ facebookBtn.addEventListener('click', e => {
         })
 })
 
+var nombreUsuario = null;
+var eCoinsUsuario = null;
+var userPhoto = null;
+var userEmail = null;
 
+
+
+var cargarVariables = () =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        nombreUsuario = doc.data().userName;
+        eCoinsUsuario = doc.data().eCoins;
+        userPhoto = auth.currentUser.photoURL;
+        userEmail = auth.currentUser.email;
+    })
+}
+
+//cargarDatosAFirebase
+var chargeDataFirebase = (result) =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        if (doc.exists) {
+            console.log(doc.data())
+            nombreUsuario = doc.data().userName;
+            eCoinsUsuario = doc.data().eCoins;
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        else{
+            if(result.user.displayName == null){
+                result.user.displayName = `${fName} + ' ' + ${lName}`
+            }
+            return fs.collection('users').doc(result.user.uid).set({
+                eCoins: 0,
+                userName: result.user.displayName,
+                userMail: auth.currentUser.email
+            });   
+        }
+    })
+}
 //Posts
 
 /* const postList = document.querySelector('.posts')
@@ -517,13 +562,28 @@ auth.onAuthStateChanged(user => {
               loginCheck(user)
                 /* setUpPosts(snapshot.docs) */
             }) 
-    }
-    else {
+        cargarVariables() 
+    }else {
       loginCheck(user)
-        /* setUpPosts([]) */
+      nombreUsuario = null;
+      eCoinsUsuario = null;
+      userPhoto = null;
     }
 })
 
+var actualizarECoins = () =>{
+    fs.collection('users').doc(auth.currentUser.uid).set({
+        eCoins: eCoinsUsuario+5
+    }, { merge: true });
+    cargarVariables()
+    console.log(eCoinsUsuario, nombreUsuario, userPhoto)
+}
+//Para probar la funcion, vaya a inspeccionar la pagina >> console >> y escriba el comando para la funcion "actualizarECoins();", el cambio se ve en firebase
+
+
+
+
+/////////LightModeCache
 // const bdark = document.querySelector('#bdark')
 // const body = document.querySelector('body');
 

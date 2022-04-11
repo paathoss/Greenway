@@ -19,7 +19,7 @@
 
     <div class="container-fluid">
 
-      <img class="navbar-brand" src="./img/logo_png_ico.png" alt="genbrug__logo">
+      <img class="navbar-brand" src="./img/logo_png_ico.png" alt="genbrug__logo" onclick="cargarPagina('menuPage')">
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -60,8 +60,8 @@
               <a class="nav-link" href="#" id="logOut">LogOut</a>
           </li>
         </ul>
-        <form class="d-flex nav-item logged-out">
-          <button type="button" class="btn" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log
+        <form class="d-flex nav-item">
+          <button type="button" class="btn logged-out" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log
             In</button>
         </form>
         <!-- <img src="./img/darkmode_ico.svg" id="bdark" alt="darkmode_ico" class="ico2" width="30"> -->
@@ -652,115 +652,7 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="contDiv">
-
-    <h2>Contactanos</h2>
-
-    <div class="contactForm">
-      <label for="Nombre">Nombre:</label>
-      <br>
-      <input type="text" name="Nombre" id="txtNombre">
-    </div>
-
-    <div class="contactForm">
-      <label for="Apellido">Apellido:</label>
-      <br>
-      <input type="text" name="Apellido" id="txtApellido">
-    </div>
-
-    <div class="contactForm">
-      <label for="Adress">Domicilio:</label>
-      <br>
-      <input type="text" name="Adress" id="txtAdress">
-    </div>
-
-    <div class="contactForm">
-      <label for="City">Ciudad:</label>
-      <br>
-      <input type="text" name="City" id="txtCity">
-    </div>
-
-    <div class="contactForm">
-      <label for="Zipcode">Codigo Postal:</label>
-      <br>
-      <input type="number" name="Zipcode" id="txtZipcode">
-    </div>
-
-    <div class="contactForm">
-      <label for="Birthdate">Fecha de Nacimiento:</label>
-      <br>
-      <input type="date" name="Birthdate" id="Birthdate">
-    </div>
-
-    <fieldset style="display: flex;flex-direction: column;">
-      <legend>Genero:</legend>
-
-      <div style="text-align: center;">
-        <label for="male">Male</label>
-        <input type="radio" name="gender" id="male" value="male">
-      </div>
-
-      <div>
-        <label for="female">Female</label>
-        <input type="radio" name="gender" id="female" value="female">
-      </div>
-
-      <div>
-        <label for="Other">Other</label>
-        <input type="radio" name="gender" id="Other" value="Other">
-      </div>
-
-    </fieldset>
-
-    <div class="contactForm">
-      <label for="cPhone">Numero de Telefono:</label>
-      <br>
-      <input type="number" name="cPhone" id="txtcPhone">
-    </div>
-
-    <div class="contactForm">
-      <label for="cMail">Email de Contacto:</label>
-      <br>
-      <input type="text" name="cMail" id="txtcMail">
-    </div>
-
-    <div class="fieldsetC">
-      
-        <p>Me presento soy:</p>
-
-        <div class="tipoUser">
-          <div style="text-align: center;">
-            <label for="male">Usuario</label>
-            <input type="radio" name="userContact" id="usuario" value="male">
-          </div>
-
-          <div>
-            <label for="female">Empresa</label>
-            <input type="radio" name="userContact" id="empresa" value="female">
-          </div>
-
-          <div>
-            <label for="Other">Other</label>
-            <input type="radio" name="userContact" id="Other" value="Other">
-          </div>
-        </div>
-
-
-
-    </div>
-
-
-    <input class="msjContact" type="text" name="msjContact" id="msjContact" placeholder="Ingrese un mensaje aqui!">
-
-    <div>
-      <button class="btnContact">
-        Enviar Peticion!
-      </button>
-    </div>
-
-  </div> -->
-
+  
   <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
   <script src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
   <script src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
