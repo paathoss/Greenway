@@ -25,9 +25,7 @@ body #contactPage {
   overflow: hidden;
 }
 
-.contDiv{
-  display: none;
-}
+
 
 nav {
   position: absolute;
@@ -155,6 +153,7 @@ nav #loginNav {
   height: 100%;
   position: fixed;
   z-index: 0;
+  font-family: fantasy;
 }
 
 #homePage iframe {
@@ -734,7 +733,6 @@ nav #loginNav {
 .premios { grid-area: premios; 
   overflow: scroll;
   height: 700px;
-  border: 2px black solid;
 }
 
 #winner{
@@ -753,6 +751,24 @@ nav #loginNav {
   height: 300px;
   object-fit: cover;
 }
+.contDiv {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: scroll;
+}
+.contDivM {
+  display: none;
+}
 
 @media screen and (max-width: 479px) {
   .containerwin{
@@ -766,7 +782,7 @@ nav #loginNav {
     height: 300px;
     object-fit: cover;
   }
-  .contDiv {
+  .contDivM {
     width: 100%;
     height: 100%;
     display: -webkit-box;
