@@ -50,19 +50,19 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="#" onclick="cargarPagina('contactPage')">Contact</a>
           </li>
-          <li class="nav-item logged-out list-group-item-primary" style="display: none;">
+          <!-- <li class="nav-item logged-out" style="display: none;">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">Login</a>
+          </li> -->
+          <li class="nav-item logged-out" style="display: none;">
+            <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Register</a>
           </li>
-          <li class="nav-item logged-out list-group-item-primary" style="display: none;">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Register</a>
-          </li>
-          <li class="nav-item logged-in list-group-item-primary" style="display: none;">
-            <a class="nav-link" href="#" id="logOut">LogOut</a>
+          <li class="nav-item logged-in" style="display: none;">
+            <a class="nav-link text-white" href="#" id="logOut">LogOut</a>
           </li>
         </ul>
         <form class="d-flex nav-item logged-out">
-          <button type="button" class="btn" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log
-            In</button>
+          <button type="button" class="btn" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log In</button>
+          <!-- <button type="button" class="btn" id="btnRegist" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrate</button> -->
         </form>
         <!-- <img src="./img/darkmode_ico.svg" id="bdark" alt="darkmode_ico" class="ico2" width="30"> -->
       </div>
@@ -164,7 +164,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="https://www.elite.cl/assets/uploads/images/5f946-cl-banner-panuelos-faciales-desktop.png"
+              <img src="https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/GreenWayAD.jpg?alt=media&token=987e2c6f-6a30-4039-bbf2-04f02e35b754"
                 class="imgCarousel" alt="...">
             </div>
             <div class="carousel-item">
@@ -401,13 +401,13 @@
 
           <div class="tipoUser">
             <div style="text-align: center;">
-              <label for="male">Usuario</label>
-              <input type="radio" name="userContact" id="usuario" value="male">
+              <label for="usuario">Usuario</label>
+              <input type="radio" name="userContact" id="usuario" value="usuario">
             </div>
 
             <div>
-              <label for="female">Empresa</label>
-              <input type="radio" name="userContact2" id="empresa" value="female">
+              <label for="Empresa">Empresa</label>
+              <input type="radio" name="userContact2" id="empresa" value="Empresa">
             </div>
 
             <div>
@@ -592,7 +592,63 @@
 
       <div class="modal-content">
 
-        <div class="modal-header">
+        <section id="page-popup">
+
+          <div class="popUpSig" id="login-form">
+    
+            <img src="./img/logo_png_ico.png" alt="greenway_logo" width="130px">
+    
+            <h2 class="h2Sign">Iniciar Sesion</h2>
+    
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+            <div class="regist">
+              <label for="login-email" style="color: rgb(0, 0, 0);">Usuario</label>
+              <br>
+              <input type="text" id="login-email">
+            </div>
+    
+            <div class="regist">
+              <label for="login-password" style="color: rgb(0, 0, 0);">Contraseña</label>
+              <br>
+              <input type="password" id="login-password" class="registBox">
+            </div>
+    
+            <div>
+              <button type="submit" id="sign-in-button-MAIL"
+                class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect">
+                Ingresar
+              </button>
+            </div>
+    
+            <div class="logInAlt">
+    
+              <div>
+                <button id="googleLogin-btn">
+                  <img src="./img/icons8-logo-de-google.svg" alt="googleLogo" width="35">
+                </button>
+              </div>
+    
+              <span class="separador">
+                |
+              </span>
+    
+              <div>
+                <button id="facebookLogin-btn">
+                  <img src="./img/icons8-facebook-nuevo.svg" alt="faceLogo" width="35">
+                </button>
+              </div>
+    
+            </div>
+    
+            <div>
+              <a href="#" class="notSign" data-bs-toggle="modal" data-bs-target="#signUpModal">No eres un usuario? <br> Registrate
+                ahora!</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -615,63 +671,14 @@
 
           </form>
 
-        </div>
+        </div> -->
 
       </div>
 
     </div>
 
 
-    <section id="page-popup">
-      <div class="popUpSig">
-        <img src="./img/logo_png_ico.png" alt="greenway_logo" width="130px">
-        <h2 class="h2Sign">Iniciar Sesion</h2>
 
-        <div class="regist">
-          <label for="usernameNYSL" style="color: rgb(0, 0, 0);">Usuario</label>
-          <br>
-          <input type="text" id="usernameNYSL">
-        </div>
-
-        <div class="regist">
-          <label for="passwordNYSL" style="color: rgb(0, 0, 0);">Contraseña</label>
-          <br>
-          <input type="password" id="passwordNYSL" class="registBox">
-        </div>
-
-        <div>
-          <button type="submit" id="sign-in-button-MAIL"
-            class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect">
-            Ingresar
-          </button>
-        </div>
-
-        <div class="logInAlt">
-
-          <div>
-            <button id="sign-in-button">
-              <img src="./img/icons8-logo-de-google.svg" alt="googleLogo" width="35">
-            </button>
-          </div>
-
-          <span class="separador">
-            |
-          </span>
-
-          <div>
-            <button id="sign-in-button-FB">
-              <img src="./img/icons8-facebook-nuevo.svg" alt="faceLogo" width="35">
-            </button>
-          </div>
-
-        </div>
-
-        <div>
-          <a href="#" class="notSign" onclick="cargarPagina('regiuserPage')">No eres un usuario? <br> Registrate
-            ahora!</a>
-        </div>
-      </div>
-    </section>
 
   </div>
 

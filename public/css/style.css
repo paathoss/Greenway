@@ -56,11 +56,19 @@ nav .navbar-brand {
 
 nav .nav-link {
   font-weight: bold;
+  color: whitesmoke;
 }
 
 nav #loginNav {
   background-color: #007200;
   color: whitesmoke;
+}
+
+nav #btnRegist {
+  background-color: #007200;
+  color: whitesmoke;
+  position: absolute;
+  float: right;
 }
 
 #menuPage {
@@ -75,6 +83,8 @@ nav #loginNav {
 }
 
 #menuPage .contDiv {
+  width: 100%;
+  height: 100%;
   background-color: #212529;
 }
 
@@ -82,7 +92,7 @@ nav #loginNav {
   position: relative;
   height: 100%;
   background-color: whitesmoke;
-  border-radius: 30px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 #menuPage .carouselMenu {
@@ -94,7 +104,7 @@ nav #loginNav {
 }
 
 #menuPage .carousel-inner {
-  border-radius: 30px;
+  border-radius: 10px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 100%;
@@ -115,8 +125,9 @@ nav #loginNav {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: #212529;
-  padding: 0em 0em 0em 0.5em;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#212529));
+  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #212529 100%);
+  padding: 0em 0em 0.3em 0.5em;
 }
 
 #menuPage .carouselTitle p {
@@ -153,6 +164,7 @@ nav #loginNav {
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 1em;
+  border-radius: 100%;
 }
 
 #menuPage .userName {
@@ -362,7 +374,7 @@ nav #loginNav {
       justify-content: space-around;
   position: relative;
   width: 100%;
-  z-index: 3000;
+  z-index: 1000;
   background-color: #212529;
   padding: 0em 1em 0em 1em;
   position: fixed;
@@ -446,8 +458,11 @@ nav #loginNav {
 
 #contactPage .contDiv {
   width: 100%;
-  height: 100%;
-  background-color: #212529;
+  background: linear-gradient(-45deg, #CCFF33, #008000, #212529, whitesmoke);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
 #contactPage .contactForm {
@@ -470,6 +485,7 @@ nav #loginNav {
   height: 40px;
   border-radius: 20px;
   background-color: whitesmoke;
+  border: none;
 }
 
 #contactPage .contactForm label {
@@ -482,6 +498,7 @@ nav #loginNav {
   height: 150px;
   border-radius: 30px;
   background-color: whitesmoke;
+  border: none;
 }
 
 #contactPage .btnContact {
@@ -494,7 +511,7 @@ nav #loginNav {
 }
 
 #contactPage .fieldsetC {
-  background-color: #212529;
+  background-color: transparent;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -508,6 +525,7 @@ nav #loginNav {
 
 #contactPage .fieldsetC p {
   margin-top: 1em;
+  margin-bottom: -1em;
 }
 
 #contactPage .tipoUser {
@@ -708,7 +726,7 @@ nav #loginNav {
           align-items: center;
 }
 
-#page-popup #usernameNYSL {
+#page-popup #login-email {
   width: 250px;
   /* text-align: start; */
 }
@@ -732,7 +750,7 @@ nav #loginNav {
           align-items: center;
 }
 
-#page-popup #passwordNYSL {
+#page-popup #login-password {
   width: 250px;
 }
 
@@ -746,7 +764,7 @@ nav #loginNav {
   padding: 5px 0px 5px 0px;
 }
 
-#page-popup #sign-in-button {
+#page-popup #googleLogin-btn {
   margin-left: 10px;
   color: inherit;
   margin-top: 20px;
@@ -755,7 +773,7 @@ nav #loginNav {
   background-color: transparent;
 }
 
-#page-popup #sign-in-button-FB {
+#page-popup #facebookLogin-btn {
   margin-left: 10px;
   color: inherit;
   margin-top: 20px;
@@ -857,6 +875,14 @@ nav #loginNav {
   margin-bottom: 1em;
 }
 
+#page-popup .btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
 @media screen and (orientation: landscape) {
   body #contactPage {
     background-image: url(../img/fondo-contact-01.jpg);
@@ -888,5 +914,29 @@ nav #loginNav {
   width: 100%;
   height: 100%;
   background-color: #020317;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

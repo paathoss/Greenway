@@ -59,11 +59,19 @@ nav {
 
     & .nav-link {
         font-weight: bold;
+        color: $white;
     }
 
-    & #loginNav{
+    & #loginNav {
         background-color: #007200;
         color: $white;
+    }
+
+    & #btnRegist{
+        background-color: #007200;
+        color: $white;
+        position: absolute;
+        float: right;
     }
 }
 
@@ -75,6 +83,8 @@ nav {
 
 
     & .contDiv {
+        width: 100%;
+        height: 100%;
         background-color: $darkmode;
     }
 
@@ -82,7 +92,7 @@ nav {
         position: relative;
         height: 100%;
         background-color: $white;
-        border-radius: 30px;
+        border-radius: 10px 10px 0px 0px;
     }
 
     & .carouselMenu {
@@ -95,7 +105,7 @@ nav {
     }
 
     & .carousel-inner {
-        border-radius: 30px;
+        border-radius: 10px;
         box-shadow: $shadow1;
         height: 100%;
     }
@@ -104,23 +114,24 @@ nav {
         background-color: $darkmode;
     }
 
-    & .imgCarousel{
+    & .imgCarousel {
         width: 100%;
         height: 200px;
         object-fit: cover;
-        
+
     }
 
     & .carouselTitle {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background-color: $darkmode;
-        padding: 0em 0em 0em 0.5em;
+        background: linear-gradient(180deg, rgba(255,167,3,0) 0%, $darkmode 100%);
+        padding: 0em 0em 0.3em 0.5em;
 
         & p {
             font-size: x-large;
             color: $white;
+            // text-shadow: 2px 0 0 $darkmode, -2px 0 0 $darkmode, 0 2px 0 $darkmode, 0 -2px 0 $darkmode, 1px 1px $darkmode, -1px -1px 0 $darkmode, 1px -1px 0 $darkmode, -1px 1px 0 $darkmode;
         }
     }
 
@@ -146,6 +157,7 @@ nav {
         margin-top: 35px;
         box-shadow: $shadow1;
         margin-bottom: 1em;
+        border-radius: 100%;
     }
 
     & .userName {
@@ -332,7 +344,7 @@ nav {
         justify-content: space-around;
         position: relative;
         width: 100%;
-        z-index: 3000;
+        z-index: 1000;
         background-color: #212529;
         padding: 0em 1em 0em 1em;
         position: fixed;
@@ -395,16 +407,17 @@ nav {
         color: $green-4;
     }
 
-    & label{
+    & label {
         margin-top: 1em;
         margin-bottom: -1em;
     }
 
-    & .contDiv{
+    & .contDiv {
         width: 100%;
-        height: 100%;
-        background-color: $darkmode;
-        // border-radius: 30px;
+        background: linear-gradient(-45deg, $green-1, $green-5, $darkmode, $white);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
     }
 
     & .contactForm {
@@ -420,6 +433,7 @@ nav {
             height: 40px;
             border-radius: 20px;
             background-color: $white;
+            border: none;
         }
 
         & label {
@@ -433,7 +447,7 @@ nav {
         height: 150px;
         border-radius: 30px;
         background-color: $white;
-
+        border: none;
     }
 
     & .btnContact {
@@ -446,14 +460,15 @@ nav {
     }
 
     & .fieldsetC {
-        background-color: $darkmode;
+        background-color: transparent;
         width: 100%;
         display: flex;
         flex-direction: column;
         font-size: large;
 
-        & p{
+        & p {
             margin-top: 1em;
+            margin-bottom: -1em;
         }
     }
 
@@ -493,6 +508,8 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
+
+
     }
 
     #passwordNYSL {
@@ -610,7 +627,7 @@ nav {
     justify-content: center;
     align-items: center;
 
-    & #usernameNYSL {
+    & #login-email {
         width: 250px;
         /* text-align: start; */
     }
@@ -628,7 +645,7 @@ nav {
         align-items: center;
     }
 
-    #passwordNYSL {
+    #login-password {
         width: 250px;
     }
 
@@ -642,7 +659,7 @@ nav {
         padding: 5px 0px 5px 0px;
     }
 
-    #sign-in-button {
+    #googleLogin-btn {
         margin-left: 10px;
         color: inherit;
         margin-top: 20px;
@@ -651,7 +668,7 @@ nav {
         background-color: transparent;
     }
 
-    #sign-in-button-FB {
+    #facebookLogin-btn {
         margin-left: 10px;
         color: inherit;
         margin-top: 20px;
@@ -728,6 +745,14 @@ nav {
         }
     }
 
+    & .btn-close {
+        position: absolute;
+        font-size: larger;
+        top: 0;
+        right: 0;
+        padding: 1.5em;
+    }
+
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -778,4 +803,18 @@ nav {
             background-color: rgb(2, 3, 23);
         }
     }
+}
+
+
+//////////////////////////////////////////////////////////////////////animaciones
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
