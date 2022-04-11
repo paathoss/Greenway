@@ -458,24 +458,26 @@
           <p class="ecoinsText" style="font-size: x-large;">2220</p>
           <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="35" height="35">
         </div>
+        
 
 
       </div>
-      <div class="containerwin">
-      <div id="winner">
-        <div v-for="element in premio" :key="element.id">
-          <div class="card" style="color: whitesmoke; background-color: #212529; text-align: center;">
-            <img v-bind:src="element.img" class="card-img-left" alt="element.descripcion">
-            <div class="card-body">
-              <h5 id="logo" class="card-title"> <img src="./img/coin_ico.png" alt="cointest"
-                  width="30">{{element.cantEcoins}}</h5>
-              <p class="card-text">{{element.descripcion}}</p>
-              <a href="#" class="btn">CANJEAR</a>
-            </div>
-          </div>
-        </div>
-      </div> 
+      <section class="contwin">
+        <div class="products">
+    <div id="winner">
+    <div  v-for="element in premio" :key="element.id" >
+    <div class="card" style="width: 18rem;" >
+      <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
+      <div class="card-body">
+        <h5 class="card-title">{{element.cantEcoins}}</h5>
+        <p class="card-text">{{element.descripcion}}</p>
+        <button href="" data-id="element.id" class="btn-add-cart">add to cart</button>
+      </div>
     </div>
+  </div>
+  </div> 
+</div>
+</section>
     </div>
 
 
