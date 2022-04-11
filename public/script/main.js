@@ -406,6 +406,7 @@ signUpForm.addEventListener('submit', (e) => {
 
             //close the modal
             $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
             console.log('sign up')
         })
 })
@@ -428,6 +429,7 @@ signInForm.addEventListener('submit', e => {
 
             //close the modal
             $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
             console.log('sign in')
         })
 })
@@ -456,6 +458,7 @@ googleBtn.addEventListener('click', e => {
 
             //close the modal
             $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
         })
 })
 
