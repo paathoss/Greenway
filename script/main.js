@@ -11,30 +11,7 @@ var cargarPagina = (id) => {
 
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("premiosPage")
-
-/* 
-async function f() {
-    return Promise.resolve();
-}
-
-f().then(cargarPagina("homePage")); // 1
-
- */
-/* async function f() {
-    let promise = new Promise((resolve, reject) => {
-        if (cargarPagina("homePage")) {
-            let result = await promise;
-        }
-        
-    });
-}
-
-f(); */
-
-function prueba() {
-    currentPosition()
-}
+cargarPagina("homePage")
 
 var app = new Vue({
     el: '#app',
@@ -62,6 +39,29 @@ var app = new Vue({
         ubicacionActual: [],
     }
 });
+
+
+function geoFindMe() {
+    var errorWindow = document.getElementById('geolocationError');
+    document.getElementById('ubicacion').innerHTML = ''
+
+    function success(position) {
+        console.log("YAJUUUU" + position)
+        console.log('');
+
+        if (errorWindow.style.display = 'flex') {
+            errorWindow.style.display = 'none'
+        }
+
+        showPosition(position)
+    }
+   
+    function error() {
+        errorWindow.style.display = 'flex'
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+}
 
 function initMap() {
     directionsService = new google.maps.DirectionsService();
@@ -111,6 +111,19 @@ function initMap() {
         ]
     ]
 
+
+    /* function mostrarUbicacionActual() {
+        document.getElementById('mostrarUbicacionActual')
+    
+        
+    } */
+
+  
+
+
+  
+
+
     for (let i = 0; i < Estaciones.length; i++) {
         const Estacion = Estaciones[i];
 
@@ -143,7 +156,7 @@ function initMap() {
                 puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
                 app.estaciones.puntosPosition = puntosPosition
                 app.estaciones.destinoActual = destinoActual
-                currentPosition()
+                /* currentPosition() */
             } else {
                 console.log("JAAAA")
             }
@@ -151,12 +164,12 @@ function initMap() {
 
         puntos.addListener("click", show);
         function show() {
-            document.getElementById('sidebar').classList.toggle('active');
-            var blur = document.getElementById("blur");
+            // document.getElementById('sidebar').classList.toggle('active');
+            // var blur = document.getElementById("blur");
 
-            blur.style.display = 'block';
-            blur.classList.add('blureado');
-            blur.style.zIndex = 1200;
+            // blur.style.display = 'block';
+            // blur.classList.add('blureado');
+            // blur.style.zIndex = 1200;
 
             var paradaActivaNombre = [];
             var paradaActivaInfo = [];
@@ -177,20 +190,19 @@ function initMap() {
     app.estaciones.paradas = Estaciones;
 }
 
+function mostrarUbicacionActual() {
+    console.log("funcooaosdioaso")
+    app.map.mapita.setCenter({ lat: -34.91641772378313, lng:  -57.98857278451355 })
 
-function currentPosition() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
 }
 
 function showPosition(position) {
-    document.getElementById('sidebar').classList.toggle('active');
-    var blur = document.getElementById("blur");
+    // document.getElementById('sidebar').classList.toggle('active');
+    // var blur = document.getElementById("blur");
 
-    blur.style.display = 'block';
-    blur.classList.add('blureado');
-    blur.style.zIndex = 1200;
+    // blur.style.display = 'block';
+    // blur.classList.add('blureado');
+    // blur.style.zIndex = 1200;
 
     var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
     var ubicacionActualCoordenadas = ubicacion = `${ubicacion.lat},${ubicacion.lng}`;
@@ -208,7 +220,8 @@ function showPosition(position) {
 }
 
 function distance() {
-    var origin = app.ubicacionActual;
+    var origin = "-34.94486276284149,-57.96170227030192"
+    /* var origin = app.ubicacionActual; */
     var allDestination = app.estaciones.paradasCoordsString;
 
     var service = new google.maps.DistanceMatrixService();
@@ -231,7 +244,7 @@ function distance() {
                 allDistance.push(response.rows[0].elements[0].distance.value)
 
                 /*  console.log("distancia pusheada  " + allDistance) */
-
+                console.log(allDistance)
                 allParadas[s].push(allDistance[0])
 
                 function compare(a, b) {
@@ -248,9 +261,15 @@ function distance() {
                 app.localizacion.viajeDistancia.push(allParadas[0][4])
                 app.localizacion.destinoFinal.push(allParadas[0][3])
 
-                if (app.localizacion.destinoFinal.slice(-1)[0] === app.estaciones.paradas[0][3]) {
+
+                /*  console.log(app.localizacion.destinoFinal[4]) */
+
+                if (app.localizacion.destinoFinal[4] === app.estaciones.paradas[0][3]) {
+                    /* console.log("siii") */
                     calculateAndDisplayRoute(directionsService, directionsRenderer)
-                }
+                } /* else {
+                       console.log("Noooo")
+                   } */
             }
         }
     }
@@ -267,29 +286,32 @@ function shownt() {
 
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-   var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
-   
+    var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
+
     directionsService
         .route({
             origin: {
-                query: app.ubicacionActual,
+                query:/*  app.ubicacionActual  */direccionDePrueba,
             },
             destination: {
-                query: app.localizacion.destinoFinal.slice(-1)[0],
+                query: app.localizacion.destinoFinal[4],
             },
             travelMode: google.maps.TravelMode.WALKING/* [selectedMode] */,
         })
         .then((response) => {
             /*   mapa.panTo(app.localizacion.destinoFinal) */
             app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
-         
+
             document.getElementById('ubicacion').innerHTML = `Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)`
-         
-            
+
+
             directionsRenderer.setDirections(response);
         })
         .catch((e) => window.alert("Directions request failed due to " + status));
 }
+
+
+
 
 /////Premios
 

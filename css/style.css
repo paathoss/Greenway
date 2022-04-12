@@ -291,13 +291,50 @@ nav .nav-link {
   background-color: #020317;
 }
 
-/*# sourceMappingURL=style.css.map */
-/* 
-#sidebar{
-  display: none;
-} */
 
-#ubicacion{
+
+/*//////////// ESTILO DE PATO QUE NO SE PONER LINDO CON SASS //////*/
+
+#ubicacion {
   bottom: 0;
   text-align: center;
+}
+
+#map {
+  height: 95% !important;
+}
+
+#geolocationError {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  color: black;
+
+  background-color: #004B23;
+  padding-top: 35px;
+  padding-bottom: 50px;
+  
+
+  bottom: 45%;
+  z-index: 5;
+}
+
+
+#opciones{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+  margin-bottom: -30px;
+}
+
+#mostrarUbicacionActual{
+  position: fixed;
+  bottom: 10%;
+  right: 0;
+  color: black;
+ 
+  font-size: 2em;
+  background-color: #004B23; 
 }
