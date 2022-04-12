@@ -25,6 +25,19 @@ body #contactPage {
   overflow: hidden;
 }
 
+#prueba{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
+  justify-content: center;
+    
+}
+.card{
+  width: 18rem; margin: 10px;width: 18rem; margin: 10px;
+}
+
+
 
 
 nav {
@@ -709,26 +722,7 @@ nav #loginNav {
 }
 /*# sourceMappingURL=style.css.map */
 
-.contHome {    display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1.4fr 1fr 0.6fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "premios premios cant-ecoins"
-    "premios premios mapa"
-    "premios premios estacion"; 
-}
 
-.cant-ecoins { grid-area: cant-ecoins; 
-  border: 2px black solid;}
-  .cant-ecoins img{
-    width: 50%;
-  }
-
-.mapa { grid-area: mapa;
-  border: 2px black solid; }
-
-.estacion { grid-area: estacion;  border: 2px black solid;}
 
 .premios { grid-area: premios; 
   overflow: scroll;
@@ -742,15 +736,8 @@ nav #loginNav {
   margin: 10px;
   justify-content: center;
 }
-.card{
-    width: 300px;
-    margin: 10px;
-}
-.card-img-left{
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
+
+
 .contDiv {
   width: 100%;
   height: 100%;
