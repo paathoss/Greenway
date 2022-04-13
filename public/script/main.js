@@ -22,210 +22,263 @@ setTimeout(function() {
 }, 1000);
 ////////////////
 
+function prueba() {
+    currentPosition()
+}
+
 var app = new Vue({
-	el: '#app',
-	data: {
-		estaciones: {
-			paradas: [],
-			paradasActivasNombre: [],
-			paradasActivasInfo: [],
-			paradasActivasCoords: [],
-			coordenadas: [],
-			destinoActual: []
-		},
-		map: {
-			mapita: [],
-			puntos: []
-		},
-		ubicacionActual: [],
-	}
+    el: '#app',
+    data: {
+        estaciones: {
+            paradas: [],
+            paradasActivas: [],
+            paradasActivasNombre: [],
+            paradasActivasInfo: [],
+            paradasActivasCoords: [],
+            coordenadas: [],
+            destinoActual: [],
+            paradasCoordsString: [],
+        },
+        localizacion: {
+            viajeDistancia: [],
+            viajeDuracion: [],
+            destinoFinal: [],
+            destinoFinalInfo: []
+        },
+        map: {
+            mapita: [],
+            puntos: []
+        },
+        ubicacionActual: [],
+    }
 });
 
-
 function initMap() {
-	const directionsService = new google.maps.DirectionsService();
-	const directionsRenderer = new google.maps.DirectionsRenderer();
-	var myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
-	var map = new google.maps.Map(document.getElementById("map"), {
-		zoom: 14,
-		center: myLatLng,
-		disableDefaultUI: true,
-		streetViewControl: true,
-	});
-	directionsRenderer.setMap(map);
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
 
-	/* const onChangeHandler = function () {
-		calculateAndDisplayRoute(directionsService, directionsRenderer);
-		console.log("ASFASOB")
-	};
+    var myLatLng = { lat: -34.921719670338945, lng: -57.95368585242721 };
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: myLatLng,
+        disableDefaultUI: true,
+        streetViewControl: true,
+    });
+    directionsRenderer.setMap(map);
 
-	document.getElementById("start").addEventListener("click", onChangeHandler);
-	document.getElementById("end").addEventListener("click", onChangeHandler); */
+    app.map.mapita = map;
 
-	app.map.mapita = map;
+    const Estaciones = [
+        [
+            "Plaza Moreno",
+            -34.922302402883496,
+            -57.95493732361004,
+            "-34.922302402883496,-57.95493732361004"
+        ],
+        [
+            "Estado Atenea",
+            -34.925389445729145,
+            -57.94945585469184,
+            "-34.925389445729145,-57.94945585469184"
+        ],
+        [
+            "Parque San Martín",
+            -34.93175604944046,
+            -57.96808955054438,
+            "-34.93175604944046,-57.96808955054438"
+        ],
+        [
+            "Parque Saavedra",
+            -34.932282008849725,
+            -57.94182764344423,
+            "-34.932282008849725,-57.94182764344423"
+        ],
+        [
+            "Parque PRUEBA",
+            -34.91641772378313,
+            -57.98857278451355,
+            "-34.91641772378313, -57.98857278451355"
+        ]
+    ]
 
-	const Estaciones = [
-		[
-			"Plaza Moreno",
-			-34.922302402883496,
-			-57.95493732361004,
-			"Información basica de la parada 1",
-			"32HW+32G La Plata, Provincia de Buenos Aires, Argentina"
-		],
-		[
-			"Estado Atenea",
-			-34.925389445729145,
-			-57.94945585469184,
-			"Información basica de la parada 2",
-			"33F2+R6V La Plata, Provincia de Buenos Aires, Argentina"
-		],
-		[
-			"Parque San Martín",
-			-34.93175604944046,
-			-57.96808955054438,
-			"Información basica de la parada 3",
-			"329J+7QV La Plata, Provincia de Buenos Aires, Argentina"
-		],
-		[
-			"Parque Saavedra",
-			-34.932282008849725,
-			-57.94182764344423,
-			"Información basica de la parada 4",
-			"3395+37M La Plata, Provincia de Buenos Aires, Argentina"
-		]
-	]
+    for (let i = 0; i < Estaciones.length; i++) {
+        const Estacion = Estaciones[i];
 
-	for (let i = 0; i < Estaciones.length; i++) {
-		const Estacion = Estaciones[i];
+        var puntos = new google.maps.Marker({
+            title: Estacion[0],
+            position: { lat: Estacion[1], lng: Estacion[2] },
+            info: Estacion[3],
+            map,
+        })
 
-		var puntos = new google.maps.Marker({
-			title: Estacion[0],
-			position: { lat: Estacion[1], lng: Estacion[2] },
-			info: Estacion[3],
-			map,
-		})
+        var puntos2 = new google.maps.Marker({
+            title: 'title',
+            position: { lat: 123, lng: 321 },
+            info: 'info',
+            map,
+        })
 
-		var puntos2 = new google.maps.Marker({
-			title: 'title',
-			position: { lat: 123, lng: 321 },
-			info: 'info',
-			map,
-		})
+        app.estaciones.paradasCoordsString.push(Estaciones[i][3])
 
-		app.map.puntos = puntos2;
+        app.map.puntos = puntos2;
 
-		const puntosTitle = puntos.title;
-		const puntosInfo = puntos.info;
-		const puntosPosition = puntos.position;
+        const puntosTitle = puntos.title;
+        const puntosInfo = puntos.info;
+        const puntosPosition = [];
 
-		puntos.addListener("click", () => {
-			map.setZoom(15);
-			map.setCenter(puntosPosition);
-			map.panTo(puntosPosition)
-		});
+        puntos.addListener("click", () => {
+            var destinoActual = [];
+            if (navigator.geolocation) {
+                destinoActual.push(app.estaciones.paradasActivasCoords[0])
+                puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
+                app.estaciones.puntosPosition = puntosPosition
+                app.estaciones.destinoActual = destinoActual
+                currentPosition()
+            } else {
+                console.log("JAAAA")
+            }
+        });
 
-		puntos.addListener("click", show);
+        puntos.addListener("click", show);
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            var blur = document.getElementById("blur");
 
-		function show() {
-			document.getElementById('sidebar').classList.toggle('active');
-			var blur = document.getElementById("blur");
+            blur.style.display = 'block';
+            blur.classList.add('blureado');
+            blur.style.zIndex = 1200;
 
-			blur.style.display = 'block';
-			blur.classList.add('blureado');
-			blur.style.zIndex = 1200;
+            var paradaActivaNombre = [];
+            var paradaActivaInfo = [];
+            var paradasActivasCoords = [];
 
-
-			var paradaActivaNombre = [];
-			var paradaActivaInfo = [];
-			var paradasActivasCoords = [];
-
-			for (let u = 0; u < Estaciones.length; u++) {
-				if (Estaciones[u][0] === puntosTitle) {
-					paradaActivaNombre.push(puntosTitle)
-					paradaActivaInfo.push(puntosInfo)
-					paradasActivasCoords.push(Estaciones[u][4])
-				}
-			}
-			app.estaciones.paradasActivasNombre = paradaActivaNombre;
-			app.estaciones.paradasActivasInfo = paradaActivaInfo;
-			app.estaciones.paradasActivasCoords = paradasActivasCoords;
-
-
-
-			var destinoActual = [];
-			if (navigator.geolocation) {
-				destinoActual.push(app.estaciones.paradasActivasCoords[0])	
-				app.estaciones.destinoActual = destinoActual
-				calculateAndDisplayRoute(directionsService, directionsRenderer)
-			}
-			
-		};
-	}
-	app.estaciones.paradas = Estaciones;
+            for (let u = 0; u < Estaciones.length; u++) {
+                if (Estaciones[u][0] === puntosTitle) {
+                    paradaActivaNombre.push(puntosTitle)
+                    paradaActivaInfo.push(puntosInfo)
+                    paradasActivasCoords.push(Estaciones[u][1])
+                }
+            }
+            app.estaciones.paradasActivasNombre = paradaActivaNombre;
+            app.estaciones.paradasActivasInfo = paradaActivaInfo;
+            app.estaciones.paradasActivasCoords = paradasActivasCoords;
+        };
+    }
+    app.estaciones.paradas = Estaciones;
 }
 
 
 function currentPosition() {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition);
-	} else {
-		console.log("Geolocation is not supported by this browser.")
-	}
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
 }
 
-
 function showPosition(position) {
-	document.getElementById('sidebar').classList.toggle('active');
-	var blur = document.getElementById("blur");
+    document.getElementById('sidebar').classList.toggle('active');
+    var blur = document.getElementById("blur");
 
-	blur.style.display = 'block';
-	blur.classList.add('blureado');
-	blur.style.zIndex = 1200;
+    blur.style.display = 'block';
+    blur.classList.add('blureado');
+    blur.style.zIndex = 1200;
 
-	var ubicacionActual = [];
-	var mapaActual = app.map.mapita;
-	var puntoActual = app.map.puntos
+    var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
+    var ubicacionActualCoordenadas = ubicacion = `${ubicacion.lat},${ubicacion.lng}`;
 
-	for (let q = 0; q < 1; q++) {
-		ubicacionActual.push({ lat: position.coords.latitude, lng: position.coords.longitude })
-	}
-	app.ubicacionActual = ubicacionActual;
+    const ubicacionActual = ubicacionActualCoordenadas.split(",", 2);
+    const ubicacionCoords = {
+        lat: parseFloat(ubicacionActual[0]),
+        lng: parseFloat(ubicacionActual[1]),
+    };
 
-	mapaActual.setCenter(app.ubicacionActual[0])
-	mapaActual.setZoom(17)
-	puntoActual.setPosition({ lat: app.ubicacionActual[0].lat, lng: app.ubicacionActual[0].lng })
-	puntoActual.setTitle("apa")
+    var ubicacionCoordenadasFinal = `${ubicacionCoords.lat},${ubicacionCoords.lng}`;
 
-	/* document.getElementById('infoParadas').style.display = 'none'
-	document.getElementById('comoLlegar').style.display = 'block' */
+    app.ubicacionActual = ubicacionCoordenadasFinal;
+    distance()
+}
+
+function distance() {
+    var origin = app.ubicacionActual;
+    var allDestination = app.estaciones.paradasCoordsString;
+
+    var service = new google.maps.DistanceMatrixService();
+
+    for (let s = 0; s < allDestination.length; s++) {
+        service.getDistanceMatrix(
+            {
+                origins: [origin],
+                destinations: [allDestination[s]],
+                travelMode: 'WALKING',
+            }, callback);
+
+        function callback(response, status) {
+
+            var allParadas = app.estaciones.paradas;
+
+            if (status == 'OK') {
+                var allDistance = [];
+
+                allDistance.push(response.rows[0].elements[0].distance.value)
+
+                /*  console.log("distancia pusheada  " + allDistance) */
+
+                allParadas[s].push(allDistance[0])
+
+                function compare(a, b) {
+                    if (a[4] < b[4]) {
+                        return -1;
+                    }
+                    return 0;
+                }
+
+                allParadas.sort(compare);
+
+                /*  console.log("distancia mas chiquita   " + allParadas[0][4]) */
+
+                app.localizacion.viajeDistancia.push(allParadas[0][4])
+                app.localizacion.destinoFinal.push(allParadas[0][3])
+
+                if (app.localizacion.destinoFinal.slice(-1)[0] === app.estaciones.paradas[0][3]) {
+                    calculateAndDisplayRoute(directionsService, directionsRenderer)
+                }
+            }
+        }
+    }
 }
 
 
 function shownt() {
-	var toggle = document.getElementById('sidebar')
-	var blur = document.getElementById("blur");
+    var toggle = document.getElementById('sidebar')
+    var blur = document.getElementById("blur");
 
-	toggle.classList.toggle('active');
-	blur.style.display = "none";
+    toggle.classList.toggle('active');
+    blur.style.display = "none";
 }
 
-function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-	var dondeEstoy = "32FF+W8 La Plata, Provincia de Buenos Aires";
 
-	directionsService
-		.route({
-			origin: {
-				query: dondeEstoy,
-			},
-			destination: {
-				query: app.estaciones.destinoActual[0]/* document.getElementById("end").value */,
-			},
-			travelMode: google.maps.TravelMode.DRIVING,
-		})
-		.then((response) => {
-			directionsRenderer.setDirections(response);
-		})
-		.catch((e) => window.alert("Directions request failed due to " + status));
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+   var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
+   
+    directionsService
+        .route({
+            origin: {
+                query: app.ubicacionActual,
+            },
+            destination: {
+                query: app.localizacion.destinoFinal.slice(-1)[0],
+            },
+            travelMode: google.maps.TravelMode.WALKING/* [selectedMode] */,
+        })
+        .then((response) => {
+            /*   mapa.panTo(app.localizacion.destinoFinal) */
+            app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
+         
+            document.getElementById('ubicacion').innerHTML = `Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)`
+         
+            
+            directionsRenderer.setDirections(response);
+        })
+        .catch((e) => window.alert("Directions request failed due to " + status));
 }
 
 
@@ -368,6 +421,7 @@ premioCoins.premio = premio
 
 const auth = firebase.auth()
 const fs = firebase.firestore()
+// const storage = firebase.storage()
 
 //Links
 const loggedOutLinks = document.querySelectorAll('.logged-out')
@@ -483,6 +537,7 @@ var eCoinsUsuario = null;
 var userPhoto = null;
 var userEmail = null;
 
+var fotoUser = document.getElementById('userFoto')
 
 
 var cargarVariables = () =>{
@@ -496,6 +551,8 @@ var cargarVariables = () =>{
         userPhoto = auth.currentUser.photoURL;
         userEmail = auth.currentUser.email;
     })
+    
+
 }
 
 //cargarDatosAFirebase

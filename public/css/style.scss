@@ -434,6 +434,7 @@ nav {
             border-radius: 20px;
             background-color: $white;
             border: none;
+            box-shadow: $shadow1;
         }
 
         & label {
@@ -448,6 +449,7 @@ nav {
         border-radius: 30px;
         background-color: $white;
         border: none;
+        box-shadow: $shadow1;
     }
 
     & .btnContact {
@@ -753,6 +755,69 @@ nav {
         padding: 1.5em;
     }
 
+}
+
+#envioPopup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    z-index: 31000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .logInAlt {
+        width: 250px;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    & .separador {
+        font-size: xx-large;
+        color: gray;
+        height: 48px;
+        margin-top: 9px;
+    }
+
+    & .h2Sign {
+        color: rgb(20, 20, 20);
+    }
+
+    & .notSign {
+        color: $grayTit;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        margin-top: 1em;
+    }
+
+    & .regist {
+        & label {
+            color: gray;
+            font-size: medium;
+        }
+
+        & input {
+            border-radius: 0;
+            box-shadow: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgb(20, 158, 20);
+            margin-bottom: 1em;
+        }
+    }
+
+    & .btn-close {
+        position: absolute;
+        font-size: larger;
+        top: 0;
+        right: 0;
+        padding: 1.5em;
+    }
 }
 
 .btn-close {
