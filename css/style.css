@@ -12,6 +12,27 @@ body {
   position: relative;
 }
 
+.container {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1.4fr 1fr 0.6fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "recompensa recompensa carrito"
+    "recompensa recompensa carrito"
+    ". . ."; 
+}
+.recompensa { grid-area: recompensa; 
+   overflow: scroll;
+  background-size: cover;
+}
+
+.prueba{
+  display: flex;
+}
+
+.carrito { grid-area: carrito; }
+
 body #homePage,
 body #menuPage,
 body #estacionesPage,
@@ -25,14 +46,7 @@ body #contactPage {
   overflow: hidden;
 }
 
-#prueba{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin: 10px;
-  justify-content: center;
-    
-}
+
 .card{
   width: 18rem; margin: 10px;width: 18rem; margin: 10px;
 }

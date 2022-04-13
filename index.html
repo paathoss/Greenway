@@ -68,7 +68,7 @@
       </div>
     </div>
   </nav>
- 
+
 
   <div id="menuPage">
     <div class="contDivM">
@@ -198,9 +198,9 @@
       </div>
 
     </div>
-  
 
-    
+
+
     <div class="premios">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -246,7 +246,7 @@
       </button>
     </div>
   </div>
- 
+
 
 
   <div id="homePage">
@@ -481,23 +481,51 @@
   </div>
 
   <div id="premiosPage">
-    <div id="prueba">
-      <div v-for="element in recom" :key="element.id">
-            <div class="card"  >
-              <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
-              <div class="card-body">
-                <h5 class="card-title">{{element.cantEcoins}}</h5>
-                <p class="card-text">{{element.descripcion}}</p>
-                <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
-                
+
+    <div class="container">
+      <div class="recompensa">
+        <section class="container">
+          <div class="products">
+            <div id="prueba">
+              <div v-for="element in recom" :key="element.id">
+                <div class="card">
+                  <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
+                  <div class="card-body" >
+                    <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px"  alt="">{{element.cantEcoins}}</h5>
+                    <p class="card-text">{{element.descripcion}}</p>
+                   <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
+    
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+      </div>
+      <div class="carrito">
+        <table id="products-id" class="table table-dark table-borderless">
+          <thead>
+              <tr>
+                  <th>Imagen</th>
+                  <th>Producto</th>
+                  <th>ECOCOINS</th>
+                  <th>Cantidad</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody class="card-items">
+          </tbody>
+          <tr><td colspan="5" class="table-active">Total ecoCois: <strong class="price-total">0</strong></td></tr>
+        </table>
       </div>
     </div>
+    
+    
+
+
   </div>
-  
+
+
 
 
   <!-- 
