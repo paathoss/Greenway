@@ -43,19 +43,21 @@ var app = new Vue({
 
 function geoFindMe() {
     var errorWindow = document.getElementById('geolocationError');
+    var home = document.getElementById('homePage')
     document.getElementById('ubicacion').innerHTML = ''
 
-    function success(position) {
-        console.log("YAJUUUU" + position)
-        console.log('');
+    if (errorWindow.style.display = 'flex') {
+        errorWindow.style.display = 'none'
+    }
 
+    function success(position) {
         if (errorWindow.style.display = 'flex') {
             errorWindow.style.display = 'none'
         }
 
         showPosition(position)
     }
-   
+
     function error() {
         errorWindow.style.display = 'flex'
     }
@@ -111,19 +113,6 @@ function initMap() {
         ]
     ]
 
-
-    /* function mostrarUbicacionActual() {
-        document.getElementById('mostrarUbicacionActual')
-    
-        
-    } */
-
-  
-
-
-  
-
-
     for (let i = 0; i < Estaciones.length; i++) {
         const Estacion = Estaciones[i];
 
@@ -146,64 +135,36 @@ function initMap() {
         app.map.puntos = puntos2;
 
         const puntosTitle = puntos.title;
-        const puntosInfo = puntos.info;
         const puntosPosition = [];
 
         puntos.addListener("click", () => {
-            var destinoActual = [];
-            if (navigator.geolocation) {
-                destinoActual.push(app.estaciones.paradasActivasCoords[0])
-                puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
-                app.estaciones.puntosPosition = puntosPosition
-                app.estaciones.destinoActual = destinoActual
-                /* currentPosition() */
-            } else {
-                console.log("JAAAA")
-            }
+            puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
         });
 
         puntos.addListener("click", show);
         function show() {
-            // document.getElementById('sidebar').classList.toggle('active');
-            // var blur = document.getElementById("blur");
-
-            // blur.style.display = 'block';
-            // blur.classList.add('blureado');
-            // blur.style.zIndex = 1200;
-
-            var paradaActivaNombre = [];
-            var paradaActivaInfo = [];
             var paradasActivasCoords = [];
 
             for (let u = 0; u < Estaciones.length; u++) {
                 if (Estaciones[u][0] === puntosTitle) {
-                    paradaActivaNombre.push(puntosTitle)
-                    paradaActivaInfo.push(puntosInfo)
-                    paradasActivasCoords.push(Estaciones[u][1])
+                    paradasActivasCoords.push({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
+                    map.setCenter({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
+                    map.panTo({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
+                    /*  directionsRenderer.setDirections(response); */
+                    /* calculateAndDisplayRoute(directionsService, directionsRenderer) */
                 }
             }
-            app.estaciones.paradasActivasNombre = paradaActivaNombre;
-            app.estaciones.paradasActivasInfo = paradaActivaInfo;
-            app.estaciones.paradasActivasCoords = paradasActivasCoords;
-        };
+        }
+
     }
     app.estaciones.paradas = Estaciones;
 }
 
 function mostrarUbicacionActual() {
-    console.log("funcooaosdioaso")
-    app.map.mapita.setCenter({ lat: -34.91641772378313, lng:  -57.98857278451355 })
-
+    app.map.mapita.setCenter({ lat: -34.91641772378313, lng: -57.98857278451355 })
 }
 
 function showPosition(position) {
-    // document.getElementById('sidebar').classList.toggle('active');
-    // var blur = document.getElementById("blur");
-
-    // blur.style.display = 'block';
-    // blur.classList.add('blureado');
-    // blur.style.zIndex = 1200;
-
     var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
     var ubicacionActualCoordenadas = ubicacion = `${ubicacion.lat},${ubicacion.lng}`;
 
@@ -220,8 +181,8 @@ function showPosition(position) {
 }
 
 function distance() {
-    var origin = "-34.94486276284149,-57.96170227030192"
-    /* var origin = app.ubicacionActual; */
+    /*  var origin = "-34.94486276284149,-57.96170227030192" */
+    var origin = app.ubicacionActual;
     var allDestination = app.estaciones.paradasCoordsString;
 
     var service = new google.maps.DistanceMatrixService();
@@ -243,8 +204,6 @@ function distance() {
 
                 allDistance.push(response.rows[0].elements[0].distance.value)
 
-                /*  console.log("distancia pusheada  " + allDistance) */
-                console.log(allDistance)
                 allParadas[s].push(allDistance[0])
 
                 function compare(a, b) {
@@ -256,34 +215,16 @@ function distance() {
 
                 allParadas.sort(compare);
 
-                /*  console.log("distancia mas chiquita   " + allParadas[0][4]) */
-
                 app.localizacion.viajeDistancia.push(allParadas[0][4])
                 app.localizacion.destinoFinal.push(allParadas[0][3])
 
-
-                /*  console.log(app.localizacion.destinoFinal[4]) */
-
                 if (app.localizacion.destinoFinal[4] === app.estaciones.paradas[0][3]) {
-                    /* console.log("siii") */
                     calculateAndDisplayRoute(directionsService, directionsRenderer)
-                } /* else {
-                       console.log("Noooo")
-                   } */
+                }
             }
         }
     }
 }
-
-
-function shownt() {
-    var toggle = document.getElementById('sidebar')
-    var blur = document.getElementById("blur");
-
-    toggle.classList.toggle('active');
-    blur.style.display = "none";
-}
-
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
@@ -291,7 +232,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     directionsService
         .route({
             origin: {
-                query:/*  app.ubicacionActual  */direccionDePrueba,
+                query: app.ubicacionActual /* direccionDePrueba */,
             },
             destination: {
                 query: app.localizacion.destinoFinal[4],
@@ -303,7 +244,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
             app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
 
             document.getElementById('ubicacion').innerHTML = `Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)`
-
 
             directionsRenderer.setDirections(response);
         })

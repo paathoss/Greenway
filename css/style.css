@@ -305,24 +305,32 @@ nav .nav-link {
 }
 
 #geolocationError {
-  display: none;
+  /* display: none; */
   justify-content: center;
   flex-direction: column;
   text-align: center;
   position: fixed;
   color: black;
 
-  background-color: #004B23;
-  padding-top: 35px;
-  padding-bottom: 50px;
-  
-
   bottom: 45%;
   z-index: 5;
 }
 
+#geolocationError .card {
+  width: 90%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  background-color: #004B23;
+}
 
-#opciones{
+#geolocationError .card .btn {
+  background-color: #008000;
+  color: white;
+}
+
+#geolocationError .card-body{
   display: flex;
   justify-content: space-around;
   margin-top: 35px;
