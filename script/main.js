@@ -18,12 +18,7 @@ var app = new Vue({
     data: {
         estaciones: {
             paradas: [],
-            paradasActivas: [],
-            paradasActivasNombre: [],
-            paradasActivasInfo: [],
             paradasActivasCoords: [],
-            coordenadas: [],
-            destinoActual: [],
             paradasCoordsString: [],
         },
         localizacion: {
@@ -37,6 +32,7 @@ var app = new Vue({
             puntos: []
         },
         ubicacionActual: [],
+        ubicacionActualCoords: []
     }
 });
 
@@ -139,32 +135,28 @@ function initMap() {
 
         puntos.addListener("click", () => {
             puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
-        });
 
-        puntos.addListener("click", show);
-        function show() {
             var paradasActivasCoords = [];
 
             for (let u = 0; u < Estaciones.length; u++) {
                 if (Estaciones[u][0] === puntosTitle) {
-                    paradasActivasCoords.push({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
-                    map.setCenter({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
-                    map.panTo({ lat: Estaciones[u][1], lng: Estaciones[u][2] })
-                    /*  directionsRenderer.setDirections(response); */
-                    /* calculateAndDisplayRoute(directionsService, directionsRenderer) */
+                    paradasActivasCoords.push(Estaciones[u][3])               
+                    var probando = paradasActivasCoords
+                    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
                 }
             }
-        }
-
+        });
     }
     app.estaciones.paradas = Estaciones;
 }
 
 function mostrarUbicacionActual() {
-    app.map.mapita.setCenter({ lat: -34.91641772378313, lng: -57.98857278451355 })
+    app.map.mapita.setCenter(app.ubicacionActualCoords)
 }
 
 function showPosition(position) {
+    app.ubicacionActualCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
+
     var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
     var ubicacionActualCoordenadas = ubicacion = `${ubicacion.lat},${ubicacion.lng}`;
 
@@ -218,26 +210,31 @@ function distance() {
                 app.localizacion.viajeDistancia.push(allParadas[0][4])
                 app.localizacion.destinoFinal.push(allParadas[0][3])
 
+                var probando = [];
+
                 if (app.localizacion.destinoFinal[4] === app.estaciones.paradas[0][3]) {
-                    calculateAndDisplayRoute(directionsService, directionsRenderer)
+                    console.log(probando)
+
+                    probando.push(app.localizacion.destinoFinal[4])
+                    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
                 }
             }
         }
     }
 }
 
-function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+function calculateAndDisplayRoute(directionsService, directionsRenderer, probando) {
     var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
 
     directionsService
         .route({
             origin: {
-                query: app.ubicacionActual /* direccionDePrueba */,
+                query: app.ubicacionActual,
             },
             destination: {
-                query: app.localizacion.destinoFinal[4],
+                query: probando[0],
             },
-            travelMode: google.maps.TravelMode.WALKING/* [selectedMode] */,
+            travelMode: google.maps.TravelMode.WALKING,
         })
         .then((response) => {
             /*   mapa.panTo(app.localizacion.destinoFinal) */
