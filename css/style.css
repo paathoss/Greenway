@@ -10,26 +10,49 @@ body {
   background-attachment: fixed;
   scroll-behavior: smooth;
   position: relative;
+  overflow: auto;
 }
 
 .container {
   display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1.4fr 1fr 0.6fr; 
+  grid-template-columns: 2fr 1fr; 
+  grid-template-rows: 2.4fr 0.6fr; 
   gap: 0px 0px; 
   grid-template-areas: 
-    "recompensa recompensa carrito"
-    "recompensa recompensa carrito"
-    ". . ."; 
+    "recompensa carrito"
+    "recompensa carrito"
 }
 .recompensa { grid-area: recompensa; 
-   overflow: scroll;
+  
   background-size: cover;
+  
 }
 
-.prueba{
+ div.products{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.products .card .card-body {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50000000,endColorstr=#50000000);
+  color: #FFF;
+  padding: 10px;
+}
+/*Apply css properties to content when card gets hovered*/
+
+ .products .card:hover .card-body {
+  display: block;
+  width: 50%;
+  height: 100%;
+
+}  
 
 .carrito { grid-area: carrito; }
 

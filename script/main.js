@@ -238,72 +238,84 @@ var premio =
             "img": "https://cdn.shopify.com/s/files/1/0390/9527/1556/products/ECO03-Taupe_0_1_600x.jpg?v=1641942413",
             "descripcion": "Zapatillas Greenway",
             "id": "1",
+			"clasificacion":"Indumentaria"
         },        
 		{
             "cantEcoins": "1500",
             "img": "https://www.nurorganic.com/wp-content/uploads/2019/09/copa-menstrual-nur.jpg",
             "descripcion": "Copita Menstrual",
             "id": "2",
+			"clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "300",
             "img": "https://www.hola.com/imagenes/estar-bien/20191212155436/cepillos-dientes-bambu-inconvenientes-gt/0-753-977/dientes-t.jpg?filter=w600",
             "descripcion": "Cepillo de bambu",
             "id": "3",
+			"clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "250",
             "img": "https://www.supergutierrez.com/img_blog/porque-debo-usas-bolsas-ecologicas.jpg",
             "descripcion": "Bolsas Ecologicas",
             "id": "4",
+			"clasificacion":"Accesorio"
         },
 		{
             "cantEcoins": "700",
             "img": "https://www.misharastrera.com/wp-content/uploads/2018/11/WEB-Shampoo-Solido-Rulos-II-70g-.jpg",
             "descripcion": "Shampoo Solido",
             "id": "5",
+			"clasificacion":"Higiene"
         },
         {
             "cantEcoins": "300",
             "img": "https://th.bing.com/th/id/R.e1b1020b67b2eab8a8c9a27dfceed30d?rik=6MGRdPgiExahww&pid=ImgRaw&r=0",
             "descripcion": "Agua Villavicencio Sport 750ml",
             "id": "6",
+			"clasificacion":"Insumo"
         },
         {
             "cantEcoins": "500",
             "img": "https://www.elite.cl/assets/uploads/images/5f946-cl-banner-panuelos-faciales-desktop.png",
             "descripcion": "Panuelitos Elite x6",
             "id": "7",
+			"clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "650",
             "img": "https://static-01.daraz.pk/p/362a89e71c35a9ac654cf589505044ed.jpg",
             "descripcion": "Taza de madera",
             "id": "8",
+			"clasificacion":"Bazar"
         },
 		{
  "id": "9",
             "cantEcoins": "300",
             "img": "https://www.hods.eu/wp-content/uploads/vasopla_hods_web_01.jpg",
             "descripcion": "Vasos Reciclables X12 (ECO)",
+			"clasificacion":"Bazar"
         },
 		{
             "cantEcoins": "700",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b",
             "descripcion": "Gorra Greenway",
             "id": "10",
+			"clasificacion":"Indumentaria"
         },        
 		{
             "cantEcoins": "1000",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/remeragw_img.jpg?alt=media&token=9ec40c14-699f-4895-a383-d626596056d5",
             "descripcion": "Remera Greenway",
             "id": "11",
+			"clasificacion":"Indumentaria"
         },
 		{
             "cantEcoins": "150",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/llavero_img.jpg?alt=media&token=756945a1-526b-4919-9fd0-6dfd10dc7f32",
             "descripcion": "Llavero Greenway",
             "id": "12",
+			"clasificacion":"Accesorio"
         }, 
         // {
         //     "cantEcoins": "3500",
@@ -404,12 +416,11 @@ if (e.target.classList.contains('delete-product')) {
 		if (value.id == deleteId) {
 			let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
 			totalCard =  totalCard - priceReduce;
-			totalCard = totalCard.toFixed(2);
 		}
 	});
 	buyThings = buyThings.filter(product => product.id !== deleteId);
-	
-	countProduct--;
+    countProduct--;	
+	console.log(countProduct)
 }
 loadHtml();
 }
@@ -417,6 +428,7 @@ loadHtml();
 
 function readTheContent(product){
 const infoProduct = {
+	image: product.querySelector('img').getAttribute('src'),
 	title: product.querySelector('.card-text').textContent,
 	price: product.querySelector('.card-title').textContent,
 	id: product.querySelector('a').getAttribute('data-id'),
@@ -443,18 +455,17 @@ if (exist) {
 	countProduct++;
 }
 loadHtml();
-console.log(infoProduct);
 }
 
   function loadHtml(){
   clearHtml();
-buyThings.forEach(product => {
-	 const {title, price, amount, id} = product;
+ 	buyThings.forEach(product => {
+	 const {image,title, price, amount, id} = product;
 	 
 	 var row = document.createElement('tr');
 	 row.classList.add('item');
 	 row.innerHTML = `
-	 <td>hola</td>
+	 <td> <img src="${image}" width="20px" alt=""></td>
 			 <td>${title}</td>
 							  <td class="cart-price">${price}$</td>
 			 <td> ${amount}</td>
@@ -462,149 +473,49 @@ buyThings.forEach(product => {
 			 <td>  <span class="delete-product" data-id="${id}">X</span></td>
 
 	 `;
-
-
 	 containerBuyCart.appendChild(row);
-
-	  priceTotal.innerHTML = totalCard;
+	 priceTotal.innerHTML = totalCard;
+	
  });
+
+ if (countProduct == 0){
+	priceTotal.innerHTML = "0"
+} 
+ 
 }
 function clearHtml(){
 containerBuyCart.innerHTML = '';
 }
 
 
+function input(valor) {
+	var arr = []
+	valor.forEach(state => {
+		arr.push(state.clasificacion)
+	})
+	const states_ar = new Set(arr);
+	arr = [...states_ar]
+	for (var i = 0; i < arr.length; i++) {
+		var option;
+		option = `<option value="${arr[i]}">${arr[i]}</option>`;
+		document.getElementById("inputGroupSelect03").innerHTML += option;
+	}
+}
+input(premio)
 
-// /////Login
-// const auth = firebase.auth()
-// const fs = firebase.firestore()
+function filtros() {
+    inputGroupSelect03.addEventListener('change', filtros)
+    clasificacion = document.getElementById("inputGroupSelect03")
+    if (clasificacion.value != "Todos") {
+    	 hola.recom = premio.filter(recom => recom.clasificacion == clasificacion.value)
+		
+    } else {
+    	hola.recom = premio
+    }
+}
 
-// //Links
-// const loggedOutLinks = document.querySelectorAll('.logged-out')
-// const loggedInLinks = document.querySelectorAll('.logged-in')
 
-// const loginCheck = user => {
-//     if (user){
-//         console.log("funca1")
-//         loggedInLinks.forEach(link => link.style.display = 'block')
-//         loggedOutLinks.forEach(link => link.style.display = 'none')
-//     }
-//     else{
-//       console.log("funca2")
-//         loggedInLinks.forEach(link => link.style.display = 'none')
-//         loggedOutLinks.forEach(link => link.style.display = 'block')
-//     }
-// }
-// //SignUp
 
-// const signUpForm = document.querySelector('#signUp-form')
-
-// signUpForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-
-//     const email = document.querySelector('#signUp-email').value
-//     const password = document.querySelector('#signUp-password').value
-
-//     console.log(email,password)
-
-//     auth
-//         .createUserWithEmailAndPassword(email, password)
-//         .then(userCredentential => {
-
-//             //Clear the form
-//             signUpForm.reset() 
-
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//             console.log('sign up')
-//         })
-// })
-
-// //SignIn
-
-// const signInForm = document.querySelector('#login-form')
-
-// signInForm.addEventListener('submit', e => {
-//     e.preventDefault()
-//     const email = document.querySelector('#login-email').value
-//     const password = document.querySelector('#login-password').value
-//     console.log(email,password)
-//     auth
-//         .signInWithEmailAndPassword(email, password)
-//         .then(userCredentential => {
-
-//             //Clear the form
-//             signUpForm.reset()
-
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//             console.log('sign in')
-//         })
-// })
-
-// //LogOut
-
-// const logOut = document.querySelector('#logOut')
-
-// logOut.addEventListener('click', e => {
-//     e.preventDefault()
-//     auth.signOut().then(() => {
-//         console.log('sign out')
-//     })
-// })
-// //Google Login
-
-// const googleBtn = document.querySelector('#googleLogin-btn')
-
-// googleBtn.addEventListener('click', e => {
-//     const provider = new firebase.auth.GoogleAuthProvider()
-//     auth.signInWithPopup(provider)
-//         .then(result => {
-//             console.log("google sig in")
-
-//             //Clear the form
-//             signUpForm.reset()
-
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//         })
-// })
-
-// //Facebook Login
-
-// const facebookBtn = document.querySelector('#facebookLogin-btn')
-
-// facebookBtn.addEventListener('click', e => {
-//     e.preventDefault()
-//     const provider = new firebase.auth.FacebookAuthProvider()
-//     auth.signInWithPopup(provider)
-//         .then(result => {
-//             console.log(result)
-//             console.log('facebook sign in')
-//         })
-//         .catch(err => {
-//             console.log(err)
-//         })
-// })
-
-// //list for auth state changes
-// auth.onAuthStateChanged(user => {
-//     if (user) {
-//         console.log('auth: sign in')
-//         fs.collection('posts')
-//             .get()
-//             .then((snapshot) => {
-//               loginCheck(user)
-//                 /* setUpPosts(snapshot.docs) */
-//             }) 
-//     }
-//     else {
-//       loginCheck(user)
-//         /* setUpPosts([]) */
-//     }
-// })
-
-//////LoadingPage
 
 
 

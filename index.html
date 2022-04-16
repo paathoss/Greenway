@@ -481,6 +481,10 @@
   </div>
 
   <div id="premiosPage">
+    <p>Filtrar por</p>
+    <select name="filtros" id="inputGroupSelect03" onchange="filtros(premio)">
+      <option value="Todos" selected>Todos</option>
+    </select>
 
     <div class="container">
       <div class="recompensa">
@@ -489,7 +493,7 @@
             <div id="prueba">
               <div v-for="element in recom" :key="element.id">
                 <div class="card">
-                  <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
+                  <img v-bind:src="element.img" id="image" class="card-img-top" alt="element.descripcion">
                   <div class="card-body" >
                     <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px"  alt="">{{element.cantEcoins}}</h5>
                     <p class="card-text">{{element.descripcion}}</p>
