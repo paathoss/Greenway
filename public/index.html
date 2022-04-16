@@ -43,6 +43,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#" onclick="cargarPagina('contactPage')">Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="cargarPagina('pruebasPage')">Pruebas</a>
+          </li>
           <li class="nav-item logged-out list-group-item-primary" style="display: none;">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">Login</a>
           </li>
@@ -202,7 +205,6 @@
       </div>
 
     </div>
-
   </div>
 
   <div id="aboutPage">
@@ -234,7 +236,6 @@
         </div>
 
       </div>
-
     </div>
   </div>
 
@@ -324,7 +325,22 @@
     </div>
 
   </div>
-
+  <div id="pruebasPage">
+    <form class="comprarEcoins">
+      <div class="form-group">
+        <label for="inputAddress">Costo del carrito</label>
+        <input type="number" class="form-control" id="carCost">
+        <button type="submit" class="btn btn-primary">Comprar</button>
+      </div>
+    </form>
+    <form class="conseguirEcoins">
+      <div class="form-group">
+        <label for="inputAddress">Recibir Ecoins</label>
+        <input type="number" class="form-control" id="regalarEcoins">
+        <button type="submit" class="btn btn-primary">Dame plata</button>
+      </div>
+    </form>
+  </div>
   <!-- FIREBASE-SCRIPTS -->
     
   <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>

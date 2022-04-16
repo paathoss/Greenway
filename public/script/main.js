@@ -11,6 +11,7 @@ var cargarPagina = (id) => {
     document.getElementById("guiaPage").style.display = "none"
     document.getElementById("aboutPage").style.display = "none"
     document.getElementById("contactPage").style.display = "none"
+    document.getElementById("pruebasPage").style.display = "none"
     document.getElementById(id).style.display = "block"
   }
   cargarPagina("homePage")
@@ -62,8 +63,56 @@ const loginCheck = user => {
         loggedOutLinks.forEach(link => link.style.display = 'block')
     }
 }
-const provider = new firebase.auth.GoogleAuthProvider()
 
+//Pruebas
+var comprar = (costo) =>{
+    var transaccion = 0;
+    console.log("Ecoins Actual: " + eCoinsUsuario)
+    if(eCoinsUsuario<costo){
+        alert("No te alcanza kpo")
+    }
+    else{
+        fs.collection('users').doc(auth.currentUser.uid).set({
+            eCoins: eCoinsUsuario-costo
+        }, { merge: true });
+        transaccion = eCoinsUsuario-costo;
+        cargarVariables()
+        return transaccion;
+    }
+    
+}
+var recibir = (ganancias) =>{
+    console.log("XD")
+    var transaccion = 0;
+    console.log("Ecoins Actual: " + eCoinsUsuario)
+    fs.collection('users').doc(auth.currentUser.uid).set({
+        eCoins: eCoinsUsuario+ganancias
+    }, { merge: true });
+    transaccion = eCoinsUsuario+ganancias;
+    cargarVariables()
+    return transaccion;
+}
+
+const cambiosEcoins = document.querySelector('.comprarEcoins')
+
+cambiosEcoins.addEventListener('submit', (e) => {
+    e.preventDefault()
+    var carrito = document.querySelector('#carCost').value;
+    carrito = parseInt(carrito, 10);
+    console.log("Ecoins restantes: " + comprar(carrito))
+})
+
+const recibirEcoins = document.querySelector('.conseguirEcoins')
+
+recibirEcoins.addEventListener('submit', (e) => {
+    e.preventDefault()
+    var ecoinsARecibir = document.querySelector('#regalarEcoins').value;
+    ecoinsARecibir = parseInt(ecoinsARecibir, 10);
+    console.log("Ecoins despues de recibir: " + recibir(ecoinsARecibir))
+})
+
+
+/////////////////////////////
 var nombreUsuario = null;
 var eCoinsUsuario = null;
 var userPhoto = null;
@@ -83,17 +132,16 @@ var cargarVariables = () =>{
 }
 //cargarDatosAFirebase
 var chargeDataFirebase = (result) =>{
-    var myUserId = auth.currentUser.uid;
-    var docu = fs.collection('users').doc(myUserId)
-    console.log(`Id del usuario: ${myUserId}`)
+    var docu = fs.collection('users').doc(result.user.uid)
+    console.log(`Id del usuario: ${result.user.uid}`)
 
     docu.get().then((doc) => {
         if (doc.exists) {
             console.log(doc.data())
             nombreUsuario = doc.data().userName;
             eCoinsUsuario = doc.data().eCoins;
-            userPhoto = auth.currentUser.photoURL;
-            userEmail = auth.currentUser.email;
+            userPhoto = doc.data().userPhoto;
+            userEmail = doc.data().userMail;
         }
         else{
             if(result.user.displayName == null){
@@ -102,8 +150,9 @@ var chargeDataFirebase = (result) =>{
             return fs.collection('users').doc(result.user.uid).set({
                 eCoins: 0,
                 userName: result.user.displayName,
-                userMail: auth.currentUser.email
-            });   
+                userMail: result.user.mail,
+                userPhoto: auth.currentUser.photoURL
+            });
         }
     })
 }
@@ -199,6 +248,7 @@ logOut.addEventListener('click', e => {
 const googleBtn = document.querySelector('#googleLogin-btn')
 googleBtn.addEventListener('click', e => {
     e.preventDefault()
+    const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
@@ -269,21 +319,22 @@ auth.onAuthStateChanged(user => {
                 /* setUpPosts(snapshot.docs) */
             })
         cargarVariables()
-        
     }
     else {
       loginCheck(user)
       nombreUsuario = null;
       eCoinsUsuario = null;
       userPhoto = null;
+      userEmail = null;
     }
 })
+//Ingresando el costo del carrito y la variable del
 
-var actualizarECoins = () =>{
+/* var actualizarECoins = () =>{
+    
     fs.collection('users').doc(auth.currentUser.uid).set({
-        eCoins: eCoinsUsuario+5
+        eCoins: eCoinsUsuario-5
     }, { merge: true });
     cargarVariables()
-    console.log(eCoinsUsuario, nombreUsuario, userPhoto)
-}
+} */
 //Para probar la funcion, vaya a inspeccionar la pagina >> console >> y escriba el comando para la funcion "actualizarECoins();", el cambio se ve en firebase
