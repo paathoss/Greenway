@@ -82,7 +82,6 @@ var comprar = (costo) =>{
     
 }
 var recibir = (ganancias) =>{
-    console.log("XD")
     var transaccion = 0;
     console.log("Ecoins Actual: " + eCoinsUsuario)
     fs.collection('users').doc(auth.currentUser.uid).set({
@@ -118,16 +117,30 @@ var eCoinsUsuario = null;
 var userPhoto = null;
 var userEmail = null;
 
+
 var cargarVariables = () =>{
     var myUserId = auth.currentUser.uid;
     var docu = fs.collection('users').doc(myUserId)
     console.log(`Id del usuario: ${myUserId}`)
-
+    console.log(docu)
     docu.get().then((doc) => {
-        nombreUsuario = doc.data().userName;
-        eCoinsUsuario = doc.data().eCoins;
-        userPhoto = auth.currentUser.photoURL;
-        userEmail = auth.currentUser.email;
+        console.log(doc.data())
+        if(doc.exists){
+            eCoinsUsuario = doc.data().eCoins;
+            nombreUsuario = doc.data().userName;
+        
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        else{
+            eCoinsUsuario = 0;
+            nombreUsuario = auth.currentUser.displayName;
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        if(userPhoto == null){
+            userPhoto = '/img/usernotfound_ico.png';
+        }
     })
 }
 //cargarDatosAFirebase
@@ -156,7 +169,27 @@ var chargeDataFirebase = (result) =>{
         }
     })
 }
+//CANCELADO
+/* const contactFormulario = document.querySelector('#contactFormulario');
+var sendContact = () => {
+    contactFormulario.addEventListener('submit', (e) => {
+        e.preventDefault()
+        var firstNameContact = document.querySelector('#txtNombre').value;
+        var lastNameContact = document.querySelector('#txtApellido').value;
+        var adressContact = document.querySelector('#txtAdress').value;
+        var cityContact = document.querySelector('#txtCity').value;
+        var zipContact = document.querySelector('#txtZipcode').value;
+        var birthContact = document.querySelector('#Birthdate').value;
+        var phoneContact = document.querySelector('#txtcPhone').value;
+        var mailContact = document.querySelector('#txtcMail').value;
+        var genderContact = document.querySelector('input[name="gender"]:checked').value;
 
+        return fs.collection('contact').doc(auth.currentUser.displayName).set({
+            
+        });
+    })
+} */
+////////////////////////////////////////////////
 //SignUp
 
 const signUpForm = document.querySelector('#signUp-form')
@@ -172,29 +205,31 @@ signUpForm.addEventListener('submit', (e) => {
         .createUserWithEmailAndPassword(email, password)
         .then(userCredentential => {
             var myUserId = auth.currentUser.uid;
-    var docu = fs.collection('users').doc(myUserId)
-    console.log(`Id del usuario: ${myUserId}`)
-
-    docu.get().then((doc) => {
-        if (doc.exists) {
-            console.log(doc.data())
-            nombreUsuario = doc.data().userName;
-            eCoinsUsuario = doc.data().eCoins;
-        }
-        else{
-            nombrenombre = `${fName} ${lName}`
-            return fs.collection('users').doc(userCredentential.user.uid).set({
-                eCoins: 0,
-                userName: nombrenombre
-            });   
-        }
-    })
+            var docu = fs.collection('users').doc(myUserId)
+            console.log(`Id del usuario: ${myUserId}`)
+            docu.get().then((doc) => {
+                console.log(doc)
+                if (doc.exists) {
+                    console.log(doc.data())
+                    nombreUsuario = doc.data().userName;
+                    eCoinsUsuario = doc.data().eCoins;
+                }
+                else{
+                    nombrenombre = `${fName} ${lName}`
+                    return fs.collection('users').doc(userCredentential.user.uid).set({
+                        eCoins: 0,
+                        userName: nombrenombre,
+                        userMail: email
+                    });   
+                }
+            })
             //Clear the form
             signUpForm.reset() 
 
             //close the modal
             $('#signUpModal').modal('hide')
-        })
+
+        })        
 })
 
 //SignIn
@@ -222,7 +257,8 @@ signInForm.addEventListener('submit', e => {
                     nombrenombre = `${fName} ${lName}`
                     return fs.collection('users').doc(userCredentential.user.uid).set({
                         eCoins: 0,
-                        userName: nombrenombre
+                        userName: nombrenombre,
+                        userMail: email
                     });   
                 }
             })
@@ -306,7 +342,7 @@ const setUpPosts = data => {
     }
 } */
 
-//Events
+
 //list for auth state changes
 
 auth.onAuthStateChanged(user => {

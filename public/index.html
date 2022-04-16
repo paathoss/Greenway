@@ -66,7 +66,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sign</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -244,79 +244,81 @@
     <div class="contDiv">
 
       <h2>Contact Us</h2>
-
-      <div class="contactForm">
-        <label for="Nombre">First Name</label>
-        <br>
-        <input type="text" name="Nombre" id="txtNombre">
-      </div>
-
-      <div class="contactForm">
-        <label for="Apellido">Last Name</label>
-        <br>
-        <input type="text" name="Apellido" id="txtApellido">
-      </div>
-
-      <div class="contactForm">
-        <label for="Adress">Street Address:</label>
-        <br>
-        <input type="text" name="Adress" id="txtAdress">
-      </div>
-
-      <div class="contactForm">
-        <label for="City">City</label>
-        <br>
-        <input type="text" name="City" id="txtCity">
-      </div>
-
-      <div class="contactForm">
-        <label for="Zipcode">Zip Code</label>
-        <br>
-        <input type="number" name="Zipcode" id="txtZipcode">
-      </div>
-
-      <div class="contactForm">
-        <label for="Birthdate">Birth Date</label>
-        <br>
-        <input type="date" name="Birthdate" id="Birthdate">
-      </div>
-
-      <div class="contactForm">
-        <label for="cPhone">Contact Phone:</label>
-        <br>
-        <input type="number" name="cPhone" id="txtcPhone">
-      </div>
-
-      <div class="contactForm">
-        <label for="cMail">Contact Email:</label>
-        <br>
-        <input type="text" name="cMail" id="txtcMail">
-      </div>
-
-      <fieldset style="display: flex;flex-direction: column;">
-        <legend>Gender:</legend>
-
-        <div>
-          <label for="male">Male</label>
-          <input type="radio" name="gender" id="male" value="male">
+      <form class="form" id="contactFormulario">
+        <div class="contactForm">
+          <label for="Nombre">First Name</label>
+          <br>
+          <input type="text" name="Nombre" id="txtNombre" required>
         </div>
-
-        <div>
-          <label for="female">Female</label>
-          <input type="radio" name="gender" id="female" value="female">
+  
+        <div class="contactForm">
+          <label for="Apellido">Last Name</label>
+          <br>
+          <input type="text" name="Apellido" id="txtApellido" required>
         </div>
-
-        <div>
-          <label for="Other">Other</label>
-          <input type="radio" name="gender" id="Other" value="Other">
+  
+        <div class="contactForm">
+          <label for="Adress">Street Address:</label>
+          <br>
+          <input type="text" name="Adress" id="txtAdress" required>
         </div>
+  
+        <div class="contactForm">
+          <label for="City">City</label>
+          <br>
+          <input type="text" name="City" id="txtCity" required>
+        </div>
+  
+        <div class="contactForm">
+          <label for="Zipcode">Zip Code</label>
+          <br>
+          <input type="number" name="Zipcode" id="txtZipcode" required>
+        </div>
+  
+        <div class="contactForm">
+          <label for="Birthdate">Birth Date</label>
+          <br>
+          <input type="date" name="Birthdate" id="Birthdate" required>
+        </div>
+  
+        <div class="contactForm">
+          <label for="cPhone">Contact Phone:</label>
+          <br>
+          <input type="number" name="cPhone" id="txtcPhone" required>
+        </div>
+  
+        <div class="contactForm">
+          <label for="cMail">Contact Email:</label>
+          <br>
+          <input type="text" name="cMail" id="txtcMail" required>
+        </div>
+  
+        <fieldset style="display: flex;flex-direction: column;">
+          <legend>Gender:</legend>
 
-      </fieldset>
-      <div>
-        <button>
-          Send
-        </button>
-      </div>
+          <div>
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="male" value="male" required>
+          </div>
+  
+          <div>
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="female" value="female">
+          </div>
+  
+          <div>
+            <label for="Other">Other</label>
+            <input type="radio" name="gender" id="Other" value="Other">
+          </div>
+  
+        </fieldset>
+        <div>
+          <button type="submit">
+            Send
+          </button>
+        </div>
+      </form>
+      
 
 
 
