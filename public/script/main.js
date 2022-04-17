@@ -1,3 +1,6 @@
+var punto = document.getElementsByClassName('.gm-style img')
+var ubicacion = document.getElementById('ubicacion')
+
 var cargarPagina = (id) => {
     document.getElementById("menuPage").style.display = "none"
     document.getElementById("homePage").style.display = "none"
@@ -9,7 +12,7 @@ var cargarPagina = (id) => {
 
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("premiosPage")
+cargarPagina("menuPage")
 
 
 //////////Loader
@@ -19,13 +22,21 @@ setTimeout(function() {
 }, 1000);
 ////////////////
 
+function prueba() {
+    currentPosition()
+}
 
 var app = new Vue({
     el: '#app',
     data: {
         estaciones: {
             paradas: [],
+            paradasActivas: [],
+            paradasActivasNombre: [],
+            paradasActivasInfo: [],
             paradasActivasCoords: [],
+            coordenadas: [],
+            destinoActual: [],
             paradasCoordsString: [],
         },
         localizacion: {
@@ -39,32 +50,8 @@ var app = new Vue({
             puntos: []
         },
         ubicacionActual: [],
-        ubicacionActualCoords: []
     }
 });
-
-
-function geoFindMe() {
-    var errorWindow = document.getElementById('geolocationError');
-
-    if (errorWindow.style.display = 'flex') {
-        errorWindow.style.display = 'none'
-    }
-
-    function success(position) {
-        if (errorWindow.style.display = 'flex') {
-            errorWindow.style.display = 'none'
-        }
-
-        showPosition(position)
-    }
-
-    function error() {
-        errorWindow.style.display = 'flex'
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error);
-}
 
 function initMap() {
     directionsService = new google.maps.DirectionsService();
@@ -136,31 +123,64 @@ function initMap() {
         app.map.puntos = puntos2;
 
         const puntosTitle = puntos.title;
+        const puntosInfo = puntos.info;
         const puntosPosition = [];
 
         puntos.addListener("click", () => {
-            puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
+            var destinoActual = [];
+            if (navigator.geolocation) {
+                destinoActual.push(app.estaciones.paradasActivasCoords[0])
+                puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
+                app.estaciones.puntosPosition = puntosPosition
+                app.estaciones.destinoActual = destinoActual
+                currentPosition()
+            } else {
+                console.log("JAAAA")
+            }
+        });
 
+        puntos.addListener("click", show);
+        function show() {
+            document.getElementById('sidebar').classList.toggle('active');
+            var blur = document.getElementById("blur");
+
+            blur.style.display = 'block';
+            blur.classList.add('blureado');
+            blur.style.zIndex = 1200;
+
+            var paradaActivaNombre = [];
+            var paradaActivaInfo = [];
             var paradasActivasCoords = [];
 
             for (let u = 0; u < Estaciones.length; u++) {
                 if (Estaciones[u][0] === puntosTitle) {
-                    paradasActivasCoords.push(Estaciones[u][3])               
-                    var probando = paradasActivasCoords
-                    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
+                    paradaActivaNombre.push(puntosTitle)
+                    paradaActivaInfo.push(puntosInfo)
+                    paradasActivasCoords.push(Estaciones[u][1])
                 }
             }
-        });
+            app.estaciones.paradasActivasNombre = paradaActivaNombre;
+            app.estaciones.paradasActivasInfo = paradaActivaInfo;
+            app.estaciones.paradasActivasCoords = paradasActivasCoords;
+        };
     }
     app.estaciones.paradas = Estaciones;
 }
 
-function mostrarUbicacionActual() {
-    app.map.mapita.setCenter(app.ubicacionActualCoords)
+
+function currentPosition() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
 }
 
 function showPosition(position) {
-    app.ubicacionActualCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
+    document.getElementById('sidebar').classList.toggle('active');
+    var blur = document.getElementById("blur");
+
+    blur.style.display = 'block';
+    blur.classList.add('blureado');
+    blur.style.zIndex = 1200;
 
     var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
     var ubicacionActualCoordenadas = ubicacion = `${ubicacion.lat},${ubicacion.lng}`;
@@ -178,7 +198,6 @@ function showPosition(position) {
 }
 
 function distance() {
-    /*  var origin = "-34.94486276284149,-57.96170227030192" */
     var origin = app.ubicacionActual;
     var allDestination = app.estaciones.paradasCoordsString;
 
@@ -201,6 +220,8 @@ function distance() {
 
                 allDistance.push(response.rows[0].elements[0].distance.value)
 
+                /*  console.log("distancia pusheada  " + allDistance) */
+
                 allParadas[s].push(allDistance[0])
 
                 function compare(a, b) {
@@ -212,54 +233,53 @@ function distance() {
 
                 allParadas.sort(compare);
 
+                /*  console.log("distancia mas chiquita   " + allParadas[0][4]) */
+
                 app.localizacion.viajeDistancia.push(allParadas[0][4])
                 app.localizacion.destinoFinal.push(allParadas[0][3])
 
-                var probando = [];
-
-                if (app.localizacion.destinoFinal[4] === app.estaciones.paradas[0][3]) {
-                    /* console.log(probando) */
-
-                    probando.push(app.localizacion.destinoFinal[4])
-                    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
+                if (app.localizacion.destinoFinal.slice(-1)[0] === app.estaciones.paradas[0][3]) {
+                    calculateAndDisplayRoute(directionsService, directionsRenderer)
                 }
             }
         }
     }
 }
 
-function calculateAndDisplayRoute(directionsService, directionsRenderer, probando) {
-    var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
 
+function shownt() {
+    var toggle = document.getElementById('sidebar')
+    var blur = document.getElementById("blur");
+
+    toggle.classList.toggle('active');
+    blur.style.display = "none";
+}
+
+
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+   var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
+   
     directionsService
         .route({
             origin: {
                 query: app.ubicacionActual,
             },
             destination: {
-                query: probando[0],
+                query: app.localizacion.destinoFinal.slice(-1)[0],
             },
-            travelMode: google.maps.TravelMode.WALKING,
+            travelMode: google.maps.TravelMode.WALKING/* [selectedMode] */,
         })
         .then((response) => {
             /*   mapa.panTo(app.localizacion.destinoFinal) */
             app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
-
-            document.getElementById('ubicacion').innerHTML = `<h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4>`
-            document.getElementById('ubicacion').style.display = 'block'
-           /*  document.getElementById('mostrarUbicacionActual').style.marginBottom = '7%' */
+         
+            document.getElementById('ubicacion').innerHTML = `Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)`
+         
+            
             directionsRenderer.setDirections(response);
         })
         .catch((e) => window.alert("Directions request failed due to " + status));
 }
-
-
-
-
-
-
-
-
 
 
 /////Premios
@@ -395,139 +415,232 @@ premioCoins = new Vue({
 premioCoins.premio = premio
 
 
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
-// /////Login
-// const auth = firebase.auth()
-// const fs = firebase.firestore()
+const auth = firebase.auth()
+const fs = firebase.firestore()
+// const storage = firebase.storage()
 
-// //Links
-// const loggedOutLinks = document.querySelectorAll('.logged-out')
-// const loggedInLinks = document.querySelectorAll('.logged-in')
+//Links
+const loggedOutLinks = document.querySelectorAll('.logged-out')
+const loggedInLinks = document.querySelectorAll('.logged-in')
 
-// const loginCheck = user => {
-//     if (user){
-//         console.log("funca1")
-//         loggedInLinks.forEach(link => link.style.display = 'block')
-//         loggedOutLinks.forEach(link => link.style.display = 'none')
-//     }
-//     else{
-//       console.log("funca2")
-//         loggedInLinks.forEach(link => link.style.display = 'none')
-//         loggedOutLinks.forEach(link => link.style.display = 'block')
-//     }
-// }
-// //SignUp
+const loginCheck = user => {
+    if (user){
+        console.log("funca1")
+        loggedInLinks.forEach(link => link.style.display = 'block')
+        loggedOutLinks.forEach(link => link.style.display = 'none')
+    }
+    else{
+      console.log("funca2")
+        loggedInLinks.forEach(link => link.style.display = 'none')
+        loggedOutLinks.forEach(link => link.style.display = 'block')
+    }
+}
+//SignUp
 
-// const signUpForm = document.querySelector('#signUp-form')
+const signUpForm = document.querySelector('#signUp-form')
 
-// signUpForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
+signUpForm.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-//     const email = document.querySelector('#signUp-email').value
-//     const password = document.querySelector('#signUp-password').value
+    const email = document.querySelector('#signUp-email').value
+    const password = document.querySelector('#signUp-password').value
 
-//     console.log(email,password)
+    console.log(email,password)
 
-//     auth
-//         .createUserWithEmailAndPassword(email, password)
-//         .then(userCredentential => {
+    auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(userCredentential => {
 
-//             //Clear the form
-//             signUpForm.reset() 
+            //Clear the form
+            signUpForm.reset() 
 
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//             console.log('sign up')
-//         })
-// })
+            //close the modal
+            $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
+            console.log('sign up')
+        })
+})
 
-// //SignIn
+//SignIn
 
-// const signInForm = document.querySelector('#login-form')
+const signInForm = document.querySelector('#login-form')
 
-// signInForm.addEventListener('submit', e => {
-//     e.preventDefault()
-//     const email = document.querySelector('#login-email').value
-//     const password = document.querySelector('#login-password').value
-//     console.log(email,password)
-//     auth
-//         .signInWithEmailAndPassword(email, password)
-//         .then(userCredentential => {
+signInForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const email = document.querySelector('#login-email').value
+    const password = document.querySelector('#login-password').value
+    console.log(email,password)
+    auth
+        .signInWithEmailAndPassword(email, password)
+        .then(userCredentential => {
 
-//             //Clear the form
-//             signUpForm.reset()
+            //Clear the form
+            signUpForm.reset()
 
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//             console.log('sign in')
-//         })
-// })
+            //close the modal
+            $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
+            console.log('sign in')
+        })
+})
 
-// //LogOut
+//LogOut
+const logOut = document.querySelector('#logOut')
 
-// const logOut = document.querySelector('#logOut')
-
-// logOut.addEventListener('click', e => {
-//     e.preventDefault()
-//     auth.signOut().then(() => {
-//         console.log('sign out')
-//     })
-// })
-// //Google Login
-
-// const googleBtn = document.querySelector('#googleLogin-btn')
-
-// googleBtn.addEventListener('click', e => {
-//     const provider = new firebase.auth.GoogleAuthProvider()
-//     auth.signInWithPopup(provider)
-//         .then(result => {
-//             console.log("google sig in")
-
-//             //Clear the form
-//             signUpForm.reset()
-
-//             //close the modal
-//             $('#signUpModal').modal('hide')
-//         })
-// })
-
-// //Facebook Login
-
-// const facebookBtn = document.querySelector('#facebookLogin-btn')
-
-// facebookBtn.addEventListener('click', e => {
-//     e.preventDefault()
-//     const provider = new firebase.auth.FacebookAuthProvider()
-//     auth.signInWithPopup(provider)
-//         .then(result => {
-//             console.log(result)
-//             console.log('facebook sign in')
-//         })
-//         .catch(err => {
-//             console.log(err)
-//         })
-// })
-
-// //list for auth state changes
-// auth.onAuthStateChanged(user => {
-//     if (user) {
-//         console.log('auth: sign in')
-//         fs.collection('posts')
-//             .get()
-//             .then((snapshot) => {
-//               loginCheck(user)
-//                 /* setUpPosts(snapshot.docs) */
-//             }) 
-//     }
-//     else {
-//       loginCheck(user)
-//         /* setUpPosts([]) */
-//     }
-// })
-
-//////LoadingPage
+logOut.addEventListener('click', e => {
+    e.preventDefault()
+    auth.signOut().then(() => {
+        console.log('sign out')
+    })
+})
 
 
+//Google Login
+// const provider = new firebase.auth.GoogleAuthProvider()
+const googleBtn = document.querySelector('#googleLogin-btn')
+googleBtn.addEventListener('click', e => {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    auth.signInWithPopup(provider)
+        .then(result => {
+            console.log("google sig in")
+
+            //Clear the form
+            signUpForm.reset()
+
+            //close the modal
+            $('#signUpModal').modal('hide')
+            $('#signInModal').modal('hide')
+        })
+})
+
+//Facebook Login
+const facebookBtn = document.querySelector('#facebookLogin-btn')
+facebookBtn.addEventListener('click', e => {
+    e.preventDefault()
+    const provider = new firebase.auth.FacebookAuthProvider()
+    auth.signInWithPopup(provider)
+        .then(result => {
+            console.log(result)
+            console.log('facebook sign in')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+var nombreUsuario = null;
+var eCoinsUsuario = null;
+var userPhoto = null;
+var userEmail = null;
+
+var fotoUser = document.getElementById('userFoto')
+
+
+var cargarVariables = () =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        nombreUsuario = doc.data().userName;
+        eCoinsUsuario = doc.data().eCoins;
+        userPhoto = auth.currentUser.photoURL;
+        userEmail = auth.currentUser.email;
+    })
+    
+
+}
+
+//cargarDatosAFirebase
+var chargeDataFirebase = (result) =>{
+    var myUserId = auth.currentUser.uid;
+    var docu = fs.collection('users').doc(myUserId)
+    console.log(`Id del usuario: ${myUserId}`)
+
+    docu.get().then((doc) => {
+        if (doc.exists) {
+            console.log(doc.data())
+            nombreUsuario = doc.data().userName;
+            eCoinsUsuario = doc.data().eCoins;
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        else{
+            if(result.user.displayName == null){
+                result.user.displayName = `${fName} + ' ' + ${lName}`
+            }
+            return fs.collection('users').doc(result.user.uid).set({
+                eCoins: 0,
+                userName: result.user.displayName,
+                userMail: auth.currentUser.email
+            });   
+        }
+    })
+}
+//Posts
+
+/* const postList = document.querySelector('.posts')
+const setUpPosts = data => {
+    if (data.length) {
+        let html = ''
+        data.forEach(doc => {
+            const post = doc.data()
+            console.log(post)
+            const li = `
+            <li class="list-group-item list-group-item-action">
+                <h5>${post.title}</h5>
+                <p>${post.description}</p>
+            </li>
+            `
+            html += li
+        });
+        postList.innerHTML = html
+    }
+    else {
+        postList.innerHTML = `
+        <div class="container"><p class="text-center">Logeate para ver las publicaciones</p></div>
+        `
+    }
+} */
+
+//Events
+//list for auth state changes
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        console.log('auth: sign in')
+        fs.collection('posts')
+            .get()
+            .then((snapshot) => {
+              loginCheck(user)
+                /* setUpPosts(snapshot.docs) */
+            }) 
+        cargarVariables() 
+    }else {
+      loginCheck(user)
+      nombreUsuario = null;
+      eCoinsUsuario = null;
+      userPhoto = null;
+    }
+})
+
+var actualizarECoins = () =>{
+    fs.collection('users').doc(auth.currentUser.uid).set({
+        eCoins: eCoinsUsuario+5
+    }, { merge: true });
+    cargarVariables()
+    console.log(eCoinsUsuario, nombreUsuario, userPhoto)
+}
+//Para probar la funcion, vaya a inspeccionar la pagina >> console >> y escriba el comando para la funcion "actualizarECoins();", el cambio se ve en firebase
+
+
+
+
+/////////LightModeCache
 // const bdark = document.querySelector('#bdark')
 // const body = document.querySelector('body');
 
@@ -551,4 +664,3 @@ premioCoins.premio = premio
 // function store(value) {
 //   localStorage.setItem('darkmode', value)
 // }
-

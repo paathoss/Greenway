@@ -56,11 +56,19 @@ nav .navbar-brand {
 
 nav .nav-link {
   font-weight: bold;
+  color: whitesmoke;
 }
 
 nav #loginNav {
   background-color: #007200;
   color: whitesmoke;
+}
+
+nav #btnRegist {
+  background-color: #007200;
+  color: whitesmoke;
+  position: absolute;
+  float: right;
 }
 
 #menuPage {
@@ -75,6 +83,8 @@ nav #loginNav {
 }
 
 #menuPage .contDiv {
+  width: 100%;
+  height: 100%;
   background-color: #212529;
 }
 
@@ -82,7 +92,7 @@ nav #loginNav {
   position: relative;
   height: 100%;
   background-color: whitesmoke;
-  border-radius: 30px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 #menuPage .carouselMenu {
@@ -94,7 +104,7 @@ nav #loginNav {
 }
 
 #menuPage .carousel-inner {
-  border-radius: 30px;
+  border-radius: 10px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 100%;
@@ -115,8 +125,9 @@ nav #loginNav {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: #212529;
-  padding: 0em 0em 0em 0.5em;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#212529));
+  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #212529 100%);
+  padding: 0em 0em 0.3em 0.5em;
 }
 
 #menuPage .carouselTitle p {
@@ -153,6 +164,7 @@ nav #loginNav {
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 1em;
+  border-radius: 100%;
 }
 
 #menuPage .userName {
@@ -362,7 +374,7 @@ nav #loginNav {
       justify-content: space-around;
   position: relative;
   width: 100%;
-  z-index: 3000;
+  z-index: 1000;
   background-color: #212529;
   padding: 0em 1em 0em 1em;
   position: fixed;
@@ -445,10 +457,12 @@ nav #loginNav {
 }
 
 #contactPage .contDiv {
-  width: 90%;
-  height: 90%;
-  background-color: #212529;
-  border-radius: 30px;
+  width: 100%;
+  background: linear-gradient(-45deg, #CCFF33, #008000, #212529, whitesmoke);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
 #contactPage .contactForm {
@@ -471,6 +485,9 @@ nav #loginNav {
   height: 40px;
   border-radius: 20px;
   background-color: whitesmoke;
+  border: none;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #contactPage .contactForm label {
@@ -483,6 +500,9 @@ nav #loginNav {
   height: 150px;
   border-radius: 30px;
   background-color: whitesmoke;
+  border: none;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #contactPage .btnContact {
@@ -495,7 +515,7 @@ nav #loginNav {
 }
 
 #contactPage .fieldsetC {
-  background-color: #212529;
+  background-color: transparent;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -509,6 +529,7 @@ nav #loginNav {
 
 #contactPage .fieldsetC p {
   margin-top: 1em;
+  margin-bottom: -1em;
 }
 
 #contactPage .tipoUser {
@@ -709,7 +730,7 @@ nav #loginNav {
           align-items: center;
 }
 
-#page-popup #usernameNYSL {
+#page-popup #login-email {
   width: 250px;
   /* text-align: start; */
 }
@@ -733,7 +754,7 @@ nav #loginNav {
           align-items: center;
 }
 
-#page-popup #passwordNYSL {
+#page-popup #login-password {
   width: 250px;
 }
 
@@ -747,7 +768,7 @@ nav #loginNav {
   padding: 5px 0px 5px 0px;
 }
 
-#page-popup #sign-in-button {
+#page-popup #googleLogin-btn {
   margin-left: 10px;
   color: inherit;
   margin-top: 20px;
@@ -756,7 +777,7 @@ nav #loginNav {
   background-color: transparent;
 }
 
-#page-popup #sign-in-button-FB {
+#page-popup #facebookLogin-btn {
   margin-left: 10px;
   color: inherit;
   margin-top: 20px;
@@ -858,6 +879,92 @@ nav #loginNav {
   margin-bottom: 1em;
 }
 
+#page-popup .btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
+#envioPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #38B000;
+  z-index: 31000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#envioPopup .contDiv {
+  width: 90%;
+  height: 90%;
+  background-color: whitesmoke;
+  overflow: auto;
+  border-radius: 10px;
+  position: relative;
+  padding: 0.5em;
+}
+
+#envioPopup .contDiv .envioTitle {
+  font-size: xx-large;
+}
+
+#envioPopup .contDiv .regist label {
+  color: gray;
+  font-size: medium;
+}
+
+#envioPopup .contDiv .regist input {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #149e14;
+  margin-bottom: 1em;
+}
+
+#envioPopup .contDiv .btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1em;
+}
+
+#envioPopup .contDiv .btnNext {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #008000;
+  color: whitesmoke;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
 @media screen and (orientation: landscape) {
   body #contactPage {
     background-image: url(../img/fondo-contact-01.jpg);
@@ -890,73 +997,28 @@ nav #loginNav {
   height: 100%;
   background-color: #020317;
 }
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 /*# sourceMappingURL=style.css.map */
-
-
-
-
-
-
-
-
-/*//////////// ESTILO DE PATO QUE NO SE PONER LINDO CON SASS //////*/
-
-#ubicacion {
-  position:fixed;
-  text-align: center;
-  margin-top: -20%;
-  width: 100%; 
-  background-color: #004B23;
-  bottom: 0;
-}
-
-#map {
-  height: 95%;
-}
-
-#geolocationError {
-  display: none;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  position: fixed;
-  color: black;
-
-  bottom: 45%;
-  z-index: 5;
-}
-
-#geolocationError .card {
-  width: 90%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-bottom: 1rem;
-  color: whitesmoke;
-  background-color: #004B23;
-}
-
-#geolocationError .card .btn {
-  background-color: #008000;
-  color: white;
-}
-
-#geolocationError .card-body{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 35px;
-  margin-bottom: -30px;
-}
-
-#mostrarUbicacionActual{
-  position: absolute;
-  bottom: 7.5%;
-  right: 0;
-  margin-right: 3.5%;
-  color: #004B23;
-  font-size: 2em;
-}
-
-svg{
-  height: 30px;
-  color: #004B23;
-}
