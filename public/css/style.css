@@ -910,6 +910,8 @@ nav #btnRegist {
       -ms-flex-align: center;
           align-items: center;
   display: none;
+  -webkit-animation: aparecer 1s forwards;
+          animation: aparecer 1s forwards;
 }
 
 #envioPopup .contDiv {
@@ -1035,6 +1037,24 @@ nav #btnRegist {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=style.css.map */

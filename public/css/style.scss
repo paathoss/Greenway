@@ -774,6 +774,7 @@ nav {
     justify-content: center;
     align-items: center;
     display: none;
+    animation: aparecer 1s forwards;
 
     & .contDiv{
         width: 90%;
@@ -905,5 +906,14 @@ nav {
 	}
 	100% {
 		background-position: 0% 50%;
+	}
+}
+
+@keyframes aparecer {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
