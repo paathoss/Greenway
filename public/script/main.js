@@ -289,72 +289,85 @@ var premio =
             "cantEcoins": "7000",
             "img": "https://cdn.shopify.com/s/files/1/0390/9527/1556/products/ECO03-Taupe_0_1_600x.jpg?v=1641942413",
             "descripcion": "Zapatillas Greenway",
-            "": ""
+            "id": "1",
+            "clasificacion":"Indumentaria"
         },        
 		{
             "cantEcoins": "1500",
             "img": "https://www.nurorganic.com/wp-content/uploads/2019/09/copa-menstrual-nur.jpg",
             "descripcion": "Copita Menstrual",
-            "": ""
+            "id": "2",
+            "clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "300",
             "img": "https://www.hola.com/imagenes/estar-bien/20191212155436/cepillos-dientes-bambu-inconvenientes-gt/0-753-977/dientes-t.jpg?filter=w600",
             "descripcion": "Cepillo de bambu",
-            "": ""
+            "id": "3",
+            "clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "250",
             "img": "https://www.supergutierrez.com/img_blog/porque-debo-usas-bolsas-ecologicas.jpg",
             "descripcion": "Bolsas Ecologicas",
-            "": ""
+            "id": "4",
+            "clasificacion":"Accesorio"
         },
 		{
             "cantEcoins": "700",
             "img": "https://www.misharastrera.com/wp-content/uploads/2018/11/WEB-Shampoo-Solido-Rulos-II-70g-.jpg",
             "descripcion": "Shampoo Solido",
-            "": ""
+            "id": "5",
+            "clasificacion":"Higiene"
         },
         {
             "cantEcoins": "300",
             "img": "https://th.bing.com/th/id/R.e1b1020b67b2eab8a8c9a27dfceed30d?rik=6MGRdPgiExahww&pid=ImgRaw&r=0",
             "descripcion": "Agua Villavicencio Sport 750ml",
-            "": ""
+            "id": "6",
+            "clasificacion":"Insumo"
         },
         {
             "cantEcoins": "500",
             "img": "https://www.elite.cl/assets/uploads/images/5f946-cl-banner-panuelos-faciales-desktop.png",
             "descripcion": "Panuelitos Elite x6",
-            "": ""
+            "id": "7",
+            "clasificacion":"Higiene"
         },
 		{
             "cantEcoins": "650",
             "img": "https://static-01.daraz.pk/p/362a89e71c35a9ac654cf589505044ed.jpg",
             "descripcion": "Taza de madera",
-            "": ""
+            "id": "8",
+            "clasificacion":"Bazar"
         },
 		{
             "cantEcoins": "300",
             "img": "https://www.hods.eu/wp-content/uploads/vasopla_hods_web_01.jpg",
             "descripcion": "Vasos Reciclables X12 (ECO)",
+            "id": "9",
+            "clasificacion":"Bazar"
         },
 		{
             "cantEcoins": "700",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b",
             "descripcion": "Gorra Greenway",
-            "": ""
+            "id": "10",
+            "clasificacion":"Accesorio"
         },        
 		{
             "cantEcoins": "1000",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/remeragw_img.jpg?alt=media&token=9ec40c14-699f-4895-a383-d626596056d5",
             "descripcion": "Remera Greenway",
-            "": ""
+            "id": "11",
+            "clasificacion":"Accesorio"
         },
 		{
             "cantEcoins": "150",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/llavero_img.jpg?alt=media&token=756945a1-526b-4919-9fd0-6dfd10dc7f32",
             "descripcion": "Llavero Greenway",
-            "": ""
+            "id": "12",
+            "clasificacion":"Accesorio"
         }, 
         // {
         //     "cantEcoins": "3500",
@@ -408,11 +421,150 @@ var premio =
         // },
     ]
 
-premioCoins = new Vue({
-    el: "#winner",
-    data: { premio: [] }
-})
-premioCoins.premio = premio
+
+
+    premioCoins = new Vue({
+        el: "#winner",
+        data: { premio: [] }
+    })
+    premioCoins.premio = premio
+    
+    hola = new Vue({
+        el: "#prueba",
+        data: { recom: [] }
+    })
+    hola.recom = premio
+    
+    let allContainerCart = document.querySelector('.products');
+    let containerBuyCart = document.querySelector('.card-items');
+    let priceTotal = document.querySelector('.price-total')
+    
+    
+    let buyThings = [];
+    let totalCard = 0;
+    let countProduct = 0;
+    
+    //functions
+    loadEventListenrs();
+    function loadEventListenrs(){
+    allContainerCart.addEventListener('click', addProduct); // AGREGA ELEMENTOS
+    
+     containerBuyCart.addEventListener('click', deleteProduct); //DELETE
+    } 
+    
+    function addProduct(e){
+    e.preventDefault();
+    if (e.target.classList.contains('btn-add-cart')) {
+        const selectProduct = e.target.parentElement; 
+        readTheContent(selectProduct);
+    }
+    }
+    
+    function deleteProduct(e) {
+    if (e.target.classList.contains('delete-product')) {
+        const deleteId = e.target.getAttribute('data-id');
+    
+        buyThings.forEach(value => {
+            if (value.id == deleteId) {
+                let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
+                totalCard =  totalCard - priceReduce;
+            }
+        });
+        buyThings = buyThings.filter(product => product.id !== deleteId);
+        countProduct--;	
+        console.log(countProduct)
+    }
+    loadHtml();
+    }
+    
+    
+    function readTheContent(product){
+    const infoProduct = {
+        image: product.querySelector('img').getAttribute('src'),
+        title: product.querySelector('.card-text').textContent,
+        price: product.querySelector('.card-title').textContent,
+        id: product.querySelector('a').getAttribute('data-id'),
+        amount: 1
+    }
+    
+    
+    totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
+    totalCard = totalCard.toFixed(2);
+    
+    const exist = buyThings.some(product => product.id === infoProduct.id);
+    if (exist) {
+        const pro = buyThings.map(product => {
+            if (product.id === infoProduct.id) {
+                product.amount++;
+                return product;
+            } else {
+                return product
+            }
+        });
+        buyThings = [...pro];
+    } else {
+        buyThings = [...buyThings, infoProduct]
+        countProduct++;
+    }
+    loadHtml();
+    }
+    
+      function loadHtml(){
+      clearHtml();
+         buyThings.forEach(product => {
+         const {image,title, price, amount, id} = product;
+         
+         var row = document.createElement('tr');
+         row.classList.add('item');
+         row.innerHTML = `
+         <td> <img src="${image}" width="20px" alt=""></td>
+                 <td>${title}</td>
+                                  <td class="cart-price">${price}$</td>
+                 <td> ${amount}</td>
+             
+                 <td>  <span class="delete-product" data-id="${id}">X</span></td>
+    
+         `;
+         containerBuyCart.appendChild(row);
+         priceTotal.innerHTML = totalCard;
+        
+     });
+    
+     if (countProduct == 0){
+        priceTotal.innerHTML = "0"
+    } 
+     
+    }
+    function clearHtml(){
+    containerBuyCart.innerHTML = '';
+    }
+    
+    
+    function input(valor) {
+        var arr = []
+        valor.forEach(state => {
+            arr.push(state.clasificacion)
+        })
+        const states_ar = new Set(arr);
+        arr = [...states_ar]
+        for (var i = 0; i < arr.length; i++) {
+            var option;
+            option = `<option value="${arr[i]}">${arr[i]}</option>`;
+            document.getElementById("inputGroupSelect03").innerHTML += option;
+        }
+    }
+    input(premio)
+    
+    function filtros() {
+        inputGroupSelect03.addEventListener('change', filtros)
+        clasificacion = document.getElementById("inputGroupSelect03")
+        if (clasificacion.value != "Todos") {
+             hola.recom = premio.filter(recom => recom.clasificacion == clasificacion.value)
+            
+        } else {
+            hola.recom = premio
+        }
+    }
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
