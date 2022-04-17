@@ -437,34 +437,35 @@
   <div id="premiosPage">
 
     <div class="contDiv">
-      <div class="ecoins">
-
-        <div class="premioFilt">
-          <!-- <p>Filtrar por:</p> -->
-          <p>Filtrar por
-    <select name="filtros" id="inputGroupSelect03" onchange="filtros(premio)">
-      <option value="Todos" selected>Todos</option>
-    </select> </p>
-        </div>
-
-        <div class="premionav">
-          <p class="ecoinsText" style="font-size: x-large;">2220</p>
-          <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="35" height="35">
-        </div>
-
-
-      </div>
+     
 
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-8">
+            <div class="ecoins">
+
+              <div class="premioFilt">
+                <!-- <p>Filtrar por:</p> -->
+                <p>Filtrar por
+          <select name="filtros" id="inputGroupSelect03" onchange="filtros(premio)">
+            <option value="Todos" selected>Todos</option>
+          </select> </p>
+              </div>
+      
+              <div class="premionav">
+                <p class="ecoinsText" style="font-size: x-large;">2220</p>
+                <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="35" height="35">
+              </div>
+      
+      
+            </div>
             <div class="recompensa">
-                <div class="products">
+                <div class="products" style="text-align: center;">
                   <div id="prueba" style="display: flex; flex-wrap: wrap;">
                     <div v-for="element in recom" :key="element.id">
-                      <div class="card" style="width: 300px;">
-                        <img v-bind:src="element.img" id="image" class="card-img-top" alt="element.descripcion">
-                        <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
+                      <div class="card" >
+                        <img v-bind:src="element.img" width="50px" id="image" class="card-img-top" alt="element.descripcion">
+                        <a href="" v-bind:data-id="element.id" class="btn-add-cart btn">CANJEAR</a>
                         <div class="card-body">
                           <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px" alt="">{{element.cantEcoins}}
                           </h5>
@@ -476,13 +477,13 @@
                 </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" >
             <table id="products-id" class="table table-dark table-borderless">
               <thead>
                 <tr>
                   <th>Imagen</th>
                   <th>Producto</th>
-                  <th>ECOCOINS</th>
+                  <th>ECOPOINS</th>
                   <th>Cantidad</th>
                   <th></th>
                 </tr>
@@ -490,7 +491,8 @@
               <tbody class="card-items">
               </tbody>
               <tr>
-                <td colspan="5" class="table-active">Total ecoCois: <strong class="price-total">0</strong></td>
+                <td colspan="3" class="table-active">Total ecoCois: <strong class="price-total">0</strong> </td>
+                <td colspan="2"  class="table-active"><a href="#" style="color: white;" class="btn" onclick="checkout()">Finalizar</a></td>
               </tr>
             </table>
           </div>
@@ -498,7 +500,7 @@
       </div>
    
   
-
+      
       <!-- <div id="winner" style="width: 100%; height: 100%;">
         <div v-for="element in premio" :key="element.id" style="width: 100%;">
           <div class="card" style="color: whitesmoke; background-color: #212529; text-align: center;">
@@ -507,7 +509,7 @@
               <h5 id="logo" class="card-title"> <img src="./img/coin_ico.png" alt="cointest"
                   width="30">{{element.cantEcoins}}</h5>
               <p class="card-text">{{element.descripcion}}</p>
-              <a href="#" class="btn" onclick="checkout()">CANJEAR</a>
+              <a href="" v-bind:data-id="element.id" class="btn-add-cart btn">CANJEAR</a>
             </div>
           </div>
         </div>

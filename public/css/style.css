@@ -12,7 +12,27 @@ body {
   position: relative;
 }
 
-
+.products .card p{
+color: black;
+}
+.products .card h5{
+  color: black;
+  }
+  .products .card a{
+    background-color: #149e14;
+  }
+  .products .card{
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    margin: 10px;
+    width: 180px;
+    height: 300px;
+  }
+  .products .card .card-img-top{
+    height: 150px;
+  box-shadow:inset
+  }
+    
 body #homePage,
 body #menuPage,
 body #estacionesPage,
@@ -381,9 +401,9 @@ nav #btnRegist {
   position: relative;
   width: 100%;
   z-index: 1000;
-  background-color: #212529;
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 0em 1em 0em 1em;
-  position: fixed;
+  /* position: fixed; */
 }
 
 #premiosPage .ecoins .premionav {
@@ -413,9 +433,7 @@ nav #btnRegist {
   background-color: #212529;
   color: whitesmoke;
   border: none;
-  padding: 5px;
-  font-size: 140%;
-  font-weight: 400;
+  margin: 10px;
 }
 
 #premiosPage .ecoins .ecoinsText {
