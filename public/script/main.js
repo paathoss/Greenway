@@ -414,15 +414,6 @@ premioCoins = new Vue({
 })
 premioCoins.premio = premio
 
-var checkoutPopup = document.getElementById('envioPopup')
-function checkout(){
-    checkoutPopup.style.display = "flex"
-}
-
-function btnEnvio() {
-    checkoutPopup.style.display = "none"
-}
-
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
@@ -672,3 +663,18 @@ var actualizarECoins = () =>{
 // function store(value) {
 //   localStorage.setItem('darkmode', value)
 // }
+
+var checkoutPopup = document.getElementById('envioPopup')
+var loginCheckEnvio = document.getElementById('signInModal')
+
+function checkout(){
+    if (auth.onAuthStateChanged){
+    checkoutPopup.style.display = "flex" 
+    } else {
+        loginCheckEnvio.display.style = "block"
+    }
+}
+
+function btnEnvio() {
+    checkoutPopup.style.display = "none"
+}

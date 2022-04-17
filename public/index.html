@@ -57,16 +57,16 @@
           <li class="nav-item logged-out" style="display: none;">
             <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal">Register</a>
           </li>
-          <li class="nav-item logged-in" style="display: none;">
+          <!-- <li class="nav-item logged-in" style="display: none;">
             <a class="nav-link text-white" href="#" id="logOut">LogOut</a>
-          </li>
+          </li> -->
         </ul>
-        <form class="d-flex nav-item logged-out">
-          <button type="button" class="btn" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log
-            In</button>
-          <!-- <button type="button" class="btn" id="btnRegist" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrate</button> -->
+        <form class="d-flex nav-item">
+          <button type="button" class="btn logged-in" id="logOut">Log Out</button>
         </form>
-        <!-- <img src="./img/darkmode_ico.svg" id="bdark" alt="darkmode_ico" class="ico2" width="30"> -->
+        <form class="d-flex nav-item">
+          <button type="button" class="btn logged-out" id="loginNav" data-bs-toggle="modal" data-bs-target="#signInModal">Log In</button>
+        </form>
       </div>
     </div>
   </nav>

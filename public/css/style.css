@@ -64,6 +64,11 @@ nav #loginNav {
   color: whitesmoke;
 }
 
+nav #logOut {
+  background-color: #007200;
+  color: whitesmoke;
+}
+
 nav #btnRegist {
   background-color: #007200;
   color: whitesmoke;
