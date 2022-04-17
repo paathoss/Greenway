@@ -904,13 +904,14 @@ nav #btnRegist {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: none;
 }
 
 #envioPopup .contDiv {
   width: 90%;
   height: 90%;
-  background-color: whitesmoke;
-  overflow: auto;
+  background-color: #fbfdfb;
+  overflow: hidden;
   border-radius: 10px;
   position: relative;
   padding: 0.5em;
@@ -955,6 +956,16 @@ nav #btnRegist {
   border-radius: 10px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#envioPopup .contDiv .gifEnvio {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+}
+
+#envioPopup .contDiv .gifEnvio img {
+  height: 90%;
 }
 
 .btn-close {

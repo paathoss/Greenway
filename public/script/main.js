@@ -414,6 +414,14 @@ premioCoins = new Vue({
 })
 premioCoins.premio = premio
 
+var checkoutPopup = document.getElementById('envioPopup')
+function checkout(){
+    checkoutPopup.style.display = "flex"
+}
+
+function btnEnvio() {
+    checkoutPopup.style.display = "none"
+}
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
