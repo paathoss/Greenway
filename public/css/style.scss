@@ -67,6 +67,11 @@ nav {
         color: $white;
     }
 
+    & #logOut {
+        background-color: #007200;
+        color: $white;
+    }
+
     & #btnRegist{
         background-color: #007200;
         color: $white;
@@ -768,12 +773,13 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 
     & .contDiv{
         width: 90%;
         height: 90%;
-        background-color: $white;
-        overflow: auto;
+        background-color: #fbfdfb;
+        overflow: hidden;
         border-radius: 10px;
         position: relative;
         padding: 0.5em;
@@ -817,6 +823,15 @@ nav {
             border: none;
             border-radius: 10px;
             box-shadow: $shadow1;
+        }
+
+        & .gifEnvio{
+            object-fit: contain;
+            width: 100%;
+
+            & img {
+                height: 90%;
+            }
         }
     }
 }
