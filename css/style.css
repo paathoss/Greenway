@@ -13,31 +13,18 @@ body {
   overflow: auto;
 }
 
-.container {
-  display: grid; 
-  grid-template-columns: 2fr 1fr; 
-  grid-template-rows: 2.4fr 0.6fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "recompensa carrito"
-    "recompensa carrito"
-}
-.recompensa { grid-area: recompensa; 
-  
-  background-size: cover;
-  
-}
-
- div.products{
+.products{
+  border: 2px solid white;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  width: 700px;
+}
+.products .card{
+  width: 200px;
 }
 
 .products .card .card-body {
   display: none;
-  position: absolute;
-  flex-direction: column;
   bottom: 0;
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
@@ -49,8 +36,7 @@ body {
 
  .products .card:hover .card-body {
   display: block;
-  width: 50%;
-  height: 100%;
+  width: 100%;
 
 }  
 

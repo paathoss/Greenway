@@ -199,53 +199,64 @@
 
     </div>
 
-
-
-    <div class="premios">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="text-align: center;">
-            <video src="./img/Post de Instagram Podcast Beige Neutro .mp4" alt="" height="600px" autoplay muted loop>
-            </video>
-          </div>
-          <div class="carousel-item" width="100%" height="100%">
-            <h1 style="font-family: fantasy; text-align: center;">PODES CANJEAR CUALQUIERA DE ESTOS PREMIOS SOLO GANANDO
-              ECOINS. </h1>
-            <div id="winner">
-              <div v-for="element in premio" :key="element.id">
-                <div class="card" style="width: 10rem;">
-                  <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
-                  <div class="card-body">
-                    <!-- <h5 class="card-title">  <img src="./coin_ico.png" alt="" width="20px"> {{element.cantEcoins}} <h5> -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" style="text-align: center;">
+                <video src="./img/primervideo.mp4" alt="" height="600px" autoplay muted loop>
+                </video>
+              </div>
+              <div class="carousel-item">
+                <h1 style="font-family: fantasy; text-align: center;">PODES CANJEAR CUALQUIERA DE ESTOS PREMIOS SOLO
+                  GANANDO
+                  ECOPOINTS </h1>
+                <div id="winner">
+                  <div v-for="element in premio" :key="element.id">
+                    <div class="card" style="width: 10rem;">
+                      <img v-bind:src="element.img" class="card-img-top" alt="element.descripcion">
+                      <div class="card-body">
+                        <h5 class="card-title"> <img src="./coin_ico.png" alt="" width="20px"> {{element.cantEcoins}}
+                          <h5>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="carousel-item" style="text-align: center;">
+                <video src="./img/segundoVideo.mp4" alt="" height="600px" autoplay muted loop>
+                </video>
+              </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          <!-- <div class="carousel-item">
-            <iframe src="https://www.google.com/maps/d/embed?mid=1mUNjFUC392s_rBYWYHWVK6ovo_16osj_&ehbc=2E312F" width="100%" height="100%"></iframe>
-          </div> -->
+        </div>
+        <div class="col-md-4" style="text-align: center;">
+          <img alt="" src="./img/coin_ico.png" width="300px" />
+          <br>
+          <img src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+          <address>
+            <strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107 Teléfono<br />
+            <abbr title="telefono">:</abbr> (123) 456-7890
+          </address>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
   </div>
+
 
 
 
@@ -486,7 +497,49 @@
       <option value="Todos" selected>Todos</option>
     </select>
 
-    <div class="container">
+    <table >
+      <th class="recompensa">
+        <section class="container">
+          <div class="products">
+            <div id="prueba">
+              <div v-for="element in recom" :key="element.id">
+                <div class="card">
+                  <img v-bind:src="element.img" id="image" class="card-img-top" alt="element.descripcion">
+                  <div class="card-body">
+                    <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px" alt="">{{element.cantEcoins}}
+                    </h5>
+                    <p class="card-text">{{element.descripcion}}</p>
+                    <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </th>
+      <th >
+        <table id="products-id" class="table table-dark table-borderless">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Producto</th>
+              <th>ECOCOINS</th>
+              <th>Cantidad</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="card-items">
+          </tbody>
+          <tr>
+            <td colspan="5" class="table-active">Total ecoCois: <strong class="price-total">0</strong></td>
+          </tr>
+        </table>
+      </th>
+
+    </table>
+
+    <!-- <div class="container">
       <div class="recompensa">
         <section class="container">
           <div class="products">
@@ -494,11 +547,12 @@
               <div v-for="element in recom" :key="element.id">
                 <div class="card">
                   <img v-bind:src="element.img" id="image" class="card-img-top" alt="element.descripcion">
-                  <div class="card-body" >
-                    <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px"  alt="">{{element.cantEcoins}}</h5>
+                  <div class="card-body">
+                    <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px" alt="">{{element.cantEcoins}}
+                    </h5>
                     <p class="card-text">{{element.descripcion}}</p>
-                   <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
-    
+                    <a href="" v-bind:data-id="element.id" class="btn-add-cart">CANJEAR</a>
+
                   </div>
                 </div>
               </div>
@@ -509,22 +563,26 @@
       <div class="carrito">
         <table id="products-id" class="table table-dark table-borderless">
           <thead>
-              <tr>
-                  <th>Imagen</th>
-                  <th>Producto</th>
-                  <th>ECOCOINS</th>
-                  <th>Cantidad</th>
-                  <th></th>
-              </tr>
+            <tr>
+              <th>Imagen</th>
+              <th>Producto</th>
+              <th>ECOCOINS</th>
+              <th>Cantidad</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody class="card-items">
           </tbody>
-          <tr><td colspan="5" class="table-active">Total ecoCois: <strong class="price-total">0</strong></td></tr>
+          <tr>
+            <td colspan="5" class="table-active">Total ecoCois: <strong class="price-total">0</strong></td>
+          </tr>
         </table>
-      </div>
+      </div> -->
     </div>
-    
-    
+
+
+
+
 
 
   </div>
