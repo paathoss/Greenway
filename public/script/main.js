@@ -12,7 +12,7 @@ var cargarPagina = (id) => {
     document.getElementById("pruebasPage").style.display = "none"
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("premiosPage")
+cargarPagina("menuPage")
 
 
 //////////Loader

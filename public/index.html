@@ -30,7 +30,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="#" onclick="cargarPagina('menuPage');infoUsuario()">Inicio</a>
+            <a class="nav-link text-white" aria-current="page" href="#"
+              onclick="cargarPagina('menuPage');infoUsuario()">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" aria-current="page" href="#"
@@ -443,8 +444,7 @@
       </div>
 
       <div class="dropdown">
-        <button class="carritobtn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button class="carritobtn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="./img/carrito-de-compras.png" width="25px" alt="">
         </button>
         <ul class="dropdown-menu" style="background-color: transparent; border: none;" aria-labelledby="dropdownMenu2">
@@ -462,8 +462,10 @@
             </tbody>
             <tr>
               <td colspan="3" class="table-active">Total ecopoints: <strong class="price-total">0</strong> </td>
-              <td colspan="2" class="table-active"><a href="#" style="color: white;" class="btn"
+              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-in"
                   onclick="checkout()">Finalizar</a></td>
+              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-out" data-bs-toggle="modal"
+                  data-bs-target="#signInModal">Iniciar Sesion</a></td>
             </tr>
           </table>
         </ul>
