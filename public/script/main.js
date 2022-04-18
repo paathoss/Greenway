@@ -566,6 +566,34 @@ function filtros() {
     }
 }
 
+let usser = document.querySelector('.usser');
+
+function infoUsuario() {
+        const { eCoinsUsuario, nombreUsuario, userPhoto } = product;
+
+        var row = document.createElement('div');
+        row.innerHTML = `
+                 <div class="userPerfil">
+                 <img src="${userPhoto}" alt="cointest" width="130" style="border-radius: 100%;" id="userFoto">
+               </div>
+         
+               <div class="userName" style="margin-top: 1em;">
+                 <p>${nombreUsuario}</p>
+               </div>
+         
+               <div class="ecoins">
+                 <p class="ecoinsText">${eCoinsUsuario}</p>
+                 <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
+               </div>
+
+         `;
+         
+         usser.appendChild(row);
+
+}
+
+
+
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
@@ -723,6 +751,8 @@ var eCoinsUsuario = null;
 var userPhoto = null;
 var userEmail = null;
 
+
+
 var fotoUser = document.getElementById('userFoto')
 
 
@@ -730,14 +760,13 @@ var cargarVariables = () => {
     var myUserId = auth.currentUser.uid;
     var docu = fs.collection('users').doc(myUserId)
     console.log(`Id del usuario: ${myUserId}`)
-    console.log(docu)
     docu.get().then((doc) => {
-        console.log(doc.data())
         if (doc.exists) {
             eCoinsUsuario = doc.data().eCoins;
             nombreUsuario = doc.data().userName;
             userPhoto = auth.currentUser.photoURL;
             userEmail = auth.currentUser.email;
+            
         }
         else {
             eCoinsUsuario = 0;
