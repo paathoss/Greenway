@@ -418,7 +418,7 @@ nav #btnRegist {
   color: whitesmoke;
   border: none;
   padding: 5px;
-  font-size: 100%;
+  font-size: 140%;
   font-weight: 400;
 }
 
@@ -448,18 +448,6 @@ nav #btnRegist {
   cursor: pointer;
 }
 
-#premiosPage .col-md-4 {
-  display: none;
-}
-
-#premiosPage .col-md-4 #table-id {
-  position: absolute;
-  top: 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  z-index: 10000000;
-}
-
 #premiosPage .carritobtn {
   background-color: #38B000;
   position: fixed;
@@ -470,7 +458,16 @@ nav #btnRegist {
   border-radius: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* cursor: pointer; */
+  cursor: pointer;
+  z-index: 30000;
+  border: none;
+  border: nones;
+}
+
+#premiosPage table {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
 }
 
 #contactPage {

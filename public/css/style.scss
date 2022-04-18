@@ -409,17 +409,6 @@ nav {
         cursor: pointer;
     }
 
-    & .col-md-4{
-        display: none;
-
-        & #table-id{
-            position: absolute;
-            top: 0;
-            box-shadow: $shadow1;
-            z-index: 10000000;
-        }
-    }
-
     & .carritobtn{
         background-color: $green-4;
         position: fixed;
@@ -430,6 +419,14 @@ nav {
         border-radius: 100%;
         box-shadow: $shadow1;
         cursor: pointer;
+        z-index: 30000;
+        border: none;
+        border: nones;
+    }
+
+    & table{
+        box-shadow: $shadow1;
+        border-radius: 10px;
     }
 }
 
