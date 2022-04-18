@@ -721,7 +721,7 @@ googleBtn.addEventListener('click', e => {
     auth.signInWithPopup(provider)
         .then(result => {
             console.log("google sig in")
-
+            chargeDataFirebase(result)
             //Clear the form
             signUpForm.reset()
 
@@ -740,6 +740,7 @@ facebookBtn.addEventListener('click', e => {
         .then(result => {
             console.log(result)
             console.log('facebook sign in')
+            chargeDataFirebase(result)
         })
         .catch(err => {
             console.log(err)
@@ -837,6 +838,7 @@ var comprar = (costo) => {
     }
     else {
         fs.collection('users').doc(auth.currentUser.uid).set({
+
             eCoins: eCoinsUsuario - costo
         }, { merge: true });
         transaccion = eCoinsUsuario - costo;
