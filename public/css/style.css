@@ -10,29 +10,9 @@ body {
   background-attachment: fixed;
   scroll-behavior: smooth;
   position: relative;
+  font-family: Helvetica, sans-serif;
 }
 
-.products .card p{
-color: black;
-}
-.products .card h5{
-  color: black;
-  }
-  .products .card a{
-    background-color: #149e14;
-  }
-  .products .card{
-    background-color: #4e4e4e;
-    border-radius: 10px;
-    margin: 10px;
-    width: 180px;
-    height: 300px;
-  }
-  .products .card .card-img-top{
-    height: 150px;
-  box-shadow:inset
-  }
-    
 body #homePage,
 body #menuPage,
 body #estacionesPage,
@@ -392,6 +372,10 @@ nav #btnRegist {
   position: relative;
 }
 
+#premiosPage .row div {
+  padding: 0;
+}
+
 #premiosPage .ecoins {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -401,9 +385,9 @@ nav #btnRegist {
   position: relative;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #212529;
   padding: 0em 1em 0em 1em;
-  /* position: fixed; */
+  position: fixed;
 }
 
 #premiosPage .ecoins .premionav {
@@ -433,7 +417,9 @@ nav #btnRegist {
   background-color: #212529;
   color: whitesmoke;
   border: none;
-  margin: 10px;
+  padding: 5px;
+  font-size: 140%;
+  font-weight: 400;
 }
 
 #premiosPage .ecoins .ecoinsText {
@@ -456,6 +442,35 @@ nav #btnRegist {
 #premiosPage #winner .btn {
   background-color: #006400;
   color: whitesmoke;
+}
+
+#premiosPage .delete-product {
+  cursor: pointer;
+}
+
+#premiosPage .col-md-4 {
+  display: none;
+}
+
+#premiosPage .col-md-4 #table-id {
+  position: absolute;
+  top: 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 10000000;
+}
+
+#premiosPage .carritobtn {
+  background-color: #38B000;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 }
 
 #contactPage {
@@ -994,6 +1009,28 @@ nav #btnRegist {
   height: 90%;
 }
 
+#signUpModal .modal-dialog {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #0c663c;
+}
+
+#signUpModal .modal-content {
+  width: 90%;
+}
+
+#signUpModal .btn-success {
+  width: 100%;
+}
+
 .btn-close {
   position: absolute;
   font-size: larger;
@@ -1002,7 +1039,34 @@ nav #btnRegist {
   padding: 1.5em;
 }
 
+#pruebasPage .contDiv {
+  background-color: #212529;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#pruebasPage .contDiv button {
+  width: 100%;
+}
+
 @media screen and (orientation: landscape) {
+  body #premiosPage .card-img-top {
+    width: 250px;
+    height: 300px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
   body #contactPage {
     background-image: url(../img/fondo-contact-01.jpg);
     background-position-x: left;
@@ -1023,16 +1087,6 @@ nav #btnRegist {
     background-size: cover;
     background-attachment: fixed;
   }
-}
-
-.light-mode body #homePage,
-.light-mode body #estacionesPage,
-.light-mode body #guiaPage,
-.light-mode body #aboutPage,
-.light-mode body #contactPage {
-  width: 100%;
-  height: 100%;
-  background-color: #020317;
 }
 
 @-webkit-keyframes gradient {

@@ -22,6 +22,8 @@ body {
     background-attachment: fixed;
     scroll-behavior: smooth;
     position: relative;
+    font-family: Helvetica, sans-serif;
+    // overflow: hidden;
 
     & #homePage,
     #menuPage,
@@ -72,7 +74,7 @@ nav {
         color: $white;
     }
 
-    & #btnRegist{
+    & #btnRegist {
         background-color: #007200;
         color: $white;
         position: absolute;
@@ -130,7 +132,7 @@ nav {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(255,167,3,0) 0%, $darkmode 100%);
+        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, $darkmode 100%);
         padding: 0em 0em 0.3em 0.5em;
 
         & p {
@@ -344,6 +346,10 @@ nav {
     color: $grayTit;
     position: relative;
 
+    & .row div{
+        padding: 0;
+    }
+
     & .ecoins {
         display: flex;
         justify-content: space-around;
@@ -397,6 +403,33 @@ nav {
             background-color: $green-7;
             color: whitesmoke;
         }
+    }
+
+    & .delete-product {
+        cursor: pointer;
+    }
+
+    & .col-md-4{
+        display: none;
+
+        & #table-id{
+            position: absolute;
+            top: 0;
+            box-shadow: $shadow1;
+            z-index: 10000000;
+        }
+    }
+
+    & .carritobtn{
+        background-color: $green-4;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 100%;
+        box-shadow: $shadow1;
+        cursor: pointer;
     }
 }
 
@@ -762,7 +795,7 @@ nav {
 
 }
 
-#envioPopup{
+#envioPopup {
     position: fixed;
     top: 0;
     left: 0;
@@ -776,7 +809,7 @@ nav {
     display: none;
     animation: aparecer 1s forwards;
 
-    & .contDiv{
+    & .contDiv {
         width: 90%;
         height: 90%;
         background-color: #fbfdfb;
@@ -785,16 +818,16 @@ nav {
         position: relative;
         padding: 0.5em;
 
-        & .envioTitle{
+        & .envioTitle {
             font-size: xx-large;
         }
-    
+
         & .regist {
             & label {
                 color: gray;
                 font-size: medium;
             }
-    
+
             & input {
                 border-radius: 0;
                 box-shadow: none;
@@ -804,7 +837,7 @@ nav {
                 margin-bottom: 1em;
             }
         }
-    
+
         & .btn-close {
             position: absolute;
             font-size: larger;
@@ -813,7 +846,7 @@ nav {
             padding: 1em;
         }
 
-        & .btnNext{
+        & .btnNext {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -826,7 +859,7 @@ nav {
             box-shadow: $shadow1;
         }
 
-        & .gifEnvio{
+        & .gifEnvio {
             object-fit: contain;
             width: 100%;
 
@@ -837,12 +870,44 @@ nav {
     }
 }
 
+#signUpModal {
+    & .modal-dialog {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0c663c;
+    }
+
+    & .modal-content {
+        width: 90%;
+    }
+
+    & .btn-success {
+        width: 100%;
+    }
+}
+
 .btn-close {
     position: absolute;
     font-size: larger;
     top: 0;
     right: 0;
     padding: 1.5em;
+}
+
+#pruebasPage {
+    & .contDiv {
+        background-color: $darkmode;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        & button {
+            width: 100%;
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////landscape
@@ -856,6 +921,14 @@ nav {
         // & #guiaPage{}
 
         // & #aboutPage{}
+
+        & #premiosPage {
+            .card-img-top{
+                width: 250px;
+                height: 300px;
+                object-fit: cover;
+            }
+        }
 
         & #contactPage {
             background-image: url(../img/fondo-contact-01.jpg);
@@ -880,40 +953,47 @@ nav {
 
 
 /////////////////////////////////////////////////////////////////////lightmode
-.light-mode {
-    & body {
+// .light-mode {
+//     & body {
+//         background-image: url(../img/bg-portrait-light.png);
+//         background-size: cover;
+//         background-attachment: fixed;
 
-        & #homePage,
-        #estacionesPage,
-        #guiaPage,
-        #aboutPage,
-        #contactPage {
-            width: 100%;
-            height: 100%;
-            background-color: rgb(2, 3, 23);
-        }
-    }
-}
+    
+//         & #homePage,
+//         #menuPage,
+//         #estacionesPage,
+//         #guiaPage,
+//         #aboutPage,
+//         #premiosPage,
+//         #contactPage {
+//             color: $darkmode;
+//         }
+//     }
+// }
 
 
 //////////////////////////////////////////////////////////////////////animaciones
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes aparecer {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

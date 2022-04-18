@@ -9,15 +9,15 @@ var cargarPagina = (id) => {
     document.getElementById("aboutPage").style.display = "none"
     document.getElementById("contactPage").style.display = "none"
     document.getElementById("premiosPage").style.display = "none"
-
+    document.getElementById("pruebasPage").style.display = "none"
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("menuPage")
+cargarPagina("premiosPage")
 
 
 //////////Loader
 var preloader = document.getElementById("page-splash")
-setTimeout(function() {
+setTimeout(function () {
     preloader.style.display = "none"
 }, 1000);
 ////////////////
@@ -257,8 +257,8 @@ function shownt() {
 
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-   var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
-   
+    var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
+
     directionsService
         .route({
             origin: {
@@ -272,10 +272,10 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
         .then((response) => {
             /*   mapa.panTo(app.localizacion.destinoFinal) */
             app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
-         
+
             document.getElementById('ubicacion').innerHTML = `Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)`
-         
-            
+
+
             directionsRenderer.setDirections(response);
         })
         .catch((e) => window.alert("Directions request failed due to " + status));
@@ -284,91 +284,91 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
 /////Premios
 var premio =
-    [       
-		{
+    [
+        {
             "cantEcoins": "7000",
             "img": "https://cdn.shopify.com/s/files/1/0390/9527/1556/products/ECO03-Taupe_0_1_600x.jpg?v=1641942413",
             "descripcion": "Zapatillas Greenway",
             "id": "1",
-            "clasificacion":"Indumentaria"
-        },        
-		{
+            "clasificacion": "Indumentaria"
+        },
+        {
             "cantEcoins": "1500",
             "img": "https://www.nurorganic.com/wp-content/uploads/2019/09/copa-menstrual-nur.jpg",
             "descripcion": "Copita Menstrual",
             "id": "2",
-            "clasificacion":"Higiene"
+            "clasificacion": "Higiene"
         },
-		{
+        {
             "cantEcoins": "300",
             "img": "https://www.hola.com/imagenes/estar-bien/20191212155436/cepillos-dientes-bambu-inconvenientes-gt/0-753-977/dientes-t.jpg?filter=w600",
             "descripcion": "Cepillo de bambu",
             "id": "3",
-            "clasificacion":"Higiene"
+            "clasificacion": "Higiene"
         },
-		{
+        {
             "cantEcoins": "250",
             "img": "https://www.supergutierrez.com/img_blog/porque-debo-usas-bolsas-ecologicas.jpg",
             "descripcion": "Bolsas Ecologicas",
             "id": "4",
-            "clasificacion":"Accesorio"
+            "clasificacion": "Accesorio"
         },
-		{
+        {
             "cantEcoins": "700",
             "img": "https://www.misharastrera.com/wp-content/uploads/2018/11/WEB-Shampoo-Solido-Rulos-II-70g-.jpg",
             "descripcion": "Shampoo Solido",
             "id": "5",
-            "clasificacion":"Higiene"
+            "clasificacion": "Higiene"
         },
         {
             "cantEcoins": "300",
             "img": "https://th.bing.com/th/id/R.e1b1020b67b2eab8a8c9a27dfceed30d?rik=6MGRdPgiExahww&pid=ImgRaw&r=0",
             "descripcion": "Agua Villavicencio Sport 750ml",
             "id": "6",
-            "clasificacion":"Insumo"
+            "clasificacion": "Insumo"
         },
         {
             "cantEcoins": "500",
             "img": "https://www.elite.cl/assets/uploads/images/5f946-cl-banner-panuelos-faciales-desktop.png",
             "descripcion": "Panuelitos Elite x6",
             "id": "7",
-            "clasificacion":"Higiene"
+            "clasificacion": "Higiene"
         },
-		{
+        {
             "cantEcoins": "650",
             "img": "https://static-01.daraz.pk/p/362a89e71c35a9ac654cf589505044ed.jpg",
             "descripcion": "Taza de madera",
             "id": "8",
-            "clasificacion":"Bazar"
+            "clasificacion": "Bazar"
         },
-		{
+        {
             "cantEcoins": "300",
             "img": "https://www.hods.eu/wp-content/uploads/vasopla_hods_web_01.jpg",
             "descripcion": "Vasos Reciclables X12 (ECO)",
             "id": "9",
-            "clasificacion":"Bazar"
+            "clasificacion": "Bazar"
         },
-		{
+        {
             "cantEcoins": "700",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b",
             "descripcion": "Gorra Greenway",
             "id": "10",
-            "clasificacion":"Accesorio"
-        },        
-		{
+            "clasificacion": "Accesorio"
+        },
+        {
             "cantEcoins": "1000",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/remeragw_img.jpg?alt=media&token=9ec40c14-699f-4895-a383-d626596056d5",
             "descripcion": "Remera Greenway",
             "id": "11",
-            "clasificacion":"Accesorio"
+            "clasificacion": "Accesorio"
         },
-		{
+        {
             "cantEcoins": "150",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/llavero_img.jpg?alt=media&token=756945a1-526b-4919-9fd0-6dfd10dc7f32",
             "descripcion": "Llavero Greenway",
             "id": "12",
-            "clasificacion":"Accesorio"
-        }, 
+            "clasificacion": "Accesorio"
+        },
         // {
         //     "cantEcoins": "3500",
         //     "img": "https://http2.mlstatic.com/D_NQ_NP_716341-MLA49195073584_022022-O.webp",
@@ -377,7 +377,7 @@ var premio =
         // },
         // {
         //     "cantEcoins": "1000",
-    
+
         //     "descripcion": "PARLANTE Bluetooth Gatito LED",
         //     "img": "https://i.ytimg.com/vi/ZgNk5yD3EZQ/maxresdefault.jpg"
         // },
@@ -423,62 +423,62 @@ var premio =
 
 
 
-    premioCoins = new Vue({
-        el: "#winner",
-        data: { premio: [] }
-    })
-    premioCoins.premio = premio
-    
-    hola = new Vue({
-        el: "#prueba",
-        data: { recom: [] }
-    })
-    hola.recom = premio
-    
-    let allContainerCart = document.querySelector('.products');
-    let containerBuyCart = document.querySelector('.card-items');
-    let priceTotal = document.querySelector('.price-total')
-    
-    
-    let buyThings = [];
-    let totalCard = 0;
-    let countProduct = 0;
-    
-    //functions
-    loadEventListenrs();
-    function loadEventListenrs(){
+// premioCoins = new Vue({
+//     el: "#winner",
+//     data: { premio: [] }
+// })
+// premioCoins.premio = premio
+
+hola = new Vue({
+    el: "#prueba",
+    data: { recom: [] }
+})
+hola.recom = premio
+
+let allContainerCart = document.querySelector('.products');
+let containerBuyCart = document.querySelector('.card-items');
+let priceTotal = document.querySelector('.price-total')
+
+
+let buyThings = [];
+let totalCard = 0;
+let countProduct = 0;
+
+//functions
+loadEventListenrs();
+function loadEventListenrs() {
     allContainerCart.addEventListener('click', addProduct); // AGREGA ELEMENTOS
-    
-     containerBuyCart.addEventListener('click', deleteProduct); //DELETE
-    } 
-    
-    function addProduct(e){
+
+    containerBuyCart.addEventListener('click', deleteProduct); //DELETE
+}
+
+function addProduct(e) {
     e.preventDefault();
     if (e.target.classList.contains('btn-add-cart')) {
-        const selectProduct = e.target.parentElement; 
+        const selectProduct = e.target.parentElement;
         readTheContent(selectProduct);
     }
-    }
-    
-    function deleteProduct(e) {
+}
+
+function deleteProduct(e) {
     if (e.target.classList.contains('delete-product')) {
         const deleteId = e.target.getAttribute('data-id');
-    
+
         buyThings.forEach(value => {
             if (value.id == deleteId) {
                 let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
-                totalCard =  totalCard - priceReduce;
+                totalCard = totalCard - priceReduce;
             }
         });
         buyThings = buyThings.filter(product => product.id !== deleteId);
-        countProduct--;	
+        countProduct--;
         console.log(countProduct)
     }
     loadHtml();
-    }
-    
-    
-    function readTheContent(product){
+}
+
+
+function readTheContent(product) {
     const infoProduct = {
         image: product.querySelector('img').getAttribute('src'),
         title: product.querySelector('.card-text').textContent,
@@ -486,11 +486,11 @@ var premio =
         id: product.querySelector('a').getAttribute('data-id'),
         amount: 1
     }
-    
-    
+
+
     totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
     totalCard = totalCard.toFixed(2);
-    
+
     const exist = buyThings.some(product => product.id === infoProduct.id);
     if (exist) {
         const pro = buyThings.map(product => {
@@ -507,64 +507,64 @@ var premio =
         countProduct++;
     }
     loadHtml();
-    }
-    
-      function loadHtml(){
-      clearHtml();
-         buyThings.forEach(product => {
-         const {image,title, price, amount, id} = product;
-         
-         var row = document.createElement('tr');
-         row.classList.add('item');
-         row.innerHTML = `
-         <td> <img src="${image}" width="20px" alt=""></td>
+}
+
+function loadHtml() {
+    clearHtml();
+    buyThings.forEach(product => {
+        const { image, title, price, amount, id } = product;
+
+        var row = document.createElement('tr');
+        row.classList.add('item');
+        row.innerHTML = `
+         <td> <img src="${image}" style="width: 100%; object-fit: contain;" alt=""></td>
                  <td>${title}</td>
-                                  <td class="cart-price">${price}$</td>
+                                  <td class="cart-price">${price}</td>
                  <td> ${amount}</td>
              
                  <td>  <span class="delete-product" data-id="${id}">X</span></td>
     
          `;
-         containerBuyCart.appendChild(row);
-         priceTotal.innerHTML = totalCard;
-        
-     });
-    
-     if (countProduct == 0){
+        containerBuyCart.appendChild(row);
+        priceTotal.innerHTML = totalCard;
+
+    });
+
+    if (countProduct == 0) {
         priceTotal.innerHTML = "0"
-    } 
-     
     }
-    function clearHtml(){
+
+}
+function clearHtml() {
     containerBuyCart.innerHTML = '';
+}
+
+
+function input(valor) {
+    var arr = []
+    valor.forEach(state => {
+        arr.push(state.clasificacion)
+    })
+    const states_ar = new Set(arr);
+    arr = [...states_ar]
+    for (var i = 0; i < arr.length; i++) {
+        var option;
+        option = `<option value="${arr[i]}">${arr[i]}</option>`;
+        document.getElementById("inputGroupSelect03").innerHTML += option;
     }
-    
-    
-    function input(valor) {
-        var arr = []
-        valor.forEach(state => {
-            arr.push(state.clasificacion)
-        })
-        const states_ar = new Set(arr);
-        arr = [...states_ar]
-        for (var i = 0; i < arr.length; i++) {
-            var option;
-            option = `<option value="${arr[i]}">${arr[i]}</option>`;
-            document.getElementById("inputGroupSelect03").innerHTML += option;
-        }
+}
+input(premio)
+
+function filtros() {
+    inputGroupSelect03.addEventListener('change', filtros)
+    clasificacion = document.getElementById("inputGroupSelect03")
+    if (clasificacion.value != "Todos") {
+        hola.recom = premio.filter(recom => recom.clasificacion == clasificacion.value)
+
+    } else {
+        hola.recom = premio
     }
-    input(premio)
-    
-    function filtros() {
-        inputGroupSelect03.addEventListener('change', filtros)
-        clasificacion = document.getElementById("inputGroupSelect03")
-        if (clasificacion.value != "Todos") {
-             hola.recom = premio.filter(recom => recom.clasificacion == clasificacion.value)
-            
-        } else {
-            hola.recom = premio
-        }
-    }
+}
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -579,19 +579,19 @@ const loggedOutLinks = document.querySelectorAll('.logged-out')
 const loggedInLinks = document.querySelectorAll('.logged-in')
 
 const loginCheck = user => {
-    if (user){
+    if (user) {
         console.log("funca1")
         loggedInLinks.forEach(link => link.style.display = 'block')
         loggedOutLinks.forEach(link => link.style.display = 'none')
     }
-    else{
-      console.log("funca2")
+    else {
+        console.log("funca2")
         loggedInLinks.forEach(link => link.style.display = 'none')
         loggedOutLinks.forEach(link => link.style.display = 'block')
     }
 }
-//SignUp
 
+//SignUp
 const signUpForm = document.querySelector('#signUp-form')
 
 signUpForm.addEventListener('submit', (e) => {
@@ -599,20 +599,37 @@ signUpForm.addEventListener('submit', (e) => {
 
     const email = document.querySelector('#signUp-email').value
     const password = document.querySelector('#signUp-password').value
-
-    console.log(email,password)
-
+    const fName = document.querySelector('#signUp-first-name').value
+    const lName = document.querySelector('#signUp-last-name').value
     auth
         .createUserWithEmailAndPassword(email, password)
         .then(userCredentential => {
-
+            var myUserId = auth.currentUser.uid;
+            var docu = fs.collection('users').doc(myUserId)
+            console.log(`Id del usuario: ${myUserId}`)
+            docu.get().then((doc) => {
+                console.log(doc)
+                if (doc.exists) {
+                    console.log(doc.data())
+                    nombreUsuario = doc.data().userName;
+                    eCoinsUsuario = doc.data().eCoins;
+                }
+                else {
+                    nombrenombre = `${fName} ${lName}`
+                    return fs.collection('users').doc(userCredentential.user.uid).set({
+                        eCoins: 0,
+                        userName: nombrenombre,
+                        userMail: email
+                    });
+                }
+            })
             //Clear the form
-            signUpForm.reset() 
+            signUpForm.reset()
 
             //close the modal
             $('#signUpModal').modal('hide')
             $('#signInModal').modal('hide')
-            console.log('sign up')
+
         })
 })
 
@@ -624,11 +641,29 @@ signInForm.addEventListener('submit', e => {
     e.preventDefault()
     const email = document.querySelector('#login-email').value
     const password = document.querySelector('#login-password').value
-    console.log(email,password)
-    auth
-        .signInWithEmailAndPassword(email, password)
+    console.log(email, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then(userCredentential => {
+            var myUserId = auth.currentUser.uid;
+            var docu = fs.collection('users').doc(myUserId)
+            console.log(`Id del usuario: ${myUserId}`)
 
+            docu.get().then((doc) => {
+                if (doc.exists) {
+                    console.log(doc.data())
+                    nombreUsuario = doc.data().userName;
+                    eCoinsUsuario = doc.data().eCoins;
+                }
+                else {
+                    nombrenombre = `${fName} ${lName}`
+                    console.log(nombrenombre)
+                    return fs.collection('users').doc(userCredentential.user.uid).set({
+                        eCoins: 0,
+                        userName: nombrenombre,
+                        userMail: email
+                    });
+                }
+            })
             //Clear the form
             signUpForm.reset()
 
@@ -691,23 +726,33 @@ var userEmail = null;
 var fotoUser = document.getElementById('userFoto')
 
 
-var cargarVariables = () =>{
+var cargarVariables = () => {
     var myUserId = auth.currentUser.uid;
     var docu = fs.collection('users').doc(myUserId)
     console.log(`Id del usuario: ${myUserId}`)
-
+    console.log(docu)
     docu.get().then((doc) => {
-        nombreUsuario = doc.data().userName;
-        eCoinsUsuario = doc.data().eCoins;
-        userPhoto = auth.currentUser.photoURL;
-        userEmail = auth.currentUser.email;
+        console.log(doc.data())
+        if (doc.exists) {
+            eCoinsUsuario = doc.data().eCoins;
+            nombreUsuario = doc.data().userName;
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        else {
+            eCoinsUsuario = 0;
+            nombreUsuario = auth.currentUser.displayName;
+            userPhoto = auth.currentUser.photoURL;
+            userEmail = auth.currentUser.email;
+        }
+        if (userPhoto == null) {
+            userPhoto = '/img/usernotfound_ico.png';
+        }
     })
-    
-
 }
 
 //cargarDatosAFirebase
-var chargeDataFirebase = (result) =>{
+var chargeDataFirebase = (result) => {
     var myUserId = auth.currentUser.uid;
     var docu = fs.collection('users').doc(myUserId)
     console.log(`Id del usuario: ${myUserId}`)
@@ -720,45 +765,20 @@ var chargeDataFirebase = (result) =>{
             userPhoto = auth.currentUser.photoURL;
             userEmail = auth.currentUser.email;
         }
-        else{
-            if(result.user.displayName == null){
+        else {
+            if (result.user.displayName == null) {
                 result.user.displayName = `${fName} + ' ' + ${lName}`
             }
             return fs.collection('users').doc(result.user.uid).set({
                 eCoins: 0,
                 userName: result.user.displayName,
-                userMail: auth.currentUser.email
-            });   
+                userMail: auth.currentUser.email,
+                userPhoto: auth.currentUser.photoURL
+            });
         }
     })
 }
-//Posts
 
-/* const postList = document.querySelector('.posts')
-const setUpPosts = data => {
-    if (data.length) {
-        let html = ''
-        data.forEach(doc => {
-            const post = doc.data()
-            console.log(post)
-            const li = `
-            <li class="list-group-item list-group-item-action">
-                <h5>${post.title}</h5>
-                <p>${post.description}</p>
-            </li>
-            `
-            html += li
-        });
-        postList.innerHTML = html
-    }
-    else {
-        postList.innerHTML = `
-        <div class="container"><p class="text-center">Logeate para ver las publicaciones</p></div>
-        `
-    }
-} */
-
-//Events
 //list for auth state changes
 
 auth.onAuthStateChanged(user => {
@@ -767,28 +787,66 @@ auth.onAuthStateChanged(user => {
         fs.collection('posts')
             .get()
             .then((snapshot) => {
-              loginCheck(user)
+                loginCheck(user)
                 /* setUpPosts(snapshot.docs) */
-            }) 
-        cargarVariables() 
-    }else {
-      loginCheck(user)
-      nombreUsuario = null;
-      eCoinsUsuario = null;
-      userPhoto = null;
+            })
+        cargarVariables()
+    } else {
+        loginCheck(user)
+        nombreUsuario = null;
+        eCoinsUsuario = null;
+        userPhoto = null;
     }
 })
 
-var actualizarECoins = () =>{
-    fs.collection('users').doc(auth.currentUser.uid).set({
-        eCoins: eCoinsUsuario+5
-    }, { merge: true });
-    cargarVariables()
-    console.log(eCoinsUsuario, nombreUsuario, userPhoto)
+//Pruebas
+var comprar = (costo) => {
+    var transaccion = 0;
+    console.log("Ecoins Actual: " + eCoinsUsuario)
+    if (eCoinsUsuario < costo) {
+        alert("No te alcanza kpo")
+    }
+    else {
+        fs.collection('users').doc(auth.currentUser.uid).set({
+            eCoins: eCoinsUsuario - costo
+        }, { merge: true });
+        transaccion = eCoinsUsuario - costo;
+        cargarVariables()
+        return transaccion;
+    }
+
 }
-//Para probar la funcion, vaya a inspeccionar la pagina >> console >> y escriba el comando para la funcion "actualizarECoins();", el cambio se ve en firebase
+var recibir = (ganancias) => {
+    var transaccion = 0;
+    console.log("Ecoins Actual: " + eCoinsUsuario)
+    fs.collection('users').doc(auth.currentUser.uid).set({
+        eCoins: eCoinsUsuario + ganancias
+    }, { merge: true });
+    transaccion = eCoinsUsuario + ganancias;
+    cargarVariables()
+    return transaccion;
+}
+
+const cambiosEcoins = document.querySelector('.comprarEcoins')
+
+cambiosEcoins.addEventListener('submit', (e) => {
+    e.preventDefault()
+    var carrito = document.querySelector('#carCost').value;
+    carrito = parseInt(carrito, 10);
+    console.log("Ecoins restantes: " + comprar(carrito))
+})
+
+const recibirEcoins = document.querySelector('.conseguirEcoins')
+
+recibirEcoins.addEventListener('submit', (e) => {
+    e.preventDefault()
+    var ecoinsARecibir = document.querySelector('#regalarEcoins').value;
+    ecoinsARecibir = parseInt(ecoinsARecibir, 10);
+    console.log("Ecoins despues de recibir: " + recibir(ecoinsARecibir))
+})
 
 
+/////////////////////////////
 
 
 /////////LightModeCache
@@ -819,9 +877,9 @@ var actualizarECoins = () =>{
 var checkoutPopup = document.getElementById('envioPopup')
 var loginCheckEnvio = document.getElementById('signInModal')
 
-function checkout(){
-    if (auth.onAuthStateChanged){
-    checkoutPopup.style.display = "flex" 
+function checkout() {
+    if (auth.onAuthStateChanged) {
+        checkoutPopup.style.display = "flex"
     } else {
         loginCheckEnvio.display.style = "block"
     }
@@ -829,4 +887,15 @@ function checkout(){
 
 function btnEnvio() {
     checkoutPopup.style.display = "none"
+}
+
+var carritobtn = document.querySelector(".carritobtn")
+var tablaCarrito = document.querySelector(".col-md-4")
+
+function mostrarCarrito() {
+    if (tablaCarrito.style.display = "none") {
+        tablaCarrito.style.display = "block"
+    } else if (tablaCarrito.style.display = "block") {
+        tablaCarrito.style.display = "none"
+    }
 }
