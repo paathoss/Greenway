@@ -569,8 +569,8 @@ function filtros() {
 let usser = document.querySelector('.usser');
 
 function infoUsuario() {
-        const { eCoinsUsuario, nombreUsuario, userPhoto } = product;
-
+        cargarVariables();
+        usser.innerHTML = '';
         var row = document.createElement('div');
         row.innerHTML = `
                  <div class="userPerfil">
@@ -865,6 +865,7 @@ cambiosEcoins.addEventListener('submit', (e) => {
     var carrito = document.querySelector('#carCost').value;
     carrito = parseInt(carrito, 10);
     console.log("Ecoins restantes: " + comprar(carrito))
+    infoUsuario()
 })
 
 const recibirEcoins = document.querySelector('.conseguirEcoins')
@@ -874,6 +875,7 @@ recibirEcoins.addEventListener('submit', (e) => {
     var ecoinsARecibir = document.querySelector('#regalarEcoins').value;
     ecoinsARecibir = parseInt(ecoinsARecibir, 10);
     console.log("Ecoins despues de recibir: " + recibir(ecoinsARecibir))
+    infoUsuario()
 })
 
 
