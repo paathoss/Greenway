@@ -566,7 +566,22 @@ function filtros() {
     }
 }
 
-let usser = document.querySelector('.usser');
+let usser = document.querySelectorAll('.usser');
+let coinUser = document.querySelector('.premionav');
+
+
+function callCoins(){
+    cargarVariables();
+    coinUser.innerHTML = '';
+    var eCoPoInTs = document.createElement('div');
+    eCoPoInTs.innerHTML = `
+    <p class="ecoinsText" style="font-size: x-large;"><img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="35" height="35">${eCoinsUsuario}</p>
+    
+    `;
+
+    coinUser.appendChild(eCoPoInTs);
+}
+
 
 function infoUsuario() {
         cargarVariables();
@@ -709,6 +724,7 @@ logOut.addEventListener('click', e => {
     e.preventDefault()
     auth.signOut().then(() => {
         console.log('sign out')
+        usser.innerHTML = '';
     })
 })
 
