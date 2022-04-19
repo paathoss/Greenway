@@ -9,12 +9,12 @@ var cargarPagina = (id) => {
 
     document.getElementById(id).style.display = "contents"
 }
-cargarPagina("premiosPage")
+cargarPagina("homePage")
 
 
 //////////Loader
 var preloader = document.getElementById("page-splash")
-setTimeout(function() {
+setTimeout(function () {
     preloader.style.display = "none"
 }, 1000);
 ////////////////
@@ -24,9 +24,11 @@ var app = new Vue({
     el: '#app',
     data: {
         estaciones: {
+            PRUEBA: [],
             paradas: [],
-            paradasActivasCoords: [],
+            paradasActivas: [],
             paradasCoordsString: [],
+            paradasTitle: []
         },
         localizacion: {
             viajeDistancia: [],
@@ -51,6 +53,7 @@ function geoFindMe() {
         errorWindow.style.display = 'none'
     }
 
+    // pide ubicacion actual
     function success(position) {
         if (errorWindow.style.display = 'flex') {
             errorWindow.style.display = 'none'
@@ -58,7 +61,7 @@ function geoFindMe() {
 
         showPosition(position)
     }
-
+    // si el usuario no da la ubicacion actual o hay algun error te pide reintentar o ir a ver las recompensas
     function error() {
         errorWindow.style.display = 'flex'
     }
@@ -86,31 +89,94 @@ function initMap() {
             "Plaza Moreno",
             -34.922302402883496,
             -57.95493732361004,
-            "-34.922302402883496,-57.95493732361004"
+            "-34.922302402883496,-57.95493732361004",
+            "Avenida 53 calle 14, La Plata"
         ],
         [
             "Estado Atenea",
             -34.925389445729145,
             -57.94945585469184,
-            "-34.925389445729145,-57.94945585469184"
+            "-34.925389445729145,-57.94945585469184",
+            "Avenida 13 calle 58, La Plata"
         ],
         [
             "Parque San Martín",
             -34.93175604944046,
             -57.96808955054438,
-            "-34.93175604944046,-57.96808955054438"
+            "-34.93175604944046,-57.96808955054438",
+            "Avenida 25 calle 50, La Plata"
         ],
         [
             "Parque Saavedra",
             -34.932282008849725,
             -57.94182764344423,
-            "-34.932282008849725,-57.94182764344423"
+            "-34.932282008849725,-57.94182764344423",
+            "Avenida 66 calle 14, La Plata"
         ],
         [
-            "Parque PRUEBA",
+            "Estadio Único Diego Armando Maradona",
             -34.91641772378313,
             -57.98857278451355,
-            "-34.91641772378313, -57.98857278451355"
+            "-34.91641772378313, -57.98857278451355",
+            "Avenida 25 calle 531, La Plata"
+        ],
+        [
+            "Plaza Dardo Rocha",
+            -34.921026322517925,
+            -57.94165555669854,
+            "-34.921026322517925,-57.94165555669854",
+            "Diagonal 73 calle 59, La Plata"
+
+        ],
+        [
+            "Parque Alberti",
+            -34.922870985445115,
+            -57.97918891483258,
+            "-34.922870985445115,-57.97918891483258",
+            "Avenida 25 calle 39, La Plata"
+        ],
+        [
+            "Paseo del Bosque",
+            -34.91110634016815,
+            -57.940740752464094,
+            "-34.91110634016815,-57.940740752464094",
+            "Avenida 1 calle 54, La Plata"
+        ],
+        [
+            "Parque Castelli",
+            -34.941878408342916,
+            -57.953977553541776,
+            "-34.941878408342916,-57.953977553541776",
+            "Avenida 25 calle 65, La Plata"
+        ],
+        [
+            "Florencio Varela",
+            -34.81082801652776,
+            -58.274777515795776,
+            "-34.81082801652776,-58.274777515795776",
+            "Avenida Tte. Gral. Juan Domingo Perón 165"
+        ],
+        [
+            "La Costera",
+            -34.61206473154328,
+            -58.358234267640896,
+            "-34.61206473154328,-58.358234267640896",
+            "Avenida Dr. Tristán Achával Rodríguez 1353, CABA"
+        ],
+        [
+            "Plaza Constitución",
+            -34.62725243775753,
+            -58.38074033013085,
+            "-34.62725243775753,-58.38074033013085",
+            "Avenida Juan de Garay 1125, CABA"
+
+        ],
+        [
+            "Parque Lezama",
+            -34.626383220031585,
+            -58.37082245137918,
+            "-34.626383220031585,-58.37082245137918",
+            "Avenida Caseros y Defensa, CABA"
         ]
     ]
 
@@ -138,15 +204,30 @@ function initMap() {
         const puntosTitle = puntos.title;
         const puntosPosition = [];
 
+        for (let d = 0; d < Estaciones.length; d++) {
+            if (Estaciones[d][0] === puntosTitle) {
+                app.estaciones.paradasTitle.push(Estacion[4]);
+            }
+        }
+
         puntos.addListener("click", () => {
             puntosPosition.push({ lat: Estacion[1], lng: Estacion[2] })
 
-            var paradasActivasCoords = [];
+            var paradasActivas = [];
+            var paradasActivasInfo = [];
+
+            // da las variables de cada estacion y llama al directionsService en esa estacion especifica
 
             for (let u = 0; u < Estaciones.length; u++) {
                 if (Estaciones[u][0] === puntosTitle) {
-                    paradasActivasCoords.push(Estaciones[u][3])               
-                    var probando = paradasActivasCoords
+                    paradasActivas.push(Estaciones[u][3])
+                    paradasActivasInfo.push(Estaciones[u])
+
+                    app.estaciones.paradasActivas = paradasActivasInfo
+                    var probando = paradasActivas
+
+                    document.getElementById("ubicacion").style.display = 'none'
+
                     calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
                 }
             }
@@ -156,10 +237,12 @@ function initMap() {
 }
 
 function mostrarUbicacionActual() {
-    app.map.mapita.setCenter(app.ubicacionActualCoords)
+    app.map.mapita.panTo(app.ubicacionActualCoords)
 }
 
 function showPosition(position) {
+    // convierte la ubicacion actual a un string usable por el directionsService
+
     app.ubicacionActualCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
 
     var ubicacion = { lat: position.coords.latitude, lng: position.coords.longitude };
@@ -178,7 +261,8 @@ function showPosition(position) {
 }
 
 function distance() {
-    /*  var origin = "-34.94486276284149,-57.96170227030192" */
+    // calcula la distancia entre la ubicacion actual y cada parada
+
     var origin = app.ubicacionActual;
     var allDestination = app.estaciones.paradasCoordsString;
 
@@ -191,42 +275,47 @@ function distance() {
                 destinations: [allDestination[s]],
                 travelMode: 'WALKING',
             }, callback);
-
         function callback(response, status) {
 
             var allParadas = app.estaciones.paradas;
+            var allDistance = [];
 
             if (status == 'OK') {
-                var allDistance = [];
-
                 allDistance.push(response.rows[0].elements[0].distance.value)
 
                 allParadas[s].push(allDistance[0])
-
-                function compare(a, b) {
-                    if (a[4] < b[4]) {
-                        return -1;
-                    }
-                    return 0;
-                }
-
-                allParadas.sort(compare);
-
-                app.localizacion.viajeDistancia.push(allParadas[0][4])
-                app.localizacion.destinoFinal.push(allParadas[0][3])
-
-                var probando = [];
-
-                if (app.localizacion.destinoFinal[4] === app.estaciones.paradas[0][3]) {
-                    /* console.log(probando) */
-
-                    probando.push(app.localizacion.destinoFinal[4])
-                    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
-                }
             }
         }
     }
+    // espera a que todas las paradas consigan su distancia
+    setTimeout(function () {
+        ordenar()
+    }, 700);
 }
+
+function ordenar() {
+    // ordena por distancia las paradas de menor a mayor
+
+    function compare(a, b) {
+        if (a[5] < b[5]) {
+            return -1;
+        }
+        return 0;
+    }
+
+    app.estaciones.paradas.sort(compare);
+
+    app.localizacion.viajeDistancia.push(app.estaciones.paradas[0][5])
+    app.localizacion.destinoFinal.push(app.estaciones.paradas[0])
+
+    var probando = [];
+
+    // envia la informacion para mostrar las direcciones de la parada mas cercana
+
+    probando.push(app.localizacion.destinoFinal[0][3])
+    calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
+}
+
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer, probando) {
     var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
@@ -242,54 +331,56 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
             travelMode: google.maps.TravelMode.WALKING,
         })
         .then((response) => {
-            /*   mapa.panTo(app.localizacion.destinoFinal) */
-            app.localizacion.viajeDistancia = app.localizacion.destinoFinalInfo;
+            // se muestra las direcciones
 
-            document.getElementById('ubicacion').innerHTML = `<h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br><br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4>`
-            document.getElementById('ubicacion').style.display = 'block'
-           /*  document.getElementById('mostrarUbicacionActual').style.marginBottom = '7%' */
             directionsRenderer.setDirections(response);
+
+            // se oculta y muestra las direcciones que pidas
+
+            if (document.getElementById("ubicacion").innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
+                document.getElementById('ubicacion2').style.display = 'block'
+
+                document.getElementById('ubicacion2').innerHTML = `<h4> Estacion: ${app.estaciones.paradasActivas[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`
+            } 
+
+            document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`
+            document.getElementById('ubicacion').style.display = 'block'
+
+            if (document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
+                document.getElementById('ubicacion').style.display = 'none'
+            }
         })
-        .catch((e) => window.alert("Directions request failed due to " + status));
+        .catch();
 }
-
-
-
-
-
-
-
-
-
 
 /////Premios
 var premio =
-    [       
-		{
+    [
+        {
             "cantEcoins": "7000",
             "img": "https://cdn.shopify.com/s/files/1/0390/9527/1556/products/ECO03-Taupe_0_1_600x.jpg?v=1641942413",
             "descripcion": "Zapatillas Greenway",
             "": ""
-        },        
-		{
+        },
+        {
             "cantEcoins": "1500",
             "img": "https://www.nurorganic.com/wp-content/uploads/2019/09/copa-menstrual-nur.jpg",
             "descripcion": "Copita Menstrual",
             "": ""
         },
-		{
+        {
             "cantEcoins": "300",
             "img": "https://www.hola.com/imagenes/estar-bien/20191212155436/cepillos-dientes-bambu-inconvenientes-gt/0-753-977/dientes-t.jpg?filter=w600",
             "descripcion": "Cepillo de bambu",
             "": ""
         },
-		{
+        {
             "cantEcoins": "250",
             "img": "https://www.supergutierrez.com/img_blog/porque-debo-usas-bolsas-ecologicas.jpg",
             "descripcion": "Bolsas Ecologicas",
             "": ""
         },
-		{
+        {
             "cantEcoins": "700",
             "img": "https://www.misharastrera.com/wp-content/uploads/2018/11/WEB-Shampoo-Solido-Rulos-II-70g-.jpg",
             "descripcion": "Shampoo Solido",
@@ -307,35 +398,35 @@ var premio =
             "descripcion": "Panuelitos Elite x6",
             "": ""
         },
-		{
+        {
             "cantEcoins": "650",
             "img": "https://static-01.daraz.pk/p/362a89e71c35a9ac654cf589505044ed.jpg",
             "descripcion": "Taza de madera",
             "": ""
         },
-		{
+        {
             "cantEcoins": "300",
             "img": "https://www.hods.eu/wp-content/uploads/vasopla_hods_web_01.jpg",
             "descripcion": "Vasos Reciclables X12 (ECO)",
         },
-		{
+        {
             "cantEcoins": "700",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b",
             "descripcion": "Gorra Greenway",
             "": ""
-        },        
-		{
+        },
+        {
             "cantEcoins": "1000",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/remeragw_img.jpg?alt=media&token=9ec40c14-699f-4895-a383-d626596056d5",
             "descripcion": "Remera Greenway",
             "": ""
         },
-		{
+        {
             "cantEcoins": "150",
             "img": "https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/llavero_img.jpg?alt=media&token=756945a1-526b-4919-9fd0-6dfd10dc7f32",
             "descripcion": "Llavero Greenway",
             "": ""
-        }, 
+        },
         // {
         //     "cantEcoins": "3500",
         //     "img": "https://http2.mlstatic.com/D_NQ_NP_716341-MLA49195073584_022022-O.webp",
@@ -344,7 +435,7 @@ var premio =
         // },
         // {
         //     "cantEcoins": "1000",
-    
+
         //     "descripcion": "PARLANTE Bluetooth Gatito LED",
         //     "img": "https://i.ytimg.com/vi/ZgNk5yD3EZQ/maxresdefault.jpg"
         // },
