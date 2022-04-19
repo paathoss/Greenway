@@ -893,6 +893,10 @@ recibirEcoins.addEventListener('submit', (e) => {
 })
 
 
+// transaccionCarrito(totalCard)
+
+// comprar(totalCard);
+
 /////////////////////////////
 
 

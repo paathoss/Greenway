@@ -43,12 +43,13 @@ body .contDiv {
 }
 
 nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 36;
   width: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  margin-bottom: 2em;
 }
 
 nav .navbar-brand {
@@ -104,9 +105,10 @@ nav #btnRegist {
 #menuPage .carouselMenu {
   width: 90%;
   max-height: 200px;
-  border-radius: 30px;
+  border-radius: 136px;
   background-color: #212529;
   margin-top: 1em;
+  border-bottom: 1px solid #CCFF33;
 }
 
 #menuPage .carousel-inner {
@@ -131,14 +133,14 @@ nav #btnRegist {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#212529));
-  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #212529 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#0d5a36));
+  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #0d5a36 100%);
   padding: 0em 0em 0.3em 0.5em;
 }
 
 #menuPage .carouselTitle p {
   font-size: x-large;
-  color: whitesmoke;
+  color: white;
 }
 
 #menuPage .ecoins {
@@ -176,6 +178,69 @@ nav #btnRegist {
 #menuPage .userName {
   font-size: large;
   font-weight: 500;
+}
+
+#menuPage .notLogedMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3em;
+}
+
+#menuPage .notLogedMenu .notlogimg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1em;
+}
+
+#menuPage .notLogedMenu .notlogimg .gwTitle {
+  width: 90%;
+  margin-top: -1.4em;
+  margin-bottom: -1.3em;
+}
+
+#menuPage .notLogedMenu .notlogbtn {
+  background-color: #38B000;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
+#menuPage .notLogedMenu .notlogbtn .btn {
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+#menuPage .notLogedMenu .notlogcoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#menuPage .notLogedMenu .notlogcoins .ecoinIco {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#menuPage .notLogedMenu .notlogText {
+  font-size: 150%;
 }
 
 #homePage {
@@ -329,9 +394,28 @@ nav #btnRegist {
   text-align: left;
 }
 
-#aboutPage .aboutLogo {
-  margin-top: 30px;
-  margin-bottom: 30px;
+#aboutPage {
+  width: 100%;
+}
+
+#aboutPage .notlogimg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3.3em;
+}
+
+#aboutPage .notlogimg .gwTitle {
+  width: 90%;
+  margin-top: -1.4em;
+  margin-bottom: -1.3em;
 }
 
 #aboutPage .aboutCont {
@@ -383,11 +467,21 @@ nav #btnRegist {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   position: relative;
-  width: 100%;
   z-index: 1000;
   background-color: #212529;
   padding: 0em 1em 0em 1em;
   position: fixed;
+  margin-top: 3.5em;
+  border-radius: 0px 0px 30px 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#premiosPage .ecoins p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #premiosPage .ecoins .premionav {
@@ -482,7 +576,7 @@ nav #btnRegist {
 
 #contactPage h2 {
   font-size: 200%;
-  margin-top: 2rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
   color: #38B000;
 }
@@ -585,7 +679,7 @@ nav #btnRegist {
   width: 100%;
   height: 100%;
   background-color: #212529;
-  z-index: 11000;
+  z-index: 41000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1017,7 +1111,8 @@ nav #btnRegist {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #0c663c;
+  background-color: #008000;
+  border-radius: 10px;
 }
 
 #signUpModal .modal-content {
@@ -1026,6 +1121,10 @@ nav #btnRegist {
 
 #signUpModal .btn-success {
   width: 100%;
+}
+
+#signUpModal .btn-close {
+  padding: 1em;
 }
 
 .btn-close {

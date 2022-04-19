@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="position: fixed;">
 
     <div class="container-fluid">
 
@@ -74,18 +74,29 @@
     <div class="contDiv">
       <div class="usser"></div>
 
-      <!-- <div class="userPerfil">
-        <img src="./img/usernotfound_ico.png" alt="cointest" width="130" style="border-radius: 100%;" id="userFoto">
+      <div class="logged-out">
+
+        <div class="notLogedMenu">
+
+          <div class="notlogimg">
+            <img src="./img/logo_png_ico.png" alt="notsign" width="80">
+            <img src="./img/greenwaydark.png" alt="gwlogo" class="gwTitle">
+          </div>
+
+          <form class="notlogbtn d-flex nav-item">
+            <button type="button" class="btn logged-out" data-bs-toggle="modal" data-bs-target="#signInModal">Ingresa y
+              gana puntos!</button>
+          </form>
+
+          <div class="notlogcoins">
+            <p class="notlogText">Recicla y gana</p>
+            <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="27">
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="userName" style="margin-top: 1em;">
-        <p>User Name</p>
-      </div>
-
-      <div class="ecoins">
-        <p class="ecoinsText">2220</p>
-        <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
-      </div> -->
 
       <div class="carouselMenu">
 
@@ -166,17 +177,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="./img/Carrefour-Logo-og.jpg"
-                class="imgCarousel" alt="...">
+              <img src="./img/Carrefour-Logo-og.jpg" class="imgCarousel" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="./img/nestle_ico.png"
-                class="imgCarousel" alt="...">
+              <img src="./img/nestle_ico.png" class="imgCarousel" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="./img/adidas_ico.png" class="imgCarousel"
-                alt="...">
+              <img src="./img/adidas_ico.png" class="imgCarousel" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -331,8 +338,9 @@
   <div id="aboutPage">
     <div class="contDiv">
 
-      <div class="aboutLogo">
-        <img src="./img/logo_png_ico.png" alt="logotest" width="120">
+      <div class="notlogimg">
+        <img src="./img/logo_png_ico.png" alt="notsign" width="80">
+        <img src="./img/greenwaydark.png" alt="gwlogo" class="gwTitle">
       </div>
 
       <div class="aboutCont">
@@ -464,8 +472,8 @@
               <td colspan="3" class="table-active">Total ecopoints: <strong class="price-total">0</strong> </td>
               <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-in"
                   onclick="checkout()">Finalizar</a></td>
-              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-out" data-bs-toggle="modal"
-                  data-bs-target="#signInModal">Iniciar Sesion</a></td>
+              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-out"
+                  data-bs-toggle="modal" data-bs-target="#signInModal">Iniciar Sesion</a></td>
             </tr>
           </table>
         </ul>

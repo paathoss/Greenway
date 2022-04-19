@@ -49,11 +49,12 @@ body {
 }
 
 nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 36;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    margin-bottom: 2em;
 
     & .navbar-brand {
         width: 30px;
@@ -105,10 +106,10 @@ nav {
     & .carouselMenu {
         width: 90%;
         max-height: 200px;
-        border-radius: 30px;
+        border-radius: 136px;
         background-color: $darkmode;
         margin-top: 1em;
-
+        border-bottom: 1px solid $green-1;
     }
 
     & .carousel-inner {
@@ -132,12 +133,12 @@ nav {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, $darkmode 100%);
+        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #0d5a36 100%);
         padding: 0em 0em 0.3em 0.5em;
 
         & p {
             font-size: x-large;
-            color: $white;
+            color: white;
             // text-shadow: 2px 0 0 $darkmode, -2px 0 0 $darkmode, 0 2px 0 $darkmode, 0 -2px 0 $darkmode, 1px 1px $darkmode, -1px -1px 0 $darkmode, 1px -1px 0 $darkmode, -1px 1px 0 $darkmode;
         }
     }
@@ -171,6 +172,51 @@ nav {
         font-size: large;
         font-weight: 500;
         // margin-top: 1rem;
+    }
+
+    & .notLogedMenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3em;
+
+        & .notlogimg {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1em;
+
+            & .gwTitle {
+                width: 90%;
+                margin-top: -1.4em;
+                margin-bottom: -1.3em;
+            }
+        }
+
+        & .notlogbtn {
+            background-color: $green-4;
+            border-radius: 10px;
+            margin-bottom: 0.5em;
+
+            & .btn {
+                color: whitesmoke;
+                font-weight: 500;
+            }
+        }
+
+        & .notlogcoins {
+            display: flex;
+            align-items: center;
+
+            & .ecoinIco {
+                margin-left: 5px;
+                margin-bottom: 10px;
+            }
+        }
+
+        & .notlogText {
+            font-size: 150%;
+        }
     }
 }
 
@@ -309,9 +355,19 @@ nav {
 }
 
 #aboutPage {
-    & .aboutLogo {
-        margin-top: 30px;
-        margin-bottom: 30px;
+    width: 100%;
+
+    & .notlogimg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3.3em;
+
+        & .gwTitle {
+            width: 90%;
+            margin-top: -1.4em;
+            margin-bottom: -1.3em;
+        }
     }
 
     & .aboutCont {
@@ -346,7 +402,7 @@ nav {
     color: $grayTit;
     position: relative;
 
-    & .row div{
+    & .row div {
         padding: 0;
     }
 
@@ -354,11 +410,18 @@ nav {
         display: flex;
         justify-content: space-around;
         position: relative;
-        width: 100%;
         z-index: 1000;
         background-color: #212529;
         padding: 0em 1em 0em 1em;
         position: fixed;
+        margin-top: 3.5em;
+        border-radius: 0px 0px 30px 30px;
+        flex-direction: column;
+
+        & p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
         & .premionav {
             display: flex;
@@ -409,7 +472,7 @@ nav {
         cursor: pointer;
     }
 
-    & .carritobtn{
+    & .carritobtn {
         background-color: $green-4;
         position: fixed;
         bottom: 0;
@@ -424,7 +487,7 @@ nav {
         border: nones;
     }
 
-    & table{
+    & table {
         box-shadow: $shadow1;
         border-radius: 10px;
     }
@@ -437,7 +500,7 @@ nav {
 
     & h2 {
         font-size: 200%;
-        margin-top: 2rem;
+        margin-top: 5rem;
         margin-bottom: 2rem;
         color: $green-4;
     }
@@ -524,7 +587,7 @@ nav {
     width: 100%;
     height: 100%;
     background-color: $darkmode;
-    z-index: 11000;
+    z-index: 41000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -873,7 +936,8 @@ nav {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #0c663c;
+        background-color: $green-5;
+        border-radius: 10px;
     }
 
     & .modal-content {
@@ -882,6 +946,10 @@ nav {
 
     & .btn-success {
         width: 100%;
+    }
+
+    & .btn-close {
+        padding: 1em;
     }
 }
 
@@ -920,7 +988,7 @@ nav {
         // & #aboutPage{}
 
         & #premiosPage {
-            .card-img-top{
+            .card-img-top {
                 width: 250px;
                 height: 300px;
                 object-fit: cover;
@@ -956,7 +1024,7 @@ nav {
 //         background-size: cover;
 //         background-attachment: fixed;
 
-    
+
 //         & #homePage,
 //         #menuPage,
 //         #estacionesPage,
