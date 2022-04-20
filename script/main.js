@@ -353,6 +353,59 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
         .catch();
 }
 
+function dropdown() {
+    var showEstaciones = app.estaciones.paradas;
+
+    var probando = []
+
+    for (let show = 0; show < showEstaciones.length; show++) {
+        const estacionesElement = showEstaciones[show];
+        console.log(`<h3><a href="#" class="btn">${estacionesElement[0]} <br> ${estacionesElement[4]}</a></h3>`)
+
+        probando.push([estacionesElement[3]])
+
+        console.log(probando)
+        console.log(probando[show])
+
+        var dropdownSection = document.createElement("div");
+        
+        dropdownSection.innerHTML = `
+    <div class="card">
+      <h5 id='waa${show}' class="card-header">${estacionesElement[0]}</h5>
+      <div class="card-body">
+        <p class="card-text">${estacionesElement[4]}</p>
+        <a href="#" class="btn" onclick="ir()">Ir</a>
+      </div>
+    </div>`
+
+        dropdownSection.classList.add('dropdownSection')
+        document.getElementById('dropdownnn').appendChild(dropdownSection)
+    }
+
+}
+
+
+
+function ir() {
+    for (let yupi = 0; yupi < app.estaciones.paradas.length; yupi++) {
+        var aaa = document.getElementById(`waa${yupi}`)
+    
+        console.log(aaa)
+        
+
+        if (aaa.innerHTML == app.estaciones.paradas[yupi][0]) {
+            var probando = [app.estaciones.paradas[yupi][3]]
+
+            console.log(probando)
+            calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
+        } else {
+            console.log('nooo')
+        }
+        
+    }
+    
+}
+
 /////Premios
 var premio =
     [

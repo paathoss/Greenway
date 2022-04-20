@@ -961,3 +961,43 @@ svg{
   height: 30px;
   color: #004B23;
 }
+
+
+
+.dropdownSection{
+  display: flex;
+  justify-content: center;
+}
+
+#dropdownnn .contDiv{
+ /*  display: none; */
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  color: white;
+
+  bottom: 45%;
+  z-index: 5;
+}
+
+#dropdownnn .card {
+  width: 60%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  background-color: #004B23;
+}
+
+#dropdownnn .card .btn {
+  background-color: #008000;
+  color: white;
+}
+
+#dropdownnn .card-body{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+  margin-bottom: -30px;
+}
