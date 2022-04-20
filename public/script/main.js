@@ -489,9 +489,6 @@ function readTheContent(product) {
     totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
     totalCard = totalCard.toFixed(2);
 
-    totalQuant = parseFloat(totalQuant) + parseFloat(infoProduct.amount);
-    totalQuant = totalQuant.toFixed(2);
-
     const exist = buyThings.some(product => product.id === infoProduct.id);
     if (exist) {
         const pro = buyThings.map(product => {
