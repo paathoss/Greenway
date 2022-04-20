@@ -100,6 +100,7 @@ nav {
     position: relative;
 
     & .web {
+        display: none;
 
         margin-top: 2.5em;
 
@@ -1278,6 +1279,11 @@ nav {
         background-color: teal;
 
         & #menuPage{
+
+            & .web{
+                display: block;
+            }
+
             & .webResponsive{
                 width: 100%;
                 max-height: 500px;

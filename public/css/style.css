@@ -99,6 +99,7 @@ nav #btnRegist {
 }
 
 #menuPage .web {
+  display: none;
   margin-top: 2.5em;
 }
 
@@ -1488,6 +1489,9 @@ nav #btnRegist {
 @media screen and (orientation: landscape) {
   body {
     background-color: teal;
+  }
+  body #menuPage .web {
+    display: block;
   }
   body #menuPage .webResponsive {
     width: 100%;
