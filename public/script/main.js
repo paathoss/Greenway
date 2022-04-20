@@ -4,7 +4,6 @@ var ubicacion = document.getElementById('ubicacion')
 var cargarPagina = (id) => {
     document.getElementById("menuPage").style.display = "none"
     document.getElementById("homePage").style.display = "none"
-    document.getElementById("estacionesPage").style.display = "none"
     document.getElementById("guiaPage").style.display = "none"
     document.getElementById("aboutPage").style.display = "none"
     document.getElementById("contactPage").style.display = "none"
@@ -487,9 +486,11 @@ function readTheContent(product) {
         amount: 1
     }
 
-
     totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price);
     totalCard = totalCard.toFixed(2);
+
+    totalQuant = parseFloat(totalQuant) + parseFloat(infoProduct.amount);
+    totalQuant = totalQuant.toFixed(2);
 
     const exist = buyThings.some(product => product.id === infoProduct.id);
     if (exist) {
@@ -892,13 +893,64 @@ recibirEcoins.addEventListener('submit', (e) => {
     infoUsuario()
 })
 
+var checkoutPopup = document.getElementById('envioPopup')
+var loginCheckEnvio = document.getElementById('signInModal')
+var noalcanza = document.getElementById('noalcanzaPopup')
+var alcanza = document.getElementById('alcanzaPopup')
 
-// transaccionCarrito(totalCard)
+function transaccionCarrito(costo) {
+    var transaccion = 0;
+    console.log("Ecoins Actual: " + eCoinsUsuario)
+    if (eCoinsUsuario < costo) {
+        noalcanza.style.display = "block"
+    }
+    else {
+        fs.collection('users').doc(auth.currentUser.uid).set({
+            eCoins: eCoinsUsuario - costo
+        }, { merge: true });
+        transaccion = eCoinsUsuario - costo;
+        cargarVariables()
+        alcanza.style.display = "block"
+        return transaccion;
+    }
 
-// comprar(totalCard);
+}
 
-/////////////////////////////
+function checkout() {
+    if (auth.onAuthStateChanged) {
+        checkoutPopup.style.display = "flex"
+    } else {
+        loginCheckEnvio.display.style = "block"
+    }
+}
 
+function btnEnvio() {
+    checkoutPopup.style.display = "none"
+}
+
+function btnNoalcanza() {
+    noalcanza.style.display = "none"
+}
+
+function btnalcanza() {
+    alcanza.style.display = "none"
+}
+
+var carritobtn = document.querySelector(".carritobtn")
+var tablaCarrito = document.querySelector(".col-md-4")
+
+function mostrarCarrito() {
+    if (tablaCarrito.style.display = "none") {
+        tablaCarrito.style.display = "block"
+    } else if (tablaCarrito.style.display = "block") {
+        tablaCarrito.style.display = "none"
+    }
+}
+
+function resetFunction() {
+    restaCoins.reset();
+    sumaCoins.reset();
+}
 
 /////////LightModeCache
 // const bdark = document.querySelector('#bdark')
@@ -924,29 +976,3 @@ recibirEcoins.addEventListener('submit', (e) => {
 // function store(value) {
 //   localStorage.setItem('darkmode', value)
 // }
-
-var checkoutPopup = document.getElementById('envioPopup')
-var loginCheckEnvio = document.getElementById('signInModal')
-
-function checkout() {
-    if (auth.onAuthStateChanged) {
-        checkoutPopup.style.display = "flex"
-    } else {
-        loginCheckEnvio.display.style = "block"
-    }
-}
-
-function btnEnvio() {
-    checkoutPopup.style.display = "none"
-}
-
-var carritobtn = document.querySelector(".carritobtn")
-var tablaCarrito = document.querySelector(".col-md-4")
-
-function mostrarCarrito() {
-    if (tablaCarrito.style.display = "none") {
-        tablaCarrito.style.display = "block"
-    } else if (tablaCarrito.style.display = "block") {
-        tablaCarrito.style.display = "none"
-    }
-}
