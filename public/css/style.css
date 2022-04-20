@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -10,7 +14,8 @@ body {
   background-attachment: fixed;
   scroll-behavior: smooth;
   position: relative;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 
@@ -59,12 +64,13 @@ body .contDiv {
 }
 
 nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 36;
   width: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  margin-bottom: 2em;
 }
 
 nav .navbar-brand {
@@ -102,6 +108,11 @@ nav #btnRegist {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+}
+
+#menuPage .usser {
+  margin-top: 2em;
 }
 
 #menuPage .contDiv {
@@ -120,9 +131,10 @@ nav #btnRegist {
 #menuPage .carouselMenu {
   width: 90%;
   max-height: 200px;
-  border-radius: 30px;
+  border-radius: 136px;
   background-color: #212529;
   margin-top: 1em;
+  border-bottom: 1px solid #CCFF33;
 }
 
 #menuPage .carousel-inner {
@@ -147,14 +159,14 @@ nav #btnRegist {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#212529));
-  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #212529 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#60a817));
+  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #60a817 100%);
   padding: 0em 0em 0.3em 0.5em;
 }
 
 #menuPage .carouselTitle p {
   font-size: x-large;
-  color: whitesmoke;
+  color: white;
 }
 
 #menuPage .ecoins {
@@ -192,6 +204,120 @@ nav #btnRegist {
 #menuPage .userName {
   font-size: large;
   font-weight: 500;
+}
+
+#menuPage .notLogedMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3em;
+}
+
+#menuPage .notLogedMenu .notlogimg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1em;
+}
+
+#menuPage .notLogedMenu .notlogimg .gwTitle {
+  width: 90%;
+  margin-top: -1.4em;
+  margin-bottom: -1.3em;
+}
+
+#menuPage .notLogedMenu .notlogbtn {
+  background-color: #38B000;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
+#menuPage .notLogedMenu .notlogbtn .btn {
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+#menuPage .notLogedMenu .notlogcoins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#menuPage .notLogedMenu .notlogcoins .ecoinIco {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#menuPage .notLogedMenu .notlogText {
+  font-size: 150%;
+}
+
+#menuPage #eventoSemanal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+#menuPage #eventoSemanal .opacityEvent {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.413);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#menuPage #eventoSemanal .opacityEvent .popupEvent {
+  width: 85%;
+  height: 70%;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: whitesmoke;
+  padding: 1em;
+  color: #212529;
+  position: relative;
+}
+
+#menuPage #eventoSemanal .opacityEvent .popupEvent .imgeventoS {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+}
+
+#menuPage #eventoSemanal .opacityEvent .popupEvent .imgeventoS img {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #homePage {
@@ -250,29 +376,11 @@ nav #btnRegist {
   bottom: 0;
 }
 
-#estacionesPage .estacionesTitle {
-  color: whitesmoke;
-  margin: 1rem;
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+#guiaPage .contDiv {
+  margin-top: 4em;
 }
 
-#estacionesPage .card {
-  width: 90%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-bottom: 1rem;
-  color: whitesmoke;
-  background-color: #004B23;
-}
-
-#estacionesPage .card .btn {
-  background-color: #008000;
-  color: white;
-}
-
-#guiaPage .userPerfil {
+#guiaPage .contDiv .userPerfil {
   width: 120px;
   height: 120px;
   margin-top: 35px;
@@ -281,12 +389,12 @@ nav #btnRegist {
   margin-bottom: 1em;
 }
 
-#guiaPage .userName {
+#guiaPage .contDiv .userName {
   font-size: large;
   font-weight: 500;
 }
 
-#guiaPage .ecoins {
+#guiaPage .contDiv .ecoins {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,17 +406,17 @@ nav #btnRegist {
           align-items: center;
 }
 
-#guiaPage .ecoins .ecoinsText {
+#guiaPage .contDiv .ecoins .ecoinsText {
   font-size: 200%;
   font-weight: 500;
 }
 
-#guiaPage .ecoins .ecoinIco {
+#guiaPage .contDiv .ecoins .ecoinIco {
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-#guiaPage .guiaCont {
+#guiaPage .contDiv .guiaCont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -327,12 +435,12 @@ nav #btnRegist {
   padding: 1rem;
 }
 
-#guiaPage .guiaCont h3 {
+#guiaPage .contDiv .guiaCont h3 {
   font-size: x-large;
   color: #38B000;
 }
 
-#guiaPage .guiaCont ul {
+#guiaPage .contDiv .guiaCont ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -345,9 +453,28 @@ nav #btnRegist {
   text-align: left;
 }
 
-#aboutPage .aboutLogo {
-  margin-top: 30px;
-  margin-bottom: 30px;
+#aboutPage {
+  width: 100%;
+}
+
+#aboutPage .notlogimg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3.3em;
+}
+
+#aboutPage .notlogimg .gwTitle {
+  width: 90%;
+  margin-top: -1.4em;
+  margin-bottom: -1.3em;
 }
 
 #aboutPage .aboutCont {
@@ -399,11 +526,21 @@ nav #btnRegist {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   position: relative;
-  width: 100%;
-  z-index: 1000;
+  z-index: 35;
   background-color: #212529;
   padding: 0em 1em 0em 1em;
   position: fixed;
+  margin-top: 3.5em;
+  border-radius: 0px 0px 30px 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#premiosPage .ecoins p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #premiosPage .ecoins .premionav {
@@ -427,6 +564,7 @@ nav #btnRegist {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
 }
 
 #premiosPage .ecoins .premioFilt select {
@@ -434,7 +572,6 @@ nav #btnRegist {
   color: whitesmoke;
   border: none;
   padding: 5px;
-  font-size: 140%;
   font-weight: 400;
 }
 
@@ -445,6 +582,10 @@ nav #btnRegist {
 
 #premiosPage .ecoins .ecoinIco {
   margin-left: 0.5rem;
+}
+
+#premiosPage .recompensa {
+  margin-top: 3em;
 }
 
 #premiosPage #winner {
@@ -494,13 +635,13 @@ nav #btnRegist {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
 }
 
 #contactPage h2 {
   font-size: 200%;
-  margin-top: 2rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
-  color: #38B000;
 }
 
 #contactPage label {
@@ -510,14 +651,37 @@ nav #btnRegist {
 
 #contactPage .contDiv {
   width: 100%;
-  background: linear-gradient(-45deg, #CCFF33, #008000, #212529, whitesmoke);
+  background: linear-gradient(-45deg, #70E000, #008000, #38B000, #70E000);
   background-size: 400% 400%;
   -webkit-animation: gradient 15s ease infinite;
           animation: gradient 15s ease infinite;
-  height: 100vh;
+  height: 100%;
+  position: relative;
+  top: 0;
+  right: 0;
 }
 
-#contactPage .contactForm {
+#contactPage .contDiv h2 {
+  color: #212529;
+  z-index: 3;
+}
+
+#contactPage .contDiv form {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+#contactPage .contDiv form .contactForm {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -532,43 +696,40 @@ nav #btnRegist {
   font-size: 120%;
 }
 
-#contactPage .contactForm input {
+#contactPage .contDiv form .contactForm input {
   width: 90%;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: whitesmoke;
   border: none;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1em;
 }
 
-#contactPage .contactForm label {
-  text-align: start;
-  color: whitesmoke;
-}
-
-#contactPage .msjContact {
+#contactPage .contDiv form .msjContact {
   width: 90%;
   height: 150px;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: whitesmoke;
   border: none;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
 }
 
-#contactPage .btnContact {
+#contactPage .contDiv form .btnContact {
   border: none;
-  border-radius: 30px;
-  background-color: #004B23;
+  border-radius: 10px;
+  background-color: #007200;
   color: whitesmoke;
-  padding: 1em;
+  padding: 1em 2em 1em 2em;
   margin: 1em;
 }
 
-#contactPage .fieldsetC {
-  background-color: transparent;
-  width: 100%;
+#contactPage .contDiv form .fieldsetC {
+  background-color: whitesmoke;
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -577,14 +738,17 @@ nav #btnRegist {
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: large;
+  color: #212529;
+  border-radius: 10px;
+  margin-bottom: 1em;
 }
 
-#contactPage .fieldsetC p {
+#contactPage .contDiv form .fieldsetC p {
   margin-top: 1em;
   margin-bottom: -1em;
 }
 
-#contactPage .tipoUser {
+#contactPage .contDiv form .tipoUser {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -594,6 +758,13 @@ nav #btnRegist {
   margin-bottom: 1em;
 }
 
+#contactPage video {
+  position: absolute;
+  height: 100vh;
+  opacity: 0.7;
+  z-index: 0;
+}
+
 #page-splash {
   position: fixed;
   top: 0;
@@ -601,7 +772,7 @@ nav #btnRegist {
   width: 100%;
   height: 100%;
   background-color: #212529;
-  z-index: 11000;
+  z-index: 41000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1033,7 +1204,8 @@ nav #btnRegist {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #0c663c;
+  background-color: #008000;
+  border-radius: 10px;
 }
 
 #signUpModal .modal-content {
@@ -1044,12 +1216,8 @@ nav #btnRegist {
   width: 100%;
 }
 
-.btn-close {
-  position: absolute;
-  font-size: larger;
-  top: 0;
-  right: 0;
-  padding: 1.5em;
+#signUpModal .btn-close {
+  padding: 1em;
 }
 
 #pruebasPage .contDiv {
@@ -1071,6 +1239,151 @@ nav #btnRegist {
 
 #pruebasPage .contDiv button {
   width: 100%;
+}
+
+#noalcanzaPopup {
+  display: none;
+  z-index: 900000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#noalcanzaPopup .contDiv {
+  background-color: #212529;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#noalcanzaPopup .contDiv .btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+#noalcanzaPopup .contDiv .recysad {
+  width: 12em;
+  margin-bottom: -4em;
+  z-index: 2;
+  margin-top: 2em;
+}
+
+#noalcanzaPopup .contDiv .oval {
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background: #eaeaea;
+  z-index: 1;
+}
+
+#noalcanzaPopup .contDiv .textNoalcanza {
+  color: whitesmoke;
+  font-weight: 500;
+  text-align: center;
+  font-size: 100%;
+  margin-top: 0.5em;
+}
+
+#noalcanzaPopup .contDiv .textNoalcanzarojo {
+  background-color: rgba(172, 42, 42, 0.999);
+  padding: 0.5em 1em 0em 1em;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-weight: 500;
+  text-align: center;
+  font-size: 120%;
+  margin-bottom: 1em;
+}
+
+#alcanzaPopup {
+  display: none;
+  position: fixed;
+  z-index: 900000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#alcanzaPopup .contDiv {
+  background-color: whitesmoke;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#alcanzaPopup .contDiv .btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
+#alcanzaPopup .contDiv .recysad {
+  width: 12em;
+  margin-bottom: -4em;
+  z-index: 2;
+  margin-top: 2em;
+}
+
+#alcanzaPopup .contDiv .oval {
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background: #cccccc;
+  z-index: 1;
+}
+
+#alcanzaPopup .contDiv .textNoalcanza {
+  color: #212529;
+  font-weight: 500;
+  text-align: center;
+  font-size: 120%;
+  margin-top: 0.5em;
+}
+
+#alcanzaPopup .contDiv .textNoalcanzarojo {
+  background-color: #38B000;
+  padding: 0.5em 1em 0em 1em;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-weight: 500;
+  text-align: center;
+  font-size: 120%;
+  margin-bottom: 1em;
+}
+
+.btn-close {
+  position: absolute;
+  font-size: larger;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+}
+
+.carouselMenu:hover {
+  -webkit-animation: menu 2s ease-in;
+          animation: menu 2s ease-in;
 }
 
 @media screen and (orientation: landscape) {
@@ -1100,6 +1413,56 @@ nav #btnRegist {
     background-size: cover;
     background-attachment: fixed;
   }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.387);
+            box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.387);
+    border-radius: 10px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), color-stop(99%, whitesmoke));
+    background-image: linear-gradient(180deg, whitesmoke 0%, whitesmoke 99%);
+    -webkit-box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #008000;
+  }
+}
+
+.light-mode {
+  /* Handle */
+}
+
+.light-mode body {
+  background-image: url(../img/bg-portrait-light.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.light-mode body #homePage,
+.light-mode body #menuPage,
+.light-mode body #estacionesPage,
+.light-mode body #guiaPage,
+.light-mode body #aboutPage,
+.light-mode body #premiosPage,
+.light-mode body #contactPage {
+  color: #212529;
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#212529), color-stop(99%, #212529));
+  background-image: linear-gradient(180deg, #212529 0%, #212529 99%);
+  -webkit-box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
 }
 
 @-webkit-keyframes gradient {
@@ -1142,5 +1505,51 @@ nav #btnRegist {
   to {
     opacity: 1;
   }
+}
+
+@-webkit-keyframes menu {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes menu {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: #212529;
+  padding-left: 5px;
+}
+
+:-ms-input-placeholder {
+  color: #212529;
+  padding-left: 5px;
+}
+
+::-ms-input-placeholder {
+  color: #212529;
+  padding-left: 5px;
+}
+
+::placeholder {
+  color: #212529;
+  padding-left: 5px;
+}
+
+input[type='radio']:checked {
+  accent-color: green;
+}
+
+input:hover {
+  border: 1px solid #70E000;
 }
 /*# sourceMappingURL=style.css.map */
