@@ -96,6 +96,27 @@ nav {
     justify-content: center;
     position: relative;
 
+    & .web {
+
+        & .circular--landscape {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        & .circular--landscape img {
+            width: auto;
+            height: 100%;
+        }
+
+        & #mgleft{
+            margin-left: -24px;
+        }
+    }
+
     & .usser {
         margin-top: 2em;
     }
@@ -229,7 +250,7 @@ nav {
         }
     }
 
-    & #eventoSemanal{
+    & #eventoSemanal {
         width: 100%;
         height: 100%;
         position: fixed;
@@ -237,7 +258,7 @@ nav {
         right: 0;
         z-index: 10000;
 
-        & .opacityEvent{
+        & .opacityEvent {
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.413);
@@ -246,7 +267,7 @@ nav {
             justify-content: center;
             align-items: center;
 
-            & .popupEvent{
+            & .popupEvent {
                 width: 85%;
                 height: 70%;
                 border-radius: 10px;
@@ -256,12 +277,12 @@ nav {
                 color: $darkmode;
                 position: relative;
 
-                & .imgeventoS{
+                & .imgeventoS {
                     width: 100%;
                     height: 150px;
                     position: absolute;
 
-                    & img{
+                    & img {
                         object-fit: contain;
                     }
                 }
