@@ -13,6 +13,22 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--landscape img {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
+
 body #homePage,
 body #menuPage,
 body #estacionesPage,
