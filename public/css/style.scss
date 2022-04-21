@@ -72,10 +72,6 @@ nav {
         color: white;
     }
 
-    & #registerNav{
-        color: #61a816;
-    }
-
     & .navbar-brand {
         width: 30px;
     }
@@ -114,6 +110,12 @@ nav {
         display: none;
 
         margin-top: 2.5em;
+
+        & .greenanc{
+            text-decoration: none;
+            color: $green-3;
+            font-weight: 500;
+        }
 
         & .circular--landscape {
             display: inline-block;

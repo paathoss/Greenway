@@ -66,10 +66,6 @@ nav a:hover {
   color: white;
 }
 
-nav #registerNav {
-  color: #61a816;
-}
-
 nav .navbar-brand {
   width: 30px;
 }
@@ -111,6 +107,12 @@ nav #btnRegist {
 #menuPage .web {
   display: none;
   margin-top: 2.5em;
+}
+
+#menuPage .web .greenanc {
+  text-decoration: none;
+  color: #70E000;
+  font-weight: 500;
 }
 
 #menuPage .web .circular--landscape {
