@@ -375,63 +375,24 @@ function mostrarEstaciones() {
 
 function ir(seleccion) {
 
-    /*   do {
-          var cordenaditas = []
-  
-          cordenaditas.push(app.estaciones.paradas[yupi][3])
-          console.log(coordenaditas)
-      } while (seleccion = app.estaciones.paradas[yupi][0]);
-  
-   */
 
 
-    var cordenaditas = [];
-    var array = app.estaciones.paradas;
+    for (let asd = 0; asd < app.estaciones.paradas.length; asd++) {
 
-    var idx = app.estaciones.paradas.indexOf(seleccion);
-    while (idx != -1) {
-        cordenaditas.push(idx);
-        idx = array.indexOf(seleccion, idx + 1);
-        console.log(cordenaditas);
-        console.log(idx);
+        var cordenaditas = [];
+        var array = app.estaciones.paradas;
 
+        var idx = app.estaciones.paradas[asd].indexOf(`Plaza Dardo Rocha`);
+        console.log(idx)
+
+        while (idx != -1) {
+            cordenaditas.push(idx);
+            idx = array.indexOf(seleccion, idx + 1);
+            /*  console.log(cordenaditas); */
+            console.log(idx);
+        }
+        /* console.log(cordenaditas); */
     }
-    console.log(cordenaditas);
-
-
-
-
-
-    // seleccion está agarrando el nombre de la estacion, no sé como pero con esto debo poder solucionarlo
-    // document.getElementById(`waa${yupi}`).addEventListener("click", function (e) {
-    //    const seleccionado = [...this.children]
-    //         .filter(el => el.className.indexOf(`waa${yupi}`) > -1)
-    //         .indexOf(e.target);
-    //         console.log(e)
-    //     })
-
-    /* console.log() */
-    // if (seleccion = app.estaciones.paradas[yupi][0]) {
-    //     var cordenaditas = []
-
-
-    //     cordenaditas.push(app.estaciones.paradas[yupi][3])
-    //     console.log(coordenaditas)
-
-    //     /* cordenaditas.push(app.estaciones.paradas[yupi][3]) */
-    //     app.estaciones.TERMINAPORFA.push(cordenaditas)
-    //     /* console.log(app.estaciones.TERMINAPORFA[yupi]) */
-
-    //     /* console.log(cordenaditas[yupi]+ "probando") */
-
-    // }
-    // else {
-    //     console.log(":(((")
-    // }
-    // console.log(cordenaditas)
-
-
-
 }
 
 
@@ -453,7 +414,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
             directionsRenderer.setDirections(response);
 
             // se oculta y muestra las direcciones que pidas
-            if (document.getElementById('ubicacion').innerHTML != '')  {
+            if (document.getElementById('ubicacion').innerHTML != '') {
                 document.getElementById('ubicacion').style.display = 'none'
                 document.getElementById('ubicacion2').innerHTML = `<div class="card  " style="background-color:#c4c4c4;">
                 <div class="card-body">
@@ -477,7 +438,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
                 </div>
             </div>`
             }
-
             /* if (document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
                 document.getElementById('ubicacion').style.display = 'none'
                 document.getElementById('ubicacion2').style.display = 'none'
@@ -488,8 +448,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
         })
         .catch();
 }
-
-
 
 
 
@@ -783,7 +741,7 @@ let usser = document.querySelector('.usser');
 let coinUser = document.querySelector('.premionav');
 
 
-function callCoins() {
+function callCoins(){
     cargarVariables();
     coinUser.innerHTML = '';
     var eCoPoInTs = document.createElement('div');
@@ -797,10 +755,10 @@ function callCoins() {
 
 
 function infoUsuario() {
-    cargarVariables();
-    usser.innerHTML = '';
-    var row = document.createElement('div');
-    row.innerHTML = `
+        cargarVariables();
+        usser.innerHTML = '';
+        var row = document.createElement('div');
+        row.innerHTML = `
                  <div class="userPerfil">
                  <img src="${userPhoto}" alt="cointest" width="130" style="border-radius: 100%;" id="userFoto">
                  </div>
@@ -814,8 +772,8 @@ function infoUsuario() {
                  <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
                </div>
 
-         `;
-    usser.appendChild(row);
+         `; 
+        usser.appendChild(row);
 }
 
 
@@ -994,7 +952,7 @@ var cargarVariables = () => {
             nombreUsuario = doc.data().userName;
             userPhoto = auth.currentUser.photoURL;
             userEmail = auth.currentUser.email;
-
+            
         }
         else {
             eCoinsUsuario = 0;
@@ -1182,7 +1140,7 @@ const loginCheckPoster = user => {
 
 var posterMenu = document.getElementById('poster')
 
-function cerrarPoster() {
+function cerrarPoster(){
     posterMenu.style.display = "none"
 }
 
