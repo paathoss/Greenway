@@ -901,7 +901,7 @@ nav #loginNav {
 
 /*//////////// ESTILO DE PATO QUE NO SE PONER LINDO CON SASS //////*/
 
-#ubicacion, #ubicacion2 {
+#ubicacion, #ubicacion2, #ubicacion3 {
   position:fixed;
   text-align: center;
   color: white;
@@ -982,7 +982,7 @@ svg{
 }
 
 #dropdownnn .card {
-  width: 60%;
+  width: 90%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 1rem;
@@ -1000,4 +1000,19 @@ svg{
   justify-content: space-around;
   margin-top: 35px;
   margin-bottom: -30px;
+}
+
+#homePage{
+  position: relative;
+}
+
+#dropdownnn{
+  display: none;
+  padding-top: 4em;
+  background: #0000008a;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  overflow: scroll;
 }

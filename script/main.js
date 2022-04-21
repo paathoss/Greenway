@@ -28,7 +28,8 @@ var app = new Vue({
             paradas: [],
             paradasActivas: [],
             paradasCoordsString: [],
-            paradasTitle: []
+            paradasTitle: [],
+            paradasDrop: []
         },
         localizacion: {
             viajeDistancia: [],
@@ -128,7 +129,7 @@ function initMap() {
             "Diagonal 73 calle 59, La Plata"
 
         ],
-        [
+        /* [
             "Parque Alberti",
             -34.922870985445115,
             -57.97918891483258,
@@ -148,14 +149,14 @@ function initMap() {
             -57.953977553541776,
             "-34.941878408342916,-57.953977553541776",
             "Avenida 25 calle 65, La Plata"
-        ],
+        ], */
         [
             "Florencio Varela",
             -34.81082801652776,
             -58.274777515795776,
             "-34.81082801652776,-58.274777515795776",
             "Avenida Tte. Gral. Juan Domingo Perón 165"
-        ],
+        ]/* ,
         [
             "La Costera",
             -34.61206473154328,
@@ -177,7 +178,7 @@ function initMap() {
             -58.37082245137918,
             "-34.626383220031585,-58.37082245137918",
             "Avenida Caseros y Defensa, CABA"
-        ]
+        ] */
     ]
 
     for (let i = 0; i < Estaciones.length; i++) {
@@ -317,6 +318,65 @@ function ordenar() {
 }
 
 
+function dropdown() {
+    var showEstaciones = app.estaciones.paradas;
+
+    var probando = []
+
+    for (let show = 0; show < showEstaciones.length; show++) {
+        const estacionesElement = showEstaciones[show];
+        console.log(`<h3><a href="#" class="btn">${estacionesElement[0]} <br> ${estacionesElement[4]}</a></h3>`)
+
+        probando.push([estacionesElement[3]])
+
+        console.log(probando)
+        console.log(probando[show])
+
+        var dropdownSection = document.createElement("div");
+
+        dropdownSection.innerHTML = `
+    <div class="card">
+      <h5 id='waa${show}' class="card-header">${estacionesElement[0]}</h5>
+      <div class="card-body">
+        <p class="card-text">${estacionesElement[4]}</p>
+        <a id="${estacionesElement[0]}" href="#" class="btn" onclick="ir('${estacionesElement[0]}')">Ir</a>
+      </div>
+    </div>`
+
+        dropdownSection.classList.add('dropdownSection')
+        document.getElementById('dropdownnn').appendChild(dropdownSection)
+    }
+}
+ 
+var dropdownPrueba = document.getElementById('dropdownnn')
+
+function mostrarEstaciones() {
+    dropdownPrueba.style.display = 'block'
+}
+
+
+function ir(seleccion) {
+    for (let yupi = 0; yupi < app.estaciones.paradas.length; yupi++) {
+        console.log(yupi)
+        // seleccion está agarrando el nombre de la estacion, no sé como pero con esto debo poder solucionarlo
+        console.log(seleccion) 
+
+        if (app.estaciones.paradas[yupi][0] = seleccion) {
+            var probando = []
+            console.log(yupi)
+            probando.push(app.estaciones.paradas[yupi][3])
+            
+            console.log(probando)
+            
+            calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
+        } else{
+            console.log(":(((")
+        }
+    }
+}
+
+
+
 function calculateAndDisplayRoute(directionsService, directionsRenderer, probando) {
     var direccionDePrueba = "-34.94486276284149,-57.96170227030192"
 
@@ -341,7 +401,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
                 document.getElementById('ubicacion2').style.display = 'block'
 
                 document.getElementById('ubicacion2').innerHTML = `<h4> Estacion: ${app.estaciones.paradasActivas[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`
-            } 
+            }
 
             document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`
             document.getElementById('ubicacion').style.display = 'block'
@@ -349,62 +409,19 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
             if (document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
                 document.getElementById('ubicacion').style.display = 'none'
             }
+
+            if (document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
+                document.getElementById('ubicacion').style.display = 'none'
+                document.getElementById('ubicacion2').style.display = 'none'
+            
+                document.getElementById('ubicacion3').style.display = 'block'
+                document.getElementById('ubicacion3').innerHTML = `<h4> Estacion: ${app.estaciones.paradasDrop}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.estaciones.paradasDrop}</h4>`
+            }
         })
         .catch();
 }
 
-function dropdown() {
-    var showEstaciones = app.estaciones.paradas;
 
-    var probando = []
-
-    for (let show = 0; show < showEstaciones.length; show++) {
-        const estacionesElement = showEstaciones[show];
-        console.log(`<h3><a href="#" class="btn">${estacionesElement[0]} <br> ${estacionesElement[4]}</a></h3>`)
-
-        probando.push([estacionesElement[3]])
-
-        console.log(probando)
-        console.log(probando[show])
-
-        var dropdownSection = document.createElement("div");
-        
-        dropdownSection.innerHTML = `
-    <div class="card">
-      <h5 id='waa${show}' class="card-header">${estacionesElement[0]}</h5>
-      <div class="card-body">
-        <p class="card-text">${estacionesElement[4]}</p>
-        <a href="#" class="btn" onclick="ir()">Ir</a>
-      </div>
-    </div>`
-
-        dropdownSection.classList.add('dropdownSection')
-        document.getElementById('dropdownnn').appendChild(dropdownSection)
-    }
-
-}
-
-
-
-function ir() {
-    for (let yupi = 0; yupi < app.estaciones.paradas.length; yupi++) {
-        var aaa = document.getElementById(`waa${yupi}`)
-    
-        console.log(aaa)
-        
-
-        if (aaa.innerHTML == app.estaciones.paradas[yupi][0]) {
-            var probando = [app.estaciones.paradas[yupi][3]]
-
-            console.log(probando)
-            calculateAndDisplayRoute(directionsService, directionsRenderer, probando)
-        } else {
-            console.log('nooo')
-        }
-        
-    }
-    
-}
 
 /////Premios
 var premio =
