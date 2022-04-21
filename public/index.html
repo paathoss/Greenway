@@ -560,7 +560,7 @@
 
           <div id="prueba" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
             <div v-for="element in recom" :key="element.id">
-              <div class="card" style="color: whitesmoke; background-color: #212529; text-align: center;">
+              <div class="card" style="color: whitesmoke; background-color: #212529; text-align: center; max-width: 500px;">
                 <img v-bind:src="element.img" width="50" id="image" class="card-img-top" alt="element.descripcion">
                 <a href="" v-bind:data-id="element.id" class="btn-add-cart btn"
                   style="color: whitesmoke; background-color: green;">CANJEAR</a>
@@ -843,6 +843,13 @@
 
 
 
+  </div>
+
+  <div id="poster" class="logged-out-poster">
+    <div class="contDiv">
+      <button type="button" class="btn-close" aria-label="Close" id="btnclsPoster" onclick="cerrarPoster()"></button>
+      <button class="dimeMas" onclick="cargarPagina('premiosPage'); cerrarPoster()">Ver Recompensas!</button>
+    </div>
   </div>
 
   <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>

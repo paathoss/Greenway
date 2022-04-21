@@ -947,9 +947,31 @@ function mostrarCarrito() {
     }
 }
 
-function resetFunction() {
-    restaCoins.reset();
-    sumaCoins.reset();
+// function resetFunction() {
+//     restaCoins.reset();
+//     sumaCoins.reset();
+// }
+
+const loggedOutPoster = document.querySelectorAll('.logged-out-poster')
+const loggedInPoster = document.querySelectorAll('.logged-in-poster')
+
+const loginCheckPoster = user => {
+    if (user) {
+        console.log("funca1")
+        loggedInPoster.forEach(link => link.style.display = 'flex')
+        loggedOutPoster.forEach(link => link.style.display = 'none')
+    }
+    else {
+        console.log("funca2")
+        loggedInPoster.forEach(link => link.style.display = 'none')
+        loggedOutPoster.forEach(link => link.style.display = 'flex')
+    }
+}
+
+var posterMenu = document.getElementById('poster')
+
+function cerrarPoster(){
+    posterMenu.style.display = "none"
 }
 
 /////////LightModeCache

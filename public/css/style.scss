@@ -120,11 +120,11 @@ nav {
             height: 100%;
         }
 
-        & #mgleft{
+        & #mgleft {
             margin-left: -24px;
         }
 
-        & .carousel-indicators{
+        & .carousel-indicators {
             margin-bottom: 0;
         }
     }
@@ -154,7 +154,7 @@ nav {
         margin-top: 1em;
         border-bottom: 1px solid $green-1;
 
-        & #carouselImg{
+        & #carouselImg {
             background-image: url(../img/villavicencio-event.jpg);
             background-size: cover;
         }
@@ -307,7 +307,7 @@ nav {
         }
     }
 
-    & .webResponsive{
+    & .webResponsive {
         width: 100%;
         height: 100%;
         display: flex;
@@ -429,7 +429,7 @@ nav {
 
         }
 
-        & .conti{
+        & .conti {
             background-color: $white;
             border-radius: 10px;
 
@@ -439,7 +439,7 @@ nav {
                 z-index: 2;
                 margin-top: 2em;
             }
-    
+
             & .oval {
                 width: 250px;
                 height: 100px;
@@ -449,7 +449,7 @@ nav {
                 background: rgb(204, 204, 204);
                 z-index: 1;
             }
-    
+
             & .textNoalcanza {
                 color: $darkmode;
                 font-weight: 500;
@@ -1261,6 +1261,56 @@ nav {
     }
 }
 
+#poster{
+    width: 100%;
+    height: 100%;
+    background-color: #212529bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 40500;
+
+    & .contDiv{
+        // width: 85%;
+        max-width: 505px;
+        min-width: 425px;
+        height: 72%;
+        background-image: url(../img/poster1.png);
+        background-size: contain;
+        border-radius: 10px;
+        padding: 1em;
+        position: relative;
+
+        & .btn-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1em;
+        }
+
+        & .dimeMas{
+            position: absolute;
+            bottom: 0;
+            padding: 1.5em;
+            border-radius: 10px;
+            border: none;
+            box-shadow: $shadow1;
+            margin-bottom: 1em;
+            background-color: #ffa000;
+            color: whitesmoke;
+            width: 90%;
+        }
+
+        & btn:hover{
+            background-color: #fbb946;
+            color: $darkmode;
+        }
+
+    }
+}
+
 .btn-close {
     position: absolute;
     font-size: larger;
@@ -1278,39 +1328,50 @@ nav {
     body {
         background-color: teal;
 
-        & #menuPage{
+        & #menuPage {
 
-            & .web{
+            & .contDiv {
+                overflow: unset;
+            }
+
+            & .web {
                 display: block;
             }
 
-            & .webResponsive{
+            & .webResponsive {
                 width: 100%;
                 max-height: 500px;
                 display: flex;
                 flex-direction: row;
 
-                & .carouselMenu{
+                & .carouselMenu {
                     height: 100%;
                     width: 90%;
                 }
 
-                & .imgCarousel{
+                & .imgCarousel {
                     height: 100%;
                 }
             }
 
-            & .notLogedMenu{
+            & .notLogedMenu {
                 margin-top: 0;
             }
 
-            & .usser{
+            & .usser {
                 margin-top: 0;
             }
 
-            & #carouselExampleControls{
+            & #carouselExampleControls {
                 border: 3px solid #38b000;
+
+                & .carouselTitle {
+                    text-align: center;
+                    font-size: xx-large;
+                }
             }
+
+
         }
 
         // & #homePage{}
@@ -1347,6 +1408,10 @@ nav {
                 background-attachment: fixed;
             }
         }
+
+        & #poster{
+            display: none;
+        }
     }
 
     /////////////////////////////////////////////////scrollbar
@@ -1375,6 +1440,15 @@ nav {
     }
 }
 
+@media screen and (max-width: 500px) {
+    #poster{
+        & .contDiv{
+            width: 90%;
+            min-width: unset;
+        }
+    }
+    
+}
 
 /////////////////////////////////////////////////////////////////////lightmode
 .light-mode {
