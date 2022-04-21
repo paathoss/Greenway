@@ -8,6 +8,7 @@ var cargarPagina = (id) => {
     document.getElementById("pruebasPage").style.display = "none"
 
     document.getElementById(id).style.display = "contents"
+    document.getElementById('pie').style.display = 'block'
 }
 cargarPagina("menuPage")
 
@@ -319,6 +320,9 @@ function ordenar() {
 
 
 function dropdown() {
+    document.getElementById('pie').style.display = 'none'
+
+
     var showEstaciones = app.estaciones.paradas;
 
     var probando = []
@@ -736,7 +740,7 @@ let usser = document.querySelector('.usser');
 let coinUser = document.querySelector('.premionav');
 
 
-function callCoins() {
+function callCoins(){
     cargarVariables();
     coinUser.innerHTML = '';
     var eCoPoInTs = document.createElement('div');
@@ -750,10 +754,10 @@ function callCoins() {
 
 
 function infoUsuario() {
-    cargarVariables();
-    usser.innerHTML = '';
-    var row = document.createElement('div');
-    row.innerHTML = `
+        cargarVariables();
+        usser.innerHTML = '';
+        var row = document.createElement('div');
+        row.innerHTML = `
                  <div class="userPerfil">
                  <img src="${userPhoto}" alt="cointest" width="130" style="border-radius: 100%;" id="userFoto">
                  </div>
@@ -767,8 +771,8 @@ function infoUsuario() {
                  <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
                </div>
 
-         `;
-    usser.appendChild(row);
+         `; 
+        usser.appendChild(row);
 }
 
 
@@ -947,7 +951,7 @@ var cargarVariables = () => {
             nombreUsuario = doc.data().userName;
             userPhoto = auth.currentUser.photoURL;
             userEmail = auth.currentUser.email;
-
+            
         }
         else {
             eCoinsUsuario = 0;
@@ -1133,8 +1137,7 @@ const loginCheckPoster = user => {
     }
 }
 
-
-function cerrarPoster() {
+function cerrarPoster(){
     document.getElementById('poster').style.display = "none"
 }
 

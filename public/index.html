@@ -42,7 +42,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" aria-current="page" href="#"
-              onclick="cargarPagina('homePage'); geoFindMe(); dropdown()">Mapa</a>
+            onclick="cargarPagina('homePage'); geoFindMe(); dropdown()">Mapa</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#" onclick="cargarPagina('premiosPage')">Recompensas</a>
@@ -60,8 +60,7 @@
             <a class="nav-link text-white" href="#" onclick="cargarPagina('pruebasPage')">Pruebas</a>
           </li>
           <li class="nav-item logged-out" style="display: none;">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal"
-              id="registerNav">Registro</a>
+            <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" id="registerNav">Registro</a>
           </li>
 
         </ul>
@@ -120,13 +119,13 @@
               <div class="col-md-3" style="text-align: center; margin-top: 40px;">
                 <div class="circular--landscape">
                   <img alt="Bootstrap Image Preview" onclick="cargarPagina('premiosPage')" id="mgleft"
-                    src="https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b" />
+                    src="https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b" style="cursor: pointer;"/>
                 </div>
                 <h2>
                   Recompensas
                 </h2>
                 <p>
-                  Desde nuestra seccion <a href="#" onclick="cargarPagina('premiosPage')">recompensas</a> podras canjear
+                  Desde nuestra seccion <a href="#" onclick="cargarPagina('premiosPage')" class="greenanc">recompensas</a> podras canjear
                   las ecoPoints que
                   obtengas por los productos que seleccionamos a partir de la ecologia y el medio hambiente
                 </p>
@@ -134,26 +133,26 @@
               <div class="col-md-1"></div>
               <div class="col-md-3" style="text-align: center; margin-top: 40px;">
                 <div class="circular--landscape">
-                  <img alt="Bootstrap Image Preview" src="./img/mapa.jpg" onclick="cargarPagina('estacionesPage')" />
+                  <img alt="Bootstrap Image Preview" src="./img/mapa.jpg" onclick="cargarPagina('homePage')" style="cursor: pointer;"/>
                 </div>
                 <h2>
                   Estaciones
                 </h2>
                 <p>
                   Activando tu geolocalizacion podras acceder desde nuestros <a href="#"
-                    onclick="cargarPagina('estacionesPage')"> mapas</a> a la estacion de reciclaje mas cercana a tu
+                    onclick="cargarPagina('estacionesPage')" class="greenanc"> mapas</a> a la estacion de reciclaje mas cercana a tu
                   domicilio.
                 </p>
               </div>
               <div class="col-md-1"></div>
               <div class="col-md-3" style="text-align: center; margin-top: 40px;">
 
-                <img alt="Bootstrap Image Preview" src="./img/coin_ico.png" width="200px" />
+                <img alt="Bootstrap Image Preview" src="./img/coin_ico.png" width="200px" onclick="cargarPagina('premiosPage')" style="cursor: pointer;"/>
                 <h2>
-                  ecoPoints
+                  <span class="greenanc">Eco</span>points
                 </h2>
                 <p>
-                  Con nuestras ecoPoints, aparte de poder acceder a nuestras recompensas, tambien pueden acceder a
+                  Con nuestras <a href="#" onclick="cargarPagina('premiosPage')" class="greenanc">ecopoints</a>, aparte de poder acceder a nuestras recompensas, tambien pueden acceder a
                   grandes eventos
                   que organizamos junto a las marcas que nos ayudan a poder seguir con esta iniciativa y así poder
                   ayudar con un
@@ -342,6 +341,7 @@
     <div id="dropdownnn"></div>
   </div>
 
+
   <div id="guiaPage">
 
     <div class="contDiv">
@@ -361,7 +361,7 @@
           usuario unico y listo, se te sumaran a tu cuenta automaticamente!</p>
       </div>
 
-      <div class="guiaCont">
+      <div class="guiaCont" style="align-items: center;">
         <h3>Que puedo reciclar?</h3>
         <p class="guiaText">Genial que preguntas! No todo es reciclable lamentablemente! Por eso te dejamos esta lista
           de todo lo que podes reciclar:</p>
@@ -649,6 +649,31 @@
         onclick="btnEnvio()"></button>
 
       <form action="https://formsubmit.co/greenway.change@gmail.com" method="POST">
+
+        <div class="regist">
+          <label for="Nombre" style="color: rgb(0, 0, 0);">Nombre completo:</label>
+          <br>
+          <input type="text" id="Nombre" name="Nombre_completo" required>
+        </div>
+
+        <div class="regist">
+          <label for="Documento" style="color: rgb(0, 0, 0);">Documento:</label>
+          <br>
+          <input type="text" id="Documento" name="Documento" required>
+        </div>
+
+        <div class="regist">
+          <label for="Mail" style="color: rgb(0, 0, 0);">Mail:</label>
+          <br>
+          <input type="text" id="Mail" name="Mail" required>
+        </div>
+
+        <div class="regist">
+          <label for="Telefono" style="color: rgb(0, 0, 0);">Telefono de contacto:</label>
+          <br>
+          <input type="text" id="Telefono" name="Telefono">
+        </div>
+
         <div class="regist">
           <label for="Calle" style="color: rgb(0, 0, 0);">Calle y Piso:</label>
           <br>
@@ -661,19 +686,18 @@
           <input type="text" id="Piso" class="registBox" name="PedidoEspecial" required>
         </div>
 
+
+
+        <!-- <input type="hidden" name="_next" value="http://localhost:5000/#"> -->
         <input type="hidden" name="_next" value="https://auth-genbrub.web.app/#">
         <input type="hidden" name="_captcha" value="false">
 
         <button type="submit" class="btnNext" onclick="transaccionCarrito(totalCard)">Enviar</button>
+
       </form>
 
       <div class="gifEnvio">
         <img src="./img/cycling-bicycle.gif" alt="bike">
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
-          aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
       </div>
 
 
@@ -874,6 +898,140 @@
     </div>
   </div>
 
+  <footer id="pie" class="text-center text-white" style="background-color: transparent">
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-md-12" style="margin-top:10px;">
+          <div class="row">
+            <div class="col-md-7">
+              
+          <h5 class="text-uppercase">Nuestro staff:</h5>
+            </div>
+            <div class="col-md-5">
+              
+          <h5 class="text-uppercase">Proyectos amigos</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Grid container -->
+    <div class="container p-4 margin-top: 10px; ">
+      <!-- Section: Images -->
+      <section class="">
+        <div class="row">
+          
+            
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C5603AQH0k41f1nSCXA/profile-displayphoto-shrink_800_800/0/1636563910392?e=1655942400&v=beta&t=g53sw5y8LjokybrsBww9p_SQK10eUQEeWKMCUniSb8U"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn"> 
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C4E03AQHRiOt7J29mGQ/profile-displayphoto-shrink_800_800/0/1637970377378?e=1655942400&v=beta&t=-P5xwDlExgrWB2tCFm58-TsGU_B-PiPM0XHUjf7Tzm4"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn">
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C4E03AQEaxNXI2SvSWg/profile-displayphoto-shrink_800_800/0/1644015788717?e=1655942400&v=beta&t=We6kPB0ztgYG5y0x4htUTPUWyRJU6zL8lAjaDeNDM8E"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn">
+            </div>
+             
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+              </a>
+              
+            </div>
+            
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="./img/diego.jpg"
+                class="w-100" height="131.98px"
+              />
+              <img src="./img/linkedin.png" class="linkedIn"> 
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            
+            <ul class="list-unstyled mb-0">
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button type="button" href="https://prueba-vue-proyecto-final.web.app/" class="btn btn-outline-light">Patitas Peludas</button>
+           
+              </li>
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button href="https://delivery-6c0fd.web.app/"  type="button" class="btn btn-outline-light">Mi barrio</button>
+              
+              </li>
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button href="https://ivoponce.herokuapp.com/" type="button" class="btn btn-outline-light">Ivo</button>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Images -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+
+
+
+
+
   <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
   <script src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
   <script src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
@@ -890,9 +1048,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/e64100c82b.js" crossorigin="anonymous"></script>
   <script src="./script/main.js"></script>
-
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
 

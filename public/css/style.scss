@@ -72,10 +72,6 @@ nav {
         color: white;
     }
 
-    & #registerNav{
-        color: #61a816;
-    }
-
     & .navbar-brand {
         width: 30px;
     }
@@ -114,6 +110,12 @@ nav {
         display: none;
 
         margin-top: 2.5em;
+
+        & .greenanc{
+            text-decoration: none;
+            color: $green-3;
+            font-weight: 500;
+        }
 
         & .circular--landscape {
             display: inline-block;
@@ -421,10 +423,11 @@ nav {
             text-align: center;
             border-radius: 20px;
             box-shadow: $shadow1;
-            background-color: $darkmode;
+            background-color: $white;
             margin-top: 1rem;
             margin-bottom: 1rem;
             padding: 1rem;
+            color: $darkmode;
 
             & h3 {
                 font-size: x-large;
@@ -439,7 +442,7 @@ nav {
             }
 
             & .guia-reci {
-                width: 100%;
+                width: 50%;
                 max-height: 600px;
                 border-radius: 10px;
             }
@@ -447,7 +450,7 @@ nav {
         }
 
         & .conti {
-            background-color: $darkmode;
+            background-color: $white;
             border-radius: 10px;
             display: flex;
             justify-content: center;
@@ -507,10 +510,11 @@ nav {
         text-align: center;
         border-radius: 20px;
         box-shadow: $shadow1;
-        background-color: $darkmode;
+        background-color: $white;
         margin-top: 1rem;
         margin-bottom: 1rem;
         padding: 1rem;
+        color: $darkmode;
 
         & h3 {
             font-size: x-large;
@@ -1146,12 +1150,21 @@ nav {
             box-shadow: $shadow1;
         }
 
+        & form{
+            z-index: 1;
+        }
+
         & .gifEnvio {
             object-fit: contain;
             width: 100%;
+            position: absolute;
+            bottom: 0;
+            z-index: 0;
+            margin-bottom: -2em;
 
             & img {
-                height: 90%;
+                height: 50%;
+                width: 70%;
             }
         }
     }
@@ -1467,6 +1480,12 @@ nav {
         & #poster {
             display: none;
         }
+
+        & #guiaPage{
+            & .guia-reci {
+                width: 40%;
+            }
+        }
     }
 
     ///////////////////////////scrollbar
@@ -1503,6 +1522,7 @@ nav {
         }
     }
 
+
 }
 
 @media screen and (min-width: 600px) {
@@ -1526,6 +1546,15 @@ nav {
     }
 }
 
+@media screen and (min-width: 750px) {
+    .gifEnvio{
+        display: none;
+        // & img{
+        //     width: 40%;
+        // }
+    }
+    
+}
 /////////////////////////////////////////////////////////////////////lightmode
 .light-mode {
     & body {

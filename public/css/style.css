@@ -4,6 +4,14 @@
           box-sizing: border-box;
 }
 
+.linke{
+  display: flex;
+
+}
+.linkedIn{
+  width: 40px;
+  position: absolute;
+}
 body {
   padding: 0px;
   margin: 0px;
@@ -1885,7 +1893,7 @@ input:hover {
   font-size: 2em;
 }
 
-#mostrarEstaciones{
+#mostrarEstaciones {
   position: absolute;
   bottom: 20%;
   right: 0;
@@ -1893,10 +1901,12 @@ input:hover {
   color: #004B23;
   font-size: 2em;
 }
+
 svg{
   height: 30px;
   color: #004B23;
 }
+
 
 
 .dropdownSection{
@@ -1950,4 +1960,8 @@ svg{
   width: 100%;
   top: 0;
   overflow: scroll;
+}
+
+.col-md-6 .card-body{
+  background-color: #066906;
 }
