@@ -12,7 +12,6 @@
   width: 40px;
   position: absolute;
 }
-
 body {
   padding: 0px;
   margin: 0px;
@@ -75,6 +74,10 @@ nav a:hover {
   color: white;
 }
 
+nav #registerNav {
+  color: #61a816;
+}
+
 nav .navbar-brand {
   width: 30px;
 }
@@ -116,12 +119,6 @@ nav #btnRegist {
 #menuPage .web {
   display: none;
   margin-top: 2.5em;
-}
-
-#menuPage .web .greenanc {
-  text-decoration: none;
-  color: #70E000;
-  font-weight: 500;
 }
 
 #menuPage .web .circular--landscape {
@@ -484,11 +481,10 @@ nav #btnRegist {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: whitesmoke;
+  background-color: #212529;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  color: #212529;
 }
 
 #guiaPage .contDiv .guiaCont h3 {
@@ -510,13 +506,13 @@ nav #btnRegist {
 }
 
 #guiaPage .contDiv .guiaCont .guia-reci {
-  width: 50%;
+  width: 100%;
   max-height: 600px;
   border-radius: 10px;
 }
 
 #guiaPage .contDiv .conti {
-  background-color: whitesmoke;
+  background-color: #212529;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -597,11 +593,10 @@ nav #btnRegist {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: whitesmoke;
+  background-color: #212529;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  color: #212529;
 }
 
 #aboutPage .aboutCont h3 {
@@ -1351,23 +1346,14 @@ nav #btnRegist {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#envioPopup .contDiv form {
-  z-index: 1;
-}
-
 #envioPopup .contDiv .gifEnvio {
   -o-object-fit: contain;
      object-fit: contain;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  z-index: 0;
-  margin-bottom: -2em;
 }
 
 #envioPopup .contDiv .gifEnvio img {
-  height: 50%;
-  width: 70%;
+  height: 90%;
 }
 
 #signUpModal .modal-dialog {
@@ -1684,9 +1670,6 @@ nav #btnRegist {
   body #poster {
     display: none;
   }
-  body #guiaPage .guia-reci {
-    width: 40%;
-  }
   /* width */
   ::-webkit-scrollbar {
     width: 7px;
@@ -1731,12 +1714,6 @@ nav #btnRegist {
   }
   #page-popup .popUpSig #sign-in-button-MAIL {
     width: 400px;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .gifEnvio {
-    display: none;
   }
 }
 
