@@ -706,7 +706,7 @@ nav #btnRegist {
 }
 
 #premiosPage .carritobtn {
-  background-color: #38B000;
+  background-color: #81ad27;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -718,7 +718,20 @@ nav #btnRegist {
   cursor: pointer;
   z-index: 30000;
   border: none;
-  border: nones;
+}
+
+#premiosPage .carritobtn .sumaCarrito {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#premiosPage .carritobtn .sumaCarrito .count-product {
+  background-color: #f33636;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  padding: 0px 6px 0px 6px;
 }
 
 #premiosPage table {
@@ -1639,6 +1652,22 @@ nav #btnRegist {
   #poster .contDiv {
     width: 90%;
     min-width: unset;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #page-popup .popUpSig {
+    width: 80%;
+    height: 80%;
+  }
+  #page-popup .popUpSig #login-email {
+    width: 400px;
+  }
+  #page-popup .popUpSig #login-password {
+    width: 400px;
+  }
+  #page-popup .popUpSig #sign-in-button-MAIL {
+    width: 400px;
   }
 }
 

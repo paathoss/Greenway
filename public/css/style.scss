@@ -11,6 +11,7 @@ $grayTit: rgb(78, 78, 78);
 $shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 $darkmode: #212529;
 $rojo: rgba(172, 42, 42, 0.999);
+$rojo2: #f33636;
 $teal: #42a8b6;
 
 * {
@@ -619,7 +620,7 @@ nav {
     }
 
     & .carritobtn {
-        background-color: $green-4;
+        background-color: #81ad27;
         position: fixed;
         bottom: 0;
         right: 0;
@@ -630,7 +631,20 @@ nav {
         cursor: pointer;
         z-index: 30000;
         border: none;
-        border: nones;
+
+        & .sumaCarrito {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            & .count-product {
+                background-color: $rojo2;
+                border-radius: 100%;
+                width: 20px;
+                height: 20px;
+                padding: 0px 6px 0px 6px;
+            }
+        }
     }
 
     & table {
@@ -1261,7 +1275,7 @@ nav {
     }
 }
 
-#poster{
+#poster {
     width: 100%;
     height: 100%;
     background-color: #212529bd;
@@ -1272,7 +1286,7 @@ nav {
     top: 0;
     z-index: 40500;
 
-    & .contDiv{
+    & .contDiv {
         // width: 85%;
         max-width: 505px;
         min-width: 425px;
@@ -1283,14 +1297,14 @@ nav {
         padding: 1em;
         position: relative;
 
-        & .btn-close{
+        & .btn-close {
             position: absolute;
             top: 0;
             right: 0;
             padding: 1em;
         }
 
-        & .dimeMas{
+        & .dimeMas {
             position: absolute;
             bottom: 0;
             padding: 1.5em;
@@ -1303,7 +1317,7 @@ nav {
             width: 90%;
         }
 
-        & btn:hover{
+        & btn:hover {
             background-color: #fbb946;
             color: $darkmode;
         }
@@ -1409,7 +1423,7 @@ nav {
             }
         }
 
-        & #poster{
+        & #poster {
             display: none;
         }
     }
@@ -1441,13 +1455,34 @@ nav {
 }
 
 @media screen and (max-width: 500px) {
-    #poster{
-        & .contDiv{
+    #poster {
+        & .contDiv {
             width: 90%;
             min-width: unset;
         }
     }
-    
+
+}
+
+@media screen and (min-width: 600px) {
+    #page-popup {
+        & .popUpSig {
+            width: 80%;
+            height: 80%;
+
+            & #login-email{
+                width: 400px;
+            }
+
+            & #login-password{
+                width: 400px;
+            }
+
+            & #sign-in-button-MAIL{
+                width: 400px;
+            }
+        }
+    }
 }
 
 /////////////////////////////////////////////////////////////////////lightmode

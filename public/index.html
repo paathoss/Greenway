@@ -530,6 +530,11 @@
       <div class="dropdown">
         <button class="carritobtn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="./img/carrito-de-compras.png" width="25px" alt="">
+
+          <div class="sumaCarrito">
+                    <strong class="count-product"> 0 </strong>
+          </div>
+
         </button>
         <ul class="dropdown-menu" style="background-color: transparent; border: none;" aria-labelledby="dropdownMenu2">
           <table id="products-id" class="table table-dark table-borderless">
@@ -545,11 +550,12 @@
             <tbody class="card-items">
             </tbody>
             <tr>
-              <td colspan="3" class="table-active">Total ecopoints: <strong class="price-total">0</strong> <strong class="count-product"> cant </strong> </td>
-              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-in"
+              <td colspan="2" class="table-active">Total ecopoints: <strong class="price-total">0</strong></td>
+              <td colspan="2" class="table-active"><a href="#" style="color: white; background-color: #81ad27;" class="btn logged-out"
+                data-bs-toggle="modal" data-bs-target="#signInModal">Iniciar Sesion</a></td>
+              <td colspan="1" class="table-active"><a href="#" style="color: white; background-color: #ffa000;" class="btn logged-in"
                   onclick="checkout()">Finalizar</a></td>
-              <td colspan="1" class="table-active"><a href="#" style="color: white;" class="btn logged-out"
-                  data-bs-toggle="modal" data-bs-target="#signInModal">Iniciar Sesion</a></td>
+
             </tr>
           </table>
         </ul>
