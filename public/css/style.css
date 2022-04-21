@@ -475,10 +475,11 @@ nav #btnRegist {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #212529;
+  background-color: whitesmoke;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
+  color: #212529;
 }
 
 #guiaPage .contDiv .guiaCont h3 {
@@ -500,13 +501,13 @@ nav #btnRegist {
 }
 
 #guiaPage .contDiv .guiaCont .guia-reci {
-  width: 100%;
+  width: 50%;
   max-height: 600px;
   border-radius: 10px;
 }
 
 #guiaPage .contDiv .conti {
-  background-color: #212529;
+  background-color: whitesmoke;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -587,10 +588,11 @@ nav #btnRegist {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #212529;
+  background-color: whitesmoke;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
+  color: #212529;
 }
 
 #aboutPage .aboutCont h3 {
@@ -1672,6 +1674,9 @@ nav #btnRegist {
   }
   body #poster {
     display: none;
+  }
+  body #guiaPage .guia-reci {
+    width: 40%;
   }
   /* width */
   ::-webkit-scrollbar {
