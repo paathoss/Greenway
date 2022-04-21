@@ -31,6 +31,7 @@ body #contactPage {
   height: 100%;
   color: whitesmoke;
   overflow: hidden;
+  background-color: teal;
 }
 
 body .contDiv {
@@ -97,6 +98,11 @@ nav #btnRegist {
   position: relative;
 }
 
+#menuPage .web {
+  display: none;
+  margin-top: 2.5em;
+}
+
 #menuPage .web .circular--landscape {
   display: inline-block;
   position: relative;
@@ -104,6 +110,9 @@ nav #btnRegist {
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
+  border: 3px solid green;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #menuPage .web .circular--landscape img {
@@ -113,6 +122,10 @@ nav #btnRegist {
 
 #menuPage .web #mgleft {
   margin-left: -24px;
+}
+
+#menuPage .web .carousel-indicators {
+  margin-bottom: 0;
 }
 
 #menuPage .usser {
@@ -133,12 +146,17 @@ nav #btnRegist {
 }
 
 #menuPage .carouselMenu {
-  width: 90%;
-  max-height: 200px;
+  width: 100%;
+  height: 200px;
   border-radius: 136px;
   background-color: #212529;
   margin-top: 1em;
   border-bottom: 1px solid #CCFF33;
+}
+
+#menuPage .carouselMenu #carouselImg {
+  background-image: url(../img/villavicencio-event.jpg);
+  background-size: cover;
 }
 
 #menuPage .carousel-inner {
@@ -324,6 +342,18 @@ nav #btnRegist {
      object-fit: contain;
 }
 
+#menuPage .webResponsive {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 #homePage {
   position: relative;
 }
@@ -457,6 +487,34 @@ nav #btnRegist {
   text-align: left;
 }
 
+#guiaPage .contDiv .conti {
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+#guiaPage .contDiv .conti .recysad {
+  width: 12em;
+  margin-bottom: -4em;
+  z-index: 2;
+  margin-top: 2em;
+}
+
+#guiaPage .contDiv .conti .oval {
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background: #cccccc;
+  z-index: 1;
+}
+
+#guiaPage .contDiv .conti .textNoalcanza {
+  color: #212529;
+  font-weight: 500;
+  text-align: center;
+  font-size: 120%;
+  margin-top: 0.5em;
+}
+
 #aboutPage {
   width: 100%;
 }
@@ -489,6 +547,9 @@ nav #btnRegist {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 90%;
   text-align: center;
   border-radius: 20px;
@@ -512,6 +573,41 @@ nav #btnRegist {
 #aboutPage .aboutCont .aboutMarcas .marcas {
   width: 100%;
   height: 100%;
+}
+
+#aboutPage .carouselMenu {
+  width: 100%;
+  max-height: 200px;
+  background-color: #212529;
+  margin-top: 1em;
+}
+
+#aboutPage .carousel-inner {
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 100%;
+}
+
+#aboutPage .imgCarousel {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#aboutPage .carouselTitle {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 167, 3, 0)), to(#60a817));
+  background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #60a817 100%);
+  padding: 0em 0em 0.3em 0.5em;
+}
+
+#aboutPage .carouselTitle p {
+  font-size: x-large;
+  color: white;
 }
 
 #premiosPage {
@@ -1391,8 +1487,41 @@ nav #btnRegist {
 }
 
 @media screen and (orientation: landscape) {
+  body {
+    background-color: teal;
+  }
+  body #menuPage .web {
+    display: block;
+  }
+  body #menuPage .webResponsive {
+    width: 100%;
+    max-height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  body #menuPage .webResponsive .carouselMenu {
+    height: 100%;
+    width: 90%;
+  }
+  body #menuPage .webResponsive .imgCarousel {
+    height: 100%;
+  }
+  body #menuPage .notLogedMenu {
+    margin-top: 0;
+  }
+  body #menuPage .usser {
+    margin-top: 0;
+  }
+  body #menuPage #carouselExampleControls {
+    border: 3px solid #38b000;
+  }
   body #premiosPage .card-img-top {
-    width: 250px;
+    width: 300px;
     height: 300px;
     -o-object-fit: cover;
        object-fit: cover;

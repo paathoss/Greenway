@@ -11,6 +11,7 @@ $grayTit: rgb(78, 78, 78);
 $shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 $darkmode: #212529;
 $rojo: rgba(172, 42, 42, 0.999);
+$teal: #42a8b6;
 
 * {
     margin: 0;
@@ -43,6 +44,7 @@ body {
         height: 100%;
         color: $white;
         overflow: hidden;
+        background-color: teal;
     }
 
     & .contDiv {
@@ -98,6 +100,9 @@ nav {
     position: relative;
 
     & .web {
+        display: none;
+
+        margin-top: 2.5em;
 
         & .circular--landscape {
             display: inline-block;
@@ -106,6 +111,8 @@ nav {
             height: 200px;
             overflow: hidden;
             border-radius: 50%;
+            border: 3px solid green;
+            box-shadow: $shadow1;
         }
 
         & .circular--landscape img {
@@ -115,6 +122,10 @@ nav {
 
         & #mgleft{
             margin-left: -24px;
+        }
+
+        & .carousel-indicators{
+            margin-bottom: 0;
         }
     }
 
@@ -136,12 +147,17 @@ nav {
     }
 
     & .carouselMenu {
-        width: 90%;
-        max-height: 200px;
+        width: 100%;
+        height: 200px;
         border-radius: 136px;
         background-color: $darkmode;
         margin-top: 1em;
         border-bottom: 1px solid $green-1;
+
+        & #carouselImg{
+            background-image: url(../img/villavicencio-event.jpg);
+            background-size: cover;
+        }
     }
 
     & .carousel-inner {
@@ -290,6 +306,13 @@ nav {
             }
         }
     }
+
+    & .webResponsive{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 #homePage {
@@ -405,6 +428,36 @@ nav {
             }
 
         }
+
+        & .conti{
+            background-color: $white;
+            border-radius: 10px;
+
+            & .recysad {
+                width: 12em;
+                margin-bottom: -4em;
+                z-index: 2;
+                margin-top: 2em;
+            }
+    
+            & .oval {
+                width: 250px;
+                height: 100px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: rgb(204, 204, 204);
+                z-index: 1;
+            }
+    
+            & .textNoalcanza {
+                color: $darkmode;
+                font-weight: 500;
+                text-align: center;
+                font-size: 120%;
+                margin-top: 0.5em;
+            }
+        }
     }
 }
 
@@ -427,6 +480,7 @@ nav {
     & .aboutCont {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 90%;
         text-align: center;
         border-radius: 20px;
@@ -448,6 +502,40 @@ nav {
                 width: 100%;
                 height: 100%;
             }
+        }
+    }
+
+    & .carouselMenu {
+        width: 100%;
+        max-height: 200px;
+        background-color: $darkmode;
+        margin-top: 1em;
+    }
+
+    & .carousel-inner {
+        border-radius: 10px;
+        box-shadow: $shadow1;
+        height: 100%;
+    }
+
+    & .imgCarousel {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+
+    }
+
+    & .carouselTitle {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #60a817 100%);
+        padding: 0em 0em 0.3em 0.5em;
+
+        & p {
+            font-size: x-large;
+            color: white;
+            // text-shadow: 2px 0 0 $darkmode, -2px 0 0 $darkmode, 0 2px 0 $darkmode, 0 -2px 0 $darkmode, 1px 1px $darkmode, -1px -1px 0 $darkmode, 1px -1px 0 $darkmode, -1px 1px 0 $darkmode;
         }
     }
 }
@@ -1188,6 +1276,42 @@ nav {
 ////////////////////////////////////////////////////////////////////landscape
 @media screen and (orientation: landscape) {
     body {
+        background-color: teal;
+
+        & #menuPage{
+
+            & .web{
+                display: block;
+            }
+
+            & .webResponsive{
+                width: 100%;
+                max-height: 500px;
+                display: flex;
+                flex-direction: row;
+
+                & .carouselMenu{
+                    height: 100%;
+                    width: 90%;
+                }
+
+                & .imgCarousel{
+                    height: 100%;
+                }
+            }
+
+            & .notLogedMenu{
+                margin-top: 0;
+            }
+
+            & .usser{
+                margin-top: 0;
+            }
+
+            & #carouselExampleControls{
+                border: 3px solid #38b000;
+            }
+        }
 
         // & #homePage{}
 
@@ -1199,7 +1323,7 @@ nav {
 
         & #premiosPage {
             .card-img-top {
-                width: 250px;
+                width: 300px;
                 height: 300px;
                 object-fit: cover;
             }
