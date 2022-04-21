@@ -10,6 +10,13 @@ $white: whitesmoke;
 $grayTit: rgb(78, 78, 78);
 $shadow1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 $darkmode: #212529;
+$rojo: rgba(172, 42, 42, 0.999);
+$teal: #42a8b6;
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 
 body {
     padding: 0px;
@@ -22,6 +29,9 @@ body {
     background-attachment: fixed;
     scroll-behavior: smooth;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    // overflow: hidden;
 
     & #homePage,
     #menuPage,
@@ -34,6 +44,7 @@ body {
         height: 100%;
         color: $white;
         overflow: hidden;
+        background-color: teal;
     }
 
     & .contDiv {
@@ -42,16 +53,17 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        overflow: scroll;
+        overflow: auto;
     }
 }
 
 nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 36;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    margin-bottom: 2em;
 
     & .navbar-brand {
         width: 30px;
@@ -67,7 +79,12 @@ nav {
         color: $white;
     }
 
-    & #btnRegist{
+    & #logOut {
+        background-color: #007200;
+        color: $white;
+    }
+
+    & #btnRegist {
         background-color: #007200;
         color: $white;
         position: absolute;
@@ -80,7 +97,41 @@ nav {
     height: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
 
+    & .web {
+        display: none;
+
+        margin-top: 2.5em;
+
+        & .circular--landscape {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 3px solid green;
+            box-shadow: $shadow1;
+        }
+
+        & .circular--landscape img {
+            width: auto;
+            height: 100%;
+        }
+
+        & #mgleft {
+            margin-left: -24px;
+        }
+
+        & .carousel-indicators {
+            margin-bottom: 0;
+        }
+    }
+
+    & .usser {
+        margin-top: 2em;
+    }
 
     & .contDiv {
         width: 100%;
@@ -96,12 +147,17 @@ nav {
     }
 
     & .carouselMenu {
-        width: 90%;
-        max-height: 200px;
-        border-radius: 30px;
+        width: 100%;
+        height: 200px;
+        border-radius: 136px;
         background-color: $darkmode;
         margin-top: 1em;
+        border-bottom: 1px solid $green-1;
 
+        & #carouselImg {
+            background-image: url(../img/villavicencio-event.jpg);
+            background-size: cover;
+        }
     }
 
     & .carousel-inner {
@@ -125,12 +181,12 @@ nav {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(255,167,3,0) 0%, $darkmode 100%);
+        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #60a817 100%);
         padding: 0em 0em 0.3em 0.5em;
 
         & p {
             font-size: x-large;
-            color: $white;
+            color: white;
             // text-shadow: 2px 0 0 $darkmode, -2px 0 0 $darkmode, 0 2px 0 $darkmode, 0 -2px 0 $darkmode, 1px 1px $darkmode, -1px -1px 0 $darkmode, 1px -1px 0 $darkmode, -1px 1px 0 $darkmode;
         }
     }
@@ -164,6 +220,98 @@ nav {
         font-size: large;
         font-weight: 500;
         // margin-top: 1rem;
+    }
+
+    & .notLogedMenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3em;
+
+        & .notlogimg {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1em;
+
+            & .gwTitle {
+                width: 90%;
+                margin-top: -1.4em;
+                margin-bottom: -1.3em;
+            }
+        }
+
+        & .notlogbtn {
+            background-color: $green-4;
+            border-radius: 10px;
+            margin-bottom: 0.5em;
+
+            & .btn {
+                color: whitesmoke;
+                font-weight: 500;
+            }
+        }
+
+        & .notlogcoins {
+            display: flex;
+            align-items: center;
+
+            & .ecoinIco {
+                margin-left: 5px;
+                margin-bottom: 10px;
+            }
+        }
+
+        & .notlogText {
+            font-size: 150%;
+        }
+    }
+
+    & #eventoSemanal {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10000;
+
+        & .opacityEvent {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.413);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & .popupEvent {
+                width: 85%;
+                height: 70%;
+                border-radius: 10px;
+                box-shadow: $shadow1;
+                background-color: $white;
+                padding: 1em;
+                color: $darkmode;
+                position: relative;
+
+                & .imgeventoS {
+                    width: 100%;
+                    height: 150px;
+                    position: absolute;
+
+                    & img {
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+    }
+
+    & .webResponsive {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -219,97 +367,120 @@ nav {
 
 }
 
-#estacionesPage {
-    & .estacionesTitle {
-        color: $white;
-        margin: 1rem;
-        text-align: center;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    & .card {
-        width: 90%;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        margin-bottom: 1rem;
-        color: $white;
-        background-color: $green-8;
-
-        & .btn {
-            background-color: $green-5;
-            color: white;
-        }
-    }
-}
-
 #guiaPage {
-    & .userPerfil {
-        width: 120px;
-        height: 120px;
-        margin-top: 35px;
-        box-shadow: $shadow1;
-        margin-bottom: 1em;
-    }
 
-    & .userName {
-        font-size: large;
-        font-weight: 500;
-        // margin-top: 1rem;
-    }
+    & .contDiv {
+        margin-top: 4em;
 
-    & .ecoins {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        & .userPerfil {
+            width: 120px;
+            height: 120px;
+            margin-top: 35px;
+            box-shadow: $shadow1;
+            margin-bottom: 1em;
+        }
 
-        & .ecoinsText {
-            font-size: 200%;
+        & .userName {
+            font-size: large;
             font-weight: 500;
+            // margin-top: 1rem;
         }
 
-        & .ecoinIco {
-            margin-left: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-    }
+        & .ecoins {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    & .guiaCont {
+            & .ecoinsText {
+                font-size: 200%;
+                font-weight: 500;
+            }
 
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        text-align: center;
-        border-radius: 20px;
-        box-shadow: $shadow1;
-        background-color: $darkmode;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        padding: 1rem;
-
-        & h3 {
-            font-size: x-large;
-            color: $green-4;
+            & .ecoinIco {
+                margin-left: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
         }
 
-        & ul {
+        & .guiaCont {
+
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            text-align: left;
+            width: 90%;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: $shadow1;
+            background-color: $darkmode;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+
+            & h3 {
+                font-size: x-large;
+                color: $green-4;
+            }
+
+            & ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: left;
+            }
+
         }
 
+        & .conti {
+            background-color: $white;
+            border-radius: 10px;
+
+            & .recysad {
+                width: 12em;
+                margin-bottom: -4em;
+                z-index: 2;
+                margin-top: 2em;
+            }
+
+            & .oval {
+                width: 250px;
+                height: 100px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: rgb(204, 204, 204);
+                z-index: 1;
+            }
+
+            & .textNoalcanza {
+                color: $darkmode;
+                font-weight: 500;
+                text-align: center;
+                font-size: 120%;
+                margin-top: 0.5em;
+            }
+        }
     }
 }
 
 #aboutPage {
-    & .aboutLogo {
-        margin-top: 30px;
-        margin-bottom: 30px;
+    width: 100%;
+
+    & .notlogimg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3.3em;
+
+        & .gwTitle {
+            width: 90%;
+            margin-top: -1.4em;
+            margin-bottom: -1.3em;
+        }
     }
 
     & .aboutCont {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 90%;
         text-align: center;
         border-radius: 20px;
@@ -333,21 +504,66 @@ nav {
             }
         }
     }
+
+    & .carouselMenu {
+        width: 100%;
+        max-height: 200px;
+        background-color: $darkmode;
+        margin-top: 1em;
+    }
+
+    & .carousel-inner {
+        border-radius: 10px;
+        box-shadow: $shadow1;
+        height: 100%;
+    }
+
+    & .imgCarousel {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+
+    }
+
+    & .carouselTitle {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(255, 167, 3, 0) 0%, #60a817 100%);
+        padding: 0em 0em 0.3em 0.5em;
+
+        & p {
+            font-size: x-large;
+            color: white;
+            // text-shadow: 2px 0 0 $darkmode, -2px 0 0 $darkmode, 0 2px 0 $darkmode, 0 -2px 0 $darkmode, 1px 1px $darkmode, -1px -1px 0 $darkmode, 1px -1px 0 $darkmode, -1px 1px 0 $darkmode;
+        }
+    }
 }
 
 #premiosPage {
     color: $grayTit;
     position: relative;
 
+    & .row div {
+        padding: 0;
+    }
+
     & .ecoins {
         display: flex;
         justify-content: space-around;
         position: relative;
-        width: 100%;
-        z-index: 1000;
+        z-index: 35;
         background-color: #212529;
         padding: 0em 1em 0em 1em;
         position: fixed;
+        margin-top: 3.5em;
+        border-radius: 0px 0px 30px 30px;
+        flex-direction: column;
+
+        & p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
         & .premionav {
             display: flex;
@@ -362,13 +578,13 @@ nav {
         & .premioFilt {
             display: flex;
             align-items: center;
+            text-align: center;
 
             & select {
                 background-color: $darkmode;
                 color: $white;
                 border: none;
                 padding: 5px;
-                font-size: 140%;
                 font-weight: 400;
             }
         }
@@ -384,6 +600,10 @@ nav {
         }
     }
 
+    & .recompensa {
+        margin-top: 3em;
+    }
+
     & #winner {
         display: flex;
         flex-wrap: wrap;
@@ -393,18 +613,42 @@ nav {
             color: whitesmoke;
         }
     }
+
+    & .delete-product {
+        cursor: pointer;
+    }
+
+    & .carritobtn {
+        background-color: $green-4;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 100%;
+        box-shadow: $shadow1;
+        cursor: pointer;
+        z-index: 30000;
+        border: none;
+        border: nones;
+    }
+
+    & table {
+        box-shadow: $shadow1;
+        border-radius: 10px;
+    }
 }
 
 #contactPage {
     text-align: center;
     display: flex;
     justify-content: center;
+    position: relative;
 
     & h2 {
         font-size: 200%;
-        margin-top: 2rem;
+        margin-top: 5rem;
         margin-bottom: 2rem;
-        color: $green-4;
     }
 
     & label {
@@ -414,70 +658,96 @@ nav {
 
     & .contDiv {
         width: 100%;
-        background: linear-gradient(-45deg, $green-1, $green-5, $darkmode, $white);
+        background: linear-gradient(-45deg, $green-3, $green-5, $green-4, $green-3);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
-        height: 100vh;
-    }
+        height: 100%;
+        position: relative;
+        top: 0;
+        right: 0;
 
-    & .contactForm {
+        & h2 {
+            color: $darkmode;
+            z-index: 3;
+        }
 
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 120%;
-
-        & input {
+        & form {
             width: 90%;
-            height: 40px;
-            border-radius: 20px;
-            background-color: $white;
-            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+
+            & .contactForm {
+
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 120%;
+
+                & input {
+                    width: 90%;
+                    height: 40px;
+                    border-radius: 10px;
+                    background-color: $white;
+                    border: none;
+                    box-shadow: $shadow1;
+                    margin-bottom: 1em;
+                }
+            }
+
+            & .msjContact {
+                width: 90%;
+                height: 150px;
+                border-radius: 10px;
+                background-color: $white;
+                border: none;
+                box-shadow: $shadow1;
+                text-align: center;
+            }
+
+            & .btnContact {
+                border: none;
+                border-radius: 10px;
+                background-color: $green-6;
+                color: $white;
+                padding: 1em 2em 1em 2em;
+                margin: 1em;
+            }
+
+            & .fieldsetC {
+                background-color: $white;
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                font-size: large;
+                color: $darkmode;
+                border-radius: 10px;
+                margin-bottom: 1em;
+
+                & p {
+                    margin-top: 1em;
+                    margin-bottom: -1em;
+                }
+            }
+
+            & .tipoUser {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1em;
+            }
         }
-
-        & label {
-            text-align: start;
-            color: $white;
-        }
     }
 
-    & .msjContact {
-        width: 90%;
-        height: 150px;
-        border-radius: 30px;
-        background-color: $white;
-        border: none;
+    & video {
+        position: absolute;
+        height: 100vh;
+        opacity: 0.7;
+        z-index: 0;
     }
 
-    & .btnContact {
-        border: none;
-        border-radius: 30px;
-        background-color: $green-8;
-        color: $white;
-        padding: 1em;
-        margin: 1em;
-    }
-
-    & .fieldsetC {
-        background-color: transparent;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        font-size: large;
-
-        & p {
-            margin-top: 1em;
-            margin-bottom: -1em;
-        }
-    }
-
-    & .tipoUser {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 1em;
-    }
 }
 
 #page-splash {
@@ -487,7 +757,7 @@ nav {
     width: 100%;
     height: 100%;
     background-color: $darkmode;
-    z-index: 11000;
+    z-index: 41000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -755,6 +1025,292 @@ nav {
 
 }
 
+#envioPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $green-4;
+    z-index: 31000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    animation: aparecer 1s forwards;
+
+    & .contDiv {
+        width: 90%;
+        height: 90%;
+        background-color: #fbfdfb;
+        overflow: hidden;
+        border-radius: 10px;
+        position: relative;
+        padding: 0.5em;
+
+        & .envioTitle {
+            font-size: xx-large;
+        }
+
+        & .regist {
+            & label {
+                color: gray;
+                font-size: medium;
+            }
+
+            & input {
+                border-radius: 0;
+                box-shadow: none;
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid rgb(20, 158, 20);
+                margin-bottom: 1em;
+            }
+        }
+
+        & .btn-close {
+            position: absolute;
+            font-size: larger;
+            top: 0;
+            right: 0;
+            padding: 1em;
+        }
+
+        & .btnNext {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 1em;
+            padding: 0.5em;
+            background-color: $green-5;
+            color: $white;
+            border: none;
+            border-radius: 10px;
+            box-shadow: $shadow1;
+        }
+
+        & .gifEnvio {
+            object-fit: contain;
+            width: 100%;
+
+            & img {
+                height: 90%;
+            }
+        }
+    }
+}
+
+#signUpModal {
+    & .modal-dialog {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $green-5;
+        border-radius: 10px;
+    }
+
+    & .modal-content {
+        width: 90%;
+    }
+
+    & .btn-success {
+        width: 100%;
+    }
+
+    & .btn-close {
+        padding: 1em;
+    }
+}
+
+#pruebasPage {
+
+    & .contDiv {
+        background-color: $darkmode;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        & button {
+            width: 100%;
+        }
+    }
+}
+
+#noalcanzaPopup {
+    display: none;
+    z-index: 900000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .contDiv {
+        background-color: $darkmode;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn-close {
+            position: absolute;
+            font-size: larger;
+            top: 0;
+            right: 0;
+            padding: 1.5em;
+            filter: invert(100%);
+        }
+
+        & .recysad {
+            width: 12em;
+            margin-bottom: -4em;
+            z-index: 2;
+            margin-top: 2em;
+        }
+
+        & .oval {
+            width: 250px;
+            height: 100px;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            background: rgb(234, 234, 234);
+            z-index: 1;
+        }
+
+        & .textNoalcanza {
+            color: whitesmoke;
+            font-weight: 500;
+            text-align: center;
+            font-size: 100%;
+            margin-top: 0.5em;
+        }
+
+        & .textNoalcanzarojo {
+            background-color: $rojo;
+            padding: 0.5em 1em 0em 1em;
+            border-radius: 10px;
+            color: $white;
+            font-weight: 500;
+            text-align: center;
+            font-size: 120%;
+            margin-bottom: 1em;
+        }
+    }
+}
+
+#alcanzaPopup {
+    display: none;
+    position: fixed;
+    z-index: 900000;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .contDiv {
+        background-color: $white;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn-close {
+            position: absolute;
+            font-size: larger;
+            top: 0;
+            right: 0;
+            padding: 1.5em;
+        }
+
+        & .recysad {
+            width: 12em;
+            margin-bottom: -4em;
+            z-index: 2;
+            margin-top: 2em;
+        }
+
+        & .oval {
+            width: 250px;
+            height: 100px;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            background: rgb(204, 204, 204);
+            z-index: 1;
+        }
+
+        & .textNoalcanza {
+            color: $darkmode;
+            font-weight: 500;
+            text-align: center;
+            font-size: 120%;
+            margin-top: 0.5em;
+        }
+
+        & .textNoalcanzarojo {
+            background-color: $green-4;
+            padding: 0.5em 1em 0em 1em;
+            border-radius: 10px;
+            color: $white;
+            font-weight: 500;
+            text-align: center;
+            font-size: 120%;
+            margin-bottom: 1em;
+        }
+    }
+}
+
+#poster{
+    width: 100%;
+    height: 100%;
+    background-color: #212529bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 40500;
+
+    & .contDiv{
+        // width: 85%;
+        max-width: 505px;
+        min-width: 425px;
+        height: 72%;
+        background-image: url(../img/poster1.png);
+        background-size: contain;
+        border-radius: 10px;
+        padding: 1em;
+        position: relative;
+
+        & .btn-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1em;
+        }
+
+        & .dimeMas{
+            position: absolute;
+            bottom: 0;
+            padding: 1.5em;
+            border-radius: 10px;
+            border: none;
+            box-shadow: $shadow1;
+            margin-bottom: 1em;
+            background-color: #ffa000;
+            color: whitesmoke;
+            width: 90%;
+        }
+
+        & btn:hover{
+            background-color: #fbb946;
+            color: $darkmode;
+        }
+
+    }
+}
+
 .btn-close {
     position: absolute;
     font-size: larger;
@@ -763,9 +1319,60 @@ nav {
     padding: 1.5em;
 }
 
-///////////////////////////////////////////////////////////////////////////
+.carouselMenu:hover {
+    animation: menu 2s ease-in;
+}
+
+////////////////////////////////////////////////////////////////////landscape
 @media screen and (orientation: landscape) {
     body {
+        background-color: teal;
+
+        & #menuPage {
+
+            & .contDiv {
+                overflow: unset;
+            }
+
+            & .web {
+                display: block;
+            }
+
+            & .webResponsive {
+                width: 100%;
+                max-height: 500px;
+                display: flex;
+                flex-direction: row;
+
+                & .carouselMenu {
+                    height: 100%;
+                    width: 90%;
+                }
+
+                & .imgCarousel {
+                    height: 100%;
+                }
+            }
+
+            & .notLogedMenu {
+                margin-top: 0;
+            }
+
+            & .usser {
+                margin-top: 0;
+            }
+
+            & #carouselExampleControls {
+                border: 3px solid #38b000;
+
+                & .carouselTitle {
+                    text-align: center;
+                    font-size: xx-large;
+                }
+            }
+
+
+        }
 
         // & #homePage{}
 
@@ -774,6 +1381,14 @@ nav {
         // & #guiaPage{}
 
         // & #aboutPage{}
+
+        & #premiosPage {
+            .card-img-top {
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+            }
+        }
 
         & #contactPage {
             background-image: url(../img/fondo-contact-01.jpg);
@@ -793,36 +1408,124 @@ nav {
                 background-attachment: fixed;
             }
         }
+
+        & #poster{
+            display: none;
+        }
+    }
+
+    /////////////////////////////////////////////////scrollbar
+    /* width */
+    & ::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    /* Track */
+    & ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.387);
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    & ::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        // background-image: linear-gradient(180deg, $green-4 0%, $green-4 99%);
+        background-image: linear-gradient(180deg, $white 0%, $white 99%);
+        box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    }
+
+    /* Handle on hover */
+    & ::-webkit-scrollbar-thumb:hover {
+        background: $green-5;
     }
 }
 
+@media screen and (max-width: 500px) {
+    #poster{
+        & .contDiv{
+            width: 90%;
+            min-width: unset;
+        }
+    }
+    
+}
 
-///////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////lightmode
 .light-mode {
     & body {
+        background-image: url(../img/bg-portrait-light.png);
+        background-size: cover;
+        background-attachment: fixed;
+
 
         & #homePage,
+        #menuPage,
         #estacionesPage,
         #guiaPage,
         #aboutPage,
+        #premiosPage,
         #contactPage {
-            width: 100%;
-            height: 100%;
-            background-color: rgb(2, 3, 23);
+            color: $darkmode;
         }
+
+    }
+
+    /////////////////////////////////////////////////scrollbar
+    /* Handle */
+    & ::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        // background-image: linear-gradient(180deg, $green-4 0%, $green-4 99%);
+        background-image: linear-gradient(180deg, $darkmode 0%, $darkmode 99%);
+        box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
     }
 }
 
 
 //////////////////////////////////////////////////////////////////////animaciones
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes menu {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////inputs
+::placeholder {
+    color: $darkmode;
+    padding-left: 5px;
+}
+
+input[type='radio']:checked {
+    accent-color: green;
+}
+
+input:hover {
+    border: 1px solid $green-3;
 }
