@@ -1338,14 +1338,23 @@ nav #btnRegist {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+#envioPopup .contDiv form {
+  z-index: 1;
+}
+
 #envioPopup .contDiv .gifEnvio {
   -o-object-fit: contain;
      object-fit: contain;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  margin-bottom: -2em;
 }
 
 #envioPopup .contDiv .gifEnvio img {
-  height: 90%;
+  height: 50%;
+  width: 70%;
 }
 
 #signUpModal .modal-dialog {
@@ -1706,6 +1715,12 @@ nav #btnRegist {
   }
   #page-popup .popUpSig #sign-in-button-MAIL {
     width: 400px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .gifEnvio {
+    display: none;
   }
 }
 

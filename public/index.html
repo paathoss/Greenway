@@ -642,6 +642,31 @@
         onclick="btnEnvio()"></button>
 
       <form action="https://formsubmit.co/greenway.change@gmail.com" method="POST">
+
+        <div class="regist">
+          <label for="Nombre" style="color: rgb(0, 0, 0);">Nombre completo:</label>
+          <br>
+          <input type="text" id="Nombre" name="Nombre_completo" required>
+        </div>
+
+        <div class="regist">
+          <label for="Documento" style="color: rgb(0, 0, 0);">Documento:</label>
+          <br>
+          <input type="text" id="Documento" name="Documento" required>
+        </div>
+
+        <div class="regist">
+          <label for="Mail" style="color: rgb(0, 0, 0);">Mail:</label>
+          <br>
+          <input type="text" id="Mail" name="Mail" required>
+        </div>
+
+        <div class="regist">
+          <label for="Telefono" style="color: rgb(0, 0, 0);">Telefono de contacto:</label>
+          <br>
+          <input type="text" id="Telefono" name="Telefono">
+        </div>
+
         <div class="regist">
           <label for="Calle" style="color: rgb(0, 0, 0);">Calle y Piso:</label>
           <br>
@@ -654,19 +679,18 @@
           <input type="text" id="Piso" class="registBox" name="PedidoEspecial" required>
         </div>
 
+
+
+        <!-- <input type="hidden" name="_next" value="http://localhost:5000/#"> -->
         <input type="hidden" name="_next" value="https://auth-genbrub.web.app/#">
         <input type="hidden" name="_captcha" value="false">
 
         <button type="submit" class="btnNext" onclick="transaccionCarrito(totalCard)">Enviar</button>
+
       </form>
 
       <div class="gifEnvio">
         <img src="./img/cycling-bicycle.gif" alt="bike">
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
-          aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
       </div>
 
 
