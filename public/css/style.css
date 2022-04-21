@@ -1473,6 +1473,61 @@ nav #btnRegist {
   margin-bottom: 1em;
 }
 
+#poster {
+  width: 100%;
+  height: 100%;
+  background-color: #212529bd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 40500;
+}
+
+#poster .contDiv {
+  max-width: 505px;
+  min-width: 425px;
+  height: 72%;
+  background-image: url(../img/poster1.png);
+  background-size: contain;
+  border-radius: 10px;
+  padding: 1em;
+  position: relative;
+}
+
+#poster .contDiv .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+}
+
+#poster .contDiv .dimeMas {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5em;
+  border-radius: 10px;
+  border: none;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1em;
+  background-color: #ffa000;
+  color: whitesmoke;
+  width: 90%;
+}
+
+#poster .contDiv btn:hover {
+  background-color: #fbb946;
+  color: #212529;
+}
+
 .btn-close {
   position: absolute;
   font-size: larger;
@@ -1489,6 +1544,9 @@ nav #btnRegist {
 @media screen and (orientation: landscape) {
   body {
     background-color: teal;
+  }
+  body #menuPage .contDiv {
+    overflow: unset;
   }
   body #menuPage .web {
     display: block;
@@ -1520,6 +1578,10 @@ nav #btnRegist {
   body #menuPage #carouselExampleControls {
     border: 3px solid #38b000;
   }
+  body #menuPage #carouselExampleControls .carouselTitle {
+    text-align: center;
+    font-size: xx-large;
+  }
   body #premiosPage .card-img-top {
     width: 300px;
     height: 300px;
@@ -1546,6 +1608,9 @@ nav #btnRegist {
     background-size: cover;
     background-attachment: fixed;
   }
+  body #poster {
+    display: none;
+  }
   /* width */
   ::-webkit-scrollbar {
     width: 7px;
@@ -1567,6 +1632,13 @@ nav #btnRegist {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #008000;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #poster .contDiv {
+    width: 90%;
+    min-width: unset;
   }
 }
 
