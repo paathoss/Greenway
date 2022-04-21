@@ -437,6 +437,8 @@ hola.recom = premio
 let allContainerCart = document.querySelector('.products');
 let containerBuyCart = document.querySelector('.card-items');
 let priceTotal = document.querySelector('.price-total')
+let amountProduct = document.querySelector('.count-product');
+
 
 
 let buyThings = [];
@@ -525,6 +527,7 @@ function loadHtml() {
          `;
         containerBuyCart.appendChild(row);
         priceTotal.innerHTML = totalCard;
+        amountProduct.innerHTML = countProduct;
 
     });
 
