@@ -29,8 +29,7 @@ var app = new Vue({
             paradasActivas: [],
             paradasCoordsString: [],
             paradasTitle: [],
-            paradasDrop: [],
-            TERMINAPORFA: []
+            paradasDrop: []
         },
         localizacion: {
             viajeDistancia: [],
@@ -130,7 +129,7 @@ function initMap() {
             "Diagonal 73 calle 59, La Plata"
 
         ],
-        /* [
+        [
             "Parque Alberti",
             -34.922870985445115,
             -57.97918891483258,
@@ -150,14 +149,14 @@ function initMap() {
             -57.953977553541776,
             "-34.941878408342916,-57.953977553541776",
             "Avenida 25 calle 65, La Plata"
-        ], */
+        ],
         [
             "Florencio Varela",
             -34.81082801652776,
             -58.274777515795776,
             "-34.81082801652776,-58.274777515795776",
             "Avenida Tte. Gral. Juan Domingo Perón 165"
-        ]/* ,
+        ],
         [
             "La Costera",
             -34.61206473154328,
@@ -179,7 +178,7 @@ function initMap() {
             -58.37082245137918,
             "-34.626383220031585,-58.37082245137918",
             "Avenida Caseros y Defensa, CABA"
-        ] */
+        ]
     ]
 
     for (let i = 0; i < Estaciones.length; i++) {
@@ -227,7 +226,6 @@ function initMap() {
 
                     app.estaciones.paradasActivas = paradasActivasInfo
                     var probando = paradasActivas
-
 
                     document.getElementById("ubicacion").style.display = 'none'
 
@@ -327,12 +325,12 @@ function dropdown() {
 
     for (let show = 0; show < showEstaciones.length; show++) {
         const estacionesElement = showEstaciones[show];
-        console.log(`<h3><a href="#" class="btn">${estacionesElement[0]} <br> ${estacionesElement[4]}</a></h3>`)
+        /* console.log(`<h3><a href="#" class="btn">${estacionesElement[0]} <br> ${estacionesElement[4]}</a></h3>`) */
 
         probando.push([estacionesElement[3]])
 
-        console.log(probando)
-        console.log(probando[show])
+        /* console.log(probando)
+        console.log(probando[show]) */
 
         var dropdownSection = document.createElement("div");
 
@@ -348,7 +346,7 @@ function dropdown() {
                 <h5 id='waa${show}' class="card-header">${estacionesElement[0]}</h5>
                 <div class="card-body">
                   <p class="card-text">${estacionesElement[4]}</p>
-                  <a id="${estacionesElement[0]}" href="#" class="btn" onclick="ir('${estacionesElement[0]}')">Ir</a>
+                  <a id="${estacionesElement[0]}" href="#" class="btn" onclick="ir('${estacionesElement[0]}'); mostrarEstaciones(); noMostrar()">Ir</a>
                 </div>
               </div>
                 </div>
@@ -362,37 +360,41 @@ function dropdown() {
 }
 
 
-var dropdownPrueba = document.getElementById('dropdownnn')
 
 function mostrarEstaciones() {
     if (document.getElementById('dropdownnn').style.display = 'none') {
         document.getElementById('dropdownnn').style.display = 'block'
-    } else {
-        document.getElementById('dropdownnn').style.display = 'none'
     }
 }
 
-
-function ir(seleccion) {
-
-
-
-    for (let asd = 0; asd < app.estaciones.paradas.length; asd++) {
-
-        var cordenaditas = [];
-        var array = app.estaciones.paradas;
-
-        var idx = app.estaciones.paradas[asd].indexOf(`Plaza Dardo Rocha`);
-        console.log(idx)
-
-        while (idx != -1) {
-            cordenaditas.push(idx);
-            idx = array.indexOf(seleccion, idx + 1);
-            /*  console.log(cordenaditas); */
-            console.log(idx);
-        }
-        /* console.log(cordenaditas); */
+function noMostrar() {
+    if (document.getElementById('dropdownnn').style.display = 'block') {
+        document.getElementById('dropdownnn').style.display = 'none'
     }
+}
+function ir(seleccion) {
+    for (let asd = 0; asd < app.estaciones.paradas.length; asd++) {
+        var idx = app.estaciones.paradas[asd].indexOf(`${seleccion}`)
+        
+        if (idx != -1) {
+            /* console.log(seleccion)
+            console.log(app.estaciones.paradas[asd][3]) */
+            app.estaciones.paradasDrop.push(app.estaciones.paradas[asd][3])
+
+            var cordenaditas = { lat: app.estaciones.paradas[asd][1], lng: app.estaciones.paradas[asd][2] };
+            
+            app.map.mapita.panTo(cordenaditas)
+            app.map.mapita.setZoom(16)
+        } 
+    }
+
+    if (document.getElementById('dropdownnn').style.display = 'block') {
+      
+        document.getElementById('dropdownnn').style.display = 'none'
+       /*  console.log("cacanty") */
+    } /* else{
+        console.log("caca")
+    } */
 }
 
 
@@ -417,7 +419,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
             if (document.getElementById('ubicacion').innerHTML != '') {
                 document.getElementById('ubicacion').style.display = 'none'
                 document.getElementById('ubicacion2').innerHTML = `<div class="card  " style="background-color:#c4c4c4;">
-                <div class="card-body">
+                <div class="card-body" style="background-color: #066906!important;>
                     <h5 class="card-title">Estacion: ${app.estaciones.paradasActivas[0][0]}</h5>
                     <p class="card-text">
                         Estás a ${response.routes[0].legs[0].distance.text} de cuidar el planeta :)</br><br>Direccion: ${app.localizacion.destinoFinal[0][4]}</br>
@@ -430,7 +432,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
             if (document.getElementById('ubicacion2').innerHTML == '') {
                 document.getElementById('ubicacion').style.display = 'block'
                 document.getElementById('ubicacion').innerHTML = ` <div class="card  " style="background-color:#c4c4c4;">
-                <div class="card-body">
+                <div class="card-body" style="background-color: #066906!important;>
                     <h5 class="card-title">Estacion más cercana: ${app.localizacion.destinoFinal[0][0]}</h5>
                     <p class="card-text">
                         Estás a ${response.routes[0].legs[0].distance.text} de cuidar el planeta :)</br><br>Direccion: ${app.localizacion.destinoFinal[0][4]}</br>
@@ -438,13 +440,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, proband
                 </div>
             </div>`
             }
-            /* if (document.getElementById('ubicacion').innerHTML = `<h4> Estacion: ${app.localizacion.destinoFinal[0][0]}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.localizacion.destinoFinal[0][4]}</h4>`) {
-                document.getElementById('ubicacion').style.display = 'none'
-                document.getElementById('ubicacion2').style.display = 'none'
-
-                document.getElementById('ubicacion3').style.display = 'block'
-                document.getElementById('ubicacion3').innerHTML = `<h4> Estacion: ${app.estaciones.paradasDrop}</h4> <br> <h4>Estás a ${response.routes[0].legs[0].distance.text} de distancia <br> Estás a ${response.routes[0].legs[0].duration.text} de cuidar el planeta :)</h4> <br><br> <h4> Direccion: ${app.estaciones.paradasDrop}</h4>`
-            } */
         })
         .catch();
 }
@@ -741,7 +736,7 @@ let usser = document.querySelector('.usser');
 let coinUser = document.querySelector('.premionav');
 
 
-function callCoins(){
+function callCoins() {
     cargarVariables();
     coinUser.innerHTML = '';
     var eCoPoInTs = document.createElement('div');
@@ -755,10 +750,10 @@ function callCoins(){
 
 
 function infoUsuario() {
-        cargarVariables();
-        usser.innerHTML = '';
-        var row = document.createElement('div');
-        row.innerHTML = `
+    cargarVariables();
+    usser.innerHTML = '';
+    var row = document.createElement('div');
+    row.innerHTML = `
                  <div class="userPerfil">
                  <img src="${userPhoto}" alt="cointest" width="130" style="border-radius: 100%;" id="userFoto">
                  </div>
@@ -772,8 +767,8 @@ function infoUsuario() {
                  <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="40">
                </div>
 
-         `; 
-        usser.appendChild(row);
+         `;
+    usser.appendChild(row);
 }
 
 
@@ -952,7 +947,7 @@ var cargarVariables = () => {
             nombreUsuario = doc.data().userName;
             userPhoto = auth.currentUser.photoURL;
             userEmail = auth.currentUser.email;
-            
+
         }
         else {
             eCoinsUsuario = 0;
@@ -1138,10 +1133,9 @@ const loginCheckPoster = user => {
     }
 }
 
-var posterMenu = document.getElementById('poster')
 
-function cerrarPoster(){
-    posterMenu.style.display = "none"
+function cerrarPoster() {
+    document.getElementById('poster').style.display = "none"
 }
 
 /////////LightModeCache

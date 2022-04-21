@@ -1878,18 +1878,25 @@ input:hover {
 
 #mostrarUbicacionActual{
   position: absolute;
-  bottom: 7.5%;
+  bottom: 28%;
   right: 0;
   margin-right: 3.5%;
   color: #004B23;
   font-size: 2em;
 }
 
+#mostrarEstaciones{
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  margin-right: 4.5%;
+  color: #004B23;
+  font-size: 2em;
+}
 svg{
   height: 30px;
   color: #004B23;
 }
-
 
 
 .dropdownSection{
