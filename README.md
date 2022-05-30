@@ -1,5 +1,2 @@
-# Greenway
-
-Debido a problemas técnicos usar este link   https://auth-genbrub.web.app  para usar el inicio de sesión con Gmail, ecoPoints y canjear recompensas.
-
-Y este https://genbrug-bc1b4.web.app para usar el mapa con todas las implementaciones funcionales, el problema será solucionado prontamente.
+Esta es la pagina de Reciclaje en la que Leonardo Peñalver, Diego Diaz, Melina Britez y Patricio Santoro trabajamos como proyecto final del bootcamp Front-End Iniciatec.
+Utilizamos firebase, autenticación con google, facebook y email, la API de google maps, vue y sass.
