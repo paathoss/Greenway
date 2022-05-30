@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="./img/logo_png_ico.png" />
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Plus+Jakarta+Sans:wght@200&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>GreenWay</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="position: fixed;">
+
+    <div class="container-fluid">
+
+      <img class="navbar-brand" src="./img/logo_png_ico.png" alt="genbrug__logo" onclick="cargarPagina('menuPage')"
+        style="cursor: pointer;">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        style="filter: invert(100%);">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" href="#"
+              onclick="cargarPagina('menuPage');infoUsuario()">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" href="#"
+            onclick="cargarPagina('homePage'); geoFindMe(); dropdown()">Mapa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('premiosPage')">Recompensas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" onclick="cargarPagina('guiaPage')"> Guia de reciclaje </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('aboutPage')">Acerca de nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('contactPage')">Contacto</a>
+          </li>
+          <li class="nav-item logged-in">
+            <a class="nav-link text-white" href="#" onclick="cargarPagina('pruebasPage')">Pruebas</a>
+          </li>
+          <li class="nav-item logged-out" style="display: none;">
+            <a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" id="registerNav">Registro</a>
+          </li>
+
+        </ul>
+
+        <form class="d-flex nav-item">
+          <button type="button" class="btn logged-in" id="logOut">Log Out</button>
+        </form>
+
+        <form class="d-flex nav-item">
+          <button type="button" class="btn logged-out" id="loginNav" data-bs-toggle="modal"
+            data-bs-target="#signInModal">Log In</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+
+  <div id="menuPage">
+
+    <div class="web">
+      <div class="container-fluid">
+        <div class="row" style="display: flex; justify-content: center;">
+          <div class="col-md-12" style="padding: 0;">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner" style="text-align: center;">
+                <div class="carousel-item active" data-bs-interval="10000">
+                  <img src="./img/banner1.png" class="w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                  <img src="./img/banner2.png" class="w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/imagen3.png" class="w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <div class="row" style="justify-content: center; background-color: #212529;">
+              <div class="col-md-3" style="text-align: center; margin-top: 40px;">
+                <div class="circular--landscape">
+                  <img alt="Bootstrap Image Preview" onclick="cargarPagina('premiosPage')" id="mgleft"
+                    src="https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b" style="cursor: pointer;"/>
+                </div>
+                <h2>
+                  Recompensas
+                </h2>
+                <p>
+                  Desde nuestra seccion <a href="#" onclick="cargarPagina('premiosPage')" class="greenanc">recompensas</a> podras canjear
+                  las ecoPoints que
+                  obtengas por los productos que seleccionamos a partir de la ecologia y el medio hambiente
+                </p>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3" style="text-align: center; margin-top: 40px;">
+                <div class="circular--landscape">
+                  <img alt="Bootstrap Image Preview" src="./img/mapa.jpg" onclick="cargarPagina('homePage')" style="cursor: pointer;"/>
+                </div>
+                <h2>
+                  Estaciones
+                </h2>
+                <p>
+                  Activando tu geolocalizacion podras acceder desde nuestros <a href="#"
+                    onclick="cargarPagina('estacionesPage')" class="greenanc"> mapas</a> a la estacion de reciclaje mas cercana a tu
+                  domicilio.
+                </p>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3" style="text-align: center; margin-top: 40px;">
+
+                <img alt="Bootstrap Image Preview" src="./img/coin_ico.png" width="200px" onclick="cargarPagina('premiosPage')" style="cursor: pointer;"/>
+                <h2>
+                  <span class="greenanc">Eco</span>points
+                </h2>
+                <p>
+                  Con nuestras <a href="#" onclick="cargarPagina('premiosPage')" class="greenanc">ecopoints</a>, aparte de poder acceder a nuestras recompensas, tambien pueden acceder a
+                  grandes eventos
+                  que organizamos junto a las marcas que nos ayudan a poder seguir con esta iniciativa y así poder
+                  ayudar con un
+                  granito de arena a el hermoso planeta en el que vivimos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contDiv">
+
+      <div class="usser"></div>
+
+      <div class="logged-out">
+
+        <div class="notLogedMenu">
+
+          <div class="notlogimg">
+            <img src="./img/logo_png_ico.png" alt="notsign" width="80">
+            <img src="./img/greenwaydark.png" alt="gwlogo" class="gwTitle">
+          </div>
+
+          <form class="notlogbtn d-flex nav-item">
+            <button type="button" class="btn logged-out" data-bs-toggle="modal" data-bs-target="#signInModal">Ingresa y
+              gana puntos!</button>
+          </form>
+
+          <div class="notlogcoins">
+            <p class="notlogText">Recicla y gana</p>
+            <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="27">
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="webResponsive">
+        <div class="carouselMenu">
+
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0390/9527/1556/products/ECO03-Taupe_0_1_600x.jpg?v=1641942413"
+                  class="imgCarousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://www.hola.com/imagenes/estar-bien/20191212155436/cepillos-dientes-bambu-inconvenientes-gt/0-753-977/dientes-t.jpg?filter=w600"
+                  class="imgCarousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/genbrug-1ff7a.appspot.com/o/gorragw_img.jpg?alt=media&token=b6974455-07f5-43a3-9acf-efe54f88063b"
+                  class="imgCarousel" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+
+            <div class="carouselTitle">
+              <p onclick="cargarPagina('premiosPage')">Recompensas</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="carouselMenu">
+
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner" id="carouselImg">
+              <!-- <div class="carousel-item active">
+                <img src="./img/villavicencio-event.jpg" class="imgCarousel" alt="...">
+              </div> -->
+            </div>
+
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button> -->
+
+
+            <div class="carouselTitle">
+              <p onclick="cargarPagina('premiosPage')">Evento Semanal</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- <section id="eventoSemanal" style="z-index: 90000;">
+        <div class="opacityEvent">
+
+          <div class="popupEvent">
+
+            <div class="imgeventoS">
+              <img src="./img/villavicencio-event.jpg" alt="ve">
+            </div>
+
+            <div class="txtEvent">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit quibusdam modi aut dolor tempore, ipsam, ex tempora similique unde cupiditate impedit ullam explicabo autem quisquam officia ipsa exercitationem tenetur eum rerum dignissimos. Nulla recusandae provident exercitationem asperiores soluta, quaerat cumque illo quidem perspiciatis perferendis ipsum libero tenetur, </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section> -->
+
+    </div>
+
+  </div>
+
+  <div id="homePage">
+    <!-- <div class="ecoins">
+      <p class="ecoinsText">2220</p>
+      <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="30">
+    </div> -->
+
+    <div class="a"></div>
+    <div class="seasons">
+      <div class="blureado" id="blur" onclick="shownt()"></div>
+      <div id="sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+
+    <div id="geolocationError">
+      <div class="contDiv">
+        <div class="card">
+          <h5 class="card-header">Lo siento, debe activar la Ubicacion Actual para continuar</h5>
+          <div class="card-body">
+            <h3><a href="#" class="btn" onclick="cargarPagina('premiosPage')">Ir a ver Recompensas</a></h3>
+            <h3><a href="#" class="btn" onclick="geoFindMe()">Activar</a></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="map" class="map_estaciones"></div>
+
+    <div id="mostrarUbicacionActual" onclick="mostrarUbicacionActual()"><svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512">
+        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+        <path
+          d="M176 256C176 211.8 211.8 176 256 176C300.2 176 336 211.8 336 256C336 300.2 300.2 336 256 336C211.8 336 176 300.2 176 256zM256 0C273.7 0 288 14.33 288 32V66.65C368.4 80.14 431.9 143.6 445.3 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H445.3C431.9 368.4 368.4 431.9 288 445.3V480C288 497.7 273.7 512 256 512C238.3 512 224 497.7 224 480V445.3C143.6 431.9 80.14 368.4 66.65 288H32C14.33 288 0 273.7 0 256C0 238.3 14.33 224 32 224H66.65C80.14 143.6 143.6 80.14 224 66.65V32C224 14.33 238.3 0 256 0zM128 256C128 326.7 185.3 384 256 384C326.7 384 384 326.7 384 256C384 185.3 326.7 128 256 128C185.3 128 128 185.3 128 256z" />
+      </svg></div>
+     
+    <svg id="mostrarEstaciones" onclick="mostrarEstaciones()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z" />
+    </svg>
+    <div id="ubicacion"></div>
+
+    <div id="ubicacion2"></div>
+
+    <div id="ubicacion3"></div>
+
+    <div id="dropdownnn"></div>
+  </div>
+
+
+  <div id="guiaPage">
+
+    <div class="contDiv">
+
+      <div class="usser"></div>
+
+      <div class="guiaCont">
+        <h3>Como funciona?</h3>
+        <p class="guiaText">Las 'Ecopoints' llegaron para ser nuestra forma de apoyo para el cuidado de nuestro mundo.
+          Simplemente tenes que acercarte a la 'Estacion de Reciclaje' mas proxima, ingresar tus objetos reciclables y
+          listo!</p>
+      </div>
+
+      <div class="guiaCont">
+        <h3>Como ingreso mis Ecopoints?</h3>
+        <p class="guiaText">Luego de ingresar tus productos en la 'Estacion de Reciclaje' podras ingresar tu ID de
+          usuario unico y listo, se te sumaran a tu cuenta automaticamente!</p>
+      </div>
+
+      <div class="guiaCont" style="align-items: center;">
+        <h3>Que puedo reciclar?</h3>
+        <p class="guiaText">Genial que preguntas! No todo es reciclable lamentablemente! Por eso te dejamos esta lista
+          de todo lo que podes reciclar:</p>
+        <img src="./img/guia-reci.jpg" alt="guia-reciclaje" class="guia-reci">
+        <!-- <ul>
+          <li>Plasticos secos</li>
+          <li>Carton</li>
+          <li>Papel</li>
+          <li>etc</li>
+          <li>etc</li>
+        </ul> -->
+      </div>
+
+      <div class="conti">
+        <img src="./img/recy-feli.png" alt="recy-sad" class="recysad">
+
+        <div class="oval"></div>
+
+        <div class="textNoalcanza">
+          <p>Salgamos a dar un paseo!</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="aboutPage">
+    <div class="contDiv">
+
+      <div class="notlogimg">
+        <img src="./img/logo_png_ico.png" alt="notsign" width="80">
+        <img src="./img/greenwaydark.png" alt="gwlogo" class="gwTitle">
+      </div>
+
+      <div class="aboutCont">
+        <h3>Quienes somos?</h3>
+        <p class="aboutText">Somos un grupo de chicas y chicos emprendedores que queremos ayudar al mundo impulsando
+          esta iniciativa. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum delectus reiciendis,
+          asperiores sequi voluptas exercitationem!</p>
+      </div>
+
+      <div class="aboutCont">
+        <h3>Nuestra Mision</h3>
+        <p class="aboutText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui blanditiis
+          eveniet deleniti molestias debitis at quisquam dolorum earum maxime. Quae, officia vero eum ea fugiat
+          molestiae ab dolore. Nobis!</p>
+      </div>
+
+      <div class="aboutCont">
+        <h3>Marcas que se suman a esta iniciativa</h3>
+
+        <div class="carouselMenu">
+
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./img/Logo-Villavicencio.webp" class="imgCarousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./img/Carrefour-Logo-og.jpg" class="imgCarousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./img/adidas_ico.png" class="imgCarousel" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+
+            <div class="carouselTitle">
+              <p style="visibility: hidden;">.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="contactPage">
+
+    <div class="contDiv">
+      <!-- 
+      <video autoplay loop id="contact-video">
+        <source src="./img/contact-video.mp4" alt="contvid">
+      </video> -->
+
+      <h2>Contactanos</h2>
+
+      <form action="https://formsubmit.co/greenway.change@gmail.com" method="POST">
+
+        <div class="contactForm">
+          <!-- <label for="Nombre">Nombre:</label>
+          <br> -->
+          <input type="text" name="Nombre" id="txtNombre" placeholder="Nombre:*" required>
+        </div>
+
+        <div class="contactForm">
+          <!-- <label for="Telefono">Numero de Telefono:</label>
+          <br> -->
+          <input type="number" name="Telefono" id="txtcPhone" placeholder="Numero de Telefono:">
+        </div>
+
+        <div class="contactForm">
+          <!-- <label for="Mail">Email de Contacto:</label>
+          <br> -->
+          <input type="text" name="Mail" id="txtcMail" placeholder="Email de Contacto:*" required>
+        </div>
+
+        <div class="fieldsetC">
+
+          <p>Me presento soy:</p>
+
+          <div class="tipoUser">
+            <div style="text-align: center;">
+              <label for="usuario">Usuario</label>
+              <input type="radio" name="userContact" id="usuario" value="usuario">
+            </div>
+
+            <div>
+              <label for="Empresa">Empresa</label>
+              <input type="radio" name="userContact" id="empresa" value="Empresa">
+            </div>
+
+            <div>
+              <label for="Other">Other</label>
+              <input type="radio" name="userContact" id="Other" value="Other" checked>
+            </div>
+          </div>
+
+        </div>
+
+
+        <input class="msjContact" type="text" name="msjContact" id="msjContact" placeholder="Ingrese un mensaje aqui!*"
+          required>
+
+        <input type="submit" value="Enviar!" class="btnContact">
+
+        <input type="hidden" name="_next" value="https://auth-genbrub.web.app/#">
+        <input type="hidden" name="_captcha" value="false">
+
+      </form>
+    </div>
+
+    <p class="oblcampos">*campos obligatorios</p>
+
+  </div>
+
+  <div id="premiosPage">
+
+    <div class="contDiv">
+      <div class="ecoins">
+
+        <div class="premioFilt">
+          <!-- <p>Filtrar por:</p> -->
+          <p>Filtrar por
+            <select name="filtros" id="inputGroupSelect03" onchange="filtros(premio)">
+              <option value="Todos" selected>Todos</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="premionav">
+          <!-- <p class="ecoinsText" style="font-size: x-large;">2220</p>
+          <img class="ecoinIco" src="./img/coin_ico.png" alt="coin" width="35" height="35"> -->
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="carritobtn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./img/carrito-de-compras.png" width="25px" alt="">
+
+          <div class="sumaCarrito">
+            <strong class="count-product"> 0 </strong>
+          </div>
+
+        </button>
+        <ul class="dropdown-menu" style="background-color: transparent; border: none;" aria-labelledby="dropdownMenu2">
+          <table id="products-id" class="table table-dark table-borderless">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Ecopoints</th>
+                <th>Cantidad</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="card-items">
+            </tbody>
+            <tr>
+              <td colspan="2" class="table-active">Total ecopoints: <strong class="price-total">0</strong></td>
+              <td colspan="2" class="table-active"><a href="#" style="color: white; background-color: #81ad27;"
+                  class="btn logged-out" data-bs-toggle="modal" data-bs-target="#signInModal">Iniciar Sesion</a></td>
+              <td colspan="1" class="table-active"><a href="#" style="color: white; background-color: #ffa000;"
+                  class="btn logged-in" onclick="checkout()">Finalizar</a></td>
+
+            </tr>
+          </table>
+        </ul>
+      </div>
+
+      <div class="recompensa">
+        <div class="products" style="text-align: center;">
+
+          <div id="prueba" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+            <div v-for="element in recom" :key="element.id">
+              <div class="card"
+                style="color: whitesmoke; background-color: #212529; text-align: center; max-width: 500px;">
+                <img v-bind:src="element.img" width="50" id="image" class="card-img-top" alt="element.descripcion">
+                <a href="" v-bind:data-id="element.id" class="btn-add-cart btn"
+                  style="color: whitesmoke; background-color: green;">CANJEAR</a>
+                <div class="card-body">
+                  <h5 class="card-title"> <img src="./img/coin_ico.png" width="20px" alt="">{{element.cantEcoins}}
+                  </h5>
+                  <p class="card-text">{{element.descripcion}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pruebasPage">
+
+    <div class="contDiv">
+
+      <form class="comprarEcoins" id="restaCoins">
+        <div class="form-group">
+          <label for="inputAddress">Costo del carrito</label>
+          <input type="number" class="form-control" id="carCost">
+          <button type="submit" class="btn btn-primary">Restar ecopoints</button>
+        </div>
+      </form>
+
+      <form class="conseguirEcoins" id="sumaCoins">
+        <div class="form-group">
+          <label for="inputAddress">Recibir Ecoins</label>
+          <input type="number" class="form-control" id="regalarEcoins">
+          <button type="submit" class="btn btn-primary">Sumar ecopoints</button>
+        </div>
+      </form>
+
+      <div class="aboutLogo">
+        <img src="./img/logo_png_ico.png" alt="logotest" width="120">
+      </div>
+
+    </div>
+
+  </div>
+
+  <section id="page-splash">
+    <div class="popUpSplash">
+      <img src="./img/logo_png_ico.png" alt="greenway_logo" width="130px">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="envioPopup">
+
+    <div class="contDiv">
+
+      <img src="./img/logo_png_ico.png" alt="greenway_logo" width="70px" class="imgenvio">
+
+      <h2 class="envioTitle">Envio</h2>
+
+      <button type="button" class="btn-close" data-bs-dismiss="envioPopup" aria-label="Close" id="btnclsEnvio"
+        onclick="btnEnvio()"></button>
+
+      <form action="https://formsubmit.co/greenway.change@gmail.com" method="POST">
+
+        <div class="regist">
+          <label for="Nombre" style="color: rgb(0, 0, 0);">Nombre completo:</label>
+          <br>
+          <input type="text" id="Nombre" name="Nombre_completo" required>
+        </div>
+
+        <div class="regist">
+          <label for="Documento" style="color: rgb(0, 0, 0);">Documento:</label>
+          <br>
+          <input type="text" id="Documento" name="Documento" required>
+        </div>
+
+        <div class="regist">
+          <label for="Mail" style="color: rgb(0, 0, 0);">Mail:</label>
+          <br>
+          <input type="text" id="Mail" name="Mail" required>
+        </div>
+
+        <div class="regist">
+          <label for="Telefono" style="color: rgb(0, 0, 0);">Telefono de contacto:</label>
+          <br>
+          <input type="text" id="Telefono" name="Telefono">
+        </div>
+
+        <div class="regist">
+          <label for="Calle" style="color: rgb(0, 0, 0);">Calle y Piso:</label>
+          <br>
+          <input type="text" id="Calle" name="Calle y Piso" required>
+        </div>
+
+        <div class="regist">
+          <label for="PedidoEspecial" style="color: rgb(0, 0, 0);">Pedido especial:</label>
+          <br>
+          <input type="text" id="Piso" class="registBox" name="PedidoEspecial" required>
+        </div>
+
+
+
+        <!-- <input type="hidden" name="_next" value="http://localhost:5000/#"> -->
+        <input type="hidden" name="_next" value="https://auth-genbrub.web.app/#">
+        <input type="hidden" name="_captcha" value="false">
+
+        <button type="submit" class="btnNext" onclick="transaccionCarrito(totalCard)">Enviar</button>
+
+      </form>
+
+      <div class="gifEnvio">
+        <img src="./img/cycling-bicycle.gif" alt="bike">
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div id="noalcanzaPopup">
+    <div class="contDiv">
+
+      <button type="button" class="btn-close" aria-label="Close" id="btnclsEnvio" onclick="btnNoalcanza()"></button>
+
+      <div class="textNoalcanzarojo">
+        <p>Rayos! <br> No te alcanzan los ecopoints!</p>
+      </div>
+
+      <img src="./img/recy-sad.png" alt="recy-sad" class="recysad">
+
+      <div class="oval"></div>
+
+      <div class="textNoalcanza">
+        <p>Uy... tengo mucha hambre</p>
+        <p>Salgamos a reciclar un poquito</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="alcanzaPopup">
+    <div class="contDiv">
+
+      <button type="button" class="btn-close" aria-label="Close" id="btnclsEnvio" onclick="btnalcanza()"></button>
+
+      <div class="textNoalcanzarojo">
+        <p> Perfecto! <br> Ya hemos recibido tu pedido! </p>
+      </div>
+
+      <img src="./img/recy-feli.png" alt="recy-sad" class="recysad">
+
+      <div class="oval"></div>
+
+      <div class="textNoalcanza">
+        <p>Gracias!</p>
+        <p>Te voy a enviar un regalito por ayudarme!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal Register-->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <div style="display: flex; justify-content: center; width: 100%; height: 100%;">
+          <img src="./img/logo_png_ico.png" alt="greenway_logo" width="130px">
+        </div>
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registrate</h5>
+        </div>
+
+        <div class="modal-body">
+
+          <form id="signUp-form">
+            <div class="form-group" style="margin-top: 1em;">
+              <input type="text" id="signUp-email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group" style="margin-top: 1em;">
+              <input type="password" id="signUp-password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group" style="margin-top: 1em;">
+              <input type="text" id="signUp-first-name" class="form-control" placeholder="First Name" required>
+            </div>
+            <div class="form-group" style="margin-top: 1em;">
+              <input type="text" id="signUp-last-name" class="form-control" placeholder="Last Name" required>
+            </div>
+            <button type="submit" class="btn btn-success"
+              style="display: flex; justify-content: center; margin-top: 1em;">Forma Parte!</button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Modal Sign In-->
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+
+        <section id="page-popup">
+
+          <div class="popUpSig" id="login-form">
+
+            <img src="./img/logo_png_ico.png" alt="greenway_logo" width="130px">
+
+            <h2 class="h2Sign">Iniciar Sesion</h2>
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <div class="regist">
+              <label for="login-email" style="color: rgb(0, 0, 0);">Usuario</label>
+              <br>
+              <input type="text" id="login-email">
+            </div>
+
+            <div class="regist">
+              <label for="login-password" style="color: rgb(0, 0, 0);">Contraseña</label>
+              <br>
+              <input type="password" id="login-password" class="registBox">
+            </div>
+
+            <div>
+              <button type="submit" id="sign-in-button-MAIL"
+                class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect" >
+                Ingresar
+              </button>
+            </div>
+
+            <div class="logInAlt">
+
+              <div>
+                <button id="googleLogin-btn">
+                  <img src="./img/icons8-logo-de-google.svg" alt="googleLogo" width="35">
+                </button>
+              </div>
+
+              <span class="separador">
+                |
+              </span>
+
+              <div>
+                <button id="facebookLogin-btn">
+                  <img src="./img/icons8-facebook-nuevo.svg" alt="faceLogo" width="35">
+                </button>
+              </div>
+
+            </div>
+
+            <div>
+              <a href="#" class="notSign" data-bs-toggle="modal" data-bs-target="#signUpModal">No eres un usuario? <br>
+                Registrate
+                ahora!</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <form id="login-form">
+
+            <div class="form-group">
+              <input type="text" id="login-email" class="form-control" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+              <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn btn-secondary ">Sign In</button>
+            <button type="button" class="btn btn-info" id="googleLogin-btn">Login whit Google</button>
+            <button type="button" class="btn btn-primary" id="facebookLogin-btn">Login whit Facebook</button>
+
+          </form>
+
+        </div> -->
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+  <div id="poster" class="logged-out-poster">
+    <div class="contDiv">
+      <button type="button" class="btn-close" aria-label="Close" id="btnclsPoster" onclick="cerrarPoster()"></button>
+      <button class="dimeMas" onclick="cargarPagina('premiosPage'); cerrarPoster()">Ver Recompensas!</button>
+    </div>
+  </div>
+
+  <footer id="pie" class="text-center text-white" style="background-color: transparent">
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-md-12" style="margin-top:10px;">
+          <div class="row">
+            <div class="col-md-7">
+              
+          <h5 class="text-uppercase">Nuestro staff:</h5>
+            </div>
+            <div class="col-md-5">
+              
+          <h5 class="text-uppercase">Proyectos amigos</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Grid container -->
+    <div class="container p-4 margin-top: 10px; ">
+      <!-- Section: Images -->
+      <section class="">
+        <div class="row">
+          
+            
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C5603AQH0k41f1nSCXA/profile-displayphoto-shrink_800_800/0/1636563910392?e=1655942400&v=beta&t=g53sw5y8LjokybrsBww9p_SQK10eUQEeWKMCUniSb8U"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn"> 
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C4E03AQHRiOt7J29mGQ/profile-displayphoto-shrink_800_800/0/1637970377378?e=1655942400&v=beta&t=-P5xwDlExgrWB2tCFm58-TsGU_B-PiPM0XHUjf7Tzm4"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn">
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="https://media-exp1.licdn.com/dms/image/C4E03AQEaxNXI2SvSWg/profile-displayphoto-shrink_800_800/0/1644015788717?e=1655942400&v=beta&t=We6kPB0ztgYG5y0x4htUTPUWyRJU6zL8lAjaDeNDM8E"
+                class="w-100"
+              />
+              <img src="./img/linkedin.png" class="linkedIn">
+            </div>
+             
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+              </a>
+              
+            </div>
+            
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+              class="bg-image hover-overlay ripple shadow-1-strong rounded"
+              data-ripple-color="light"
+            >
+            <div class="linke">
+              <img
+                src="./img/diego.jpg"
+                class="w-100" height="131.98px"
+              />
+              <img src="./img/linkedin.png" class="linkedIn"> 
+            </div>
+              <a href="#!">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.2);"
+                ></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            
+            <ul class="list-unstyled mb-0">
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button type="button" href="https://prueba-vue-proyecto-final.web.app/" class="btn btn-outline-light">Patitas Peludas</button>
+           
+              </li>
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button href="https://delivery-6c0fd.web.app/"  type="button" class="btn btn-outline-light">Mi barrio</button>
+              
+              </li>
+              <li  class="d-grid gap-2" style="margin: 10px;">
+                <button href="https://ivoponce.herokuapp.com/" type="button" class="btn btn-outline-light">Ivo</button>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Images -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+
+
+
+
+
+  <script src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
+  <script src="/__/firebase/9.6.7/firebase-database-compat.js"></script>
+  <script src="/__/firebase/init.js?useEmulator=true"></script>
+  <!-- <script src="/__/firebase/9.6.7/firebase-storage-compat.js"></script> -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src="./script/main.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiQG00rNheJxP6lv16er6TnDuG0qsnmSU&map_ids=2e2badab96c87b72&callback=initMap"></script>
+
+</body>
+
+</html>
